@@ -1,0 +1,105 @@
+/***Global Stylesheet***/
+
+/***Custom font imports from Google Fonts***/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/***Tailwind CSS layers***/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/***Base Layer Styles***/
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    @apply bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300;
+  }
+
+  /***Custom scrollbar styling for webkit browsers (Chrome, Safari, Edge)***/
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-[#050505];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent-500/15 rounded-full transition-colors duration-200;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-500/30;
+  }
+}
+
+/**
+ Component Layer Styles
+ Reusable component classes
+ **/
+@layer components {
+  ::selection {
+    @apply bg-accent-500/30 text-accent-900 dark:text-white;
+  }
+}
+
+/**
+ Utility Layer Styles
+ Custom utility animations
+ **/
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/**
+ Form Autofill Styling
+ Removes browser default autofill background and borders
+ **/
+@layer components {
+  /* Light mode autofill - no border */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  textarea:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+    box-shadow: 0 0 0 1000px #ffffff inset !important;
+    border: none !important;
+    -webkit-text-fill-color: #111111 !important;
+  }
+
+  /* Dark mode autofill - no border */
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:hover,
+  .dark textarea:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #050505 inset !important;
+    box-shadow: 0 0 0 1000px #050505 inset !important;
+    border: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+}

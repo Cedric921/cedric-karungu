@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icons } from '../constants';
 
-import resumePdf from "../assets/document/Ced CV.pdf";
+const resumePdf = "/document/Ced CV.pdf";
 
 
 /***Hero Component***/

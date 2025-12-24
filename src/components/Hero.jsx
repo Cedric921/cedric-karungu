@@ -115,7 +115,7 @@ useEffect(() => {
         <p className={`text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          I build systems that run smooth, code that doesn't break, and data that flows right.
+          I deliver high-performance systems and reliable architectures designed to align technical precision with business growth.
         </p>
 
 

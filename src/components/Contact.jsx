@@ -1,8 +1,10 @@
 import React from 'react';
 import { Icons } from '../constants';
+import { useScrollAnimation } from '../hooks';
 
 /***Contact Component***/
 const Contact = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -36,13 +38,16 @@ const Contact = () => {
     <section 
       id="contact" 
       className="py-24 relative overflow-hidden scroll-mt-28 bg-white dark:bg-[#050505] transition-colors duration-300"
+      ref={ref}
     >
       {/**Decorative Background Element**/}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-900/10 rounded-full blur-[120px] -z-10 hidden dark:block" />
 
       <div className="max-w-4xl mx-auto px-6">
         {/****Section Header****/}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <span className="inline-block px-4 py-1 rounded-full bg-accent-100 dark:bg-white/5 border border-accent-200 dark:border-white/10 text-accent-700 dark:text-accent-400 text-sm font-medium mb-4">
             Let's Connect
           </span>
@@ -58,7 +63,9 @@ const Contact = () => {
         <div className="grid md:grid-cols-3 gap-8">
           
           {/***Left Column - Contact Information***/}
-          <div className="md:col-span-1 space-y-4">
+          <div className={`md:col-span-1 space-y-4 transition-all duration-1000 delay-200 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          }`}>
             
             {/**Email Card**/}
             <div className="bg-gray-50 dark:bg-[#111] p-6 rounded-2xl border border-gray-200 dark:border-white/5 hover:border-accent-500/30 transition-all shadow-sm dark:shadow-none">
@@ -92,7 +99,9 @@ const Contact = () => {
           </div>
 
           {/***Right Column - Contact Form***/}
-          <div className="md:col-span-2">
+          <div className={`md:col-span-2 transition-all duration-1000 delay-400 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+          }`}>
             <form 
               onSubmit={handleSubmit} 
               className="space-y-4 bg-gray-50 dark:bg-[#111] p-8 rounded-3xl border border-gray-200 dark:border-white/5 shadow-sm dark:shadow-none"

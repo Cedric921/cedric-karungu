@@ -1,17 +1,22 @@
 import React from 'react';
 import { EXPERIENCES, Icons } from '../constants';
+import { useScrollAnimation } from '../hooks';
 
 /***Experience Component***/
 const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   return (
     <section 
       id="experience" 
       className="py-24 bg-white dark:bg-[#050505] scroll-mt-28 transition-colors duration-300"
+      ref={ref}
     >
       <div className="max-w-4xl mx-auto px-6">
         
         {/***Section Header***/}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
             Professional Experience
           </h2>
@@ -30,9 +35,14 @@ const Experience = () => {
           {EXPERIENCES.map((exp, index) => (
             <div 
               key={exp.id} 
-              className={`relative flex flex-col md:flex-row gap-8 ${
+              className={`relative flex flex-col md:flex-row gap-8 transition-all duration-1000 ${
                 index % 2 === 0 ? 'md:flex-row-reverse' : ''
+              } ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
+              style={{
+                transitionDelay: isVisible ? `${index * 100}ms` : '0ms'
+              }}
             >
               
               {/**Timeline Dot**/}

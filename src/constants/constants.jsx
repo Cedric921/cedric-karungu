@@ -100,7 +100,7 @@ export const Icons = {
 
 /***Portfolio Projects Data***/
 export const PROJECTS = [
-  // Web Projects - Duplicated to reach 6
+  // Web Projects
   { 
     id: 1, 
     title: "Ever Teams", 
@@ -141,29 +141,29 @@ export const PROJECTS = [
     githubLink: "https://github.com/ever-co/ever-gauzy",
     tags: ["Vue.js", "Python", "PostgreSQL", "Enterprise"]
   },
+
+  // App Projects
   { 
     id: 5, 
-    title: "Ever Teams", 
-    description: "Ever Teams is an all-in-one work and project management platform that helps teams manage tasks, track time and productivity, collaborate in real time, and integrate with tools like GitHub and JIRA.", 
-    category: "Web", 
+    title: "Ever Teams Mobile", 
+    description: "Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.", 
+    category: "App", 
     image: "/images/Projects/project1.png", 
     link: "https://app.ever.team/", 
     githubLink: "https://github.com/ever-co/ever-teams",
-    tags: ["React", "Node.js", "MongoDB", "Real-time"]
+    tags: ["React Native", "Node.js", "MongoDB", "Mobile"]
   },
   { 
     id: 6, 
-    title: "Ever Gauzy Platform", 
-    description: "Ever Gauzy Platform is an open business management platform that combines ERP, CRM, HRM, accounting, and project management tools to help companies manage employees, projects, finances, and operations in one system.", 
-    category: "Web", 
+    title: "Ever Gauzy Mobile", 
+    description: "Mobile business management platform with all the features of the web version optimized for mobile devices.", 
+    category: "App", 
     image: "/images/Projects/project2.png", 
     link: "https://gauzy.co/", 
     githubLink: "https://github.com/ever-co/ever-gauzy",
-    tags: ["Vue.js", "Python", "PostgreSQL", "Enterprise"]
+    tags: ["React Native", "Python", "PostgreSQL", "Mobile"]
   },
-
-  // App Projects - Duplicated to reach 3
-  { 
+   { 
     id: 7, 
     title: "Ever Teams Mobile", 
     description: "Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.", 
@@ -173,26 +173,7 @@ export const PROJECTS = [
     githubLink: "https://github.com/ever-co/ever-teams",
     tags: ["React Native", "Node.js", "MongoDB", "Mobile"]
   },
-  { 
-    id: 8, 
-    title: "Ever Gauzy Mobile", 
-    description: "Mobile business management platform with all the features of the web version optimized for mobile devices.", 
-    category: "App", 
-    image: "/images/Projects/project2.png", 
-    link: "https://gauzy.co/", 
-    githubLink: "https://github.com/ever-co/ever-gauzy",
-    tags: ["React Native", "Python", "PostgreSQL", "Mobile"]
-  },
-  { 
-    id: 9, 
-    title: "Ever Teams Mobile", 
-    description: "Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.", 
-    category: "App", 
-    image: "/images/Projects/project1.png", 
-    link: "https://app.ever.team/", 
-    githubLink: "https://github.com/ever-co/ever-teams",
-    tags: ["React Native", "Node.js", "MongoDB", "Mobile"]
-  }
+  
 ];
 
 

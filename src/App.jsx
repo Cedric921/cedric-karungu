@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Hero, Skills, Portfolio, Experience, Contact, Footer } from './components';
+import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer } from './components';
 import { Icons } from './constants';
 
 
@@ -61,6 +61,8 @@ const App = () => {
       
       <main>
         <Hero />
+
+        <AboutMe />
         
         <Skills />
         

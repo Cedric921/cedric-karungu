@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { PROJECTS, Icons } from '../constants';
+import { useScrollAnimation } from '../hooks';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
     <section 
       id="portfolio" 
       className="py-24 scroll-mt-28 bg-gray-50 dark:bg-black transition-colors duration-300"
+      ref={ref}
     >
       <div className="max-w-7xl mx-auto px-6">
         
         {/**Section Header with Filter Buttons**/}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className={`flex flex-col md:flex-row justify-between items-end mb-16 gap-6 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
               My projects
@@ -65,7 +70,12 @@ const Portfolio = () => {
           ).map((project, idx) => (
             <div 
               key={idx} 
-              className="group relative bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-accent-500/30 transition-all duration-300 shadow-md dark:shadow-none"
+              className={`group relative bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-accent-500/30 transition-all duration-300 shadow-md dark:shadow-none transform ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{
+                transitionDelay: isVisible ? `${idx * 75}ms` : '0ms'
+              }}
             >
               
               {/***Image Container with Overlay Effect***/}
@@ -158,7 +168,9 @@ const Portfolio = () => {
         </div>
 
         {/**See More Projects Button**/}
-        <div className="text-center mt-12">
+        <div className={`text-center mt-12 transition-all duration-1000 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <a 
             href="https://github.com/Cedric921" 
             target="_blank" 

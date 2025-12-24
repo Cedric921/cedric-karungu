@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { SKILLS } from '../constants';
+import { useScrollAnimation } from '../hooks';
 
 const Skills = () => {
   const [activeFilter, setActiveFilter] = useState('Front End');
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
     <section 
       id="skills" 
-      className="mt-[45px] py-24 bg-white dark:bg-black scroll-mt-28 transition-colors duration-300"
+      className=" py-24 bg-white dark:bg-black scroll-mt-28 transition-colors duration-300"
+      ref={ref}
     >
       <div className="max-w-7xl mx-auto px-6">
         
         {/**Section Header**/}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
             My Skills
           </h2>
@@ -63,7 +68,12 @@ const Skills = () => {
           {SKILLS.filter(skill => skill.category === activeFilter).map((skill, idx) => (
             <div 
               key={idx}
-              className="bg-white dark:bg-black border border-gray-200 dark:border-white/10 p-8 rounded-2xl hover:border-accent-500/50 hover:bg-accent-500/5 transition-all duration-300 flex flex-col items-center justify-center gap-6 text-center cursor-default shadow-lg dark:shadow-none"
+              className={`bg-white dark:bg-black border border-gray-200 dark:border-white/10 p-8 rounded-2xl hover:border-accent-500/50 hover:bg-accent-500/5 transition-all duration-300 flex flex-col items-center justify-center gap-6 text-center cursor-default shadow-lg dark:shadow-none transform transition-all ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{
+                transitionDelay: isVisible ? `${idx * 50}ms` : '0ms'
+              }}
             >
               {/**Skill Logo with theme-based color**/}
               <div className="text-5xl mb-4">

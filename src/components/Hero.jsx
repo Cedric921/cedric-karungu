@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Icons } from '../constants';
+import { useScrollAnimation } from '../hooks';
 
 const resumePdf = "/document/Ced CV.pdf";
 
 
 /***Hero Component***/
 const Hero = () => {
+  // Scroll animation hook
+  const { ref, isVisible } = useScrollAnimation(0.2);
+
   // State variables for the typing animation
 const [currentTitle, setCurrentTitle] = useState(''); // Current title being displayed
 const [titleIndex, setTitleIndex] = useState(0); // Index of the current title in the titles array
@@ -56,6 +60,7 @@ useEffect(() => {
     <section 
       id="about" 
       className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28"
+      ref={ref}
     >
       
     {/****BACKGROUND DECORATIVE ELEMENTS****/}
@@ -75,14 +80,18 @@ useEffect(() => {
       <div className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center">
         
         {/**Top Tagline - Availability Badge**/}
-        <div className="mb-6 animate-fade-in-up">
+        <div className={`mb-6 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <span className="inline-block py-1 px-3 rounded-full bg-accent-50/50 dark:bg-accent-900/30 border border-accent-200 dark:border-accent-700/50 text-accent-600 dark:text-accent-300 text-sm font-semibold tracking-wide">
             Available for Freelance & Contract
           </span>
         </div>
 
         {/**Main Name and Title Heading**/}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-2">
+        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-2 transition-all duration-1000 delay-200 ${
+          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`}>
           
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">
             CEDRIC KARUNGU
@@ -95,18 +104,24 @@ useEffect(() => {
         </h1>
 
         {/***Professional Subtitle with Typing Animation***/}
-        <h2 className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 mt-10">
+        <h2 className={`text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 mt-10 transition-all duration-1000 delay-400 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <span>{currentTitle}</span>
           <span className="animate-pulse">|</span>
         </h2>
 
         {/**Descriptive Text**/}
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          I build systems that run smooth, code that doesn’t break, and data that flows right.
+        <p className={`text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-1000 delay-500 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          I build systems that run smooth, code that doesn't break, and data that flows right.
         </p>
 
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-1000 delay-600 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
          {/*Download Resume*/}
           <a
             href={resumePdf}
@@ -126,7 +141,9 @@ useEffect(() => {
         </div>
 
         {/***Social Media Links***/}
-        <div className="flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400">
+        <div className={`flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400 transition-all duration-1000 delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           {/*GitHub Link*/}
           <a 
             href="#" 

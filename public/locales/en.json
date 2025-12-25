@@ -39,17 +39,25 @@
   },
   "skills": {
     "title": "Skills",
-    "description": "Technologies and tools I work with"
+    "description": "Technologies and tools I work with",
+    "frontEnd": "Front End",
+    "backEnd": "Back End",
+    "ai": "A.I"
   },
   "portfolio": {
-    "title": "Portfolio",
-    "description": "Featured projects and case studies",
+    "title": "My projects",
+    "description": "Selected projects demonstrating practical solutions and well-architected digital experiences.",
     "viewProject": "View Project",
-    "sourceCode": "Source Code"
+    "sourceCode": "Source Code",
+    "filterAll": "All",
+    "filterWeb": "Web",
+    "filterApp": "App",
+    "moreDetails": "more details →",
+    "seeMoreProjects": "See more projects"
   },
   "experience": {
-    "title": "Experience",
-    "description": "My professional journey and accomplishments"
+    "title": "Professional Experience",
+    "description": "My journey through the tech industry."
   },
   "contact": {
     "title": "Get In Touch",
@@ -60,16 +68,31 @@
     "message": "Message",
     "name": "Name",
     "emailPlaceholder": "your@email.com",
-    "messagePlaceholder": "Your message here..."
+    "messagePlaceholder": "Your message here...",
+    "fillAllFields": "Please fill in all fields",
+    "invalidEmail": "Please enter a valid email",
+    "availabilityTitle": "Availability",
+    "availabilityStatus": "Open to projects",
+    "namePlaceholder": "Your Name",
+    "subject": "Subject",
+    "subjectPlaceholder": "Message Subject"
   },
   "footer": {
-    "copyright": "© 2024 Cedric Karungu. All rights reserved.",
-    "links": "Quick Links"
+    "copyright": "All rights reserved.",
+    "links": "Quick Links",
+    "tagline": "I build scalable full-stack systems with clean architecture, solid backend logic, and production-ready user experiences. Focused on code quality, maintainability, and real-world performance.",
+    "location": "Kigali, Rwanda",
+    "featuredWork": "Featured Work",
+    "techStack": "Tech Stack",
+    "connect": "Connect",
+    "role": "Fullstack Software Developer",
+    "opportunity": "Open to Remote Opportunities"
   },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
     "success": "Success",
-    "close": "Close"
+    "close": "Close",
+    "language": "Language"
   }
 }

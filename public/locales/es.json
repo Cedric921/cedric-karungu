@@ -39,17 +39,25 @@
   },
   "skills": {
     "title": "Habilidades",
-    "description": "Tecnologías y herramientas con las que trabajo"
+    "description": "Tecnologías y herramientas con las que trabajo",
+    "frontEnd": "Front End",
+    "backEnd": "Back End",
+    "ai": "A.I"
   },
   "portfolio": {
-    "title": "Portafolio",
-    "description": "Proyectos destacados y casos de estudio",
+    "title": "Mis proyectos",
+    "description": "Proyectos seleccionados que demuestran soluciones prácticas y experiencias digitales bien arquitecturadas.",
     "viewProject": "Ver proyecto",
-    "sourceCode": "Código fuente"
+    "sourceCode": "Código fuente",
+    "filterAll": "Todos",
+    "filterWeb": "Web",
+    "filterApp": "Aplicación",
+    "moreDetails": "más detalles →",
+    "seeMoreProjects": "Ver más proyectos"
   },
   "experience": {
-    "title": "Experiencia",
-    "description": "Mi trayectoria profesional y logros"
+    "title": "Experiencia Profesional",
+    "description": "Mi trayecto a través de la industria tecnológica."
   },
   "contact": {
     "title": "Contáctame",
@@ -60,16 +68,31 @@
     "message": "Mensaje",
     "name": "Nombre",
     "emailPlaceholder": "tu@email.com",
-    "messagePlaceholder": "Tu mensaje aquí..."
+    "messagePlaceholder": "Tu mensaje aquí...",
+    "fillAllFields": "Por favor completa todos los campos",
+    "invalidEmail": "Por favor introduce un correo electrónico válido",
+    "availabilityTitle": "Disponibilidad",
+    "availabilityStatus": "Abierto a proyectos",
+    "namePlaceholder": "Tu nombre",
+    "subject": "Asunto",
+    "subjectPlaceholder": "Asunto del mensaje"
   },
   "footer": {
-    "copyright": "© 2024 Cedric Karungu. Todos los derechos reservados.",
-    "links": "Enlaces rápidos"
+    "copyright": "Todos los derechos reservados.",
+    "links": "Enlaces rápidos",
+    "tagline": "Construyo sistemas full-stack escalables con arquitectura limpia, lógica backend sólida y experiencias de usuario listas para producción. Enfocado en la calidad del código, mantenibilidad y rendimiento real.",
+    "location": "Kigali, Rwanda",
+    "featuredWork": "Trabajos destacados",
+    "techStack": "Pila de tecnología",
+    "connect": "Conectar",
+    "role": "Desarrollador Full-stack",
+    "opportunity": "Abierto a oportunidades remotas"
   },
   "common": {
     "loading": "Cargando...",
     "error": "Ocurrió un error",
     "success": "Éxito",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "language": "Idioma"
   }
 }

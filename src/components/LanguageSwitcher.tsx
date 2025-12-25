@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -6,9 +8,9 @@ const LanguageSwitcher: React.FC = () => {
   const pathname = usePathname();
 
   const languages = [
-    { code: 'en', label: 'English' },
-    { code: 'fr', label: 'Français' },
-    { code: 'es', label: 'Español' },
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
   ];
 
   const handleLanguageChange = (newLocale: string) => {
@@ -19,21 +21,19 @@ const LanguageSwitcher: React.FC = () => {
   const currentLocale = pathname.split('/')[1] || 'en';
 
   return (
-    <div className="flex items-center gap-2">
-      {languages.map((lang) => (
-        <button
-          key={lang.code}
-          onClick={() => handleLanguageChange(lang.code)}
-          className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all duration-200 ${
-            currentLocale === lang.code
-              ? 'bg-accent-600 text-white'
-              : 'bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/10'
-          }`}
-          aria-label={`Switch to ${lang.label}`}
-        >
-          {lang.code.toUpperCase()}
-        </button>
-      ))}
+    <div className="flex items-center">
+      <label htmlFor="locale-select" className="sr-only">Language</label>
+      <select
+        id="locale-select"
+        value={currentLocale}
+        onChange={(e) => handleLanguageChange(e.target.value)}
+        className="px-3 py-1.5 rounded-md text-sm font-medium bg-white dark:bg-[#0b0b0b] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300"
+        aria-label="Select language"
+      >
+        {languages.map((lang) => (
+          <option key={lang.code} value={lang.code}>{`${lang.flag} ${lang.label}`}</option>
+        ))}
+      </select>
     </div>
   );
 };

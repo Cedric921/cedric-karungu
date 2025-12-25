@@ -16,13 +16,13 @@ const Contact: React.FC = () => {
     const message = (formData.get('message') as string | null)?.trim();
 
     if (!name || !email || !subject || !message) {
-      alert('Please fill in all fields');
+      alert(t('contact.fillAllFields'));
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert('Please enter a valid email');
+      alert(t('contact.invalidEmail'));
       return;
     }
 
@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="inline-block px-4 py-1 rounded-full bg-accent-100 dark:bg-white/5 border border-accent-200 dark:border-white/10 text-accent-700 dark:text-accent-400 text-sm font-medium mb-4">{t('contact.title')}</span>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-accent-400 dark:from-accent-500 dark:to-white">Touch</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">{t('contact.title')}</h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">{t('contact.description')}</p>
         </div>
 
@@ -57,9 +57,9 @@ const Contact: React.FC = () => {
 
             <div className="bg-gray-50 dark:bg-[#111] p-6 rounded-2xl border border-gray-200 dark:border-white/5 hover:border-accent-500/30 transition-all shadow-sm dark:shadow-none">
               <div className="bg-accent-100 dark:bg-accent-500/10 w-10 h-10 rounded-lg flex items-center justify-center text-accent-600 dark:text-accent-500 mb-4"><Icons.CheckCircle /></div>
-              <h4 className="text-gray-500 dark:text-gray-400 text-sm mb-1">Availability</h4>
-              <p className="text-gray-900 dark:text-white font-medium text-sm flex items-center gap-2"><span className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></span>Open to projects</p>
-            </div>
+              <h4 className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('contact.availabilityTitle')}</h4>
+              <p className="text-gray-900 dark:text-white font-medium text-sm flex items-center gap-2"><span className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></span>{t('contact.availabilityStatus')}</p>
+            </div> 
           </div>
 
           <div className={`md:col-span-2 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
@@ -67,7 +67,7 @@ const Contact: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-xs text-gray-500 dark:text-gray-400 ml-1">{t('contact.name')}</label>
-                  <input type="text" name="name" required placeholder="Your Name" className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                  <input type="text" name="name" required placeholder={t('contact.namePlaceholder')} className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                 </div>
 
                 <div className="space-y-2">
@@ -77,8 +77,8 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-xs text-gray-500 dark:text-gray-400 ml-1">{t('contact.message')}</label>
-                <input type="text" name="subject" required placeholder="Message Subject" className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                <label htmlFor="subject" className="text-xs text-gray-500 dark:text-gray-400 ml-1">{t('contact.subject')}</label>
+                <input type="text" name="subject" required placeholder={t('contact.subjectPlaceholder')} className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600" />
               </div>
 
               <div className="space-y-2">

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { PROJECTS, Icons } from '../constants';
 import { useScrollAnimation } from '../hooks';
 
 const Portfolio: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const t = useTranslations();
+  const [activeFilter, setActiveFilter] = useState(t('portfolio.filterAll'));
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
@@ -11,14 +13,14 @@ const Portfolio: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className={`flex flex-col md:flex-row justify-between items-end mb-16 gap-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">My projects</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-xl">Selected projects demonstrating practical solutions and well-architected digital experiences.</p>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">{t('portfolio.title')}</h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-xl">{t('portfolio.description')}</p>
           </div>
 
           <div className="flex gap-2 bg-white dark:bg-black p-1 rounded-full border border-gray-200 dark:border-white/10 shadow-sm">
-            <button onClick={() => setActiveFilter('All')} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'All' ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>All</button>
-            <button onClick={() => setActiveFilter('Web')} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'Web' ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>Web</button>
-            <button onClick={() => setActiveFilter('App')} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'App' ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>App</button>
+            <button onClick={() => setActiveFilter(t('portfolio.filterAll'))} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === t('portfolio.filterAll') ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>{t('portfolio.filterAll')}</button>
+            <button onClick={() => setActiveFilter(t('portfolio.filterWeb'))} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === t('portfolio.filterWeb') ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>{t('portfolio.filterWeb')}</button>
+            <button onClick={() => setActiveFilter(t('portfolio.filterApp'))} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === t('portfolio.filterApp') ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>{t('portfolio.filterApp')}</button>
           </div>
         </div>
 

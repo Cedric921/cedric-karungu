@@ -5,7 +5,7 @@ import { useScrollAnimation } from '../hooks';
 
 const Skills: React.FC = () => {
   const t = useTranslations();
-  const [activeFilter, setActiveFilter] = useState('Front End');
+  const [activeFilter, setActiveFilter] = useState(t('skills.frontEnd'));
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
@@ -18,9 +18,9 @@ const Skills: React.FC = () => {
 
         <div className="flex justify-center mb-12">
           <div className="flex gap-2 bg-white dark:bg-black p-1 rounded-full border border-gray-200 dark:border-white/10 shadow-sm">
-            <button onClick={() => setActiveFilter('Front End')} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'Front End' ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>Front End</button>
-            <button onClick={() => setActiveFilter('Back End')} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'Back End' ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>Back End</button>
-            <button onClick={() => setActiveFilter('A.I')} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'A.I' ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>A.I</button>
+            <button onClick={() => setActiveFilter(t('skills.frontEnd'))} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === t('skills.frontEnd') ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>{t('skills.frontEnd')}</button>
+            <button onClick={() => setActiveFilter(t('skills.backEnd'))} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === t('skills.backEnd') ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>{t('skills.backEnd')}</button>
+            <button onClick={() => setActiveFilter(t('skills.ai'))} className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === t('skills.ai') ? 'bg-accent-600 text-white' : 'hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>{t('skills.ai')}</button>
           </div>
         </div>
 

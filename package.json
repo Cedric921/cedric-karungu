@@ -14,7 +14,7 @@
     "next": "latest",
     "next-intl": "^4.6.1",
     "postcss": "^8.4.32",
-    "@sendgrid/mail": "^7.8.0",
+    "@sendgrid/mail": "latest",
     "nodemailer": "^6.9.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

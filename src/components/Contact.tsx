@@ -9,25 +9,46 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const name = (formData.get('name') as string | null)?.trim();
-    const email = (formData.get('email') as string | null)?.trim();
-    const subject = (formData.get('subject') as string | null)?.trim();
-    const message = (formData.get('message') as string | null)?.trim();
+    (async () => {
+      try {
+        const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
+        const name = (formData.get('name') as string | null)?.trim();
+        const email = (formData.get('email') as string | null)?.trim();
+        const subject = (formData.get('subject') as string | null)?.trim();
+        const message = (formData.get('message') as string | null)?.trim();
 
-    if (!name || !email || !subject || !message) {
-      alert(t('contact.fillAllFields'));
-      return;
-    }
+        if (!name || !email || !subject || !message) {
+          alert(t('contact.fillAllFields'));
+          return;
+        }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert(t('contact.invalidEmail'));
-      return;
-    }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert(t('contact.invalidEmail'));
+          return;
+        }
 
-    console.log('Form is valid and ready to send');
-    (e.target as HTMLFormElement).reset();
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message }),
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          console.error('Contact error', data);
+          alert(data.error || 'Failed to send message');
+          return;
+        }
+
+        alert(t('contact.sentSuccess') || 'Message sent — thank you!');
+        form.reset();
+      } catch (err) {
+        console.error('Contact submit error', err);
+        alert('An error occurred while sending your message.');
+      }
+    })();
   };
 
   return (

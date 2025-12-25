@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto",
+    "getInTouch": "Contáctame"
+  },
+  "hero": {
+    "available": "Disponible para proyectos freelance y contrato",
+    "name": "CEDRIC KARUNGU",
+    "nickname": "Lord Vb",
+    "titles": [
+      "Ingeniero Full-stack | Node | TypeScript | React | React Native | Redux",
+      "Desarrollador Full-stack | JavaScript | Python | MongoDB | Express",
+      "Codificador Full-stack | Frontend | Backend | Móvil | Base de datos"
+    ],
+    "description": "Entrego sistemas de alto rendimiento y arquitecturas confiables diseñadas para alinear la precisión técnica con el crecimiento empresarial.",
+    "downloadResume": "Currículum",
+    "viewWork": "Ver mi trabajo",
+    "scrollToTop": "Ir al inicio"
+  },
+  "about": {
+    "title": "Acerca",
+    "titleHighlight": "de mí",
+    "name": "Cedric Karungu",
+    "role": "Desarrollador Full-stack",
+    "separator": "/",
+    "projectManager": "Gestor de proyectos",
+    "mainTitle": "Desarrollador de software Full-stack y Gestor de proyectos",
+    "experience": "5+ años de experiencia",
+    "freelance": "Disponible para proyectos freelance",
+    "location": "Basado remotamente - Trabajando globalmente",
+    "bio1": "Soy desarrollador Full-stack con 5+ años de experiencia construyendo aplicaciones ERP, CRM e impulsadas por IA. Experto en React, Next.js y Nest.js, me especializo en crear soluciones digitales escalables que cierren la brecha entre la excelencia del frontend y backend.",
+    "bio2": "Como Gestor de Proyectos en Ever Technologies, dirijo el desarrollo de plataformas de gestión empresarial. Mi experiencia con CRES y AdminAtete ha afinado mi capacidad para alinear la implementación técnica con los objetivos comerciales estratégicos en diversas industrias.",
+    "bio3": "Formado en Gestión de TI con especialización Full-stack en la Academia Digital de Goma, soy un colaborador multilingüe fluido en francés, inglés y suahili. Estoy dedicado a entregar soluciones de alto impacto que impulsen el crecimiento y mejoren la experiencia del usuario."
+  },
+  "skills": {
+    "title": "Habilidades",
+    "description": "Tecnologías y herramientas con las que trabajo"
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "description": "Proyectos destacados y casos de estudio",
+    "viewProject": "Ver proyecto",
+    "sourceCode": "Código fuente"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "description": "Mi trayectoria profesional y logros"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "description": "Trabajemos juntos en tu próximo proyecto",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "sendMessage": "Enviar mensaje",
+    "message": "Mensaje",
+    "name": "Nombre",
+    "emailPlaceholder": "tu@email.com",
+    "messagePlaceholder": "Tu mensaje aquí..."
+  },
+  "footer": {
+    "copyright": "© 2024 Cedric Karungu. Todos los derechos reservados.",
+    "links": "Enlaces rápidos"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "success": "Éxito",
+    "close": "Cerrar"
+  }
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { Icons } from '../constants';
+import LanguageSwitcher from './LanguageSwitcher';
 
 type NavbarProps = {
   theme: string;
@@ -7,6 +9,7 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
+  const t = useTranslations();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
 
@@ -24,11 +27,11 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   };
 
   const navLinks = [
-    { name: 'Home', href: '#about' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#portfolio' },
-    { name: 'Experience', href: '#experience' },
+    { name: t('nav.home'), href: '#about' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.projects'), href: '#portfolio' },
+    { name: t('nav.experience'), href: '#experience' },
   ];
 
   return (
@@ -42,20 +45,24 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           CK<span className="text-accent-500">.</span>
         </a>
 
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-white transition-colors">
+            <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-white transition-colors">
               {link.name}
             </a>
           ))}
 
-          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-gray-600 dark:text-gray-300" aria-label="Toggle theme">
-            {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
-          </button>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            
+            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-gray-600 dark:text-gray-300" aria-label="Toggle theme">
+              {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+            </button>
 
-          <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="px-5 py-2.5 rounded-full bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold transition-all shadow-lg shadow-accent-600/20">
-            Get In Touch
-          </a>
+            <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="px-5 py-2.5 rounded-full bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold transition-all shadow-lg shadow-accent-600/20">
+              {t('nav.getInTouch')}
+            </a>
+          </div>
         </div>
 
         <div className="md:hidden flex items-center gap-4">
@@ -73,13 +80,18 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
         <div className="md:hidden bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/5">
           <div className="px-6 py-4 space-y-3">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="block py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
+              <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="block py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
                 {link.name}
               </a>
             ))}
 
+            <div className="my-3 border-t border-gray-200 dark:border-white/10 pt-3">
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Language</p>
+              <LanguageSwitcher />
+            </div>
+
             <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="block mt-4 w-full px-5 py-2.5 rounded-full bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold transition-all text-center">
-              Get In Touch
+              {t('nav.getInTouch')}
             </a>
           </div>
         </div>

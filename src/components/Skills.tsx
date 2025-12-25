@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { SKILLS } from '../constants';
 import { useScrollAnimation } from '../hooks';
 
 const Skills: React.FC = () => {
+  const t = useTranslations();
   const [activeFilter, setActiveFilter] = useState('Front End');
   const { ref, isVisible } = useScrollAnimation(0.1);
 
@@ -10,8 +12,8 @@ const Skills: React.FC = () => {
     <section id="skills" className=" py-24 bg-white dark:bg-black scroll-mt-28 transition-colors duration-300" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">My Skills</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">A versatile full-stack developer with strong experience in frontend, backend, and AI, focused on building efficient and reliable digital solutions.</p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">{t('skills.title')}</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">{t('skills.description')}</p>
         </div>
 
         <div className="flex justify-center mb-12">

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { Icons } from '../constants';
 import { useScrollAnimation } from '../hooks';
 
 const resumePdf = '/document/Ced CV.pdf';
 
 const Hero: React.FC = () => {
+  const t = useTranslations();
   const { ref, isVisible } = useScrollAnimation(0.2);
   const [currentTitle, setCurrentTitle] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
@@ -12,9 +14,9 @@ const Hero: React.FC = () => {
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   const titles = [
-    'Full-stack Engineer | Node | TypeScript | React | React Native | Redux',
-    'Full-stack Developer | JavaScript | Python | MongoDB | Express',
-    'Full-stack Coder | Frontend | Backend | Mobile | Database',
+    t('hero.titles.0'),
+    t('hero.titles.1'),
+    t('hero.titles.2'),
   ];
 
   useEffect(() => {
@@ -44,13 +46,13 @@ const Hero: React.FC = () => {
 
       <div className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center">
         <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block py-1 px-3 rounded-full bg-accent-50/50 dark:bg-accent-900/30 border border-accent-200 dark:border-accent-700/50 text-accent-600 dark:text-accent-300 text-sm font-semibold tracking-wide">Available for Freelance & Contract</span>
+          <span className="inline-block py-1 px-3 rounded-full bg-accent-50/50 dark:bg-accent-900/30 border border-accent-200 dark:border-accent-700/50 text-accent-600 dark:text-accent-300 text-sm font-semibold tracking-wide">{t('hero.available')}</span>
         </div>
 
         <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-2 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">CEDRIC KARUNGU</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">{t('hero.name')}</span>
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-600 via-accent-500 to-accent-400">Lord Vb</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-600 via-accent-500 to-accent-400">{t('hero.nickname')}</span>
         </h1>
 
         <h2 className={`text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 mt-10 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -58,11 +60,11 @@ const Hero: React.FC = () => {
           <span className="animate-pulse">|</span>
         </h2>
 
-        <p className={`text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>I deliver high-performance systems and reliable architectures designed to align technical precision with business growth.</p>
+        <p className={`text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>{t('hero.description')}</p>
 
         <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <a href={resumePdf} download="Ced-CV.pdf" className="w-full sm:w-auto px-8 py-4 rounded-full bg-accent-600 hover:bg-accent-500 text-white font-bold transition-all shadow-lg shadow-accent-600/25 flex items-center justify-center gap-2">Resume <Icons.Download /></a>
-          <a href="#portfolio" className="w-full sm:w-auto px-8 py-4 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white font-bold transition-all flex items-center justify-center gap-2">View My Work <Icons.Layout /></a>
+          <a href={resumePdf} download="Ced-CV.pdf" className="w-full sm:w-auto px-8 py-4 rounded-full bg-accent-600 hover:bg-accent-500 text-white font-bold transition-all shadow-lg shadow-accent-600/25 flex items-center justify-center gap-2">{t('hero.downloadResume')} <Icons.Download /></a>
+          <a href="#portfolio" className="w-full sm:w-auto px-8 py-4 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white font-bold transition-all flex items-center justify-center gap-2">{t('hero.viewWork')} <Icons.Layout /></a>
         </div>
 
         <div className={`flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

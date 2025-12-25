@@ -3,19 +3,16 @@ import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer }
 import { Icons } from './constants';
 
 
-const App = () => {
-  /**theme state manager dark/light mode***/
-  const [theme, setTheme] = useState(() => {
+const App: React.FC = () => {
+  const [theme, setTheme] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || 'dark';
     }
     return 'dark';
   });
 
-  /**scroll-up button visibility state***/
-  const [showScrollUp, setShowScrollUp] = useState(false);
+  const [showScrollUp, setShowScrollUp] = useState<boolean>(false);
 
-  /***Theme Effect: Applies theme class to HTML element and saves preference***/
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {
@@ -26,10 +23,8 @@ const App = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  /***Scroll Effect: Monitors scroll position to show/hide scroll-up button***/
   useEffect(() => {
     const handleScroll = () => {
-      // Show button if scrolled more than 100px from top
       if (window.scrollY > 100) {
         setShowScrollUp(true);
       } else {
@@ -41,41 +36,27 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  /***Toggle Theme Handler***/
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  /***Scroll to Top Handler***/
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300 selection:bg-accent-500/30 selection:text-accent-900 dark:selection:text-white">
-      {/***Navigation bar component - passed theme state and toggle handler***/}
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      
       <main>
         <Hero />
-
         <AboutMe />
-        
         <Skills />
-        
         <Portfolio />
-      
         <Experience />
-      
         <Contact />
       </main>
-      
       <Footer />
 
-      {/***Scroll Up Button - Fixed position at bottom-right***/}
       <button
         onClick={scrollToTop}
         className={`fixed bottom-8 right-8 p-3 rounded-full bg-accent-600 text-white shadow-lg hover:bg-accent-500 transition-all duration-300 z-40 transform ${

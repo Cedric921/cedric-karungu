@@ -1,6 +1,6 @@
 # 🌟 Lord VB Portfolio
 
-A modern, responsive portfolio website built with React, Vite, and Tailwind CSS. This portfolio showcases professional work, skills, experience, and contact information with a sleek dark/light theme toggle and smooth scroll animations.
+A modern, responsive portfolio website built with Next.js (app router), React, and Tailwind CSS. This portfolio showcases professional work, skills, experience, and contact information with a sleek dark/light theme toggle and smooth scroll animations.
 
 ## ✨ Features
 
@@ -14,45 +14,43 @@ A modern, responsive portfolio website built with React, Vite, and Tailwind CSS.
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: [React 19](https://react.dev)
-- **Build Tool**: [Vite 6](https://vitejs.dev)
-- **Styling**: [Tailwind CSS 3](https://tailwindcss.com)
-- **Build Optimization**: [PostCSS](https://postcss.org), [Autoprefixer](https://autoprefixer.github.io)
+- **Frontend Framework**: Next.js (React 19) — app router + server-side rendering
+- **Internationalization**: `next-intl` for locale routing and translations
+- **Styling**: Tailwind CSS 3
+- **Build Tools**: Next.js (build & dev server), PostCSS, Autoprefixer
+- **Language**: TypeScript
 - **Package Manager**: npm
 
 ## 📦 Project Structure
 
 ```
-src/
-├── components/          # React components
-│   ├── Navbar.jsx      # Navigation bar with theme toggle
-│   ├── Hero.jsx        # Hero section
-│   ├── AboutMe.jsx     # About section
-│   ├── Skills.jsx      # Skills section
-│   ├── Experience.jsx  # Work experience section
-│   ├── Portfolio.jsx   # Projects showcase
-│   ├── Contact.jsx     # Contact form/information
-│   └── Footer.jsx      # Footer
+app/                   # Next.js app router (layouts, pages per locale)
+├── layout.tsx
+├── [locale]/
+│   ├── layout.tsx
+│   └── page.tsx
+├── page.tsx
+
+src/                   # Client-side components and utilities
+├── components/         # React components (UI pieces)
 ├── constants/          # Application constants and data
-│   └── constants.jsx   # SVG Icons and content data
-├── hooks/             # Custom React hooks
-│   └── useScrollAnimation.js  # Scroll animation hook
-├── styles/            # Global styles
-│   └── globals.css    # Global CSS and Tailwind imports
-├── App.jsx            # Main app component
-└── index.jsx          # React entry point
+├── hooks/              # Custom hooks (e.g. useScrollAnimation)
+└── styles/             # Global styles (globals.css)
 
-public/               # Static assets
-├── images/           # Project and portfolio images
-└── document/         # Downloadable documents
+public/                # Static assets
+├── images/             # Project and portfolio images
+└── document/           # Downloadable documents
 
+next.config.js         # Next.js configuration
+tsconfig.json          # TypeScript configuration
+package.json           # Scripts and dependencies
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- npm or yarn
+- npm
 
 ### Installation
 
@@ -71,7 +69,7 @@ public/               # Static assets
    ```bash
    npm run dev
    ```
-   The site will be available at `http://localhost:5173`
+   The Next.js dev server will be available at `http://localhost:3000`
 
 ### Build for Production
 
@@ -79,13 +77,15 @@ public/               # Static assets
 npm run build
 ```
 
-This creates an optimized production build in the `dist` folder.
+This creates an optimized production build in the `.next` folder.
 
-### Preview Production Build
+### Start Production Server
 
 ```bash
-npm run preview
+npm start
 ```
+
+This runs `next start` and serves the production build (default port `3000`).
 
 ## 🎨 Theme System
 

@@ -1,0 +1,91 @@
+import React, { useState, useEffect } from 'react';
+import { Icons } from '../constants';
+
+type NavbarProps = {
+  theme: string;
+  toggleTheme: () => void;
+};
+
+const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleLinkClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const navLinks = [
+    { name: 'Home', href: '#about' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#portfolio' },
+    { name: 'Experience', href: '#experience' },
+  ];
+
+  return (
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled
+        ? 'bg-white/80 dark:bg-[#050505]/90 backdrop-blur-md border-b border-gray-200 dark:border-white/5 py-4'
+        : 'bg-transparent py-6'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a href="#" onClick={(e) => handleLinkClick(e, '#about')} className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
+          CK<span className="text-accent-500">.</span>
+        </a>
+
+        <div className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-white transition-colors">
+              {link.name}
+            </a>
+          ))}
+
+          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-gray-600 dark:text-gray-300" aria-label="Toggle theme">
+            {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+          </button>
+
+          <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="px-5 py-2.5 rounded-full bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold transition-all shadow-lg shadow-accent-600/20">
+            Get In Touch
+          </a>
+        </div>
+
+        <div className="md:hidden flex items-center gap-4">
+          <button onClick={toggleTheme} className="p-2 text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors" aria-label="Toggle theme">
+            {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+          </button>
+
+          <button className="text-gray-900 dark:text-white hover:text-accent-500 transition-colors" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+            {isOpen ? <Icons.X /> : <Icons.Menu />}
+          </button>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/5">
+          <div className="px-6 py-4 space-y-3">
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="block py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
+                {link.name}
+              </a>
+            ))}
+
+            <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="block mt-4 w-full px-5 py-2.5 rounded-full bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold transition-all text-center">
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;

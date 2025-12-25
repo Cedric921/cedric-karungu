@@ -119,6 +119,7 @@ This project is open source and available under the MIT License.
 
 ## 👤 Author
 
+**Gabriel Buhendwa** - Your friendly neighborhood developer 👨‍💻
 **Cedric Karungu** - Your friendly neighborhood developer 👨‍💻
 
 ---

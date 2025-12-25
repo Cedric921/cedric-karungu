@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "getInTouch": "Get In Touch"
+  },
+  "hero": {
+    "available": "Available for Freelance & Contract",
+    "name": "CEDRIC KARUNGU",
+    "nickname": "Lord Vb",
+    "titles": [
+      "Full-stack Engineer | Node | TypeScript | React | React Native | Redux",
+      "Full-stack Developer | JavaScript | Python | MongoDB | Express",
+      "Full-stack Coder | Frontend | Backend | Mobile | Database"
+    ],
+    "description": "I deliver high-performance systems and reliable architectures designed to align technical precision with business growth.",
+    "downloadResume": "Resume",
+    "viewWork": "View My Work",
+    "scrollToTop": "Scroll to top"
+  },
+  "about": {
+    "title": "About",
+    "titleHighlight": "Me",
+    "name": "Cedric Karungu",
+    "role": "Fullstack Developer",
+    "separator": "/",
+    "projectManager": "Project Manager",
+    "mainTitle": "Fullstack Software Developer & Project Manager",
+    "experience": "5+ Years Experience",
+    "freelance": "Available for freelance projects",
+    "location": "Based Remotely - Working globally",
+    "bio1": "I'm a Fullstack Developer with 5+ years of experience building ERP, CRM, and AI-powered applications. Expert in React, Next.js, and Nest.js, I specialize in creating scalable digital solutions that bridge the gap between frontend and backend excellence.",
+    "bio2": "As a Project Manager at Ever Technologies, I lead the development of business management platforms. My background with CRES and AdminAtete has sharpened my ability to align technical implementation with strategic business objectives across various industries.",
+    "bio3": "Based in IT Management with a Fullstack specialization from Goma Digital Academy, I am a multilingual collaborator fluent in French, English, and Swahili. I am dedicated to delivering high-impact solutions that drive growth and enhance user experience."
+  },
+  "skills": {
+    "title": "Skills",
+    "description": "Technologies and tools I work with",
+    "frontEnd": "Front End",
+    "backEnd": "Back End",
+    "ai": "A.I"
+  },
+  "portfolio": {
+    "title": "My projects",
+    "description": "Selected projects demonstrating practical solutions and well-architected digital experiences.",
+    "viewProject": "View Project",
+    "sourceCode": "Source Code",
+    "filterAll": "All",
+    "filterWeb": "Web",
+    "filterApp": "App",
+    "moreDetails": "more details →",
+    "seeMoreProjects": "See more projects"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "description": "My journey through the tech industry."
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Let's work together on your next project",
+    "email": "Email",
+    "phone": "Phone",
+    "sendMessage": "Send Message",
+    "message": "Message",
+    "name": "Name",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "Your message here...",
+    "fillAllFields": "Please fill in all fields",
+    "invalidEmail": "Please enter a valid email",
+    "availabilityTitle": "Availability",
+    "availabilityStatus": "Open to projects",
+    "namePlaceholder": "Your Name",
+    "subject": "Subject",
+    "subjectPlaceholder": "Message Subject"
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "links": "Quick Links",
+    "tagline": "I build scalable full-stack systems with clean architecture, solid backend logic, and production-ready user experiences. Focused on code quality, maintainability, and real-world performance.",
+    "location": "Kigali, Rwanda",
+    "featuredWork": "Featured Work",
+    "techStack": "Tech Stack",
+    "connect": "Connect",
+    "role": "Fullstack Software Developer",
+    "opportunity": "Open to Remote Opportunities"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "close": "Close",
+    "language": "Language"
+  }
+}

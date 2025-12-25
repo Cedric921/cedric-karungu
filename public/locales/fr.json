@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "getInTouch": "Nous Contacter"
+  },
+  "hero": {
+    "available": "Disponible pour des projets en freelance et en contrat",
+    "name": "CEDRIC KARUNGU",
+    "nickname": "Lord Vb",
+    "titles": [
+      "Ingénieur Full-stack | Node | TypeScript | React | React Native | Redux",
+      "Développeur Full-stack | JavaScript | Python | MongoDB | Express",
+      "Codeur Full-stack | Frontend | Backend | Mobile | Base de données"
+    ],
+    "description": "Je fournis des systèmes hautes performances et des architectures fiables conçues pour aligner la précision technique avec la croissance commerciale.",
+    "downloadResume": "CV",
+    "viewWork": "Voir mes travaux",
+    "scrollToTop": "Aller au haut"
+  },
+  "about": {
+    "title": "À propos",
+    "titleHighlight": "de moi",
+    "name": "Cedric Karungu",
+    "role": "Développeur Full-stack",
+    "separator": "/",
+    "projectManager": "Chef de projet",
+    "mainTitle": "Développeur logiciel Full-stack & Chef de projet",
+    "experience": "5+ ans d'expérience",
+    "freelance": "Disponible pour les projets en freelance",
+    "location": "Basé à distance - Travaillant mondialement",
+    "bio1": "Je suis développeur Full-stack avec 5+ ans d'expérience dans la création d'applications ERP, CRM et alimentées par l'IA. Expert en React, Next.js et Nest.js, je me spécialise dans la création de solutions numériques évolutives qui comblent l'écart entre l'excellence du frontend et du backend.",
+    "bio2": "En tant que chef de projet chez Ever Technologies, je diriger le développement de plateformes de gestion d'entreprise. Mon expérience avec CRES et AdminAtete a affiné ma capacité à aligner l'implémentation technique avec les objectifs commerciaux stratégiques dans diverses industries.",
+    "bio3": "Formé à la gestion informatique avec une spécialisation en Full-stack à la Goma Digital Academy, je suis un collaborateur multilingue couramment parlant français, anglais et swahili. Je suis dédiée à fournir des solutions à fort impact qui stimulent la croissance et améliorent l'expérience utilisateur."
+  },
+  "skills": {
+    "title": "Compétences",
+    "description": "Les technologies et outils avec lesquels je travaille",
+    "frontEnd": "Front End",
+    "backEnd": "Back End",
+    "ai": "A.I"
+  },
+  "portfolio": {
+    "title": "Mes projets",
+    "description": "Projets sélectionnés démontrant des solutions pratiques et des expériences numériques bien architecturées.",
+    "viewProject": "Voir le projet",
+    "sourceCode": "Code source",
+    "filterAll": "Tous",
+    "filterWeb": "Web",
+    "filterApp": "Application",
+    "moreDetails": "plus de détails →",
+    "seeMoreProjects": "Voir plus de projets"
+  },
+  "experience": {
+    "title": "Expérience Professionnelle",
+    "description": "Mon parcours dans l'industrie technologique."
+  },
+  "contact": {
+    "title": "Nous Contacter",
+    "description": "Travaillons ensemble sur votre prochain projet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "sendMessage": "Envoyer un message",
+    "message": "Message",
+    "name": "Nom",
+    "emailPlaceholder": "votre@email.com",
+    "messagePlaceholder": "Votre message ici...",
+    "fillAllFields": "Veuillez remplir tous les champs",
+    "invalidEmail": "Veuillez saisir une adresse e-mail valide",
+    "availabilityTitle": "Disponibilité",
+    "availabilityStatus": "Ouvert aux projets",
+    "namePlaceholder": "Votre nom",
+    "subject": "Objet",
+    "subjectPlaceholder": "Objet du message"
+  },
+  "footer": {
+    "copyright": "Tous droits réservés.",
+    "links": "Liens rapides",
+    "tagline": "Je construis des systèmes full-stack évolutifs avec une architecture propre, une logique backend solide et des expériences utilisateur prêtes pour la production. Concentré sur la qualité du code, la maintenabilité et les performances réelles.",
+    "location": "Kigali, Rwanda",
+    "featuredWork": "Travaux en vedette",
+    "techStack": "Pile technologique",
+    "connect": "Connexion",
+    "role": "Développeur Full-stack",
+    "opportunity": "Ouvert aux opportunités à distance"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "close": "Fermer",
+    "language": "Langue"
+  }
+}

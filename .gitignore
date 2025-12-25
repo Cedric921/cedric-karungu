@@ -2,6 +2,10 @@
 dist/
 dist-ssr/
 
+# Next.js build output
+.next/
+out/
+
 # Node modules
 node_modules/
 

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { Icons } from '../constants';
 
 const Footer: React.FC = () => {
+  const t = useTranslations();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -28,9 +30,9 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">Navigation</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">{t('footer.links')}</h3>
             <ul className="space-y-3">
-              {[{ name: 'Home', href: '#home' },{ name: 'About', href: '#about' },{ name: 'Skills', href: '#skills' },{ name: 'Projects', href: '#projects' },{ name: 'Experience', href: '#experience' },{ name: 'Contact', href: '#contact' }].map((link) => (
+              {[{ name: t('nav.home'), href: '#home' },{ name: t('nav.about'), href: '#about' },{ name: t('nav.skills'), href: '#skills' },{ name: t('nav.projects'), href: '#portfolio' },{ name: t('nav.experience'), href: '#experience' },{ name: t('nav.contact'), href: '#contact' }].map((link) => (
                 <li key={link.name}><a href={link.href} className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">{link.name}</a></li>
               ))}
             </ul>
@@ -81,7 +83,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-gray-200 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-500 dark:text-gray-500 text-center md:text-left">© {currentYear} Cédric Karungu. All rights reserved. Crafted with passion and code.</p>
+            <p className="text-xs text-gray-500 dark:text-gray-500 text-center md:text-left">© {currentYear} Cédric Karungu. {t('footer.copyright')}</p>
             <div className="flex items-center gap-6 text-xs text-gray-500 dark:text-gray-500">
               <span className="hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-200">Fullstack Software Developer</span>
               <span className="hidden sm:inline">•</span>

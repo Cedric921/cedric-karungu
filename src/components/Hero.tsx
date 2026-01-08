@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-center dark:bg-[#100B17] pt-20 overflow-hidden scroll-mt-28" ref={ref}>
       <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.05] dark:opacity-[0.1] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#100B17] dark:via-transparent dark:to-[#100B17] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#100B17] dark:via-transparent dark:to-[#050505] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent-600/20 dark:bg-accent-600/30 rounded-full blur-[80px] md:blur-[120px] -z-10" />
 
       <div className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center">

@@ -8,7 +8,7 @@ const About: React.FC = () => {
   const [isImageHovered, setIsImageHovered] = useState<boolean>(false);
 
   return (
-    <section id="about" className="mt-[40px] py-24 scroll-mt-28 bg-gray-50 dark:bg-[#100B17] transition-colors duration-300 min-h-screen" ref={ref}>
+    <section id="about" className="py-24 scroll-mt-28 bg-gray-50 dark:bg-[#100B17] transition-colors duration-300 min-h-screen" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 lg:hidden">
           <h2 className={`text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

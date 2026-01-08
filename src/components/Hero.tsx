@@ -39,9 +39,9 @@ const Hero: React.FC = () => {
   }, [currentTitle, isDeleting, titleIndex, typingSpeed, titles]);
 
   return (
-    <section id="about" className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28" ref={ref}>
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center dark:bg-[#100B17] pt-20 overflow-hidden scroll-mt-28" ref={ref}>
       <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.05] dark:opacity-[0.1] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#050505] dark:via-transparent dark:to-[#050505] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#050505] dark:via-transparent dark:to-[#100B17] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent-600/20 dark:bg-accent-600/30 rounded-full blur-[80px] md:blur-[120px] -z-10" />
 
       <div className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center">
@@ -68,9 +68,9 @@ const Hero: React.FC = () => {
         </div>
 
         <div className={`flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <a href="#" className="hover:text-accent-600 dark:hover:text-accent-400 hover:scale-110 transition-all duration-300" aria-label="GitHub profile"><Icons.Github /></a>
-          <a href="#" className="hover:text-accent-600 dark:hover:text-accent-400 hover:scale-110 transition-all duration-300" aria-label="LinkedIn profile"><Icons.Linkedin /></a>
-          <a href="#" className="hover:text-accent-600 dark:hover:text-accent-400 hover:scale-110 transition-all duration-300" aria-label="Mail profile"><Icons.Mail /></a>
+          <a href="https://github.com/Cedric921" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-500 hover:text-accent-600 dark:hover:text-accent-400 transition-all duration-200 hover:scale-110 hover:-rotate-6" aria-label="GitHub Profile"><Icons.Github /></a>
+           <a href="https://linkedin.com/in/cedric-karungu" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-500 hover:text-accent-600 dark:hover:text-accent-400 transition-all duration-200 hover:scale-110 hover:rotate-6" aria-label="LinkedIn Profile"><Icons.Linkedin /></a>
+           <a href="mailto:ckarungu921@gmail.com" className="text-gray-500 dark:text-gray-500 hover:text-accent-600 dark:hover:text-accent-400 transition-all duration-200 hover:scale-110 hover:-translate-y-1" aria-label="Email Contact"><Icons.Mail /></a>
         </div>
       </div>
     </section>

@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden scroll-mt-28 bg-white dark:bg-[#050505] transition-colors duration-300" ref={ref}>
+    <section id="contact" className="py-24 relative overflow-hidden scroll-mt-28 bg-white dark:bg-[#100B17] transition-colors duration-300" ref={ref}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-900/10 rounded-full blur-[120px] -z-10 hidden dark:block" />
 
       <div className="max-w-4xl mx-auto px-6">

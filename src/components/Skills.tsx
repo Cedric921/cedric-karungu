@@ -9,7 +9,7 @@ const Skills: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section id="skills" className=" py-24 bg-white dark:bg-black scroll-mt-28 transition-colors duration-300" ref={ref}>
+    <section id="skills" className=" py-24 bg-white dark:bg-[#050505] scroll-mt-28 transition-colors duration-300" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">{t('skills.title')}</h2>

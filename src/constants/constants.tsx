@@ -111,10 +111,7 @@ export const PROJECTS: Project[] = [
   { id: 1, title: 'Ever Teams', description: 'Ever Teams is an all-in-one work and project management platform that helps teams manage tasks, track time and productivity, collaborate in real time, and integrate with tools like GitHub and JIRA.', category: 'Web', image: '/images/Projects/project1.png', link: 'https://app.ever.team/', githubLink: 'https://github.com/ever-co/ever-teams', tags: ['React', 'Node.js', 'MongoDB', 'Real-time'] },
   { id: 2, title: 'Ever Gauzy Platform', description: 'Ever Gauzy Platform is an open business management platform that combines ERP, CRM, HRM, accounting, and project management tools to help companies manage employees, projects, finances, and operations in one system.', category: 'Web', image: '/images/Projects/project2.png', link: 'https://gauzy.co/', githubLink: 'https://github.com/ever-co/ever-gauzy', tags: ['Vue.js', 'Python', 'PostgreSQL', 'Enterprise'] },
   { id: 3, title: 'Ever Teams', description: 'Ever Teams is an all-in-one work and project management platform that helps teams manage tasks, track time and productivity, collaborate in real time, and integrate with tools like GitHub and JIRA.', category: 'Web', image: '/images/Projects/project1.png', link: 'https://app.ever.team/', githubLink: 'https://github.com/ever-co/ever-teams', tags: ['React', 'Node.js', 'MongoDB', 'Real-time'] },
-  { id: 4, title: 'Ever Gauzy Platform', description: 'Ever Gauzy Platform is an open business management platform that combines ERP, CRM, HRM, accounting, and project management tools to help companies manage employees, projects, finances, and operations in one system.', category: 'Web', image: '/images/Projects/project2.png', link: 'https://gauzy.co/', githubLink: 'https://github.com/ever-co/ever-gauzy', tags: ['Vue.js', 'Python', 'PostgreSQL', 'Enterprise'] },
-  { id: 5, title: 'Ever Teams Mobile', description: 'Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.', category: 'App', image: '/images/Projects/project1.png', link: 'https://app.ever.team/', githubLink: 'https://github.com/ever-co/ever-teams', tags: ['React Native', 'Node.js', 'MongoDB', 'Mobile'] },
-  { id: 6, title: 'Ever Gauzy Mobile', description: 'Mobile business management platform with all the features of the web version optimized for mobile devices.', category: 'App', image: '/images/Projects/project2.png', link: 'https://gauzy.co/', githubLink: 'https://github.com/ever-co/ever-gauzy', tags: ['React Native', 'Python', 'PostgreSQL', 'Mobile'] },
-  { id: 7, title: 'Ever Teams Mobile', description: 'Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.', category: 'App', image: '/images/Projects/project1.png', link: 'https://app.ever.team/', githubLink: 'https://github.com/ever-co/ever-teams', tags: ['React Native', 'Node.js', 'MongoDB', 'Mobile'] },
+  { id: 4, title: 'Ever Teams Mobile', description: 'Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.', category: 'App', image: '/images/Projects/project1.png', link: 'https://app.ever.team/', githubLink: 'https://github.com/ever-co/ever-teams', tags: ['React Native', 'Node.js', 'MongoDB', 'Mobile'] },
 ];
 
 export const EXPERIENCES = [
@@ -122,8 +119,8 @@ export const EXPERIENCES = [
   { id: 2, role: 'Frontend Developer', company: 'One Stop Center', period: 'Sep 2021 - Feb 2022', location: 'Remote', description: 'Worked as a Frontend Developer (Angular) on a web application that manages parcel-related information and shares it across multiple company agencies.' },
   { id: 3, role: 'Full Stack Developer', company: 'Attendacy GDA (KADEA)', period: 'Sept 2022 - Dec 2022', location: 'Remote', description: 'Worked as a Full-stack Developer (Express.js, React.js) for Attendacy GDA, an application to manage student attendance within a coding academy.' },
   { id: 4, role: 'Full Stack Web Developer', company: 'CRES Startup', period: 'Dec 2022 - Jun 2023', location: 'Remote', description: 'Worked as a Full-stack Web Developer (Nest.js, Next.js) for a start-up and research center focused on creating web applications and artificial intelligence solutions for business management and data collection.' },
-  { id: 5, role: 'Full Stack Developer', company: 'AdminAtete', period: 'Feb 2023 - Jul 2023', location: 'Remote, Belgium', description: 'Developed as a Full-stack Developer (Express.js, Next.js) for AdminAtete, a tech startup offering digital solutions for business services, including a document archiving application.' },
-  { id: 6, role: 'Full Stack Developer', company: 'Ever Technologies', period: 'Nov 2023 - Present', location: 'Remote, Bulgaria', description: 'Worked as a Full-stack Developer (Nest.js, Next.js, React Native) on Ever Teams (Open Work and Project Management Platform) and Ever Gauzy (Open Business Management Platform - ERP/CRM/HRM/ATS/PM). Also involved in various client projects.' },
+  { id: 5, role: 'Full Stack Engineer', company: 'AdminAtete', period: 'Feb 2023 - Jul 2023', location: 'Remote, Belgium', description: 'Developed as a Full-stack Developer (Express.js, Next.js) for AdminAtete, a tech startup offering digital solutions for business services, including a document archiving application.' },
+  { id: 6, role: 'Full Stack Engineer', company: 'Ever Technologies', period: 'Nov 2023 - Present', location: 'Remote, Bulgaria', description: 'Worked as a Full-stack Developer (Nest.js, Next.js, React Native) on Ever Teams (Open Work and Project Management Platform) and Ever Gauzy (Open Business Management Platform - ERP/CRM/HRM/ATS/PM). Also involved in various client projects.' },
 ];
 
 export const SKILLS = [
@@ -138,15 +135,14 @@ export const SKILLS = [
   { name: 'GSAP', level: 'Advanced', category: 'Front End', logoUrl: 'https://cdn.simpleicons.org/greensock' },
   { name: 'Three.js', level: 'Intermediate', category: 'Front End', logoUrl: 'https://cdn.simpleicons.org/threedotjs' },
   { name: 'Node.js', level: 'Advanced', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/nodedotjs' },
-  { name: 'Python', level: 'Advanced', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/python' },
   { name: 'Express.js', level: 'Advanced', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/express' },
   { name: 'MongoDB', level: 'Advanced', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/mongodb' },
+  { name: 'NestJS', level: 'Expert', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/nestjs' },
   { name: 'PostgreSQL', level: 'Intermediate', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/postgresql' },
   { name: 'Docker', level: 'Intermediate', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/docker' },
   { name: 'AWS', level: 'Intermediate', category: 'Back End', logoUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
   { name: 'Redis', level: 'Intermediate', category: 'Back End', logoUrl: 'https://cdn.simpleicons.org/redis' },
   { name: 'TensorFlow', level: 'Advanced', category: 'A.I', logoUrl: 'https://cdn.simpleicons.org/tensorflow' },
-  { name: 'PyTorch', level: 'Advanced', category: 'A.I', logoUrl: 'https://cdn.simpleicons.org/pytorch' },
   { name: 'Machine Learning', level: 'Advanced', category: 'A.I', logoUrl: 'https://cdn.simpleicons.org/scikitlearn' },
   { name: 'Natural Language Processing', level: 'Intermediate', category: 'A.I', logoUrl: 'https://cdn.simpleicons.org/huggingface' },
   { name: 'Computer Vision', level: 'Intermediate', category: 'A.I', logoUrl: 'https://cdn.simpleicons.org/opencv' },

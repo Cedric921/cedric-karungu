@@ -59,7 +59,11 @@ const Footer: React.FC = () => {
                   <span className="opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"><Icons.ExternalLink /></span>
                 </a>
               </li>
-              <li><span className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-colors duration-200 cursor-default">Ever Technologies Projects</span></li>
+              <li>
+                <a href="https://www.ever.tech/" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-all duration-200 flex items-center gap-1.5 group">
+                  <span className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-colors duration-200 cursor-default">Ever Technologies Projects</span>
+                </a>
+              </li>
               <li><span className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-colors duration-200 cursor-default">Buku My Class</span></li>
             </ul>
           </div>
@@ -85,7 +89,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-gray-500 dark:text-gray-500 text-center md:text-left">© {currentYear} Cédric Karungu. {t('footer.copyright')}</p>
             <div className="flex items-center gap-6 text-xs text-gray-500 dark:text-gray-500">
-              <span className="hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-200">Fullstack Software Developer</span>
+              <span className="hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-200">Fullstack Software Engineer</span>
               <span className="hidden sm:inline">•</span>
               <span className="hidden sm:inline hover:text-accent-600 dark:hover:text-accent-400 transition-colors duration-200 cursor-default">Open to Remote Opportunities</span>
             </div>

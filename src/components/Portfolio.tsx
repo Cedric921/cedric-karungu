@@ -9,7 +9,7 @@ const Portfolio: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section id="portfolio" className="py-24 scroll-mt-28 bg-gray-50 dark:bg-black transition-colors duration-300" ref={ref}>
+    <section id="portfolio" className="py-24 scroll-mt-28 bg-gray-50 dark:bg-[#100B17] transition-colors duration-300" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={`flex flex-col md:flex-row justify-between items-end mb-16 gap-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div>

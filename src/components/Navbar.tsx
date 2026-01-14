@@ -36,12 +36,16 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled
-        ? 'bg-white/80 dark:bg-[#050505]/90 backdrop-blur-md border-b border-gray-200 dark:border-white/5 py-4'
-        : 'bg-transparent py-6'
+        ? 'mt-4 px-4'
+        : 'mt-0 px-0'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div className={`transition-all duration-300 flex justify-between items-center mx-auto ${
+        scrolled
+          ? 'max-w-[calc(100%-64px)] px-6 py-4 rounded-3xl bg-white/50 dark:bg-[#050505]/60 backdrop-blur-md border border-gray-200/50 dark:border-white/5 shadow-lg shadow-black/5 dark:shadow-black/20'
+          : 'max-w-7xl px-6 py-6'
+      }`}>
         <a href="#" onClick={(e) => handleLinkClick(e, '#about')} className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400 transition-colors">
           CK<span className="text-accent-500">.</span>
         </a>
@@ -91,7 +95,9 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/5">
+        <div className={`md:hidden bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/5 transition-all duration-300 ${
+          scrolled ? 'rounded-3xl mt-2 mx-4' : 'border-b'
+        }`}>
           <div className="px-6 py-4 space-y-3">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="block py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors">

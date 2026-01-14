@@ -59,11 +59,7 @@ const Footer: React.FC = () => {
                   <span className="opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"><Icons.ExternalLink /></span>
                 </a>
               </li>
-              <li>
-                <a href="https://www.ever.tech/" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-all duration-200 flex items-center gap-1.5 group">
-                  <span className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-colors duration-200 cursor-default">Ever Technologies Projects</span>
-                </a>
-              </li>
+              <li><span className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-colors duration-200 cursor-default">Ever Technologies Projects</span></li>
               <li><span className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent-600 dark:hover:text-white transition-colors duration-200 cursor-default">Buku My Class</span></li>
             </ul>
           </div>

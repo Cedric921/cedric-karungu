@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Icons } from '../constants';
@@ -47,7 +48,20 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
         <div className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-white transition-colors">
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleLinkClick(e, link.href)}
+              className="
+                relative text-sm font-medium text-gray-600 dark:text-gray-300
+                transition-colors duration-300
+                hover:text-accent-600 dark:hover:text-white
+                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0
+                after:bg-accent-600 dark:after:bg-white
+                after:transition-all after:duration-300
+                hover:after:w-full
+              "
+            >
               {link.name}
             </a>
           ))}

@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     }`}>
       <div className={`transition-all duration-300 flex justify-between items-center mx-auto ${
         scrolled
-          ? 'max-w-[calc(100%-32px)] px-6 py-4 rounded-3xl bg-white/80 dark:bg-[#050505]/90 backdrop-blur-md border border-gray-200 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20'
+          ? 'max-w-[calc(100%-64px)] px-6 py-4 rounded-3xl bg-white/50 dark:bg-[#050505]/60 backdrop-blur-md border border-gray-200/50 dark:border-white/5 shadow-lg shadow-black/5 dark:shadow-black/20'
           : 'max-w-7xl px-6 py-6'
       }`}>
         <a href="#" onClick={(e) => handleLinkClick(e, '#about')} className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400 transition-colors">

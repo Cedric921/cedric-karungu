@@ -116,125 +116,109 @@ const Portfolio: React.FC = () => {
           {PROJECTS.filter(project => activeFilter === t('portfolio.filterAll') || project.category === activeFilter).map((project, idx) => (
             <motion.div
               key={idx}
-              className="group relative bg-white dark:bg-black rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 shadow-md dark:shadow-none"
+              className="group relative h-full"
               variants={itemVariants}
-              whileHover="hover"
-              initial="rest"
-              animate="rest"
-              custom={projectVariants}
             >
-              {/* Image container */}
-              <motion.div className="relative h-64 overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-black/0 z-10"
-                  whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.7 }}
-                />
+              {/* Glow background effect */}
+              <motion.div
+                className="absolute -inset-0.5 bg-gradient-to-r from-accent-500 via-accent-600 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300"
+              />
+
+              {/* Main card container */}
+              <motion.div
+                className="relative h-full bg-white dark:bg-[#0a0a0a] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg group-hover:shadow-2xl transition-shadow duration-300"
+                whileHover={{ y: -8 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                {/* Image container with overlay */}
+                <motion.div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 dark:from-[#111] dark:to-[#0a0a0a]">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10"
+                  />
+                  <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.5, type: 'spring' }}
+                  />
+                </motion.div>
+
+                {/* Content */}
+                <div className="p-8 flex flex-col h-[calc(100%-16rem)]">
+                  <motion.div className="flex justify-between items-start mb-6 flex-1">
+                    <motion.div>
+                      <motion.span
+                        className="text-accent-600 dark:text-accent-400 text-xs font-bold uppercase tracking-wider mb-3 block"
+                      >
+                        {project.category}
+                      </motion.span>
+                      <motion.h3
+                        className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300"
+                      >
+                        {project.title}
+                      </motion.h3>
+                    </motion.div>
+
+                    {/* Action buttons */}
+                    <motion.div className="flex items-center gap-2 ml-4" variants={containerVariants}>
+                      <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-accent-600 dark:hover:bg-accent-600 hover:text-white transition-all duration-300"
+                        whileHover={{
+                          scale: 1.1,
+                          y: -2,
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-label="Open project website"
+                      >
+                        <Icons.ExternalLink />
+                      </motion.a>
+                      <motion.a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-accent-600 dark:hover:bg-accent-600 hover:text-white transition-all duration-300"
+                        whileHover={{
+                          scale: 1.1,
+                          y: -2,
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-label="Open project GitHub"
+                      >
+                        <Icons.Github />
+                      </motion.a>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Description */}
+                  <motion.p
+                    className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed flex-1"
+                  >
+                    {project.description}
+                  </motion.p>
+
+                  {/* Tags */}
+                  <motion.div
+                    className="flex flex-wrap gap-2"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    {project.tags.map(tag => (
+                      <motion.span
+                        key={tag}
+                        className="px-3 py-1 bg-gray-100 dark:bg-white/5 rounded-full text-xs text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:border-accent-600 dark:hover:border-accent-400 transition-colors duration-300"
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+                </div>
               </motion.div>
-
-              {/* Content */}
-              <div className="p-8">
-                <motion.div className="flex justify-between items-start mb-4" variants={itemVariants}>
-                  <motion.div>
-                    <motion.span
-                      className="text-accent-600 dark:text-accent-400 text-xs font-semibold uppercase tracking-wider mb-2 block"
-                      whileHover={{ letterSpacing: '0.15em' }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {project.category}
-                    </motion.span>
-                    <motion.h3
-                      className="text-2xl font-bold text-gray-900 dark:text-white"
-                      whileHover={{ color: 'rgb(124, 58, 237)' }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {project.title}
-                    </motion.h3>
-                  </motion.div>
-
-                  {/* Action buttons */}
-                  <motion.div className="flex items-center gap-3" variants={containerVariants}>
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-500 dark:text-gray-400 shadow-sm"
-                      whileHover={{
-                        backgroundColor: 'rgb(124, 58, 237)',
-                        color: 'white',
-                        y: -4,
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                      transition={{ duration: 0.2 }}
-                      aria-label="Open project website"
-                    >
-                      <Icons.ExternalLink />
-                    </motion.a>
-                    <motion.a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-500 dark:text-gray-400 shadow-sm"
-                      whileHover={{
-                        backgroundColor: 'rgb(124, 58, 237)',
-                        color: 'white',
-                        y: -4,
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                      transition={{ duration: 0.2 }}
-                      aria-label="Open project GitHub"
-                    >
-                      <Icons.Github />
-                    </motion.a>
-                  </motion.div>
-                </motion.div>
-
-                {/* Description */}
-                <motion.p
-                  className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed"
-                  whileHover={{ color: 'rgb(209, 213, 219)' }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {project.description}
-                </motion.p>
-
-                {/* More details link */}
-                <motion.div className="mt-4" whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 text-sm font-medium cursor-pointer transition-colors">
-                    more details →
-                  </a>
-                </motion.div>
-
-                {/* Tags */}
-                <motion.div
-                  className="flex flex-wrap gap-2 mt-4"
-                  variants={containerVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  {project.tags.map(tag => (
-                    <motion.span
-                      key={tag}
-                      className="px-3 py-1 bg-gray-100 dark:bg-white/5 rounded-full text-xs text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/5"
-                      whileHover={{
-                        backgroundColor: 'rgba(124, 58, 237, 0.1)',
-                        borderColor: 'rgb(124, 58, 237)',
-                      }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              </div>
             </motion.div>
           ))}
         </motion.div>

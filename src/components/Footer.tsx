@@ -157,21 +157,15 @@ const Footer: React.FC = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1.5 group"
-                      whileHover={{ color: 'rgb(124, 58, 237)' }}
-                      transition={{ duration: 0.2 }}
+                      className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1.5 group hover:text-accent-600 dark:hover:text-accent-400 transition-colors"
                     >
                       <motion.span
-                        initial={{ opacity: 0, x: -4 }}
-                        whileHover={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2 }}
+                        className="group-hover:translate-x-0.5 transition-transform duration-200"
                       >
                         {project.name}
                       </motion.span>
                       <motion.span
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        transition={{ duration: 0.2 }}
+                        className="opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
                       >
                         <Icons.ExternalLink />
                       </motion.span>

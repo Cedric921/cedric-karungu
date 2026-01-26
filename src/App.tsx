@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer, AnimatedBackground } from './components';
+import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer, AnimatedBackground, CursorGlow } from './components';
 import { Icons } from './constants';
 
 
@@ -48,6 +48,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300 selection:bg-accent-500/30 selection:text-accent-900 dark:selection:text-white overflow-x-hidden">
       <AnimatedBackground />
+      <CursorGlow />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />

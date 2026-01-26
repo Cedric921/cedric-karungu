@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       paddingTop: 16,
       paddingBottom: 16,
       borderRadius: 24,
-      backgroundColor: 'rgba(255, 255, 255, 0.5)',
+      backgroundColor: 'rgba(255, 255, 255, 0.7)',
     },
     notScrolled: {
       maxWidth: '100%',

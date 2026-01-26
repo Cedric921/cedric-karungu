@@ -111,56 +111,64 @@ const Skills: React.FC = () => {
           {SKILLS.filter(skill => skill.category === activeFilter).map((skill, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-[#100B17] border border-gray-200 dark:border-white/10 p-8 rounded-2xl flex flex-col items-center justify-center gap-6 text-center cursor-default shadow-lg dark:shadow-none"
+              className="relative group h-full"
               variants={itemVariants}
-              whileHover="hover"
-              initial="rest"
-              animate="rest"
-              custom={cardVariants}
             >
-              {/* Card hover effect with glow */}
+              {/* Background gradient */}
               <motion.div
-                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-600/0 via-accent-600/5 to-accent-600/0 opacity-0 group-hover:opacity-100"
-                whileHover={{ opacity: 0.1 }}
+                className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-[#111] dark:to-[#0a0a0a] rounded-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
               />
 
-              {/* Image with animation */}
+              {/* Glow effect on hover */}
               <motion.div
-                className="text-5xl mb-4 relative z-10"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img src={skill.logoUrl} alt={skill.name} className="w-12 h-12 dark:hidden" />
-                <img src={skill.logoUrl} alt={skill.name} className="w-12 h-12 hidden dark:block" style={{ filter: 'brightness(0) invert(1)' }} />
-              </motion.div>
+                className="absolute -inset-0.5 bg-gradient-to-r from-accent-500 via-accent-600 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300"
+              />
 
-              {/* Name */}
-              <motion.h3
-                className="font-bold text-gray-900 dark:text-white text-xl mb-3 relative z-10"
-                whileHover={{ color: 'rgb(124, 58, 237)' }}
-                transition={{ duration: 0.2 }}
-              >
-                {skill.name}
-              </motion.h3>
-
-              {/* Level indicator */}
+              {/* Main card content */}
               <motion.div
-                className="flex items-center gap-2 relative z-10"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2 }}
+                className="relative bg-white dark:bg-[#100B17]/80 border border-gray-200 dark:border-white/10 p-8 rounded-2xl flex flex-col items-center justify-center gap-6 text-center cursor-default shadow-lg dark:shadow-xl h-full backdrop-blur-sm group-hover:shadow-2xl transition-shadow duration-300"
+                whileHover={{ y: -8 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
+                {/* Image with animation */}
                 <motion.div
-                  className={`w-3 h-3 rounded-full ${
-                    skill.level === 'Expert'
-                      ? 'bg-green-500'
-                      : skill.level === 'Advanced'
-                      ? 'bg-blue-500'
-                      : 'bg-yellow-500'
-                  }`}
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <span className="text-gray-600 dark:text-gray-400 text-sm">{skill.level}</span>
+                  className="text-5xl mb-4 relative z-10"
+                  whileHover={{ scale: 1.15, rotate: 8 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                >
+                  <img src={skill.logoUrl} alt={skill.name} className="w-12 h-12 dark:hidden" />
+                  <img src={skill.logoUrl} alt={skill.name} className="w-12 h-12 hidden dark:block" style={{ filter: 'brightness(0) invert(1)' }} />
+                </motion.div>
+
+                {/* Name */}
+                <motion.h3
+                  className="font-bold text-gray-900 dark:text-white text-lg relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300"
+                >
+                  {skill.name}
+                </motion.h3>
+
+                {/* Level indicator */}
+                <motion.div
+                  className="flex items-center gap-2 relative z-10"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.div
+                    className={`w-3 h-3 rounded-full ${
+                      skill.level === 'Expert'
+                        ? 'bg-green-500'
+                        : skill.level === 'Advanced'
+                        ? 'bg-blue-500'
+                        : 'bg-yellow-500'
+                    }`}
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">{skill.level}</span>
+                </motion.div>
               </motion.div>
             </motion.div>
           ))}

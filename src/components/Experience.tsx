@@ -101,7 +101,7 @@ const Experience: React.FC = () => {
                 variants={itemVariants}
               >
                 <motion.div
-                  className="bg-gray-50 dark:bg-[#111] p-6 rounded-2xl border border-gray-200 dark:border-white/5 group shadow-sm dark:shadow-none cursor-pointer"
+                  className="relative bg-gradient-to-br from-gray-50 to-white dark:from-[#111] dark:to-[#0a0a0a] p-6 rounded-2xl border border-gray-200 dark:border-white/5 group shadow-sm dark:shadow-none cursor-pointer overflow-hidden"
                   variants={cardVariants}
                   whileHover="hover"
                   initial="hidden"
@@ -109,9 +109,12 @@ const Experience: React.FC = () => {
                 >
                   {/* Glow effect on hover */}
                   <motion.div
-                    className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-600/0 via-accent-600/10 to-accent-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    animate={{ backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'] }}
-                    transition={{ duration: 3, repeat: Infinity }}
+                    className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-accent-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  />
+
+                  {/* Border glow on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl border border-accent-500/0 group-hover:border-accent-500/30 transition-colors duration-300 pointer-events-none"
                   />
 
                   <div className={`flex flex-col gap-1 mb-4 relative z-10 ${index % 2 === 0 ? 'items-start' : 'items-start md:items-end'}`}>
@@ -146,9 +149,6 @@ const Experience: React.FC = () => {
                   </div>
                   <motion.p
                     className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed relative z-10"
-                    initial={{ opacity: 0.8 }}
-                    whileHover={{ opacity: 1, color: 'rgb(229, 231, 235)' }}
-                    transition={{ duration: 0.2 }}
                   >
                     {exp.description}
                   </motion.p>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Icons } from '../constants';
 import { useScrollAnimation } from '../hooks';
@@ -38,41 +39,177 @@ const Hero: React.FC = () => {
     return () => clearTimeout(timer);
   }, [currentTitle, isDeleting, titleIndex, typingSpeed, titles]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 },
+    },
+  };
+
+  const socialIconVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.2, rotate: 12 },
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28" ref={ref}>
+      {/* Background elements */}
       <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.05] dark:opacity-[0.1] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#050505] dark:via-transparent dark:to-[#050505] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent-600/20 dark:bg-accent-600/30 rounded-full blur-[80px] md:blur-[120px] -z-10" />
 
-      <div className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block py-1 px-3 rounded-full bg-accent-50/50 dark:bg-accent-900/30 border border-accent-200 dark:border-accent-700/50 text-accent-600 dark:text-accent-300 text-sm font-semibold tracking-wide">{t('hero.available')}</span>
-        </div>
+      {/* Animated gradient circles */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent-600/20 dark:bg-accent-600/30 rounded-full blur-[80px] md:blur-[120px] -z-10"
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          
+        }}
+      />
 
-        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-2 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">{t('hero.name')}</span>
+      <motion.div
+        className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisible ? 'visible' : 'hidden'}
+      >
+        {/* Badge */}
+        <motion.div variants={itemVariants} className="mb-6">
+          <motion.span
+            className="inline-block py-1 px-3 rounded-full bg-accent-50/50 dark:bg-accent-900/30 border border-accent-200 dark:border-accent-700/50 text-accent-600 dark:text-accent-300 text-sm font-semibold tracking-wide"
+            whileHover={{ scale: 1.05, borderColor: 'rgb(124, 58, 237)' }}
+            transition={{ duration: 0.2 }}
+          >
+            {t('hero.available')}
+          </motion.span>
+        </motion.div>
+
+        {/* Main heading */}
+        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-2">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">
+            {t('hero.name')}
+          </span>
           <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-600 via-accent-500 to-accent-400">{t('hero.nickname')}</span>
-        </h1>
+          <motion.span
+            className="bg-clip-text text-transparent bg-gradient-to-r from-accent-600 via-accent-500 to-accent-400"
+            animate={{ backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            {t('hero.nickname')}
+          </motion.span>
+        </motion.h1>
 
-        <h2 className={`text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 mt-10 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Typing animation */}
+        <motion.h2
+          variants={itemVariants}
+          className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 mt-10"
+        >
           <span>{currentTitle}</span>
-          <span className="animate-pulse">|</span>
-        </h2>
+          <motion.span
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.5, repeat: Infinity }}
+            className="ml-1"
+          >
+            |
+          </motion.span>
+        </motion.h2>
 
-        <p className={`text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>{t('hero.description')}</p>
+        {/* Description */}
+        <motion.p
+          variants={itemVariants}
+          className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          {t('hero.description')}
+        </motion.p>
 
-        <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <a href={resumePdf} download="Ced-CV.pdf" className="w-full sm:w-auto px-8 py-4 rounded-full bg-accent-600 hover:bg-accent-500 text-white font-bold transition-all shadow-lg shadow-accent-600/25 flex items-center justify-center gap-2">{t('hero.downloadResume')} <Icons.Download /></a>
-          <a href="#portfolio" className="w-full sm:w-auto px-8 py-4 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white font-bold transition-all flex items-center justify-center gap-2">{t('hero.viewWork')} <Icons.Layout /></a>
-        </div>
+        {/* CTA Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+        >
+          <motion.a
+            href={resumePdf}
+            download="Ced-CV.pdf"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-accent-600 text-white font-bold shadow-lg shadow-accent-600/25 flex items-center justify-center gap-2"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 20px 30px rgba(124, 58, 237, 0.4)',
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            {t('hero.downloadResume')} <Icons.Download />
+          </motion.a>
+          <motion.a
+            href="#portfolio"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold flex items-center justify-center gap-2"
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: 'rgba(124, 58, 237, 0.1)',
+              borderColor: 'rgb(124, 58, 237)',
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            {t('hero.viewWork')} <Icons.Layout />
+          </motion.a>
+        </motion.div>
 
-        <div className={`flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-           <a href="https://github.com/Cedric921" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-500 hover:text-accent-600 dark:hover:text-accent-400 transition-all duration-200 hover:scale-110 hover:-rotate-6" aria-label="GitHub Profile"><Icons.Github /></a>
-           <a href="https://linkedin.com/in/cedric-karungu" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-500 hover:text-accent-600 dark:hover:text-accent-400 transition-all duration-200 hover:scale-110 hover:rotate-6" aria-label="LinkedIn Profile"><Icons.Linkedin /></a>
-           <a href="mailto:ckarungu921@gmail.com" className="text-gray-500 dark:text-gray-500 hover:text-accent-600 dark:hover:text-accent-400 transition-all duration-200 hover:scale-110 hover:-translate-y-1" aria-label="Email Contact"><Icons.Mail /></a>
-        </div>
-      </div>
+        {/* Social icons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400"
+        >
+          <motion.a
+            href="https://github.com/Cedric921"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 dark:text-gray-500"
+            whileHover={{ color: 'rgb(124, 58, 237)', scale: 1.2, rotate: -12 }}
+            transition={{ duration: 0.2 }}
+            aria-label="GitHub Profile"
+          >
+            <Icons.Github />
+          </motion.a>
+          <motion.a
+            href="https://linkedin.com/in/cedric-karungu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 dark:text-gray-500"
+            whileHover={{ color: 'rgb(124, 58, 237)', scale: 1.2, rotate: 12 }}
+            transition={{ duration: 0.2 }}
+            aria-label="LinkedIn Profile"
+          >
+            <Icons.Linkedin />
+          </motion.a>
+          <motion.a
+            href="mailto:ckarungu921@gmail.com"
+            className="text-gray-500 dark:text-gray-500"
+            whileHover={{ color: 'rgb(124, 58, 237)', scale: 1.2, y: -4 }}
+            transition={{ duration: 0.2 }}
+            aria-label="Email Contact"
+          >
+            <Icons.Mail />
+          </motion.a>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

@@ -10,12 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sendgrid/mail": "latest",
     "autoprefixer": "^10.4.17",
+    "framer-motion": "^12.29.2",
     "next": "latest",
     "next-intl": "^4.6.1",
-    "postcss": "^8.4.32",
-    "@sendgrid/mail": "latest",
     "nodemailer": "^6.9.3",
+    "postcss": "^8.4.32",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwindcss": "^3.4.1"

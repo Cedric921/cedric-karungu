@@ -7,3 +7,5 @@ export { default as Experience } from './Experience';
 export { default as Contact } from './Contact';
 export { default as Footer } from './Footer';
 export { default as LanguageSwitcher } from './LanguageSwitcher';
+export { default as AnimatedBackground } from './AnimatedBackground';
+export { default as CursorGlow } from './CursorGlow';

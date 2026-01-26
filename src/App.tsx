@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer } from './components';
+import { motion } from 'framer-motion';
+import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer, AnimatedBackground, CursorGlow } from './components';
 import { Icons } from './constants';
 
 
@@ -45,7 +46,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300 selection:bg-accent-500/30 selection:text-accent-900 dark:selection:text-white">
+    <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300 selection:bg-accent-500/30 selection:text-accent-900 dark:selection:text-white overflow-x-hidden">
+      <AnimatedBackground />
+      <CursorGlow />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />
@@ -57,15 +60,21 @@ const App: React.FC = () => {
       </main>
       <Footer />
 
-      <button
+      <motion.button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 p-3 rounded-full bg-accent-600 text-white shadow-lg hover:bg-accent-500 transition-all duration-300 z-40 transform ${
-          showScrollUp ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
-        }`}
+        className={`fixed bottom-8 right-8 p-3 rounded-full bg-accent-600 text-white shadow-lg hover:bg-accent-500 transition-colors duration-300 z-40`}
+        animate={{
+          y: showScrollUp ? 0 : 100,
+          opacity: showScrollUp ? 1 : 0,
+          pointerEvents: showScrollUp ? 'auto' : 'none',
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.3 }}
         aria-label="Scroll to top"
       >
         <Icons.ArrowUp />
-      </button>
+      </motion.button>
     </div>
   );
 };

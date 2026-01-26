@@ -65,22 +65,21 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28" ref={ref}>
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-[#050505] dark:via-slate-900/40 dark:to-[#050505]" ref={ref}>
       {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.05] dark:opacity-[0.1] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#050505] dark:via-transparent dark:to-[#050505] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.02] dark:opacity-[0.08] pointer-events-none" />
 
       {/* Animated gradient circles */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-accent-600/20 dark:bg-accent-600/30 rounded-full blur-[80px] md:blur-[120px] -z-10"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-accent-600/15 to-blue-600/15 dark:from-accent-600/25 dark:to-blue-600/25 rounded-full blur-[80px] md:blur-[120px] -z-10"
         animate={{
           scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
+          opacity: [0.4, 0.6, 0.4],
         }}
         transition={{
           duration: 8,
           repeat: Infinity,
-          
+          ease: "easeInOut",
         }}
       />
 
@@ -119,13 +118,13 @@ const Hero: React.FC = () => {
         {/* Typing animation */}
         <motion.h2
           variants={itemVariants}
-          className="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 mt-10"
+          className="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-accent-500 dark:from-accent-400 dark:to-accent-300 mb-8 mt-10 h-8 md:h-10"
         >
           <span>{currentTitle}</span>
           <motion.span
             animate={{ opacity: [1, 0] }}
             transition={{ duration: 0.5, repeat: Infinity }}
-            className="ml-1"
+            className="ml-1 text-accent-600 dark:text-accent-400"
           >
             |
           </motion.span>
@@ -134,7 +133,7 @@ const Hero: React.FC = () => {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
         >
           {t('hero.description')}
         </motion.p>
@@ -147,10 +146,10 @@ const Hero: React.FC = () => {
           <motion.a
             href={resumePdf}
             download="Ced-CV.pdf"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-accent-600 text-white font-bold shadow-lg shadow-accent-600/25 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 text-white font-bold shadow-lg shadow-accent-600/30 flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-accent-600/40 transition-all duration-300"
             whileHover={{
               scale: 1.05,
-              boxShadow: '0 20px 30px rgba(124, 58, 237, 0.4)',
+              y: -2,
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -159,11 +158,10 @@ const Hero: React.FC = () => {
           </motion.a>
           <motion.a
             href="#portfolio"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 dark:from-white/10 dark:to-white/5 border-2 border-gray-400 dark:border-accent-600/40 text-gray-900 dark:text-white font-bold flex items-center justify-center gap-2 hover:border-accent-600 dark:hover:border-accent-500 transition-all duration-300"
             whileHover={{
               scale: 1.05,
-              backgroundColor: 'rgba(124, 58, 237, 0.1)',
-              borderColor: 'rgb(124, 58, 237)',
+              boxShadow: '0 10px 25px rgba(124, 58, 237, 0.15)',
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -175,14 +173,15 @@ const Hero: React.FC = () => {
         {/* Social icons */}
         <motion.div
           variants={itemVariants}
-          className="flex items-center justify-center gap-8 text-gray-500 dark:text-gray-400"
+          className="flex items-center justify-center gap-8"
         >
           <motion.a
             href="https://github.com/Cedric921"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 dark:text-gray-500"
-            whileHover={{ color: 'rgb(124, 58, 237)', scale: 1.2, rotate: -12 }}
+            className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-400 hover:bg-accent-600 hover:text-white dark:hover:bg-accent-600 dark:hover:text-white transition-all duration-300"
+            whileHover={{ scale: 1.15, rotate: -12, y: -2 }}
+            whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.2 }}
             aria-label="GitHub Profile"
           >
@@ -192,8 +191,9 @@ const Hero: React.FC = () => {
             href="https://linkedin.com/in/cedric-karungu"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 dark:text-gray-500"
-            whileHover={{ color: 'rgb(124, 58, 237)', scale: 1.2, rotate: 12 }}
+            className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-400 hover:bg-accent-600 hover:text-white dark:hover:bg-accent-600 dark:hover:text-white transition-all duration-300"
+            whileHover={{ scale: 1.15, rotate: 12, y: -2 }}
+            whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.2 }}
             aria-label="LinkedIn Profile"
           >
@@ -201,8 +201,9 @@ const Hero: React.FC = () => {
           </motion.a>
           <motion.a
             href="mailto:ckarungu921@gmail.com"
-            className="text-gray-500 dark:text-gray-500"
-            whileHover={{ color: 'rgb(124, 58, 237)', scale: 1.2, y: -4 }}
+            className="p-3 rounded-full bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-400 hover:bg-accent-600 hover:text-white dark:hover:bg-accent-600 dark:hover:text-white transition-all duration-300"
+            whileHover={{ scale: 1.15, y: -4 }}
+            whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.2 }}
             aria-label="Email Contact"
           >

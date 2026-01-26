@@ -34,7 +34,7 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="mt-[40px] py-24 scroll-mt-28 bg-gray-50 dark:bg-[#100B17] transition-colors duration-300 min-h-screen relative overflow-hidden" ref={ref}>
+    <section id="about" className="mt-[40px] py-24 scroll-mt-28 bg-gradient-to-br from-white via-slate-50 to-blue-50 dark:from-[#0a0a0a] dark:via-slate-900/50 dark:to-[#100B17] transition-colors duration-300 min-h-screen relative overflow-hidden" ref={ref}>
       {/* Background animations */}
       <motion.div
         className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-5"
@@ -140,9 +140,7 @@ const About: React.FC = () => {
             {/* Main title */}
             <motion.div variants={itemVariants}>
               <motion.h3
-                className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-                whileHover={{ color: 'rgb(124, 58, 237)' }}
-                transition={{ duration: 0.2 }}
+                className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-accent-600 to-gray-900 dark:from-white dark:via-accent-400 dark:to-gray-300 mb-4"
               >
                 {t('about.mainTitle')}
               </motion.h3>
@@ -152,10 +150,10 @@ const About: React.FC = () => {
                 {[t('about.experience'), t('about.freelance'), t('about.location')].map((badge, idx) => (
                   <motion.span
                     key={idx}
-                    className="px-4 py-2 bg-white dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-full text-sm border border-gray-200 dark:border-white/10"
+                    className="px-4 py-2 bg-gradient-to-r from-accent-50 to-white dark:from-accent-900/20 dark:to-white/5 text-gray-700 dark:text-gray-200 rounded-full text-sm border-2 border-accent-200 dark:border-accent-600/30 font-medium hover:border-accent-500 dark:hover:border-accent-500 transition-all duration-300"
                     whileHover={{
-                      color: 'rgb(124, 58, 237)',
                       borderColor: 'rgb(124, 58, 237)',
+                      boxShadow: '0 4px 12px rgba(124, 58, 237, 0.1)',
                       x: 4,
                     }}
                     transition={{ duration: 0.2 }}

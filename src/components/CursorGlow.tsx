@@ -29,21 +29,21 @@ const CursorGlow: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed w-80 h-80 rounded-full pointer-events-none -z-0 mix-blend-screen"
+      className="fixed w-96 h-96 rounded-full pointer-events-none z-10 mix-blend-screen"
       style={{
-        background: 'radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(124, 58, 237, 0.1) 40%, transparent 70%)',
-        filter: 'blur(40px)',
+        background: 'radial-gradient(circle, rgba(124, 58, 237, 0.6) 0%, rgba(124, 58, 237, 0.2) 30%, transparent 70%)',
+        filter: 'blur(50px)',
       }}
       animate={{
-        x: mousePosition.x - 160,
-        y: mousePosition.y - 160,
-        opacity: isVisible ? 0.6 : 0,
+        x: mousePosition.x - 192,
+        y: mousePosition.y - 192,
+        opacity: isVisible ? 0.8 : 0,
       }}
       transition={{
         type: 'spring',
-        damping: 30,
+        damping: 25,
         mass: 1,
-        stiffness: 100,
+        stiffness: 80,
       }}
     />
   );

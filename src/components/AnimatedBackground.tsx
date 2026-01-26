@@ -28,100 +28,142 @@ const AnimatedBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-      {/* Mouse-following gradient circle */}
+    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-gradient-to-br from-white via-blue-50 to-purple-50 dark:from-[#0a0a0a] dark:via-slate-900 dark:to-purple-950">
+      {/* Mouse-following glow */}
       <motion.div
-        className="absolute w-96 h-96 rounded-full blur-3xl opacity-20"
+        className="absolute w-96 h-96 rounded-full pointer-events-none mix-blend-screen"
         style={{
-          background: 'radial-gradient(circle, rgba(124,58,237,0.4) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.8) 0%, rgba(124, 58, 237, 0.3) 35%, transparent 65%)',
+          filter: 'blur(60px)',
         }}
         animate={{
-          x: isMoving ? mousePosition.x - 192 : 0,
-          y: isMoving ? mousePosition.y - 192 : 0,
+          x: isMoving ? mousePosition.x - 192 : -192,
+          y: isMoving ? mousePosition.y - 192 : -192,
+          opacity: isMoving ? 0.6 : 0.2,
         }}
-        transition={{ type: 'spring', damping: 50, mass: 1, stiffness: 100 }}
+        transition={{ 
+          type: 'spring', 
+          damping: 20, 
+          mass: 1, 
+          stiffness: 60 
+        }}
       />
 
-      {/* Static floating gradients */}
+      {/* Animated floating orbs */}
       <div className="absolute inset-0">
-        {/* Top left animated gradient */}
+        {/* Large primary orb - top left */}
         <motion.div
-          className="absolute -top-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-10"
+          className="absolute -top-32 -left-32 w-96 h-96 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(139,92,246,0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.5) 0%, rgba(124, 58, 237, 0.1) 50%, transparent 80%)',
+            filter: 'blur(80px)',
           }}
           animate={{
-            y: [0, 30, 0],
-            x: [0, 15, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            repeatType: 'loop',
-          }}
-        />
-
-        {/* Bottom right animated gradient */}
-        <motion.div
-          className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-10"
-          style={{
-            background: 'radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)',
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, -15, 0],
+            y: [0, 40, 0],
+            x: [0, 20, 0],
             scale: [1, 1.15, 1],
           }}
           transition={{
-            duration: 14,
+            duration: 18,
             repeat: Infinity,
             repeatType: 'loop',
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Secondary orb - bottom right */}
+        <motion.div
+          className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 80%)',
+            filter: 'blur(70px)',
+          }}
+          animate={{
+            y: [0, -50, 0],
+            x: [0, -30, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
+            delay: 2,
+          }}
+        />
+
+        {/* Tertiary orb - center */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%)',
+            filter: 'blur(100px)',
+            transform: 'translate(-50%, -50%)',
+          }}
+          animate={{
+            scale: [0.9, 1.1, 0.9],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
             delay: 1,
           }}
         />
 
-        {/* Center animated gradient */}
+        {/* Small accent orb - top right */}
         <motion.div
-          className="absolute top-1/3 left-1/3 w-96 h-96 rounded-full blur-3xl opacity-5"
+          className="absolute -top-20 -right-20 w-72 h-72 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(236,72,153,0.2) 0%, transparent 70%)',
-            transform: 'translate(-50%, -50%)',
+            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 80%)',
+            filter: 'blur(60px)',
           }}
           animate={{
-            scale: [0.8, 1.2, 0.8],
-            rotate: [0, 360],
+            y: [0, -30, 0],
+            x: [0, 25, 0],
+            scale: [1, 1.1, 1],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
             repeatType: 'loop',
+            ease: 'easeInOut',
+            delay: 3,
           }}
         />
 
-        {/* Extra accent gradient */}
+        {/* Bottom left secondary accent */}
         <motion.div
-          className="absolute top-1/2 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-5"
+          className="absolute -bottom-32 -left-20 w-64 h-64 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 80%)',
+            filter: 'blur(70px)',
           }}
           animate={{
-            y: [0, 50, -50, 0],
-            x: [0, -20, 20, 0],
+            y: [0, 50, 0],
+            x: [0, -20, 0],
+            scale: [1, 1.15, 1],
           }}
           transition={{
-            duration: 16,
+            duration: 24,
             repeat: Infinity,
             repeatType: 'loop',
+            ease: 'easeInOut',
+            delay: 4,
           }}
         />
       </div>
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]" style={{
-        backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent)',
-        backgroundSize: '50px 50px',
-      }} />
+      {/* Subtle gradient mesh overlay */}
+      <div 
+        className="absolute inset-0 opacity-30 dark:opacity-20 mix-blend-overlay"
+        style={{
+          background: 'linear-gradient(135deg, transparent 0%, rgba(124, 58, 237, 0.03) 50%, transparent 100%)',
+          pointerEvents: 'none',
+        }}
+      />
     </div>
   );
 };

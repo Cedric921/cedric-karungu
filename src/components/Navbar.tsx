@@ -57,7 +57,9 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       paddingTop: 16,
       paddingBottom: 16,
       borderRadius: 24,
-      backgroundColor: 'rgba(255, 255, 255, 0.7)',
+      backgroundColor: theme === 'dark' ? 'rgba(15, 15, 15, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+      backdropFilter: 'blur(10px)',
+      border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
     },
     notScrolled: {
       maxWidth: '100%',
@@ -67,6 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       paddingBottom: 24,
       borderRadius: 0,
       backgroundColor: 'transparent',
+      backdropFilter: 'none',
     },
   };
 

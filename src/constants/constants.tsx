@@ -148,6 +148,16 @@ export const PROJECTS: Project[] = [
     githubLink: 'https://github.com/cedric921',
     tags: ['React JS', 'Express JS', 'PostgreSQL', 'Sequelize']
   },
+  {
+    id: 5,
+    title: 'Focus',
+    description: ' App mobile for quotes.',
+    category: 'App',
+    image: '/images/Projects/focus.png',
+    link: 'https://focus-admin.vercel.app/',
+    githubLink: 'https://github.com/cedric921/focus',
+    tags: ['React Native', 'Next.js', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Turbo']
+  },
 ];
 
 export const EXPERIENCES = [

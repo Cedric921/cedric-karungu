@@ -140,6 +140,16 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 4,
+    title: 'HIÜRD',
+    description: 'HIÜRD is a local service marketplace that helps people hire and get hired for everyday tasks. Built on trust, local connections, and secure payments.',
+    category: 'App',
+    image: '/images/Projects/hiurd.webp',
+    link: 'https://hiurd.com/',
+    githubLink: 'https://github.com/HIURD',
+    tags: ['React Native', 'Nest.js', 'Stripe', 'TypeORM', 'Mobile']
+  },
+  {
+    id: 5,
     title: 'AdminAtete',
     description: 'Company document archiving application that allows businesses to digitize, organize, and securely store their important documents for easy access and management.',
     category: 'Web',
@@ -149,7 +159,7 @@ export const PROJECTS: Project[] = [
     tags: ['React JS', 'Express JS', 'PostgreSQL', 'Sequelize']
   },
   {
-    id: 5,
+    id: 6,
     title: 'Focus',
     description: ' App mobile for quotes.',
     category: 'App',

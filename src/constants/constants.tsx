@@ -130,13 +130,13 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: 'Ever Teams Mobile',
-    description: 'Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.',
-    category: 'App',
-    image: '/images/Projects/project1.png',
-    link: 'https://app.ever.team/',
-    githubLink: 'https://github.com/ever-co/ever-teams',
-    tags: ['React Native', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Mobile']
+    title: 'Acho System',
+    description: 'A secure and sustainable payment and investment solution for all civil servants and employees worldwide',
+    category: 'Web',
+    image: '/images/Projects/acho.png',
+    link: 'https://acho-turbo-fr-website.vercel.app/',
+    githubLink: 'https://github.com/ACHO-SYSTEM',
+    tags: ['Next.js', 'Nest.js', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Micro Servies', 'TypeORM', 'Turbo']
   },
   {
     id: 4,
@@ -168,15 +168,45 @@ export const PROJECTS: Project[] = [
     githubLink: 'https://github.com/cedric921/focus',
     tags: ['React Native', 'Next.js', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Turbo']
   },
+   {
+    id: 7,
+    title: 'Ever Teams Mobile',
+    description: 'Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.',
+    category: 'App',
+    image: '/images/Projects/project1.png',
+    link: 'https://app.ever.team/',
+    githubLink: 'https://github.com/ever-co/ever-teams',
+    tags: ['React Native', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Mobile']
+  },
+  {
+    id: 8,
+    title: 'KADEA - Renders (Goma branch)',
+    description: 'Web application sharing projects for KADEA students of Goma branch.',
+    category: 'Web',
+    image: '/images/Projects/gda-renders.png',
+    link: 'https://cd-almuni.vercel.app/',
+    githubLink: 'https://github.com/Bam92/student-projects-frontend',
+    tags: ['Next.js', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Mobile']
+  },
+  {
+    id: 9,
+    title: 'Cobiz',
+    description: 'Desktop application for Business management.',
+    category: 'App',
+    image: '/images/Projects/cobiz.jpg',
+    link: '#',
+    githubLink: '#',
+    tags: ['Dart', 'Flutter', 'Adonis.js']
+  },
 ];
 
 export const EXPERIENCES = [
   { id: 1, role: 'Frontend Web Developer', company: 'Buku My Class', period: 'Dec 2018 - Sep 2021', location: 'Remote', description: 'Worked as a Full Stack Developer (Frontend and Backend) and Frontend Developer (React.js) for Buku, an application enabling secondary school students to access class notes from anywhere.' },
   { id: 2, role: 'Frontend Developer', company: 'One Stop Center', period: 'Sep 2021 - Feb 2022', location: 'Remote', description: 'Worked as a Frontend Developer (Angular) on a web application that manages parcel-related information and shares it across multiple company agencies.' },
-  { id: 3, role: 'Full Stack Developer', company: 'Attendacy GDA (KADEA)', period: 'Sept 2022 - Dec 2022', location: 'Remote', description: 'Worked as a Full-stack Developer (Express.js, React.js) for Attendacy GDA, an application to manage student attendance within a coding academy.' },
-  { id: 4, role: 'Full Stack Web Developer', company: 'CRES Startup', period: 'Dec 2022 - Jun 2023', location: 'Remote', description: 'Worked as a Full-stack Web Developer (Nest.js, Next.js) for a start-up and research center focused on creating web applications and artificial intelligence solutions for business management and data collection.' },
+  { id: 3, role: 'Backend Developer', company: 'Attendacy GDA (KADEA)', period: 'Sept 2022 - Dec 2022', location: 'Remote', description: 'Worked as a Full-stack Developer (Express.js, React.js) for Attendacy GDA, an application to manage student attendance within a coding academy.' },
+  { id: 4, role: 'Frontend Developer', company: 'CRES Startup', period: 'Dec 2022 - Jun 2023', location: 'Hybrid, Goma', description: 'Worked as a Full-stack Web Developer (Nest.js, Next.js) for a start-up and research center focused on creating web applications and artificial intelligence solutions for business management and data collection.' },
   { id: 5, role: 'Full Stack Engineer', company: 'AdminAtete', period: 'Feb 2023 - Jul 2023', location: 'Remote, Belgium', description: 'Developed as a Full-stack Developer (Express.js, Next.js) for AdminAtete, a tech startup offering digital solutions for business services, including a document archiving application.' },
-  { id: 6, role: 'Full Stack Engineer', company: 'Ever Technologies', period: 'Nov 2023 - Present', location: 'Remote, Bulgaria', description: 'Worked as a Full-stack Developer (Nest.js, Next.js, React Native) on Ever Teams (Open Work and Project Management Platform) and Ever Gauzy (Open Business Management Platform - ERP/CRM/HRM/ATS/PM). Also involved in various client projects.' },
+  { id: 6, role: 'Full Stack Engineer', company: 'Ever Technologies', period: 'Nov 2023 - Present', location: 'Remote, Bulgaria, USA', description: 'Worked as a Full-stack Developer (Nest.js, Next.js, React Native) on Ever Teams (Open Work and Project Management Platform) and Ever Gauzy (Open Business Management Platform - ERP/CRM/HRM/ATS/PM). Also involved in various client projects.' },
 ];
 
 export const SKILLS = [

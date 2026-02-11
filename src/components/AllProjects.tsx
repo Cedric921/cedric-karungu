@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { PROJECTS, Icons } from '../constants';
 import { useScrollAnimation } from '../hooks';
 
-const Portfolio: React.FC = () => {
+const AllProjects: React.FC = () => {
   const t = useTranslations();
   const [activeFilter, setActiveFilter] = useState(t('portfolio.filterAll'));
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -29,18 +29,8 @@ const Portfolio: React.FC = () => {
     },
   };
 
-  const projectVariants = {
-    rest: { y: 0, scale: 1 },
-    hover: {
-      y: -12,
-      scale: 1.02,
-      boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2)',
-      transition: { duration: 0.3 },
-    },
-  };
-
   return (
-    <section id="portfolio" className="py-24 scroll-mt-28 bg-gray-50 dark:bg-[#100B17] transition-colors duration-300 relative overflow-hidden" ref={ref}>
+    <section className="py-24 min-h-screen bg-gray-50 dark:bg-[#100B17] transition-colors duration-300 relative overflow-hidden">
       {/* Background animations */}
       <motion.div
         className="absolute -top-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-5"
@@ -59,7 +49,7 @@ const Portfolio: React.FC = () => {
         transition={{ duration: 10, repeat: Infinity }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10" ref={ref as any}>
         {/* Header */}
         <motion.div
           className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
@@ -68,12 +58,12 @@ const Portfolio: React.FC = () => {
           animate={isVisible ? 'visible' : 'hidden'}
         >
           <motion.div variants={itemVariants}>
-            <motion.h2
-              className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300"
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300"
               variants={itemVariants}
             >
               {t('portfolio.title')}
-            </motion.h2>
+            </motion.h1>
             <motion.p
               className="text-gray-600 dark:text-gray-400 max-w-xl text-lg"
               variants={itemVariants}
@@ -106,6 +96,16 @@ const Portfolio: React.FC = () => {
           </motion.div>
         </motion.div>
 
+        {/* Projects count */}
+        <motion.div
+          className="mb-8 text-sm text-gray-600 dark:text-gray-400"
+          variants={itemVariants}
+          initial="hidden"
+          animate={isVisible ? 'visible' : 'hidden'}
+        >
+          {PROJECTS.filter(project => activeFilter === t('portfolio.filterAll') || project.category === activeFilter).length} {t('portfolio.projects')}
+        </motion.div>
+
         {/* Projects grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -113,7 +113,7 @@ const Portfolio: React.FC = () => {
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
         >
-          {PROJECTS.filter(project => activeFilter === t('portfolio.filterAll') || project.category === activeFilter).slice(0, 6).map((project, idx) => (
+          {PROJECTS.filter(project => activeFilter === t('portfolio.filterAll') || project.category === activeFilter).map((project, idx) => (
             <motion.div
               key={idx}
               className="group relative h-full"
@@ -222,31 +222,9 @@ const Portfolio: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* See more button */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          <motion.a
-            href={`/${typeof window !== 'undefined' ? window.location.pathname.split('/')[1] : 'en'}/projects`}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-accent-600 text-white rounded-full font-medium cursor-pointer shadow-md"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0 20px 30px rgba(124, 58, 237, 0.3)',
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            {t('portfolio.seeMoreProjects')}
-            <Icons.ExternalLink />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Portfolio;
+export default AllProjects;

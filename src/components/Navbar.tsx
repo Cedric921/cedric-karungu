@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 import { Icons } from '../constants';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -12,6 +13,8 @@ type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const t = useTranslations();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
 
@@ -24,8 +27,14 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const handleLinkClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    const target = document.querySelector(href);
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    const locale = pathname.split('/')[1] || 'en';
+    const isHome = pathname === '/' || pathname === `/${locale}` || pathname === `/${locale}/`;
+    if (isHome) {
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push(`/${locale}${href}`);
+    }
   };
 
   const navLinks = [

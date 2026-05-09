@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
   {
     id: 1,
     title: 'Ever Teams',
-    description: 'Ever Teams is an all-in-one work and project management platform that helps teams manage tasks, track time and productivity, collaborate in real time, and integrate with tools like GitHub and JIRA.',
+    description: 'Ever Teams is a comprehensive work and project management platform designed to streamline team collaboration. It enables real-time task management, time tracking, productivity monitoring, and seamless integration with popular tools like GitHub and JIRA, empowering teams to deliver projects efficiently.',
     category: 'Web',
     image: '/images/Projects/project1.png',
     link: 'https://app.ever.team/',
@@ -121,7 +121,7 @@ export const PROJECTS: Project[] = [
   {
     id: 2,
     title: 'Ever Gauzy Platform',
-    description: 'Ever Gauzy Platform is an open business management platform that combines ERP, CRM, HRM, accounting, and project management tools to help companies manage employees, projects, finances, and operations in one system.',
+    description: 'Ever Gauzy Platform is an open-source business management solution that integrates ERP, CRM, HRM, accounting, and project management functionalities. It provides companies with a unified system to manage employees, projects, finances, and operations, enhancing productivity and decision-making.',
     category: 'Web',
     image: '/images/Projects/project2.png',
     link: 'https://gauzy.co/',
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
   {
     id: 3,
     title: 'Acho System',
-    description: 'A secure and sustainable payment and investment solution for all civil servants and employees worldwide',
+    description: 'Acho System is a secure and sustainable financial platform offering payment and investment solutions specifically designed for civil servants and employees worldwide. Leveraging microservices architecture, it ensures robust security, scalability, and user-friendly experiences for managing personal finances effectively.',
     category: 'Web',
     image: '/images/Projects/acho.png',
     link: 'https://acho-turbo-fr-website.vercel.app/',
@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
   {
     id: 4,
     title: 'HIÜRD',
-    description: 'HIÜRD is a local service marketplace that helps people hire and get hired for everyday tasks. Built on trust, local connections, and secure payments.',
+    description: 'HIÜRD is a trusted local service marketplace connecting people for everyday tasks. It facilitates hiring and getting hired through secure payments, local connections, and a focus on building community trust, making it easy to find reliable help for various services.',
     category: 'App',
     image: '/images/Projects/hiurd.webp',
     link: 'https://hiurd.com/',
@@ -151,7 +151,7 @@ export const PROJECTS: Project[] = [
   {
     id: 5,
     title: 'AdminAtete',
-    description: 'Company document archiving application that allows businesses to digitize, organize, and securely store their important documents for easy access and management.',
+    description: 'AdminAtete is a document archiving application that digitizes and organizes business documents for secure storage and easy access. It helps companies streamline document management, improve compliance, and enhance operational efficiency with features like search, categorization, and cloud-based storage.',
     category: 'Web',
     image: '/images/Projects/appatete.jpg',
     link: 'https://home-ten-zeta.vercel.app/fr/about/',
@@ -161,7 +161,7 @@ export const PROJECTS: Project[] = [
   {
     id: 6,
     title: 'Focus',
-    description: ' App mobile for quotes.',
+    description: 'Focus is a mobile application centered around inspirational quotes, providing users with a curated collection of motivational content to inspire daily productivity and positivity. It features a sleek interface, personalized recommendations, and cross-platform support for an uplifting user experience.',
     category: 'App',
     image: '/images/Projects/focus.png',
     link: 'https://focus-admin.vercel.app/',
@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
    {
     id: 7,
     title: 'Ever Teams Mobile',
-    description: 'Mobile version of Ever Teams with full functionality for on-the-go project management and team collaboration.',
+    description: 'Ever Teams Mobile brings the full power of project management and team collaboration to mobile devices. Users can manage tasks, track time, collaborate in real-time, and access integrated tools on-the-go, ensuring productivity regardless of location.',
     category: 'App',
     image: '/images/Projects/project1.png',
     link: 'https://app.ever.team/',
@@ -181,7 +181,7 @@ export const PROJECTS: Project[] = [
   {
     id: 8,
     title: 'KADEA - Renders (Goma branch)',
-    description: 'Web application sharing projects for KADEA students of Goma branch.',
+    description: 'KADEA Renders is a web platform for KADEA Academy students in the Goma branch to share and showcase their projects. It includes project galleries, collaboration features, and a responsive design to foster learning and networking among students and educators.',
     category: 'Web',
     image: '/images/Projects/gda-renders.png',
     link: 'https://cd-almuni.vercel.app/',
@@ -191,12 +191,42 @@ export const PROJECTS: Project[] = [
   {
     id: 9,
     title: 'Cobiz',
-    description: 'Desktop application for Business management.',
+    description: 'Cobiz is a desktop application for comprehensive business management, offering tools for inventory tracking, sales management, financial reporting, and more. Built with Flutter for cross-platform desktop compatibility, it provides a robust backend for efficient business operations.',
     category: 'App',
     image: '/images/Projects/cobiz.jpg',
     link: '#',
-    githubLink: '#',
+    githubLink: 'https://github.com/cedric921/',
     tags: ['Dart', 'Flutter', 'Adonis.js']
+  },
+  {
+    id: 10,
+    title: 'Zwa Platform',
+    description: 'Zwa Platform is a web application for sharing and selling clothing items, providing users with an online marketplace to showcase and purchase fashion products.',
+    category: 'Web',
+    image: '/images/Projects/zwa.png',
+    link: 'https://zwa-web.vercel.app/',
+    githubLink: 'https://github.com/cedric921',
+    tags: ['Next.js', 'React', 'Mobile Money']
+  },
+  {
+    id: 11,
+    title: 'Afia Platform for Hospital',
+    description: 'Afia Platform for Hospital is a comprehensive web application designed for hospital management, including patient records, appointments, and administrative tasks to streamline healthcare operations.',
+    category: 'Web',
+    image: '/images/Projects/afia-hosp.png',
+    link: 'https://afia-cd-hospital.vercel.app',
+    githubLink: 'https://github.com/cedric921',
+    tags: ['Next.js', 'React', 'React Native', 'Hospital']
+  },
+  {
+    id: 12,
+    title: 'Afia Platform',
+    description: 'Afia Platform is an online medical record system that allows patients and healthcare providers to manage and access medical information securely and efficiently.',
+    category: 'Web',
+    image: '/images/Projects/afia-patient.png',
+    link: 'https://afia-cd-hospital.vercel.app',
+    githubLink: 'https://github.com/cedric921',
+    tags: ['Next.js', 'React', 'React Native', 'Hospital', 'medical carnet']
   },
 ];
 

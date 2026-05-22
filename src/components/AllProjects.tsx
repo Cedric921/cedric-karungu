@@ -1,13 +1,41 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { PROJECTS, Icons } from '../constants';
-import { useScrollAnimation } from '../hooks';
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { PROJECTS, Icons } from "../constants";
+import { useScrollAnimation, usePublicData } from "../hooks";
+import { projectToView, pick, type ProjectItem } from "../lib/public-data";
+import type { Locale } from "../lib/models/shared";
+
+type FilterKey = "all" | "web" | "app";
 
 const AllProjects: React.FC = () => {
   const t = useTranslations();
-  const [activeFilter, setActiveFilter] = useState(t('portfolio.filterAll'));
+  const locale = useLocale() as Locale;
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
   const { ref, isVisible } = useScrollAnimation(0.1);
+
+  const { data: projects } = usePublicData<ProjectItem[]>(
+    "/api/public/projects",
+    PROJECTS as unknown as ProjectItem[],
+  );
+
+  const visible = useMemo(() => {
+    const views = projects.map((p) => ({
+      raw: p,
+      view: projectToView(p, locale),
+    }));
+    return views.filter(({ raw }) => {
+      if (activeFilter === "all") return true;
+      const catEn = pick(raw.category, "en").toLowerCase();
+      return catEn === activeFilter;
+    });
+  }, [projects, activeFilter, locale]);
+
+  const filters: { key: FilterKey; label: string }[] = [
+    { key: "all", label: t("portfolio.filterAll") },
+    { key: "web", label: t("portfolio.filterWeb") },
+    { key: "app", label: t("portfolio.filterApp") },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -35,7 +63,8 @@ const AllProjects: React.FC = () => {
       <motion.div
         className="absolute -top-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
-          background: 'radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)',
+          background:
+            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
         }}
         animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
@@ -43,7 +72,8 @@ const AllProjects: React.FC = () => {
       <motion.div
         className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
-          background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)',
+          background:
+            "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)",
         }}
         animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
@@ -55,20 +85,20 @@ const AllProjects: React.FC = () => {
           className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
           variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
+          animate={isVisible ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants}>
             <motion.h1
               className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300"
               variants={itemVariants}
             >
-              {t('portfolio.title')}
+              {t("portfolio.title")}
             </motion.h1>
             <motion.p
               className="text-gray-600 dark:text-gray-400 max-w-xl text-lg"
               variants={itemVariants}
             >
-              {t('portfolio.description')}
+              {t("portfolio.description")}
             </motion.p>
           </motion.div>
 
@@ -77,20 +107,22 @@ const AllProjects: React.FC = () => {
             className="flex gap-2 bg-white dark:bg-black p-1 rounded-full border border-gray-200 dark:border-white/10 shadow-sm"
             variants={itemVariants}
           >
-            {[t('portfolio.filterAll'), t('portfolio.filterWeb'), t('portfolio.filterApp')].map((filter) => (
+            {filters.map((f) => (
               <motion.button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
+                key={f.key}
+                onClick={() => setActiveFilter(f.key)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === filter
-                    ? 'bg-accent-600 text-white'
-                    : 'text-gray-600 dark:text-gray-400'
+                  activeFilter === f.key
+                    ? "bg-accent-600 text-white"
+                    : "text-gray-600 dark:text-gray-400"
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                animate={activeFilter === filter ? { scale: 1.05 } : { scale: 1 }}
+                animate={
+                  activeFilter === f.key ? { scale: 1.05 } : { scale: 1 }
+                }
               >
-                {filter}
+                {f.label}
               </motion.button>
             ))}
           </motion.div>
@@ -101,9 +133,9 @@ const AllProjects: React.FC = () => {
           className="mb-8 text-sm text-gray-600 dark:text-gray-400"
           variants={itemVariants}
           initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
+          animate={isVisible ? "visible" : "hidden"}
         >
-          {PROJECTS.filter(project => activeFilter === t('portfolio.filterAll') || project.category === activeFilter).length} {t('portfolio.projects')}
+          {visible.length} {t("portfolio.projects")}
         </motion.div>
 
         {/* Projects grid */}
@@ -111,36 +143,32 @@ const AllProjects: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
+          animate={isVisible ? "visible" : "hidden"}
         >
-          {PROJECTS.filter(project => activeFilter === t('portfolio.filterAll') || project.category === activeFilter).map((project, idx) => (
+          {visible.map(({ view: project }) => (
             <motion.div
-              key={idx}
+              key={project.key}
               className="group relative h-full"
               variants={itemVariants}
             >
               {/* Glow background effect */}
-              <motion.div
-                className="absolute -inset-0.5 bg-gradient-to-r from-accent-500 via-accent-600 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300"
-              />
+              <motion.div className="absolute -inset-0.5 bg-gradient-to-r from-accent-500 via-accent-600 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300" />
 
               {/* Main card container */}
               <motion.div
                 className="relative h-full bg-white dark:bg-[#0a0a0a] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg group-hover:shadow-2xl transition-shadow duration-300"
                 whileHover={{ y: -8 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 {/* Image container with overlay */}
                 <motion.div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 dark:from-[#111] dark:to-[#0a0a0a]">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10"
-                  />
+                  <motion.div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                   <motion.img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.5, type: 'spring' }}
+                    transition={{ duration: 0.5, type: "spring" }}
                   />
                 </motion.div>
 
@@ -148,55 +176,50 @@ const AllProjects: React.FC = () => {
                 <div className="p-8 flex flex-col h-[calc(100%-16rem)]">
                   <motion.div className="flex justify-between items-start mb-6 flex-1">
                     <motion.div>
-                      <motion.span
-                        className="text-accent-600 dark:text-accent-400 text-xs font-bold uppercase tracking-wider mb-3 block"
-                      >
+                      <motion.span className="text-accent-600 dark:text-accent-400 text-xs font-bold uppercase tracking-wider mb-3 block">
                         {project.category}
                       </motion.span>
-                      <motion.h3
-                        className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300"
-                      >
+                      <motion.h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
                         {project.title}
                       </motion.h3>
                     </motion.div>
 
                     {/* Action buttons */}
-                    <motion.div className="flex items-center gap-2 ml-4" variants={containerVariants}>
-                      <motion.a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-accent-600 dark:hover:bg-accent-600 hover:text-white transition-all duration-300"
-                        whileHover={{
-                          scale: 1.1,
-                          y: -2,
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        aria-label="Open project website"
-                      >
-                        <Icons.ExternalLink />
-                      </motion.a>
-                      <motion.a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-accent-600 dark:hover:bg-accent-600 hover:text-white transition-all duration-300"
-                        whileHover={{
-                          scale: 1.1,
-                          y: -2,
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        aria-label="Open project GitHub"
-                      >
-                        <Icons.Github />
-                      </motion.a>
+                    <motion.div
+                      className="flex items-center gap-2 ml-4"
+                      variants={containerVariants}
+                    >
+                      {project.link && project.link !== "#" && (
+                        <motion.a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-accent-600 dark:hover:bg-accent-600 hover:text-white transition-all duration-300"
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          whileTap={{ scale: 0.95 }}
+                          aria-label="Open project website"
+                        >
+                          <Icons.ExternalLink />
+                        </motion.a>
+                      )}
+                      {project.githubLink && (
+                        <motion.a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-gray-100 dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-accent-600 dark:hover:bg-accent-600 hover:text-white transition-all duration-300"
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          whileTap={{ scale: 0.95 }}
+                          aria-label="Open project GitHub"
+                        >
+                          <Icons.Github />
+                        </motion.a>
+                      )}
                     </motion.div>
                   </motion.div>
 
                   {/* Description */}
-                  <motion.p
-                    className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed flex-1"
-                  >
+                  <motion.p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed flex-1">
                     {project.description}
                   </motion.p>
 
@@ -208,7 +231,7 @@ const AllProjects: React.FC = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                   >
-                    {project.tags.map(tag => (
+                    {project.tags.map((tag) => (
                       <motion.span
                         key={tag}
                         className="px-3 py-1 bg-gray-100 dark:bg-white/5 rounded-full text-xs text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:border-accent-600 dark:hover:border-accent-400 transition-colors duration-300"

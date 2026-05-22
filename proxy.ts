@@ -35,10 +35,9 @@ function localeFromPath(pathname: string): string {
   return (LOCALES as readonly string[]).includes(seg) ? seg : DEFAULT_LOCALE;
 }
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Protect admin API endpoints
   if (pathname.startsWith("/api/admin")) {
     const authed = await isAuthenticated(req);
     if (!authed) {
@@ -50,7 +49,6 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Protect admin UI pages (allow /[locale]/admin/login)
   const adminMatch = pathname.match(/^\/(en|fr|es)\/admin(\/.*)?$/);
   if (adminMatch) {
     const sub = adminMatch[2] || "";
@@ -70,11 +68,9 @@ export default async function middleware(req: NextRequest) {
       url.search = "";
       return NextResponse.redirect(url);
     }
-    // Authenticated admin pages still need intl messages; delegate to intl
     return intlMiddleware(req);
   }
 
-  // Bare /admin → redirect to localized admin
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     const url = req.nextUrl.clone();
     const locale = localeFromPath(pathname) || DEFAULT_LOCALE;
@@ -82,7 +78,6 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Default: next-intl for locale routing
   return intlMiddleware(req);
 }
 

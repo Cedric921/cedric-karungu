@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter, useSearchParams, useParams } from 'next/navigation';
-import { Button, Input, Label, Card, Spinner } from '@/components/admin/ui';
-import { LogIn } from 'lucide-react';
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams, useParams } from "next/navigation";
+import { Button, Input, Label, Card, Spinner } from "@/components/admin/ui";
+import { LogIn } from "lucide-react";
 
-export default function AdminLoginPage() {
+function AdminLoginForm() {
   const router = useRouter();
   const params = useParams<{ locale: string }>();
   const search = useSearchParams();
-  const locale = params?.locale || 'en';
-  const next = search.get('next') || `/${locale}/admin`;
+  const locale = params?.locale || "en";
+  const next = search.get("next") || `/${locale}/admin`;
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -22,21 +22,21 @@ export default function AdminLoginPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {
-        setError(json?.error || 'Login failed');
+        setError(json?.error || "Login failed");
         setLoading(false);
         return;
       }
       router.push(next);
       router.refresh();
     } catch {
-      setError('Network error');
+      setError("Network error");
       setLoading(false);
     }
   };
@@ -52,7 +52,9 @@ export default function AdminLoginPage() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-500/10 ring-1 ring-accent-500/20 mb-3">
             <LogIn className="text-accent-600 dark:text-accent-400" size={20} />
           </div>
-          <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Admin sign in</h1>
+          <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+            Admin sign in
+          </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Access the portfolio dashboard
           </p>
@@ -90,10 +92,24 @@ export default function AdminLoginPage() {
           )}
           <Button type="submit" disabled={loading} className="w-full">
             {loading ? <Spinner /> : <LogIn size={16} />}
-            <span>{loading ? 'Signing in…' : 'Sign in'}</span>
+            <span>{loading ? "Signing in…" : "Sign in"}</span>
           </Button>
         </form>
       </Card>
     </div>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-[#050505]">
+          <Spinner />
+        </div>
+      }
+    >
+      <AdminLoginForm />
+    </Suspense>
   );
 }

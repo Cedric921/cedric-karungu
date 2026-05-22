@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { SKILLS } from "../constants";
 import { useScrollAnimation, usePublicData } from "../hooks";
 import type { SkillItem } from "../lib/public-data";
+import SectionHeader from "./SectionHeader";
 
 type Category = "Front End" | "Back End" | "A.I";
 
@@ -49,16 +50,6 @@ const Skills: React.FC = () => {
     },
   };
 
-  const cardVariants = {
-    rest: { y: 0, scale: 1 },
-    hover: {
-      y: -8,
-      scale: 1.05,
-      boxShadow: "0 20px 40px rgba(124, 58, 237, 0.15)",
-      transition: { duration: 0.3 },
-    },
-  };
-
   return (
     <section
       id="skills"
@@ -77,26 +68,13 @@ const Skills: React.FC = () => {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          variants={itemVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          <motion.h2
-            className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300"
-            variants={itemVariants}
-          >
-            {t("skills.title")}
-          </motion.h2>
-          <motion.p
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
-            variants={itemVariants}
-          >
-            {t("skills.description")}
-          </motion.p>
-        </motion.div>
+        <SectionHeader
+          index={3}
+          eyebrow={t("nav.skills")}
+          title={t("skills.title")}
+          description={t("skills.description")}
+          visible={isVisible}
+        />
 
         {/* Filter buttons */}
         <motion.div
@@ -105,21 +83,17 @@ const Skills: React.FC = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <div className="flex gap-2 bg-white dark:bg-black p-1 rounded-full border border-gray-200 dark:border-white/10 shadow-sm">
+          <div className="flex gap-2 glass p-1 rounded-full">
             {filters.map((f) => (
               <motion.button
                 key={f.key}
                 onClick={() => setActiveFilter(f.key)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider ring-accent-focus transition-colors ${
                   activeFilter === f.key
                     ? "bg-accent-600 text-white"
-                    : "text-gray-600 dark:text-gray-400"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
-                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                animate={
-                  activeFilter === f.key ? { scale: 1.05 } : { scale: 1 }
-                }
               >
                 {f.label}
               </motion.button>
@@ -140,27 +114,18 @@ const Skills: React.FC = () => {
               className="relative group h-full"
               variants={itemVariants}
             >
-              {/* Background gradient */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-[#111] dark:to-[#0a0a0a] rounded-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              />
+              {/* Soft glow on hover */}
+              <motion.div className="absolute -inset-0.5 bg-gradient-to-r from-accent-500/30 via-accent-600/30 to-accent-500/30 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500 pointer-events-none" />
 
-              {/* Glow effect on hover */}
-              <motion.div className="absolute -inset-0.5 bg-gradient-to-r from-accent-500 via-accent-600 to-accent-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300" />
-
-              {/* Main card content */}
+              {/* Card */}
               <motion.div
-                className="relative bg-white dark:bg-[#100B17]/80 border border-gray-200 dark:border-white/10 p-8 rounded-2xl flex flex-col items-center justify-center gap-6 text-center cursor-default shadow-lg dark:shadow-xl h-full backdrop-blur-sm group-hover:shadow-2xl transition-shadow duration-300"
-                whileHover={{ y: -8 }}
+                className="glass glass-hover relative p-7 rounded-2xl flex flex-col items-center justify-center gap-5 text-center cursor-default h-full"
+                whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {/* Image with animation */}
                 <motion.div
-                  className="text-5xl mb-4 relative z-10"
-                  whileHover={{ scale: 1.15, rotate: 8 }}
+                  className="relative z-10"
+                  whileHover={{ scale: 1.1, rotate: 6 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                   <img
@@ -176,32 +141,26 @@ const Skills: React.FC = () => {
                   />
                 </motion.div>
 
-                {/* Name */}
-                <motion.h3 className="font-bold text-gray-900 dark:text-white text-lg relative z-10 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
+                <h3 className="font-bold text-gray-900 dark:text-white text-base group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
                   {skill.name}
-                </motion.h3>
+                </h3>
 
-                {/* Level indicator */}
-                <motion.div
-                  className="flex items-center gap-2 relative z-10"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <motion.div
-                    className={`w-3 h-3 rounded-full ${
+                <div className="flex items-center gap-2">
+                  <motion.span
+                    className={`w-2 h-2 rounded-full ${
                       skill.level === "Expert"
-                        ? "bg-green-500"
+                        ? "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.6)]"
                         : skill.level === "Advanced"
-                          ? "bg-blue-500"
-                          : "bg-yellow-500"
+                          ? "bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,0.6)]"
+                          : "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.6)]"
                     }`}
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    animate={{ scale: [1, 1.25, 1] }}
+                    transition={{ duration: 2.4, repeat: Infinity }}
                   />
-                  <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-gray-600 dark:text-gray-400">
                     {skill.level}
                   </span>
-                </motion.div>
+                </div>
               </motion.div>
             </motion.div>
           ))}

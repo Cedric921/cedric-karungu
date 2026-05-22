@@ -89,13 +89,18 @@ const Footer: React.FC = () => {
         >
           {/* Brand section */}
           <motion.div className="lg:col-span-1" variants={itemVariants}>
+            <h3 className="eyebrow mb-3">
+              <span className="eyebrow-index">CK</span>
+              <span aria-hidden="true" className="eyebrow-rule" />
+              <span>Studio</span>
+            </h3>
             <motion.a
               href="#"
-              className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white inline-block mb-4 relative"
+              className="text-3xl font-bold tracking-tighter text-gray-900 dark:text-white inline-block mb-4 relative"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              CK<span className="text-accent-500">.</span>
+              Cédric<span className="text-accent-500">.</span>
             </motion.a>
             <motion.p
               className="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
@@ -153,8 +158,10 @@ const Footer: React.FC = () => {
 
           {/* Links section */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-              {t("footer.links")}
+            <h3 className="eyebrow mb-4">
+              <span className="eyebrow-index">A</span>
+              <span aria-hidden="true" className="eyebrow-rule" />
+              <span>{t("footer.links")}</span>
             </h3>
             <motion.ul className="space-y-3" variants={containerVariants}>
               {[
@@ -164,17 +171,17 @@ const Footer: React.FC = () => {
                 { name: t("nav.projects"), href: "#portfolio" },
                 { name: t("nav.experience"), href: "#experience" },
                 { name: t("nav.contact"), href: "#contact" },
-              ].map((link) => (
+              ].map((link, idx) => (
                 <motion.li key={link.name} variants={itemVariants}>
                   <motion.a
                     href={link.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 inline-block relative"
-                    whileHover={{
-                      color: "rgb(124, 58, 237)",
-                      x: 4,
-                    }}
+                    className="text-sm text-gray-600 dark:text-gray-400 inline-flex items-center gap-2 group"
+                    whileHover={{ color: "rgb(124, 58, 237)", x: 4 }}
                     transition={{ duration: 0.2 }}
                   >
+                    <span className="font-mono text-[10px] tabular-nums text-gray-400 dark:text-gray-600 group-hover:text-accent-500 transition-colors">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
                     {link.name}
                   </motion.a>
                 </motion.li>
@@ -184,8 +191,10 @@ const Footer: React.FC = () => {
 
           {/* Featured Work section */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-              {t("footer.featuredWork")}
+            <h3 className="eyebrow mb-4">
+              <span className="eyebrow-index">B</span>
+              <span aria-hidden="true" className="eyebrow-rule" />
+              <span>{t("footer.featuredWork")}</span>
             </h3>
             <motion.ul className="space-y-3" variants={containerVariants}>
               {[
@@ -225,20 +234,20 @@ const Footer: React.FC = () => {
 
           {/* Tech Stack & Connect section */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-              {t("footer.techStack")}
+            <h3 className="eyebrow mb-4">
+              <span className="eyebrow-index">D</span>
+              <span aria-hidden="true" className="eyebrow-rule" />
+              <span>{t("footer.techStack")}</span>
             </h3>
             <motion.div
-              className="flex flex-wrap gap-2 mb-6"
+              className="flex flex-wrap gap-1.5 mb-6"
               variants={containerVariants}
             >
               {[
                 "PostgreSQL",
                 "JavaScript",
-                "Web Application",
                 "RESTful API",
                 "Git",
-                "GitHub",
                 "Database",
                 "ExpressJS",
                 "TypeScript",
@@ -251,11 +260,10 @@ const Footer: React.FC = () => {
               ].map((tech) => (
                 <motion.span
                   key={tech}
-                  className="text-xs px-2.5 py-1 bg-gray-200 dark:bg-white/5 text-gray-700 dark:text-gray-300 rounded border border-gray-300 dark:border-white/10 cursor-default"
+                  className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md bg-white/40 dark:bg-white/[0.04] text-gray-600 dark:text-gray-300 border border-gray-200/70 dark:border-white/10 cursor-default"
                   whileHover={{
                     borderColor: "rgb(124, 58, 237)",
-                    backgroundColor: "rgba(124, 58, 237, 0.1)",
-                    scale: 1.05,
+                    color: "rgb(124, 58, 237)",
                   }}
                   transition={{ duration: 0.2 }}
                 >
@@ -264,10 +272,12 @@ const Footer: React.FC = () => {
               ))}
             </motion.div>
 
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-              {t("footer.connect")}
+            <h3 className="eyebrow mb-4">
+              <span className="eyebrow-index">E</span>
+              <span aria-hidden="true" className="eyebrow-rule" />
+              <span>{t("footer.connect")}</span>
             </h3>
-            <motion.div className="flex gap-4" variants={containerVariants}>
+            <motion.div className="flex gap-3" variants={containerVariants}>
               {socialLinks.map((s, idx) => {
                 const Icon =
                   (Icons[s.icon] as React.FC | undefined) ?? Icons.ExternalLink;
@@ -279,12 +289,9 @@ const Footer: React.FC = () => {
                     {...(isExternal
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="text-gray-500 dark:text-gray-500"
-                    whileHover={{
-                      scale: 1.2,
-                      color: "rgb(124, 58, 237)",
-                      rotate: idx % 2 === 0 ? -12 : 12,
-                    }}
+                    className="glass glass-hover p-2.5 rounded-full text-gray-600 dark:text-gray-300 hover:text-accent-600 dark:hover:text-accent-400 ring-accent-focus"
+                    whileHover={{ y: -3 }}
+                    whileTap={{ scale: 0.92 }}
                     transition={{ duration: 0.2 }}
                     aria-label={s.label}
                   >

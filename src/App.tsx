@@ -1,27 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Navbar, Hero, AboutMe, Skills, Portfolio, Experience, Contact, Footer, AnimatedBackground, CursorGlow } from './components';
-import { Icons } from './constants';
-
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Navbar,
+  Hero,
+  AboutMe,
+  Skills,
+  Portfolio,
+  Experience,
+  Contact,
+  Footer,
+  AnimatedBackground,
+  CursorGlow,
+  ScrollProgress,
+} from "./components";
+import { Icons } from "./constants";
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'dark';
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "dark";
     }
-    return 'dark';
+    return "dark";
   });
 
   const [showScrollUp, setShowScrollUp] = useState<boolean>(false);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
+    if (theme === "dark") {
+      root.classList.add("dark");
     } else {
-      root.classList.remove('dark');
+      root.classList.remove("dark");
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   useEffect(() => {
@@ -33,20 +44,21 @@ const App: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300 selection:bg-accent-500/30 selection:text-accent-900 dark:selection:text-white overflow-x-hidden">
+      <ScrollProgress />
       <AnimatedBackground />
       <CursorGlow />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
@@ -66,7 +78,7 @@ const App: React.FC = () => {
         animate={{
           y: showScrollUp ? 0 : 100,
           opacity: showScrollUp ? 1 : 0,
-          pointerEvents: showScrollUp ? 'auto' : 'none',
+          pointerEvents: showScrollUp ? "auto" : "none",
         }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}

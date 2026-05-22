@@ -73,7 +73,7 @@
  Removes browser default autofill background and borders
  **/
 @layer components {
-  /* Light mode autofill - no border */
+  /* Light mode autofill - preserve input border */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -84,11 +84,11 @@
   textarea:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
     box-shadow: 0 0 0 1000px #ffffff inset !important;
-    border: none !important;
     -webkit-text-fill-color: #111111 !important;
+    transition: background-color 9999s ease-out 0s;
   }
 
-  /* Dark mode autofill - no border */
+  /* Dark mode autofill - preserve input border */
   .dark input:-webkit-autofill,
   .dark input:-webkit-autofill:hover,
   .dark input:-webkit-autofill:focus,
@@ -97,9 +97,10 @@
   .dark textarea:-webkit-autofill:hover,
   .dark textarea:-webkit-autofill:focus,
   .dark textarea:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #050505 inset !important;
-    box-shadow: 0 0 0 1000px #050505 inset !important;
-    border: none !important;
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.04) inset !important;
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.04) inset !important;
     -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff;
+    transition: background-color 9999s ease-out 0s;
   }
 }

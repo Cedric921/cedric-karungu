@@ -1,15 +1,22 @@
-
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
-import { Icons } from '../constants';
-import LanguageSwitcher from './LanguageSwitcher';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
+import { Icons } from "../constants";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type NavbarProps = {
   theme: string;
   toggleTheme: () => void;
 };
+
+const NAV_SECTIONS = [
+  "home",
+  "about",
+  "skills",
+  "portfolio",
+  "experience",
+] as const;
 
 const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const t = useTranslations();
@@ -17,75 +24,55 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    NAV_SECTIONS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, [pathname]);
 
   const handleLinkClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    const locale = pathname.split('/')[1] || 'en';
-    const isHome = pathname === '/' || pathname === `/${locale}` || pathname === `/${locale}/`;
+    const locale = pathname.split("/")[1] || "en";
+    const isHome =
+      pathname === "/" ||
+      pathname === `/${locale}` ||
+      pathname === `/${locale}/`;
     if (isHome) {
       const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      if (target) target.scrollIntoView({ behavior: "smooth" });
     } else {
       router.push(`/${locale}${href}`);
     }
   };
 
   const navLinks = [
-    { name: t('nav.home'), href: '#home' },
-    { name: t('nav.about'), href: '#about' },
-    { name: t('nav.skills'), href: '#skills' },
-    { name: t('nav.projects'), href: '#portfolio' },
-    { name: t('nav.experience'), href: '#experience' },
+    { name: t("nav.home"), href: "#home", id: "home" },
+    { name: t("nav.about"), href: "#about", id: "about" },
+    { name: t("nav.skills"), href: "#skills", id: "skills" },
+    { name: t("nav.projects"), href: "#portfolio", id: "portfolio" },
+    { name: t("nav.experience"), href: "#experience", id: "experience" },
   ];
-
-  const navVariants = {
-    scrolled: {
-      marginTop: 16,
-      paddingLeft: 16,
-      paddingRight: 16,
-    },
-    notScrolled: {
-      marginTop: 0,
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
-  };
-
-  const navContainerVariants = {
-    scrolled: {
-      maxWidth: 'calc(100% - 64px)',
-      paddingLeft: 24,
-      paddingRight: 24,
-      paddingTop: 16,
-      paddingBottom: 16,
-      borderRadius: 24,
-      backgroundColor: theme === 'dark' ? 'rgba(15, 15, 15, 0.8)' : 'rgba(255, 255, 255, 0.8)',
-      backdropFilter: 'blur(10px)',
-      border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
-    },
-    notScrolled: {
-      maxWidth: '100%',
-      paddingLeft: 24,
-      paddingRight: 24,
-      paddingTop: 24,
-      paddingBottom: 24,
-      borderRadius: 0,
-      backgroundColor: 'transparent',
-      backdropFilter: 'none',
-    },
-  };
-
-  const linkVariants = {
-    rest: { y: 0 },
-    hover: { y: -2 },
-  };
 
   const mobileMenuVariants = {
     hidden: { opacity: 0, y: -10 },
@@ -111,23 +98,23 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      animate={scrolled ? 'scrolled' : 'notScrolled'}
-      variants={navVariants}
-      initial="notScrolled"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "py-3 px-4" : "py-4 px-0"
+      }`}
     >
-      <motion.div
-        className="flex justify-between items-center mx-auto transition-all duration-300"
-        animate={scrolled ? 'scrolled' : 'notScrolled'}
-        variants={navContainerVariants}
-        initial="notScrolled"
+      <div
+        className={`flex justify-between items-center mx-auto transition-all duration-300 px-6 ${
+          scrolled
+            ? "max-w-[calc(100%-2rem)] py-3 rounded-2xl glass"
+            : "max-w-full py-3 bg-transparent border-b border-transparent"
+        }`}
       >
         {/* Logo */}
         <motion.a
           href="#"
-          onClick={(e) => handleLinkClick(e, '#about')}
-          className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white"
-          whileHover={{ scale: 1.05, color: 'rgb(124, 58, 237)' }}
+          onClick={(e) => handleLinkClick(e, "#about")}
+          className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white ring-accent-focus rounded-md"
+          whileHover={{ scale: 1.05, color: "rgb(124, 58, 237)" }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
         >
@@ -136,32 +123,43 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
         {/* Desktop Navigation */}
         <motion.div
-          className="hidden md:flex items-center space-x-6"
+          className="hidden md:flex items-center space-x-1"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {navLinks.map((link, index) => (
-            <motion.a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className="relative text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors duration-300"
-              variants={linkVariants}
-              whileHover="hover"
-              initial="rest"
-              animate="rest"
-              custom={index}
-            >
-              {link.name}
-              <motion.span
-                className="absolute -bottom-1 left-0 h-[2px] bg-accent-600 dark:bg-white"
-                initial={{ width: 0 }}
-                whileHover={{ width: '100%' }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
+                className={`relative px-3 py-2 rounded-full text-sm font-medium transition-colors ring-accent-focus ${
+                  isActive
+                    ? "text-gray-900 dark:text-white"
+                    : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                }`}
+                whileHover={{ y: -1 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-dot"
+                      className="inline-block w-1.5 h-1.5 rounded-full bg-accent-500 shadow-[0_0_8px_rgba(124,58,237,0.7)]"
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 28,
+                      }}
+                    />
+                  )}
+                  {link.name}
+                </span>
+              </motion.a>
+            );
+          })}
 
           <motion.div
             className="flex items-center gap-4"
@@ -174,26 +172,29 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             <motion.button
               onClick={toggleTheme}
               className="p-2 rounded-full text-gray-600 dark:text-gray-300"
-              whileHover={{ scale: 1.1, backgroundColor: 'rgba(124, 58, 237, 0.1)' }}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "rgba(124, 58, 237, 0.1)",
+              }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+              {theme === "dark" ? <Icons.Sun /> : <Icons.Moon />}
             </motion.button>
 
             <motion.a
               href="#contact"
-              onClick={(e) => handleLinkClick(e, '#contact')}
+              onClick={(e) => handleLinkClick(e, "#contact")}
               className="px-5 py-2.5 rounded-full bg-accent-600 text-white text-sm font-semibold shadow-lg shadow-accent-600/20"
               whileHover={{
                 scale: 1.05,
-                boxShadow: '0 20px 30px rgba(124, 58, 237, 0.4)',
+                boxShadow: "0 20px 30px rgba(124, 58, 237, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              {t('nav.getInTouch')}
+              {t("nav.getInTouch")}
             </motion.a>
           </motion.div>
         </motion.div>
@@ -212,7 +213,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             whileTap={{ scale: 0.95 }}
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+            {theme === "dark" ? <Icons.Sun /> : <Icons.Moon />}
           </motion.button>
 
           <motion.button
@@ -247,14 +248,14 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             </AnimatePresence>
           </motion.button>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={`md:hidden bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/5 transition-all duration-300 ${
-              scrolled ? 'rounded-3xl mt-2 mx-4' : 'border-b'
+            className={`md:hidden glass transition-all duration-300 ${
+              scrolled ? "rounded-3xl mt-2 mx-4" : "rounded-none mx-0"
             }`}
             variants={mobileMenuVariants}
             initial="hidden"
@@ -269,28 +270,33 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className="block py-2 text-sm font-medium text-gray-600 dark:text-gray-300"
                   variants={menuItemVariants}
-                  whileHover={{ x: 4, color: 'rgb(124, 58, 237)' }}
+                  whileHover={{ x: 4, color: "rgb(124, 58, 237)" }}
                   transition={{ duration: 0.2 }}
                 >
                   {link.name}
                 </motion.a>
               ))}
 
-              <motion.div className="my-3 border-t border-gray-200 dark:border-white/10 pt-3" variants={menuItemVariants}>
-                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Language</p>
+              <motion.div
+                className="my-3 border-t border-gray-200 dark:border-white/10 pt-3"
+                variants={menuItemVariants}
+              >
+                <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
+                  Language
+                </p>
                 <LanguageSwitcher />
               </motion.div>
 
               <motion.a
                 href="#contact"
-                onClick={(e) => handleLinkClick(e, '#contact')}
+                onClick={(e) => handleLinkClick(e, "#contact")}
                 className="block mt-4 w-full px-5 py-2.5 rounded-full bg-accent-600 text-white text-sm font-semibold transition-all text-center"
                 variants={menuItemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
               >
-                {t('nav.getInTouch')}
+                {t("nav.getInTouch")}
               </motion.a>
             </div>
           </motion.div>

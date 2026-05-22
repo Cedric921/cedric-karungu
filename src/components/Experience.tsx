@@ -1,10 +1,26 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { EXPERIENCES, Icons } from '../constants';
-import { useScrollAnimation } from '../hooks';
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { EXPERIENCES } from "../constants";
+import { useScrollAnimation, usePublicData } from "../hooks";
+import { experienceToView, type ExperienceItem } from "../lib/public-data";
+import type { Locale } from "../lib/models/shared";
+import SectionHeader from "./SectionHeader";
 
 const Experience: React.FC = () => {
+  const t = useTranslations();
+  const locale = useLocale() as Locale;
   const { ref, isVisible } = useScrollAnimation(0.1);
+
+  const { data: experiences } = usePublicData<ExperienceItem[]>(
+    "/api/public/experiences",
+    EXPERIENCES as unknown as ExperienceItem[],
+  );
+
+  const items = useMemo(
+    () => experiences.map((e) => experienceToView(e, locale)),
+    [experiences, locale],
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,139 +40,97 @@ const Experience: React.FC = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        
       },
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-    hover: {
-      y: -8,
-      boxShadow: '0 20px 40px rgba(124, 58, 237, 0.15)',
-      transition: { duration: 0.3 },
-    },
-  };
-
   return (
-    <section id="experience" className="py-24 bg-white dark:bg-[#050505] scroll-mt-28 transition-colors duration-300 relative overflow-hidden" ref={ref}>
+    <section
+      id="experience"
+      className="py-24 bg-white dark:bg-[#050505] scroll-mt-28 transition-colors duration-300 relative overflow-hidden"
+      ref={ref}
+    >
       {/* Animated background elements */}
       <motion.div
         className="absolute -top-20 -right-32 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
-          background: 'radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)',
+          background:
+            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
         }}
         animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
       />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <motion.div
-          className="text-center mb-16"
-          variants={itemVariants}
-          initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
-        >
-          <motion.h2
-            className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white bg-clip-text bg-gradient-to-r from-accent-600 to-accent-400 dark:from-accent-400 dark:to-accent-300"
-            variants={itemVariants}
-          >
-            Professional Experience
-          </motion.h2>
-          <motion.p
-            className="text-gray-600 dark:text-gray-400 text-lg"
-            variants={itemVariants}
-          >
-            My journey through the tech industry.
-          </motion.p>
-        </motion.div>
+        <SectionHeader
+          index={5}
+          eyebrow={t("nav.experience")}
+          title={t("experience.title")}
+          description={t("experience.description")}
+          visible={isVisible}
+        />
 
-        <motion.div
-          className="relative space-y-12"
+        <motion.ol
+          className="relative pl-10 md:pl-14 space-y-10"
           variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
+          animate={isVisible ? "visible" : "hidden"}
         >
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-600 via-gray-200 dark:via-white/10 to-transparent md:-translate-x-1/2" />
+          {/* Vertical rail */}
+          <div className="absolute left-3 md:left-5 top-2 bottom-2 w-px bg-gradient-to-b from-accent-500 via-gray-200 dark:via-white/10 to-transparent" />
 
-          {EXPERIENCES.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+          {items.map((exp, index) => (
+            <motion.li
+              key={exp.key}
+              className="relative group"
               variants={itemVariants}
             >
-              <motion.div
-                className="absolute left-4 md:left-1/2 w-4 h-4 bg-white dark:bg-[#050505] border-2 border-accent-500 rounded-full translate-y-1.5 md:-translate-x-1/2 z-10 shadow-[0_0_15px_rgba(124,58,237,0.5)]"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-
-              <motion.div
-                className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 text-left md:text-right'}`}
-                variants={itemVariants}
+              {/* Timeline node */}
+              <span
+                aria-hidden="true"
+                className="absolute -left-[1.85rem] md:-left-[2.25rem] top-3 flex items-center justify-center"
               >
-                <motion.div
-                  className="relative bg-gradient-to-br from-gray-50 to-white dark:from-[#111] dark:to-[#0a0a0a] p-6 rounded-2xl border border-gray-200 dark:border-white/5 group shadow-sm dark:shadow-none cursor-pointer overflow-hidden"
-                  variants={cardVariants}
-                  whileHover="hover"
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {/* Glow effect on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-accent-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  />
+                <motion.span
+                  className="block w-3.5 h-3.5 rounded-full bg-white dark:bg-[#050505] border-2 border-accent-500 shadow-[0_0_12px_rgba(124,58,237,0.5)]"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2.4, repeat: Infinity }}
+                />
+              </span>
 
-                  {/* Border glow on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-2xl border border-accent-500/0 group-hover:border-accent-500/30 transition-colors duration-300 pointer-events-none"
-                  />
+              {/* Period + index */}
+              <div className="flex items-center gap-3 mb-2">
+                <span className="font-mono text-[11px] tabular-nums uppercase tracking-[0.18em] text-accent-600 dark:text-accent-400">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="font-mono text-xs tabular-nums text-gray-500 dark:text-gray-400">
+                  {exp.period}
+                </span>
+                {exp.location && (
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-gray-400 dark:text-gray-500">
+                    · {exp.location}
+                  </span>
+                )}
+              </div>
 
-                  <div className={`flex flex-col gap-1 mb-4 relative z-10 ${index % 2 === 0 ? 'items-start' : 'items-start md:items-end'}`}>
-                    <motion.span
-                      className="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-semibold border border-accent-200 dark:border-accent-500/20"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {exp.period}
-                    </motion.span>
-                    <motion.h3
-                      className="text-xl font-bold text-gray-900 dark:text-white mt-2 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors relative z-10"
-                      whileHover={{ x: index % 2 === 0 ? 4 : -4 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {exp.role}
-                    </motion.h3>
-                    <motion.p
-                      className="text-gray-600 dark:text-gray-400 font-medium relative z-10"
-                      whileHover={{ color: 'rgb(124, 58, 237)' }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {exp.company}
-                    </motion.p>
-                    <motion.div
-                      className="flex items-center gap-1 text-xs text-gray-500 relative z-10"
-                      whileHover={{ x: index % 2 === 0 ? 4 : -4 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {exp.location}
-                    </motion.div>
-                  </div>
-                  <motion.p
-                    className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed relative z-10"
-                  >
-                    {exp.description}
-                  </motion.p>
-                </motion.div>
+              {/* Card */}
+              <motion.div
+                className="glass glass-hover relative p-6 rounded-2xl"
+                whileHover={{ x: 4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+              >
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+                  {exp.role}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 font-medium mt-0.5">
+                  {exp.company}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mt-3">
+                  {exp.description}
+                </p>
               </motion.div>
-            </motion.div>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ol>
       </div>
     </section>
   );

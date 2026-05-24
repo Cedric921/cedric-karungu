@@ -34,7 +34,7 @@ const AnimatedBackground: React.FC = () => {
         className="absolute w-96 h-96 rounded-full pointer-events-none mix-blend-screen"
         style={{
           background:
-            "radial-gradient(circle, rgba(16, 185, 129, 0.7) 0%, rgba(245, 158, 11, 0.3) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(139, 92, 246, 0.75) 0%, rgba(245, 158, 11, 0.3) 40%, transparent 70%)",
           filter: "blur(60px)",
         }}
         animate={{
@@ -57,7 +57,7 @@ const AnimatedBackground: React.FC = () => {
           className="absolute -top-32 -left-32 w-96 h-96 rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0.1) 50%, transparent 80%)",
+              "radial-gradient(circle, rgba(139, 92, 246, 0.55) 0%, rgba(139, 92, 246, 0.12) 50%, transparent 80%)",
             filter: "blur(80px)",
           }}
           animate={{
@@ -167,7 +167,7 @@ const AnimatedBackground: React.FC = () => {
         className="absolute inset-0 opacity-30 dark:opacity-20 mix-blend-overlay"
         style={{
           background:
-            "linear-gradient(135deg, transparent 0%, rgba(16, 185, 129, 0.04) 35%, rgba(245, 158, 11, 0.04) 65%, transparent 100%)",
+            "linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.05) 35%, rgba(245, 158, 11, 0.04) 65%, transparent 100%)",
           pointerEvents: "none",
         }}
       />

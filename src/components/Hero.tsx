@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
               scale: 1.05,
               y: -2,
               boxShadow:
-                "0 20px 45px rgba(16, 185, 129, 0.45), 0 10px 25px rgba(245, 158, 11, 0.3)",
+                "0 20px 45px rgba(139, 92, 246, 0.45), 0 10px 25px rgba(245, 158, 11, 0.3)",
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -192,7 +192,7 @@ const Hero: React.FC = () => {
             className="group w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 dark:from-white/10 dark:to-white/5 border-2 border-gray-400 dark:border-accent-600/40 text-gray-900 dark:text-white font-bold flex items-center justify-center gap-2 hover:border-accent-600 dark:hover:border-accent-500 transition-all duration-300 ring-accent-focus"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 10px 25px rgba(16, 185, 129, 0.2)",
+              boxShadow: "0 10px 25px rgba(139, 92, 246, 0.25)",
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}

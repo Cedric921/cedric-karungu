@@ -26,7 +26,7 @@
   /* Accessible focus ring (keyboard only) */
   :focus { outline: none; }
   :focus-visible {
-    outline: 2px solid rgb(16 185 129 / 0.75);
+    outline: 2px solid rgb(139 92 246 / 0.75);
     outline-offset: 2px;
     border-radius: 6px;
   }
@@ -51,12 +51,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(16,185,129,0.4), rgba(245,158,11,0.4));
+    background: linear-gradient(180deg, rgba(139,92,246,0.45), rgba(245,158,11,0.4));
     @apply rounded-full transition-colors duration-200;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgba(16,185,129,0.7), rgba(245,158,11,0.7));
+    background: linear-gradient(180deg, rgba(139,92,246,0.75), rgba(245,158,11,0.7));
   }
 }
 
@@ -78,7 +78,7 @@
   .glass-hover {
     @apply transition-all duration-300
            hover:border-accent-500/50 dark:hover:border-accent-400/50
-           hover:shadow-[0_12px_40px_rgba(16,185,129,0.12)] dark:hover:shadow-[0_12px_40px_rgba(16,185,129,0.2)];
+           hover:shadow-[0_12px_40px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_12px_40px_rgba(139,92,246,0.25)];
   }
 
   /* Lume gradient text */
@@ -87,16 +87,16 @@
            bg-gradient-to-r from-accent-500 via-accent-400 to-highlight-500;
   }
 
-  /* Lume gradient surface (buttons/badges) */
+  /* Lume gradient surface (buttons/badges) — violet → lavender → amber */
   .bg-lume {
-    background: linear-gradient(135deg, #10b981 0%, #34d399 45%, #fbbf24 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #fbbf24 100%);
   }
 
   /* Soft outer glow for hero focal elements */
   .glow-lume {
     box-shadow:
-      0 0 0 1px rgba(16,185,129,0.25),
-      0 20px 60px -20px rgba(16,185,129,0.45),
+      0 0 0 1px rgba(139,92,246,0.25),
+      0 20px 60px -20px rgba(139,92,246,0.5),
       0 30px 80px -10px rgba(245,158,11,0.25);
   }
 
@@ -111,7 +111,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(120deg, #10b981, #34d399, #fbbf24, #10b981);
+    background: linear-gradient(120deg, #7c3aed, #a78bfa, #fbbf24, #7c3aed);
     background-size: 300% 300%;
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
@@ -146,6 +146,58 @@
     @apply text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent
            bg-gradient-to-r from-zinc-900 via-accent-700 to-zinc-900
            dark:from-white dark:via-accent-300 dark:to-zinc-300;
+  }
+
+  /* Editorial card — refined glass with corner accents and aurora reveal on hover */
+  .card-lume {
+    @apply relative bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl
+           border border-zinc-200/70 dark:border-white/[0.08]
+           shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]
+           transition-all duration-500 ease-out;
+  }
+  .card-lume:hover {
+    @apply border-accent-500/40 dark:border-accent-400/40
+           shadow-[0_20px_50px_-12px_rgba(139,92,246,0.2)]
+           dark:shadow-[0_20px_60px_-15px_rgba(139,92,246,0.35)];
+  }
+
+  /* Corner accent ticks for editorial cards (top-left + bottom-right) */
+  .corner-ticks::before,
+  .corner-ticks::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgb(139 92 246 / 0.6);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+  .corner-ticks::before {
+    top: 8px; left: 8px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+    transform: translate(-4px, -4px);
+  }
+  .corner-ticks::after {
+    bottom: 8px; right: 8px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
+    transform: translate(4px, 4px);
+  }
+  .group:hover .corner-ticks::before,
+  .group:hover .corner-ticks::after {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Terminal-style chip (used for tags) */
+  .chip-mono {
+    @apply inline-flex items-center font-mono text-[10px] uppercase tracking-[0.12em]
+           text-zinc-600 dark:text-zinc-300
+           bg-zinc-100/70 dark:bg-white/[0.04]
+           border border-zinc-200/80 dark:border-white/[0.08]
+           rounded-md px-2 py-0.5;
   }
 
   /* Noise overlay (subtle grain for premium feel) */

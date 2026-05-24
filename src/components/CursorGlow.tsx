@@ -32,7 +32,7 @@ const CursorGlow: React.FC = () => {
       className="fixed w-96 h-96 rounded-full pointer-events-none z-10 mix-blend-screen"
       style={{
         background:
-          "radial-gradient(circle, rgba(16, 185, 129, 0.55) 0%, rgba(245, 158, 11, 0.25) 35%, transparent 70%)",
+          "radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(245, 158, 11, 0.25) 35%, transparent 70%)",
         filter: "blur(50px)",
       }}
       animate={{

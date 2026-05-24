@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
     hover: {
       y: -8,
       scale: 1.05,
-      boxShadow: "0 20px 40px rgba(16, 185, 129, 0.18)",
+      boxShadow: "0 20px 40px rgba(139, 92, 246, 0.22)",
       transition: { duration: 0.3 },
     },
   };
@@ -105,7 +105,7 @@ const Contact: React.FC = () => {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px] -z-10 hidden dark:block"
         style={{
           background:
-            "radial-gradient(circle, rgba(16,185,129,0.14) 0%, rgba(245,158,11,0.08) 45%, transparent 70%)",
+            "radial-gradient(circle, rgba(139,92,246,0.16) 0%, rgba(245,158,11,0.08) 45%, transparent 70%)",
         }}
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
@@ -256,8 +256,8 @@ const Contact: React.FC = () => {
                     placeholder={t("contact.namePlaceholder")}
                     className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                     whileFocus={{
-                      borderColor: "rgb(16, 185, 129)",
-                      boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
+                      borderColor: "rgb(139, 92, 246)",
+                      boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.2)",
                     }}
                     transition={{ duration: 0.2 }}
                   />
@@ -277,8 +277,8 @@ const Contact: React.FC = () => {
                     placeholder={t("contact.emailPlaceholder")}
                     className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                     whileFocus={{
-                      borderColor: "rgb(16, 185, 129)",
-                      boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
+                      borderColor: "rgb(139, 92, 246)",
+                      boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.2)",
                     }}
                     transition={{ duration: 0.2 }}
                   />
@@ -300,8 +300,8 @@ const Contact: React.FC = () => {
                   placeholder={t("contact.subjectPlaceholder")}
                   className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                   whileFocus={{
-                    borderColor: "rgb(16, 185, 129)",
-                    boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
+                    borderColor: "rgb(139, 92, 246)",
+                    boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.2)",
                   }}
                   transition={{ duration: 0.2 }}
                 />
@@ -322,8 +322,8 @@ const Contact: React.FC = () => {
                   rows={4}
                   className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all resize-none placeholder:text-gray-400 dark:placeholder:text-gray-600"
                   whileFocus={{
-                    borderColor: "rgb(16, 185, 129)",
-                    boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
+                    borderColor: "rgb(139, 92, 246)",
+                    boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.2)",
                   }}
                   transition={{ duration: 0.2 }}
                 />
@@ -336,7 +336,7 @@ const Contact: React.FC = () => {
                 whileHover={{
                   scale: 1.02,
                   boxShadow:
-                    "0 20px 40px rgba(16, 185, 129, 0.35), 0 10px 20px rgba(245, 158, 11, 0.2)",
+                    "0 20px 40px rgba(139, 92, 246, 0.4), 0 10px 20px rgba(245, 158, 11, 0.22)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}

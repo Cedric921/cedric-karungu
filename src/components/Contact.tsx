@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 import { Icons } from "../constants";
 import { useScrollAnimation } from "../hooks";
 import SectionHeader from "./SectionHeader";
@@ -34,51 +35,61 @@ const Contact: React.FC = () => {
     hover: {
       y: -8,
       scale: 1.05,
-      boxShadow: "0 20px 40px rgba(124, 58, 237, 0.15)",
+      boxShadow: "0 20px 40px rgba(16, 185, 129, 0.18)",
       transition: { duration: 0.3 },
     },
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string | null)?.trim();
+    const email = (formData.get("email") as string | null)?.trim();
+    const subject = (formData.get("subject") as string | null)?.trim();
+    const message = (formData.get("message") as string | null)?.trim();
+
+    if (!name || !email || !subject || !message) {
+      toast.error(t("contact.fillAllFields"), {
+        description: "Tous les champs sont requis.",
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error(t("contact.invalidEmail"), {
+        description: "Vérifie le format de ton adresse e-mail.",
+      });
+      return;
+    }
+
+    const toastId = toast.loading("Envoi du message…", {
+      description: "Sécurisation et acheminement en cours.",
+    });
+
     (async () => {
       try {
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-        const name = (formData.get("name") as string | null)?.trim();
-        const email = (formData.get("email") as string | null)?.trim();
-        const subject = (formData.get("subject") as string | null)?.trim();
-        const message = (formData.get("message") as string | null)?.trim();
-
-        if (!name || !email || !subject || !message) {
-          alert(t("contact.fillAllFields"));
-          return;
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          alert(t("contact.invalidEmail"));
-          return;
-        }
-
         const res = await fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, subject, message }),
         });
-
         const data = await res.json();
         if (!res.ok) {
-          console.error("Contact error", data);
-          alert(data.error || "Failed to send message");
-          return;
+          throw new Error(data?.error || "Failed to send message");
         }
-
-        alert(t("contact.sentSuccess") || "Message sent — thank you!");
+        toast.success(t("contact.sentSuccess") || "Message sent — thank you!", {
+          id: toastId,
+          description: `Je te recontacte sous 24h, ${name}.`,
+          duration: 6000,
+        });
         form.reset();
       } catch (err) {
-        console.error("Contact submit error", err);
-        alert("An error occurred while sending your message.");
+        toast.error("Échec de l'envoi", {
+          id: toastId,
+          description: (err as Error)?.message || "Réessaie dans un instant.",
+        });
       }
     })();
   };
@@ -94,7 +105,7 @@ const Contact: React.FC = () => {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px] -z-10 hidden dark:block"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(16,185,129,0.14) 0%, rgba(245,158,11,0.08) 45%, transparent 70%)",
         }}
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
@@ -104,7 +115,7 @@ const Contact: React.FC = () => {
         className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-5 hidden dark:block"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(245,158,11,0.22) 0%, transparent 70%)",
         }}
         animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
@@ -245,8 +256,8 @@ const Contact: React.FC = () => {
                     placeholder={t("contact.namePlaceholder")}
                     className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                     whileFocus={{
-                      borderColor: "rgb(124, 58, 237)",
-                      boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.1)",
+                      borderColor: "rgb(16, 185, 129)",
+                      boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
                     }}
                     transition={{ duration: 0.2 }}
                   />
@@ -266,8 +277,8 @@ const Contact: React.FC = () => {
                     placeholder={t("contact.emailPlaceholder")}
                     className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                     whileFocus={{
-                      borderColor: "rgb(124, 58, 237)",
-                      boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.1)",
+                      borderColor: "rgb(16, 185, 129)",
+                      boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
                     }}
                     transition={{ duration: 0.2 }}
                   />
@@ -289,8 +300,8 @@ const Contact: React.FC = () => {
                   placeholder={t("contact.subjectPlaceholder")}
                   className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
                   whileFocus={{
-                    borderColor: "rgb(124, 58, 237)",
-                    boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.1)",
+                    borderColor: "rgb(16, 185, 129)",
+                    boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
                   }}
                   transition={{ duration: 0.2 }}
                 />
@@ -311,20 +322,21 @@ const Contact: React.FC = () => {
                   rows={4}
                   className="w-full bg-white dark:bg-[#050505] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all resize-none placeholder:text-gray-400 dark:placeholder:text-gray-600"
                   whileFocus={{
-                    borderColor: "rgb(124, 58, 237)",
-                    boxShadow: "0 0 0 3px rgba(124, 58, 237, 0.1)",
+                    borderColor: "rgb(16, 185, 129)",
+                    boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.18)",
                   }}
                   transition={{ duration: 0.2 }}
                 />
               </motion.div>
 
-              {/* Submit button */}
+              {/* Submit button — Lume gradient */}
               <motion.button
                 type="submit"
-                className="group relative w-full py-4 rounded-xl bg-gradient-to-r from-accent-600 to-accent-500 text-white font-bold flex items-center justify-center gap-2 mt-4 shadow-lg shadow-accent-600/20 ring-accent-focus overflow-hidden transition-shadow"
+                className="group relative w-full py-4 rounded-xl bg-lume text-zinc-950 font-bold flex items-center justify-center gap-2 mt-4 shadow-lg shadow-accent-600/20 ring-accent-focus overflow-hidden transition-shadow"
                 whileHover={{
                   scale: 1.02,
-                  boxShadow: "0 20px 30px rgba(124, 58, 237, 0.3)",
+                  boxShadow:
+                    "0 20px 40px rgba(16, 185, 129, 0.35), 0 10px 20px rgba(245, 158, 11, 0.2)",
                 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}

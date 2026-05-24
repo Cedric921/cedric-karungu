@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
 
   const iconVariants = {
     rest: { scale: 1, rotate: 0 },
-    hover: { scale: 1.2, rotate: 12, color: "rgb(124, 58, 237)" },
+    hover: { scale: 1.2, rotate: 12, color: "rgb(16, 185, 129)" },
   };
 
   return (
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
         className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(16,185,129,0.22) 0%, transparent 70%)",
         }}
         animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
         className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
           background:
-            "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(245,158,11,0.22) 0%, transparent 70%)",
         }}
         animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
@@ -176,7 +176,7 @@ const Footer: React.FC = () => {
                   <motion.a
                     href={link.href}
                     className="text-sm text-gray-600 dark:text-gray-400 inline-flex items-center gap-2 group"
-                    whileHover={{ color: "rgb(124, 58, 237)", x: 4 }}
+                    whileHover={{ color: "rgb(16, 185, 129)", x: 4 }}
                     transition={{ duration: 0.2 }}
                   >
                     <span className="font-mono text-[10px] tabular-nums text-gray-400 dark:text-gray-600 group-hover:text-accent-500 transition-colors">
@@ -262,8 +262,8 @@ const Footer: React.FC = () => {
                   key={tech}
                   className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md bg-white/40 dark:bg-white/[0.04] text-gray-600 dark:text-gray-300 border border-gray-200/70 dark:border-white/10 cursor-default"
                   whileHover={{
-                    borderColor: "rgb(124, 58, 237)",
-                    color: "rgb(124, 58, 237)",
+                    borderColor: "rgb(16, 185, 129)",
+                    color: "rgb(16, 185, 129)",
                   }}
                   transition={{ duration: 0.2 }}
                 >
@@ -325,7 +325,7 @@ const Footer: React.FC = () => {
               variants={containerVariants}
             >
               <motion.span
-                whileHover={{ color: "rgb(124, 58, 237)" }}
+                whileHover={{ color: "rgb(16, 185, 129)" }}
                 transition={{ duration: 0.2 }}
               >
                 {t("footer.role")}
@@ -333,7 +333,7 @@ const Footer: React.FC = () => {
               <span className="hidden sm:inline">•</span>
               <motion.span
                 className="hidden sm:inline cursor-default"
-                whileHover={{ color: "rgb(124, 58, 237)" }}
+                whileHover={{ color: "rgb(245, 158, 11)" }}
                 transition={{ duration: 0.2 }}
               >
                 {t("footer.opportunity")}

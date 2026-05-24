@@ -55,7 +55,7 @@ const Experience: React.FC = () => {
         className="absolute -top-20 -right-32 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(245,158,11,0.12) 50%, transparent 75%)",
         }}
         animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
@@ -91,7 +91,7 @@ const Experience: React.FC = () => {
                 className="absolute -left-[1.85rem] md:-left-[2.25rem] top-3 flex items-center justify-center"
               >
                 <motion.span
-                  className="block w-3.5 h-3.5 rounded-full bg-white dark:bg-[#050505] border-2 border-accent-500 shadow-[0_0_12px_rgba(124,58,237,0.5)]"
+                  className="block w-3.5 h-3.5 rounded-full bg-white dark:bg-surface-950 border-2 border-accent-500 shadow-[0_0_12px_rgba(16,185,129,0.55)]"
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2.4, repeat: Infinity }}
                 />

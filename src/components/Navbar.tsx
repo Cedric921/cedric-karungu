@@ -114,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           href="#"
           onClick={(e) => handleLinkClick(e, "#about")}
           className="text-2xl font-bold tracking-tighter text-gray-900 dark:text-white ring-accent-focus rounded-md"
-          whileHover={{ scale: 1.05, color: "rgb(124, 58, 237)" }}
+          whileHover={{ scale: 1.05, color: "rgb(16, 185, 129)" }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
         >
@@ -147,7 +147,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                   {isActive && (
                     <motion.span
                       layoutId="nav-active-dot"
-                      className="inline-block w-1.5 h-1.5 rounded-full bg-accent-500 shadow-[0_0_8px_rgba(124,58,237,0.7)]"
+                      className="inline-block w-1.5 h-1.5 rounded-full bg-accent-500 shadow-[0_0_8px_rgba(16,185,129,0.75)]"
                       transition={{
                         type: "spring",
                         stiffness: 400,
@@ -174,7 +174,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               className="p-2 rounded-full text-gray-600 dark:text-gray-300"
               whileHover={{
                 scale: 1.1,
-                backgroundColor: "rgba(124, 58, 237, 0.1)",
+                backgroundColor: "rgba(16, 185, 129, 0.12)",
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
@@ -186,10 +186,11 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             <motion.a
               href="#contact"
               onClick={(e) => handleLinkClick(e, "#contact")}
-              className="px-5 py-2.5 rounded-full bg-accent-600 text-white text-sm font-semibold shadow-lg shadow-accent-600/20"
+              className="px-5 py-2.5 rounded-full bg-lume text-zinc-950 text-sm font-semibold shadow-lg shadow-accent-600/20"
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 30px rgba(124, 58, 237, 0.4)",
+                boxShadow:
+                  "0 20px 30px rgba(16, 185, 129, 0.35), 0 8px 18px rgba(245, 158, 11, 0.25)",
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
@@ -270,7 +271,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className="block py-2 text-sm font-medium text-gray-600 dark:text-gray-300"
                   variants={menuItemVariants}
-                  whileHover={{ x: 4, color: "rgb(124, 58, 237)" }}
+                  whileHover={{ x: 4, color: "rgb(16, 185, 129)" }}
                   transition={{ duration: 0.2 }}
                 >
                   {link.name}

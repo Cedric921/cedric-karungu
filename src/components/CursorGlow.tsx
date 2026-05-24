@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const CursorGlow: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -18,12 +18,12 @@ const CursorGlow: React.FC = () => {
       setIsVisible(false);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -31,8 +31,9 @@ const CursorGlow: React.FC = () => {
     <motion.div
       className="fixed w-96 h-96 rounded-full pointer-events-none z-10 mix-blend-screen"
       style={{
-        background: 'radial-gradient(circle, rgba(124, 58, 237, 0.6) 0%, rgba(124, 58, 237, 0.2) 30%, transparent 70%)',
-        filter: 'blur(50px)',
+        background:
+          "radial-gradient(circle, rgba(16, 185, 129, 0.55) 0%, rgba(245, 158, 11, 0.25) 35%, transparent 70%)",
+        filter: "blur(50px)",
       }}
       animate={{
         x: mousePosition.x - 192,
@@ -40,7 +41,7 @@ const CursorGlow: React.FC = () => {
         opacity: isVisible ? 0.8 : 0,
       }}
       transition={{
-        type: 'spring',
+        type: "spring",
         damping: 25,
         mass: 1,
         stiffness: 80,

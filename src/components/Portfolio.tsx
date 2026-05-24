@@ -69,7 +69,7 @@ const Portfolio: React.FC = () => {
         className="absolute -top-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(245,158,11,0.1) 50%, transparent 75%)",
         }}
         animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
@@ -215,10 +215,11 @@ const Portfolio: React.FC = () => {
         >
           <motion.a
             href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-accent-600 text-white rounded-full font-medium cursor-pointer shadow-md"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-lume text-zinc-950 rounded-full font-medium cursor-pointer shadow-md"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 20px 30px rgba(124, 58, 237, 0.3)",
+              boxShadow:
+                "0 20px 35px rgba(16, 185, 129, 0.35), 0 8px 18px rgba(245, 158, 11, 0.25)",
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}

@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-[#050505] dark:via-slate-900/40 dark:to-[#050505]"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden scroll-mt-28 bg-surface-50 dark:bg-surface-950 bg-lume-radial noise"
       ref={ref}
     >
       {/* Background elements */}
@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
 
       {/* Animated gradient circles */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-accent-600/15 to-blue-600/15 dark:from-accent-600/25 dark:to-blue-600/25 rounded-full blur-[80px] md:blur-[120px] -z-10"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-accent-500/20 to-highlight-500/20 dark:from-accent-500/30 dark:to-highlight-500/25 rounded-full blur-[80px] md:blur-[120px] -z-10"
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.4, 0.6, 0.4],
@@ -163,8 +163,13 @@ const Hero: React.FC = () => {
           <motion.a
             href={resumePdf}
             download="Ced-CV.pdf"
-            className="group relative w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 text-white font-bold shadow-lg shadow-accent-600/30 flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-accent-600/50 transition-all duration-300 ring-accent-focus overflow-hidden"
-            whileHover={{ scale: 1.05, y: -2 }}
+            className="group relative w-full sm:w-auto px-8 py-4 rounded-full bg-lume text-zinc-950 font-bold shadow-lg shadow-accent-600/30 flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-accent-600/50 transition-all duration-300 ring-accent-focus overflow-hidden"
+            whileHover={{
+              scale: 1.05,
+              y: -2,
+              boxShadow:
+                "0 20px 45px rgba(16, 185, 129, 0.45), 0 10px 25px rgba(245, 158, 11, 0.3)",
+            }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
           >
@@ -187,7 +192,7 @@ const Hero: React.FC = () => {
             className="group w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 dark:from-white/10 dark:to-white/5 border-2 border-gray-400 dark:border-accent-600/40 text-gray-900 dark:text-white font-bold flex items-center justify-center gap-2 hover:border-accent-600 dark:hover:border-accent-500 transition-all duration-300 ring-accent-focus"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 10px 25px rgba(124, 58, 237, 0.15)",
+              boxShadow: "0 10px 25px rgba(16, 185, 129, 0.2)",
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}

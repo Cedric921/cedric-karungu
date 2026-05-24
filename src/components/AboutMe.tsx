@@ -42,7 +42,7 @@ const About: React.FC = () => {
         className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-5"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(16,185,129,0.22) 0%, rgba(245,158,11,0.1) 50%, transparent 75%)",
         }}
         animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
@@ -81,63 +81,78 @@ const About: React.FC = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          {/* Image */}
+          {/* Portrait — Lume edition: offset frame + aurora border + meta caption */}
           <motion.div
             className="lg:w-2/5 w-full flex justify-center"
             variants={itemVariants}
           >
             <motion.div
-              className="relative w-80 h-96 lg:w-[450px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl"
+              className="relative"
               onMouseEnter={() => setIsImageHovered(true)}
               onMouseLeave={() => setIsImageHovered(false)}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <motion.img
-                src="/images/VB/cedric.jpeg"
-                alt="Cedric Karungu"
-                className="w-full h-full object-cover"
-                animate={{ scale: isImageHovered ? 1.1 : 1 }}
+              {/* Offset accent block behind */}
+              <motion.div
+                aria-hidden="true"
+                className="absolute -inset-3 lg:-inset-4 rounded-3xl bg-gradient-to-br from-accent-500/40 via-accent-400/20 to-highlight-500/40 blur-2xl"
+                animate={{ opacity: isImageHovered ? 0.85 : 0.55 }}
                 transition={{ duration: 0.5 }}
               />
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 flex flex-col items-end justify-end p-8"
-                animate={{ opacity: isImageHovered ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.p
-                  className="text-white text-3xl font-bold pb-2"
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={
-                    isImageHovered
-                      ? { y: 0, opacity: 1 }
-                      : { y: 10, opacity: 0 }
-                  }
-                  transition={{ duration: 0.3 }}
-                >
-                  {tr("about.name")}
-                </motion.p>
-                <motion.p
-                  className="text-lg font-medium"
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={
-                    isImageHovered
-                      ? { y: 0, opacity: 1 }
-                      : { y: 10, opacity: 0 }
-                  }
-                  transition={{ duration: 0.3, delay: 0.05 }}
-                >
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-accent-400 dark:from-accent-500 dark:to-white">
-                    {tr("about.role")}
+              {/* Offset outline frame */}
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-5 -right-5 lg:-bottom-6 lg:-right-6 w-full h-full rounded-3xl border-2 border-accent-500/60 dark:border-accent-400/50"
+              />
+              {/* Portrait card with aurora animated border */}
+              <div className="border-aurora relative w-80 h-[26rem] lg:w-[420px] lg:h-[540px] rounded-3xl overflow-hidden shadow-2xl">
+                <motion.img
+                  src="/images/VB/cedric.png"
+                  alt="Cedric Karungu"
+                  className="w-full h-full object-cover"
+                  animate={{ scale: isImageHovered ? 1.06 : 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+                {/* Permanent vignette */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
+                />
+
+                {/* Top-left status chip */}
+                <div className="absolute top-4 left-4 flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent-500" />
                   </span>
-                  <span className="text-white mx-2">
-                    {tr("about.separator")}
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/90">
+                    On the grid
                   </span>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-accent-400 dark:from-accent-500 dark:to-white">
+                </div>
+
+                {/* Top-right index */}
+                <span className="absolute top-4 right-4 font-mono text-[10px] tabular-nums text-white/60">
+                  CK · 002
+                </span>
+
+                {/* Bottom caption (always visible, expands on hover) */}
+                <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/60 mb-1">
+                    {tr("about.role")} {tr("about.separator")}{" "}
                     {tr("about.projectManager")}
-                  </span>
-                </motion.p>
-              </motion.div>
+                  </div>
+                  <div className="text-white text-2xl lg:text-3xl font-bold tracking-tight">
+                    {tr("about.name")}
+                  </div>
+                  <motion.div
+                    className="mt-3 h-px bg-gradient-to-r from-accent-400 via-highlight-400 to-transparent"
+                    initial={{ scaleX: 0.3, originX: 0 }}
+                    animate={{ scaleX: isImageHovered ? 1 : 0.3 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  />
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 

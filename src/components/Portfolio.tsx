@@ -61,24 +61,24 @@ const Portfolio: React.FC = () => {
   return (
     <section
       id="portfolio"
-      className="py-24 scroll-mt-28 bg-gray-50 dark:bg-[#100B17] transition-colors duration-300 relative overflow-hidden"
+      className="py-24 scroll-mt-28 bg-surface-100/60 dark:bg-surface-950 transition-colors duration-300 relative overflow-hidden noise"
       ref={ref}
     >
       {/* Background animations */}
       <motion.div
-        className="absolute -top-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-5"
+        className="absolute -top-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-10"
         style={{
           background:
-            "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(139,92,246,0.32) 0%, transparent 70%)",
         }}
         animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-5"
+        className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-10"
         style={{
           background:
-            "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(245,158,11,0.28) 0%, transparent 70%)",
         }}
         animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
@@ -112,98 +112,148 @@ const Portfolio: React.FC = () => {
           }
         />
 
-        {/* Projects grid */}
+        {/* Projects grid — magazine bento with zigzag offset */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          key={activeFilter}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-x-8 lg:gap-y-16"
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          {visible.slice(0, 6).map(({ view: project }, idx) => (
-            <motion.div
-              key={project.key}
-              className="group relative h-full"
-              variants={itemVariants}
-            >
-              {/* Soft glow on hover */}
-              <motion.div className="absolute -inset-0.5 bg-gradient-to-r from-accent-500/40 via-accent-600/40 to-accent-500/40 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500 pointer-events-none" />
-
-              {/* Main card container */}
-              <motion.div
-                className="glass glass-hover relative h-full rounded-2xl overflow-hidden"
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          {visible.slice(0, 6).map(({ view: project }, idx) => {
+            const primary =
+              project.link && project.link !== "#"
+                ? project.link
+                : project.githubLink;
+            const offset = idx % 3 === 1 ? "lg:translate-y-10" : "";
+            return (
+              <motion.article
+                key={project.key}
+                className={`group relative h-full ${offset}`}
+                variants={itemVariants}
               >
-                {/* Image container with overlay */}
-                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 dark:from-[#111] dark:to-[#0a0a0a]">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.06 }}
-                    transition={{ duration: 0.6, type: "spring" }}
-                  />
-                  <span className="absolute top-3 left-3 z-20 font-mono text-[10px] tabular-nums uppercase tracking-[0.18em] text-white/80 bg-black/40 backdrop-blur-md border border-white/10 rounded-full px-3 py-1">
-                    {String(idx + 1).padStart(2, "0")} / {project.category}
-                  </span>
-                </div>
+                {/* Outline shadow plate — offset behind card, draws on hover */}
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-2xl border border-accent-500/0 group-hover:border-accent-500/35 transition-all duration-500 translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 pointer-events-none"
+                />
 
-                {/* Content */}
-                <div className="p-7 flex flex-col">
-                  <div className="flex justify-between items-start gap-4 mb-4">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300 leading-snug">
-                      {project.title}
-                    </h3>
+                <motion.div
+                  className="card-lume relative h-full rounded-2xl overflow-hidden flex flex-col"
+                  whileHover={{ y: -8 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                >
+                  {/* Image area */}
+                  <div className="relative h-56 overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-surface-950">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.08 }}
+                      transition={{
+                        duration: 0.8,
+                        ease: [0.22, 0.61, 0.36, 1],
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-                    <div className="flex items-center gap-2 shrink-0">
-                      {project.link && project.link !== "#" && (
-                        <motion.a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-full bg-white/60 dark:bg-white/5 border border-gray-200/70 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-accent-600 hover:text-white hover:border-accent-600 transition-colors ring-accent-focus"
-                          whileHover={{ y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          aria-label="Open project website"
+                    {/* Category pill — top-left */}
+                    <span className="absolute top-4 left-4 inline-flex items-center font-mono text-[10px] uppercase tracking-[0.18em] text-white/90 bg-black/45 backdrop-blur-md border border-white/15 rounded-md px-2 py-1">
+                      <span className="w-1 h-1 rounded-full bg-accent-400 mr-2 animate-pulse" />
+                      {project.category}
+                    </span>
+
+                    {/* Tags slide-up overlay on hover */}
+                    <div className="absolute inset-x-0 bottom-0 p-4 flex flex-wrap gap-1.5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out bg-gradient-to-t from-black/85 via-black/40 to-transparent">
+                      {project.tags.slice(0, 5).map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center font-mono text-[10px] uppercase tracking-[0.12em] text-white bg-white/10 backdrop-blur-sm border border-white/15 rounded-md px-2 py-0.5"
                         >
-                          <Icons.ExternalLink />
-                        </motion.a>
-                      )}
-                      {project.githubLink && (
-                        <motion.a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-full bg-white/60 dark:bg-white/5 border border-gray-200/70 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-accent-600 hover:text-white hover:border-accent-600 transition-colors ring-accent-focus"
-                          whileHover={{ y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          aria-label="Open project GitHub"
-                        >
-                          <Icons.Github />
-                        </motion.a>
-                      )}
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
+                  {/* Content */}
+                  <div className="relative p-6 flex flex-col gap-3 flex-1">
+                    {/* Huge ghost index — editorial signature */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute -top-4 right-4 font-mono text-7xl md:text-8xl font-bold leading-none tabular-nums text-zinc-900/[0.06] dark:text-white/[0.05] select-none pointer-events-none"
+                    >
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
 
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-0.5 rounded-md font-mono text-[10px] uppercase tracking-wider text-gray-600 dark:text-gray-300 bg-white/40 dark:bg-white/[0.04] border border-gray-200/70 dark:border-white/10"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="relative z-10">
+                      <div className="eyebrow text-[10px] mb-2">
+                        <span className="eyebrow-rule" />
+                        <span>case · {project.category}</span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-bold text-zinc-900 dark:text-white leading-snug group-hover:text-lume transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <p className="relative z-10 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+
+                    {/* CTA row */}
+                    <div className="relative z-10 mt-auto pt-4 flex items-center justify-between border-t border-dashed border-zinc-200/70 dark:border-white/[0.07]">
+                      {primary ? (
+                        <a
+                          href={primary}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/cta inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-300 hover:text-accent-600 dark:hover:text-accent-400 transition-colors ring-accent-focus rounded-sm"
+                        >
+                          View case
+                          <span className="inline-block transition-transform duration-300 group-hover/cta:translate-x-1 group-hover:translate-x-1">
+                            →
+                          </span>
+                        </a>
+                      ) : (
+                        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-400 dark:text-zinc-600">
+                          Private
+                        </span>
+                      )}
+
+                      <div className="flex items-center gap-1">
+                        {project.link && project.link !== "#" && (
+                          <motion.a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-accent-600 dark:hover:text-accent-400 transition-colors ring-accent-focus"
+                            whileHover={{ y: -2, rotate: -8 }}
+                            whileTap={{ scale: 0.9 }}
+                            aria-label="Open project website"
+                          >
+                            <Icons.ExternalLink />
+                          </motion.a>
+                        )}
+                        {project.githubLink && (
+                          <motion.a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-accent-600 dark:hover:text-accent-400 transition-colors ring-accent-focus"
+                            whileHover={{ y: -2, rotate: -8 }}
+                            whileTap={{ scale: 0.9 }}
+                            aria-label="Open project GitHub"
+                          >
+                            <Icons.Github />
+                          </motion.a>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
+                </motion.div>
+              </motion.article>
+            );
+          })}
         </motion.div>
 
         {/* See more button */}
@@ -215,10 +265,11 @@ const Portfolio: React.FC = () => {
         >
           <motion.a
             href={`/${locale}/projects`}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-accent-600 text-white rounded-full font-medium cursor-pointer shadow-md"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-lume text-zinc-950 rounded-full font-medium cursor-pointer shadow-md"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 20px 30px rgba(124, 58, 237, 0.3)",
+              boxShadow:
+                "0 20px 35px rgba(139, 92, 246, 0.4), 0 8px 18px rgba(245, 158, 11, 0.25)",
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}

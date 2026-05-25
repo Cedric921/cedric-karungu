@@ -1,4 +1,4 @@
-import type { Locale } from './models/shared';
+import type { Locale } from "./models/shared";
 
 export type LocalizedString = { en: string; fr: string; es: string };
 
@@ -45,16 +45,19 @@ export type SocialLinkItem = {
 };
 
 function isLocalized(v: unknown): v is LocalizedString {
-  return !!v && typeof v === 'object' && 'en' in (v as object);
+  return !!v && typeof v === "object" && "en" in (v as object);
 }
 
-export function pick(value: LocalizedString | string | undefined, locale: Locale): string {
-  if (!value) return '';
-  if (typeof value === 'string') return value;
+export function pick(
+  value: LocalizedString | string | undefined,
+  locale: Locale,
+): string {
+  if (!value) return "";
+  if (typeof value === "string") return value;
   if (isLocalized(value)) {
-    return value[locale] || value.en || value.fr || value.es || '';
+    return value[locale] || value.en || value.fr || value.es || "";
   }
-  return '';
+  return "";
 }
 
 export type ProjectView = {
@@ -69,14 +72,17 @@ export type ProjectView = {
 };
 
 export function projectToView(p: ProjectItem, locale: Locale): ProjectView {
+  const titleEn = pick(p.title, "en");
+  // Prefer content-stable key so it matches whether the item comes from the
+  // static constants fallback or the API response (avoids remount + animation reset).
   return {
-    key: String(p._id ?? p.id ?? p.link ?? Math.random()),
+    key: String(titleEn || p.link || p._id || p.id || ""),
     title: pick(p.title, locale),
     description: pick(p.description, locale),
     category: pick(p.category, locale),
-    image: p.image || '',
-    link: p.link || '#',
-    githubLink: p.githubLink || '',
+    image: p.image || "",
+    link: p.link || "#",
+    githubLink: p.githubLink || "",
     tags: p.tags || [],
   };
 }
@@ -90,9 +96,13 @@ export type ExperienceView = {
   description: string;
 };
 
-export function experienceToView(e: ExperienceItem, locale: Locale): ExperienceView {
+export function experienceToView(
+  e: ExperienceItem,
+  locale: Locale,
+): ExperienceView {
+  const roleEn = pick(e.role, "en");
   return {
-    key: String(e._id ?? e.id ?? e.company ?? Math.random()),
+    key: String(`${e.company}-${roleEn}` || e._id || e.id || ""),
     role: pick(e.role, locale),
     company: e.company,
     period: pick(e.period, locale),

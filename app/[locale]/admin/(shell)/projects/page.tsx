@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CrudList } from '@/components/admin/CrudList';
 import { Modal } from '@/components/admin/Modal';
 import { Badge } from '@/components/admin/ui';
@@ -10,9 +10,11 @@ import { ProjectForm } from '@/components/admin/forms/ProjectForm';
 type Project = {
   _id: string;
   title: { en: string; fr: string; es: string };
+  slug?: string;
   description: { en: string; fr: string; es: string };
   category: { en: string; fr: string; es: string };
   image: string;
+  gallery?: string[];
   link: string;
   githubLink: string;
   tags: string[];
@@ -24,6 +26,7 @@ type Project = {
 export default function ProjectsAdminPage() {
   const { items, loading, create, update, remove } = useCrud<Project>('/api/admin/projects');
   const [editing, setEditing] = useState<Project | 'new' | null>(null);
+  const tagSuggestions = useMemo(() => items.flatMap((p) => p.tags || []), [items]);
 
   const onDelete = async (p: Project) => {
     if (!confirm(`Delete "${p.title.en || 'this project'}"?`)) return;
@@ -78,6 +81,11 @@ export default function ProjectsAdminPage() {
               </div>
             ),
           },
+          {
+            key: 'gallery',
+            header: 'Images',
+            render: (p) => <span className="tabular-nums text-gray-500">{p.gallery?.length || (p.image ? 1 : 0)}</span>,
+          },
           { key: 'order', header: 'Order', render: (p) => <span className="text-gray-500">{p.order}</span> },
         ]}
         emptyTitle="No projects yet"
@@ -95,6 +103,7 @@ export default function ProjectsAdminPage() {
             initial={editing === 'new' ? undefined : editing}
             onCancel={() => setEditing(null)}
             onSubmit={onSubmit}
+            tagSuggestions={tagSuggestions}
           />
         )}
       </Modal>

@@ -17,13 +17,23 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.07, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
   },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+// Title slides up from behind a mask, editorial style.
+const titleVariants = {
+  hidden: { y: "105%", rotate: 1.5 },
+  visible: {
+    y: "0%",
+    rotate: 0,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+  },
 };
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -58,9 +68,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           <span>{eyebrow}</span>
         </motion.div>
 
-        <motion.h2 className="section-title" variants={itemVariants}>
-          {title}
-        </motion.h2>
+        <div className="overflow-hidden pb-1">
+          <motion.h2 className="section-title" variants={titleVariants}>
+            {title}
+          </motion.h2>
+        </div>
 
         {description && (
           <motion.p

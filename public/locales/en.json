@@ -95,5 +95,26 @@
     "success": "Success",
     "close": "Close",
     "language": "Language"
+  },
+  "projectPage": {
+    "back": "All projects",
+    "category": "Category",
+    "stack": "Stack",
+    "links": "Links",
+    "images": "Images",
+    "live": "Live site",
+    "source": "Source code",
+    "private": "Private / NDA",
+    "visit": "Visit the project",
+    "overview": "Overview",
+    "gallery": "Gallery",
+    "openImage": "Open image {n}",
+    "next": "Next project",
+    "previous": "Previous",
+    "relatedEyebrow": "Same stack",
+    "related": "Projects with similar tags",
+    "close": "Close",
+    "prevImage": "Previous image",
+    "nextImage": "Next image"
   }
 }

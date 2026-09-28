@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Icons } from "../constants";
-import { useScrollAnimation, useSiteContent } from "../hooks";
+import { useIntroReady, useSiteContent } from "../hooks";
+import { RevealLines } from "./motion/Reveal";
+import Magnetic from "./motion/Magnetic";
+import { scrollToTarget } from "./motion/SmoothScroll";
 
 const resumePdf = "/document/Ced CV.pdf";
 
 const Hero: React.FC = () => {
   const t = useTranslations();
   const content = useSiteContent();
-  const { ref, isVisible } = useScrollAnimation(0.2);
+  const isVisible = useIntroReady();
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const contentY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -160]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const contentScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 0.94]);
+  const blobY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 220]);
   const [currentTitle, setCurrentTitle] = useState("");
   const [titleIndex, setTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -72,6 +82,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-grid-black dark:bg-grid-white opacity-[0.02] dark:opacity-[0.08] pointer-events-none" />
 
       {/* Animated gradient circles */}
+      <motion.div className="absolute inset-0 -z-10" style={{ y: blobY }}>
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-accent-500/20 to-highlight-500/20 dark:from-accent-500/30 dark:to-highlight-500/25 rounded-full blur-[80px] md:blur-[120px] -z-10"
         animate={{
@@ -84,7 +95,9 @@ const Hero: React.FC = () => {
           ease: "easeInOut",
         }}
       />
+      </motion.div>
 
+      <motion.div className="relative z-10 w-full" style={{ y: contentY, opacity: contentOpacity, scale: contentScale }}>
       <motion.div
         className="mt-[40px] relative z-10 max-w-5xl mx-auto px-6 text-center"
         variants={containerVariants}
@@ -114,23 +127,22 @@ const Hero: React.FC = () => {
           </motion.span>
         </motion.div>
 
-        {/* Main heading */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight mb-2"
-        >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">
-            {content.get("hero.name") ?? t("hero.name")}
-          </span>
-          <br />
-          <motion.span
-            className="bg-clip-text text-transparent bg-gradient-to-r from-accent-600 via-accent-500 to-accent-400"
-            animate={{ backgroundPosition: ["0% 0%", "100% 0%", "0% 0%"] }}
-            transition={{ duration: 4, repeat: Infinity }}
-          >
-            {content.get("hero.nickname") ?? t("hero.nickname")}
-          </motion.span>
-        </motion.h1>
+        {/* Main heading — masked line reveal after the intro curtain */}
+        <RevealLines
+          as="h1"
+          play={isVisible}
+          delay={0.15}
+          stagger={0.12}
+          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.02] mb-2"
+          lines={[
+            <span key="n" className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-200 dark:to-gray-400">
+              {content.get("hero.name") ?? t("hero.name")}
+            </span>,
+            <span key="k" className="text-lume">
+              {content.get("hero.nickname") ?? t("hero.nickname")}
+            </span>,
+          ]}
+        />
 
         {/* Typing animation */}
         <motion.h2
@@ -160,6 +172,7 @@ const Hero: React.FC = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
+          <Magnetic className="w-full sm:w-auto">
           <motion.a
             href={resumePdf}
             download="Ced-CV.pdf"
@@ -187,8 +200,17 @@ const Hero: React.FC = () => {
               <Icons.Download />
             </motion.span>
           </motion.a>
+          </Magnetic>
+          <Magnetic className="w-full sm:w-auto">
           <motion.a
             href="#portfolio"
+            onClick={(e) => {
+              const target = document.querySelector("#portfolio");
+              if (target) {
+                e.preventDefault();
+                scrollToTarget(target);
+              }
+            }}
             className="group w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 dark:from-white/10 dark:to-white/5 border-2 border-gray-400 dark:border-accent-600/40 text-gray-900 dark:text-white font-bold flex items-center justify-center gap-2 hover:border-accent-600 dark:hover:border-accent-500 transition-all duration-300 ring-accent-focus"
             whileHover={{
               scale: 1.05,
@@ -202,6 +224,7 @@ const Hero: React.FC = () => {
               <Icons.Layout />
             </span>
           </motion.a>
+          </Magnetic>
         </motion.div>
 
         {/* Social row — editorial mono labels */}
@@ -250,6 +273,30 @@ const Hero: React.FC = () => {
           </div>
         </motion.div>
       </motion.div>
+      </motion.div>
+
+      {/* Scroll cue */}
+      <motion.button
+        type="button"
+        onClick={() => {
+          const target = document.querySelector("#about");
+          if (target) scrollToTarget(target);
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden [@media(min-width:768px)_and_(min-height:880px)]:flex flex-col items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 ring-accent-focus rounded"
+        initial={{ opacity: 0 }}
+        animate={isVisible ? { opacity: 1 } : undefined}
+        transition={{ delay: 1.2 }}
+        aria-label="Scroll to next section"
+      >
+        Scroll
+        <span className="relative block h-12 w-px overflow-hidden bg-zinc-300/40 dark:bg-white/10">
+          <motion.span
+            className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-transparent via-accent-500 to-transparent"
+            animate={reduce ? undefined : { y: ["-100%", "200%"] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </span>
+      </motion.button>
     </section>
   );
 };

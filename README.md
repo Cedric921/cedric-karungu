@@ -73,7 +73,18 @@ package.json           # Scripts and dependencies
 
 ### Project Image Uploads
 
-Set `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` in `.env.local` to enable project image uploads in the admin area. These credentials are used only by the server; uploads are limited to supported image formats up to 10 MB each.
+Set `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` in `.env.local` to enable project image uploads in the admin area. The secret never leaves the server: `/api/admin/uploads/projects/sign` returns a short-lived signature and the browser uploads straight to Cloudinary (parallel, with progress), so large images aren't blocked by the serverless request-size limit. Each project holds up to 10 images (JPEG/PNG/WebP/GIF/AVIF, 20 MB max each); you can also paste an image URL, reorder images and pick the cover.
+
+### Backfilling Project Screenshots
+
+Screenshots placed in `public/images/Projects/<slug>/01.jpg, 02.jpg, …` can be attached to existing projects:
+
+```bash
+npm run sync:media            # dry run: prints what would change
+npm run sync:media -- --apply # writes slugs, galleries and extra tags to MongoDB
+```
+
+With Cloudinary configured the files are uploaded to `portfolio/projects/<slug>/`; otherwise the local `/images/...` paths are stored (they resolve once deployed). Extra tags/descriptions come from `scripts/project-enrichment.json`.
 
 ### Build for Production
 

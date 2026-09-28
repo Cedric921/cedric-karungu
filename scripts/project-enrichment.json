@@ -1,0 +1,36 @@
+{
+  "_slugs": {
+    "Hela - Control of your business, one company at a time.": "hela"
+  },
+  "hela": {
+    "tags": ["Next.js", "Multi-tenant SaaS", "Point of Sale", "Inventory", "Multi-currency", "Treasury", "Desktop app", "i18n"],
+    "description": {
+      "en": "Hela is multi-company management software for people running several businesses at once (a shop, a restaurant, a bar, a motel or a service business). It tracks each one's stock, till, sales and cash, then consolidates everything into one picture.\nFeatures include a touch POS with floor plan and open tabs, stock per location with transfers, a multi-wallet treasury (cash, bank, mobile money) with proper franc/dollar handling, shared supplier records and personal budgets. Available on web, desktop (Mac, Windows, Linux), tablet and phone.",
+      "fr": "Hela est un logiciel de gestion multi-entreprises pour ceux qui gèrent plusieurs activités à la fois (boutique, restaurant, bar, motel ou service). Il suit le stock, la caisse, les ventes et la trésorerie de chacune, puis consolide le tout en une seule vue.\nPOS tactile avec plan de salle et additions ouvertes, stock par emplacement avec transferts, trésorerie multi-portefeuilles (cash, banque, mobile money) en francs et en dollars, fournisseurs partagés et budgets personnels. Disponible sur web, desktop (Mac, Windows, Linux), tablette et téléphone."
+    }
+  },
+  "masomo-cd": {
+    "tags": ["Next.js", "Offline-first", "EdTech", "School Management", "PWA", "Multi-currency", "PDF Reports"],
+    "description": {
+      "en": "Masomo is school-management software built for the DRC. It covers enrolment, fees, attendance, grades and EPST-format report cards, and keeps working when the network drops: attendance, grading and the cash desk run offline and sync when the connection returns.\nFees are handled in two currencies (FC and $) with the rate locked on each receipt, timetables are generated for every class in one click, data can be imported from Excel, and report cards are printed in batch. Available self-hosted or as a hosted platform.",
+      "fr": "Masomo est le logiciel de gestion scolaire pensé pour la RDC : inscriptions, frais, présences, notes et bulletins au format EPST. Il continue de fonctionner quand le réseau s'arrête : présences, cotation et caisse fonctionnent hors ligne et se synchronisent au retour de la connexion.\nFrais en deux devises (FC et $) avec taux figé sur chaque reçu, horaires générés en un clic pour toutes les classes, import Excel et impression des bulletins par lot. Disponible en auto-hébergé ou en plateforme hébergée."
+    }
+  },
+  "safirisha": {
+    "tags": ["Next.js", "Logistics", "Parcel Tracking", "Multi-tenant SaaS", "Fleet Management", "WhatsApp / SMS"],
+    "description": {
+      "en": "Safirisha is a platform for intercity transport agencies (Goma, Bukavu, Bujumbura): parcel registration, trips, buses and drivers, and the cash desk. Customers receive a tracking link by WhatsApp or SMS and follow their parcel from drop-off to pickup without creating an account.\nEvery parcel goes through a 4-step chain of custody (drop-off, transport with plate and driver, reception, pickup against ID). Agencies sign up themselves with a 30-day trial and get a public departure calendar. The name means \"to make travel\" in Swahili.",
+      "fr": "Safirisha est la plateforme des agences de transport interurbain (Goma, Bukavu, Bujumbura) : enregistrement des colis, voyages, bus et chauffeurs, et caisse. Le client reçoit un lien de suivi par WhatsApp ou SMS et suit son colis du dépôt jusqu'au retrait, sans compte.\nChaque colis suit une chaîne de responsabilité en 4 étapes (dépôt, transport avec plaque et chauffeur, réception, retrait sur pièce d'identité). Les agences s'inscrivent seules avec 30 jours d'essai et disposent d'un calendrier public des départs."
+    }
+  },
+  "nunua": {
+    "tags": ["ERP", "Point of Sale", "Inventory", "CRM", "Invoicing", "Multi-currency", "Cross-platform"],
+    "description": {
+      "en": "Nunua is an all-in-one ERP for African SMEs covering sales, stock, finances and more, and it doubles as a personal-finance tool. It runs on web, mobile and desktop with instant sync, and one account can manage several companies.\nIt includes a touch POS, multi-warehouse stock with low-stock alerts, a CRM, cash desks in USD, CDF and EUR, invoices and quotes with PDF export, real-time analytics and Mobile Money. Apps are available for Windows, macOS, Linux and Android.",
+      "fr": "Nunua est un ERP tout-en-un pour les PME africaines : ventes, stock, finances et plus, qui sert aussi d'outil de finances personnelles. Il fonctionne sur web, mobile et desktop avec synchronisation instantanée, et un seul compte peut gérer plusieurs entreprises.\nPOS tactile, stock multi-entrepôts avec alertes de rupture, CRM, caisses en USD, CDF et EUR, factures et devis en PDF, analytique en temps réel et Mobile Money. Applications Windows, macOS, Linux et Android."
+    }
+  },
+  "afia-platform": {
+    "link": "https://afia-cd.vercel.app"
+  }
+}

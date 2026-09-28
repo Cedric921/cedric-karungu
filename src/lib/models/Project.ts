@@ -7,6 +7,7 @@ const ProjectSchema = new Schema(
     description: { type: LocalizedStringSchema, required: true },
     category: { type: LocalizedStringSchema, required: true },
     image: { type: String, default: '' },
+    gallery: { type: [String], default: [] },
     link: { type: String, default: '' },
     githubLink: { type: String, default: '' },
     tags: { type: [String], default: [] },

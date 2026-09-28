@@ -9,6 +9,7 @@ export type ProjectItem = {
   description: LocalizedString | string;
   category: LocalizedString | string;
   image: string;
+  gallery?: string[];
   link: string;
   githubLink?: string;
   tags: string[];
@@ -66,6 +67,7 @@ export type ProjectView = {
   description: string;
   category: string;
   image: string;
+  gallery: string[];
   link: string;
   githubLink: string;
   tags: string[];
@@ -81,6 +83,7 @@ export function projectToView(p: ProjectItem, locale: Locale): ProjectView {
     description: pick(p.description, locale),
     category: pick(p.category, locale),
     image: p.image || "",
+    gallery: p.gallery?.length ? p.gallery : p.image ? [p.image] : [],
     link: p.link || "#",
     githubLink: p.githubLink || "",
     tags: p.tags || [],

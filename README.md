@@ -71,6 +71,10 @@ package.json           # Scripts and dependencies
    ```
    The Next.js dev server will be available at `http://localhost:3000`
 
+### Project Image Uploads
+
+Set `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` in `.env.local` to enable project image uploads in the admin area. These credentials are used only by the server; uploads are limited to supported image formats up to 10 MB each.
+
 ### Build for Production
 
 ```bash

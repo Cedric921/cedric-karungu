@@ -4,8 +4,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { PROJECTS, Icons } from "../constants";
 import { useScrollAnimation, usePublicData } from "../hooks";
 import { projectToView, pick, type ProjectItem } from "../lib/public-data";
+import type { ProjectView } from "../lib/public-data";
 import type { Locale } from "../lib/models/shared";
 import SectionHeader from "./SectionHeader";
+import ProjectDetailsModal from "./ProjectDetailsModal";
 
 type FilterKey = "all" | "web" | "app";
 
@@ -13,6 +15,7 @@ const Portfolio: React.FC = () => {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
+  const [selectedProject, setSelectedProject] = useState<ProjectView | null>(null);
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   const { data: projects } = usePublicData<ProjectItem[]>(
@@ -163,6 +166,14 @@ const Portfolio: React.FC = () => {
                       {project.category}
                     </span>
 
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(project)}
+                      className="absolute top-4 right-4 rounded-md border border-white/30 bg-black/55 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md hover:bg-black/75"
+                    >
+                      Details +
+                    </button>
+
                     {/* Tags slide-up overlay on hover */}
                     <div className="absolute inset-x-0 bottom-0 p-4 flex flex-wrap gap-1.5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out bg-gradient-to-t from-black/85 via-black/40 to-transparent">
                       {project.tags.slice(0, 5).map((tag) => (
@@ -279,6 +290,7 @@ const Portfolio: React.FC = () => {
           </motion.a>
         </motion.div>
       </div>
+      <ProjectDetailsModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );
 };

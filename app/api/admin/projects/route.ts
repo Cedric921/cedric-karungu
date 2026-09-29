@@ -1,6 +1,7 @@
 import { Project } from '@/lib/models/Project';
 import { ok, readJson } from '@/lib/api';
 import { withAdmin } from '@/lib/handler';
+import { sanitizeProjectInput } from '@/lib/project-input';
 
 export const GET = withAdmin(async () => {
   const items = await Project.find({}).sort({ order: 1, createdAt: -1 }).lean();
@@ -9,6 +10,6 @@ export const GET = withAdmin(async () => {
 
 export const POST = withAdmin(async (req) => {
   const body = await readJson<Record<string, unknown>>(req);
-  const created = await Project.create(body);
+  const created = await Project.create(await sanitizeProjectInput(body));
   return ok(created.toObject(), { status: 201 });
 });

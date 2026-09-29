@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { Icons } from "../constants";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { scrollToTarget } from "./motion/SmoothScroll";
 
 type NavbarProps = {
   theme: string;
@@ -60,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       pathname === `/${locale}/`;
     if (isHome) {
       const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: "smooth" });
+      if (target) scrollToTarget(target);
     } else {
       router.push(`/${locale}${href}`);
     }

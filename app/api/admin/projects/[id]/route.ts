@@ -2,6 +2,7 @@ import { Project } from '@/lib/models/Project';
 import { ok, fail, readJson } from '@/lib/api';
 import { withAdmin } from '@/lib/handler';
 import mongoose from 'mongoose';
+import { sanitizeProjectInput } from '@/lib/project-input';
 
 type Params = { params: Promise<{ id: string }> };
 const isValidId = (id: string) => mongoose.Types.ObjectId.isValid(id);
@@ -18,7 +19,7 @@ export const PATCH = withAdmin(async (req, ctx: Params) => {
   const { id } = await ctx.params;
   if (!isValidId(id)) return fail('Invalid id', 400);
   const body = await readJson<Record<string, unknown>>(req);
-  const doc = await Project.findByIdAndUpdate(id, { $set: body }, { new: true }).lean();
+  const doc = await Project.findByIdAndUpdate(id, { $set: await sanitizeProjectInput(body, id) }, { new: true, runValidators: true }).lean();
   if (!doc) return fail('Not found', 404);
   return ok(doc);
 });

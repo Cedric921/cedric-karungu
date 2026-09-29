@@ -102,6 +102,7 @@ export type Project = {
   description: string;
   category: string;
   image: string;
+  gallery?: string[];
   link: string;
   githubLink?: string;
   tags: string[];
@@ -114,6 +115,7 @@ export const PROJECTS: Project[] = [
     description: 'Ever Teams is a comprehensive work and project management platform designed to streamline team collaboration. It enables real-time task management, time tracking, productivity monitoring, and seamless integration with popular tools like GitHub and JIRA, empowering teams to deliver projects efficiently.',
     category: 'Web',
     image: '/images/Projects/project1.png',
+    gallery: ['/images/Projects/project1.png', '/images/Projects/ever-teams/01.jpg', '/images/Projects/ever-teams/02.jpg', '/images/Projects/ever-teams/03.jpg', '/images/Projects/ever-teams/04.jpg', '/images/Projects/ever-teams/05.jpg', '/images/Projects/ever-teams/06.jpg', '/images/Projects/ever-teams/07.jpg', '/images/Projects/ever-teams/08.jpg'],
     link: 'https://app.ever.team/',
     githubLink: 'https://github.com/ever-co/ever-teams',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Time Tracking']
@@ -124,6 +126,7 @@ export const PROJECTS: Project[] = [
     description: 'Ever Gauzy Platform is an open-source business management solution that integrates ERP, CRM, HRM, accounting, and project management functionalities. It provides companies with a unified system to manage employees, projects, finances, and operations, enhancing productivity and decision-making.',
     category: 'Web',
     image: '/images/Projects/project2.png',
+    gallery: ['/images/Projects/project2.png', '/images/Projects/ever-gauzy-platform/01.jpg', '/images/Projects/ever-gauzy-platform/02.jpg', '/images/Projects/ever-gauzy-platform/03.jpg', '/images/Projects/ever-gauzy-platform/04.jpg', '/images/Projects/ever-gauzy-platform/05.jpg', '/images/Projects/ever-gauzy-platform/06.jpg', '/images/Projects/ever-gauzy-platform/07.jpg', '/images/Projects/ever-gauzy-platform/08.jpg'],
     link: 'https://gauzy.co/',
     githubLink: 'https://github.com/ever-co/ever-gauzy',
     tags: ['Angular', 'Nest.js', 'PostgreSQL', 'TypeORM']
@@ -134,6 +137,7 @@ export const PROJECTS: Project[] = [
     description: 'Acho System is a secure and sustainable financial platform offering payment and investment solutions specifically designed for civil servants and employees worldwide. Leveraging microservices architecture, it ensures robust security, scalability, and user-friendly experiences for managing personal finances effectively.',
     category: 'Web',
     image: '/images/Projects/acho.png',
+    gallery: ['/images/Projects/acho.png', '/images/Projects/acho-system/01.jpg', '/images/Projects/acho-system/02.jpg', '/images/Projects/acho-system/03.jpg', '/images/Projects/acho-system/04.jpg', '/images/Projects/acho-system/05.jpg'],
     link: 'https://acho-turbo-fr-website.vercel.app/',
     githubLink: 'https://github.com/ACHO-SYSTEM',
     tags: ['Next.js', 'Nest.js', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Micro Servies', 'TypeORM', 'Turbo']
@@ -144,6 +148,7 @@ export const PROJECTS: Project[] = [
     description: 'HIÜRD is a trusted local service marketplace connecting people for everyday tasks. It facilitates hiring and getting hired through secure payments, local connections, and a focus on building community trust, making it easy to find reliable help for various services.',
     category: 'App',
     image: '/images/Projects/hiurd.webp',
+    gallery: ['/images/Projects/hiurd.webp', '/images/Projects/hiurd/01.jpg', '/images/Projects/hiurd/02.jpg', '/images/Projects/hiurd/03.jpg', '/images/Projects/hiurd/04.jpg', '/images/Projects/hiurd/05.jpg'],
     link: 'https://hiurd.com/',
     githubLink: 'https://github.com/HIURD',
     tags: ['React Native', 'Nest.js', 'Stripe', 'TypeORM', 'Mobile']
@@ -154,6 +159,7 @@ export const PROJECTS: Project[] = [
     description: 'AdminAtete is a document archiving application that digitizes and organizes business documents for secure storage and easy access. It helps companies streamline document management, improve compliance, and enhance operational efficiency with features like search, categorization, and cloud-based storage.',
     category: 'Web',
     image: '/images/Projects/appatete.jpg',
+    gallery: ['/images/Projects/appatete.jpg', '/images/Projects/adminatete/01.jpg', '/images/Projects/adminatete/02.jpg', '/images/Projects/adminatete/03.jpg', '/images/Projects/adminatete/04.jpg', '/images/Projects/adminatete/05.jpg', '/images/Projects/adminatete/06.jpg', '/images/Projects/adminatete/07.jpg', '/images/Projects/adminatete/08.jpg'],
     link: 'https://home-ten-zeta.vercel.app/fr/about/',
     githubLink: 'https://github.com/cedric921',
     tags: ['React JS', 'Express JS', 'PostgreSQL', 'Sequelize']
@@ -164,6 +170,7 @@ export const PROJECTS: Project[] = [
     description: 'Focus is a mobile application centered around inspirational quotes, providing users with a curated collection of motivational content to inspire daily productivity and positivity. It features a sleek interface, personalized recommendations, and cross-platform support for an uplifting user experience.',
     category: 'App',
     image: '/images/Projects/focus.png',
+    gallery: ['/images/Projects/focus.png', '/images/Projects/focus/01.jpg', '/images/Projects/focus/02.jpg', '/images/Projects/focus/03.jpg', '/images/Projects/focus/04.jpg', '/images/Projects/focus/05.jpg', '/images/Projects/focus/06.jpg'],
     link: 'https://focus-admin.vercel.app/',
     githubLink: 'https://github.com/cedric921/focus',
     tags: ['React Native', 'Next.js', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Turbo']
@@ -174,6 +181,7 @@ export const PROJECTS: Project[] = [
     description: 'Ever Teams Mobile brings the full power of project management and team collaboration to mobile devices. Users can manage tasks, track time, collaborate in real-time, and access integrated tools on-the-go, ensuring productivity regardless of location.',
     category: 'App',
     image: '/images/Projects/project1.png',
+    gallery: ['/images/Projects/project1.png', '/images/Projects/ever-teams-mobile/01.jpg', '/images/Projects/ever-teams-mobile/02.jpg', '/images/Projects/ever-teams-mobile/03.jpg', '/images/Projects/ever-teams-mobile/04.jpg', '/images/Projects/ever-teams-mobile/05.jpg', '/images/Projects/ever-teams-mobile/06.jpg', '/images/Projects/ever-teams-mobile/07.jpg', '/images/Projects/ever-teams-mobile/08.jpg'],
     link: 'https://app.ever.team/',
     githubLink: 'https://github.com/ever-co/ever-teams',
     tags: ['React Native', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Mobile']
@@ -184,6 +192,7 @@ export const PROJECTS: Project[] = [
     description: 'KADEA Renders is a web platform for KADEA Academy students in the Goma branch to share and showcase their projects. It includes project galleries, collaboration features, and a responsive design to foster learning and networking among students and educators.',
     category: 'Web',
     image: '/images/Projects/gda-renders.png',
+    gallery: ['/images/Projects/gda-renders.png', '/images/Projects/kadea-renders-goma-branch/01.jpg', '/images/Projects/kadea-renders-goma-branch/02.jpg', '/images/Projects/kadea-renders-goma-branch/03.jpg', '/images/Projects/kadea-renders-goma-branch/04.jpg', '/images/Projects/kadea-renders-goma-branch/05.jpg'],
     link: 'https://cd-almuni.vercel.app/',
     githubLink: 'https://github.com/Bam92/student-projects-frontend',
     tags: ['Next.js', 'Nest.js', 'PostgreSQL', 'TypeORM', 'Mobile']
@@ -204,6 +213,7 @@ export const PROJECTS: Project[] = [
     description: 'Zwa Platform is a web application for sharing and selling clothing items, providing users with an online marketplace to showcase and purchase fashion products.',
     category: 'Web',
     image: '/images/Projects/zwa.png',
+    gallery: ['/images/Projects/zwa.png', '/images/Projects/zwa-platform/01.jpg', '/images/Projects/zwa-platform/02.jpg', '/images/Projects/zwa-platform/03.jpg', '/images/Projects/zwa-platform/04.jpg'],
     link: 'https://zwa-web.vercel.app/',
     githubLink: 'https://github.com/cedric921',
     tags: ['Next.js', 'React', 'Mobile Money']
@@ -214,7 +224,8 @@ export const PROJECTS: Project[] = [
     description: 'Afia Platform for Hospital is a comprehensive web application designed for hospital management, including patient records, appointments, and administrative tasks to streamline healthcare operations.',
     category: 'Web',
     image: '/images/Projects/afia-hosp.png',
-    link: 'https://afia-cd-hospital.vercel.app',
+    gallery: ['/images/Projects/afia-hosp.png', '/images/Projects/afia-platform-for-hospital/01.jpg', '/images/Projects/afia-platform-for-hospital/02.jpg', '/images/Projects/afia-platform-for-hospital/03.jpg', '/images/Projects/afia-platform-for-hospital/04.jpg', '/images/Projects/afia-platform-for-hospital/05.jpg', '/images/Projects/afia-platform-for-hospital/06.jpg', '/images/Projects/afia-platform-for-hospital/07.jpg', '/images/Projects/afia-platform-for-hospital/08.jpg'],
+    link: 'https://afia-cd.vercel.app',
     githubLink: 'https://github.com/cedric921',
     tags: ['Next.js', 'React', 'React Native', 'Hospital']
   },
@@ -224,7 +235,8 @@ export const PROJECTS: Project[] = [
     description: 'Afia Platform is an online medical record system that allows patients and healthcare providers to manage and access medical information securely and efficiently.',
     category: 'Web',
     image: '/images/Projects/afia-patient.png',
-    link: 'https://afia-cd-hospital.vercel.app',
+    gallery: ['/images/Projects/afia-patient.png', '/images/Projects/afia-platform/01.jpg', '/images/Projects/afia-platform/02.jpg', '/images/Projects/afia-platform/03.jpg', '/images/Projects/afia-platform/04.jpg', '/images/Projects/afia-platform/05.jpg', '/images/Projects/afia-platform/06.jpg', '/images/Projects/afia-platform/07.jpg', '/images/Projects/afia-platform/08.jpg'],
+    link: 'https://afia-cd.vercel.app',
     githubLink: 'https://github.com/cedric921',
     tags: ['Next.js', 'React', 'React Native', 'Hospital', 'medical carnet']
   },

@@ -95,5 +95,26 @@
     "success": "Succès",
     "close": "Fermer",
     "language": "Langue"
+  },
+  "projectPage": {
+    "back": "Tous les projets",
+    "category": "Catégorie",
+    "stack": "Stack",
+    "links": "Liens",
+    "images": "Images",
+    "live": "Site en ligne",
+    "source": "Code source",
+    "private": "Privé / NDA",
+    "visit": "Voir le projet",
+    "overview": "Aperçu",
+    "gallery": "Galerie",
+    "openImage": "Ouvrir l'image {n}",
+    "next": "Projet suivant",
+    "previous": "Précédent",
+    "relatedEyebrow": "Même stack",
+    "related": "Projets avec des tags similaires",
+    "close": "Fermer",
+    "prevImage": "Image précédente",
+    "nextImage": "Image suivante"
   }
 }

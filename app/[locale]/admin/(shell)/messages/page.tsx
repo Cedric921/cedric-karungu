@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { Card, Badge, Button, Spinner, EmptyState } from '@/components/admin/ui';
+import { Card, Badge, Button, Spinner, EmptyState, Textarea } from '@/components/admin/ui';
 import { Modal } from '@/components/admin/Modal';
 import { adminFetch } from '@/lib/admin-fetch';
-import { Mail, Trash2, Archive, ArchiveRestore, Reply, CheckCheck } from 'lucide-react';
+import { Mail, Trash2, Archive, ArchiveRestore, Reply, CheckCheck, Send } from 'lucide-react';
+import { toast } from 'sonner';
 
 type Message = {
   _id: string;
@@ -17,6 +18,7 @@ type Message = {
   locale?: string;
   emailSent?: boolean;
   emailError?: string;
+  replies?: { body: string; sentAt: string }[];
   userAgent?: string;
   ip?: string;
   createdAt: string;
@@ -151,6 +153,10 @@ export default function MessagesPage() {
         onClose={() => setSelected(null)}
         onArchive={toggleArchive}
         onDelete={remove}
+        onReplied={(m) => {
+          setSelected(m);
+          setItems((prev) => prev.map((it) => (it._id === m._id ? m : it)));
+        }}
       />
     </div>
   );
@@ -187,13 +193,43 @@ function MessageModal({
   onClose,
   onArchive,
   onDelete,
+  onReplied,
 }: {
   message: Message | null;
   onClose: () => void;
   onArchive: (m: Message) => void;
   onDelete: (m: Message) => void;
+  onReplied: (m: Message) => void;
 }) {
+  const [draft, setDraft] = useState('');
+  const [sending, setSending] = useState(false);
+  const [composing, setComposing] = useState(false);
+  const id = message?._id;
+  useEffect(() => {
+    setDraft('');
+    setComposing(false);
+  }, [id]);
+
   if (!message) return null;
+
+  const sendReply = async () => {
+    if (!draft.trim()) return;
+    setSending(true);
+    const res = await adminFetch<Message>(`/api/admin/messages/${message._id}/reply`, {
+      method: 'POST',
+      body: JSON.stringify({ body: draft }),
+    });
+    setSending(false);
+    if (res.ok) {
+      toast.success(`Reply sent to ${message.email}`);
+      setDraft('');
+      setComposing(false);
+      onReplied(res.data);
+    } else {
+      toast.error(('error' in res && res.error) || 'Could not send the reply');
+    }
+  };
+
   return (
     <Modal open={!!message} onClose={onClose} title={message.subject} size="lg">
       <div className="space-y-4">
@@ -217,17 +253,48 @@ function MessageModal({
             Email delivery error: {message.emailError}
           </div>
         )}
+        {(message.replies?.length ?? 0) > 0 && (
+          <div className="space-y-2">
+            <div className="text-xs font-medium uppercase tracking-wide text-gray-500">Your replies</div>
+            {message.replies!.map((r, i) => (
+              <div key={i} className="rounded-lg border border-accent-500/20 bg-accent-500/5 p-3 text-sm whitespace-pre-wrap">
+                <div className="mb-1 text-[11px] text-gray-500">{new Date(r.sentAt).toLocaleString()}</div>
+                {r.body}
+              </div>
+            ))}
+          </div>
+        )}
+        {composing && (
+          <div className="space-y-2">
+            <Textarea
+              autoFocus
+              rows={6}
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) sendReply();
+              }}
+              placeholder={`Reply to ${message.name}… (⌘/Ctrl + Enter to send)`}
+            />
+            <p className="text-xs text-gray-500">
+              Sent from your Brevo sender to {message.email}, with the original message quoted. Their answer comes back to your inbox.
+            </p>
+          </div>
+        )}
         <div className="flex items-center justify-end gap-2 pt-2">
           <Button variant="secondary" size="sm" onClick={() => onArchive(message)}>
             {message.archived ? <ArchiveRestore size={14} /> : <Archive size={14} />}
             {message.archived ? 'Unarchive' : 'Archive'}
           </Button>
-          <a
-            href={`mailto:${message.email}?subject=Re:%20${encodeURIComponent(message.subject)}`}
-            className="inline-flex items-center gap-2 h-8 px-3 text-xs font-medium rounded-lg bg-accent-600 hover:bg-accent-500 text-white"
-          >
-            <Reply size={14} /> Reply
-          </a>
+          {composing ? (
+            <Button size="sm" onClick={sendReply} disabled={sending || !draft.trim()}>
+              {sending ? <Spinner size={14} /> : <Send size={14} />} Send reply
+            </Button>
+          ) : (
+            <Button size="sm" onClick={() => setComposing(true)}>
+              <Reply size={14} /> Reply
+            </Button>
+          )}
           <Button variant="danger" size="sm" onClick={() => onDelete(message)}>
             <Trash2 size={14} /> Delete
           </Button>

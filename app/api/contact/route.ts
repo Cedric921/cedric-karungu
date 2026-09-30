@@ -1,7 +1,7 @@
-import sgMail from '@sendgrid/mail';
 import { connectDB, isDbConfigured } from '@/lib/db';
 import { Message } from '@/lib/models/Message';
 import { ok, fail, readJson, handleError } from '@/lib/api';
+import { EMAIL_TO, escapeHtml, isMailConfigured, sendMail } from '@/lib/mailer';
 
 type ContactPayload = {
   name?: string;
@@ -10,13 +10,6 @@ type ContactPayload = {
   message?: string;
   locale?: string;
 };
-
-const EMAIL_TO = process.env.EMAIL_TO || 'ckarungu921@gmail.com';
-const FROM_EMAIL = process.env.FROM_EMAIL || EMAIL_TO;
-
-if (process.env.SENDGRID_API_KEY) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-}
 
 export async function POST(req: Request) {
   try {
@@ -60,22 +53,23 @@ export async function POST(req: Request) {
 
     let emailSent = false;
     let emailError = '';
-    if (process.env.SENDGRID_API_KEY) {
+    if (isMailConfigured()) {
       try {
-        await sgMail.send({
-          to: EMAIL_TO,
-          from: FROM_EMAIL,
+        await sendMail({
+          to: { email: EMAIL_TO },
+          replyTo: { email, name },
           subject: `[Portfolio Contact] ${subject}`,
           text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-          html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><hr/><p>${message.replace(/\n/g, '<br/>')}</p>`,
-          replyTo: email,
-        } as Parameters<typeof sgMail.send>[0]);
+          html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><hr/><p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>`,
+          tags: ['contact'],
+        });
         emailSent = true;
       } catch (mailErr) {
-        const m = (mailErr as { message?: string })?.message || 'email send failed';
-        emailError = m;
-        console.error('[contact] SendGrid error:', m);
+        emailError = mailErr instanceof Error ? mailErr.message : 'email send failed';
+        console.error('[contact] Brevo error:', emailError);
       }
+    } else {
+      emailError = 'BREVO_API_KEY is not set';
     }
 
     if (saved && messageId) {

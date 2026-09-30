@@ -27,11 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} — Cédric Karungu`,
     description,
-    openGraph: {
-      title: project.title,
-      description,
-      images: project.image ? [{ url: project.image }] : undefined,
-    },
+    // The branded card comes from ./opengraph-image.tsx.
+    openGraph: { title: project.title, description, type: 'article' },
+    twitter: { card: 'summary_large_image', title: project.title, description },
   };
 }
 

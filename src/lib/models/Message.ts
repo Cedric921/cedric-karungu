@@ -13,6 +13,16 @@ const MessageSchema = new Schema(
     ip: { type: String, default: '' },
     emailSent: { type: Boolean, default: false },
     emailError: { type: String, default: '' },
+    replies: {
+      type: [
+        {
+          body: { type: String, required: true },
+          sentAt: { type: Date, default: Date.now },
+          messageId: { type: String, default: '' },
+        },
+      ],
+      default: [],
+    },
   },
   { timestamps: true }
 );

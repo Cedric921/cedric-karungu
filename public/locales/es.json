@@ -76,7 +76,8 @@
     "availabilityStatus": "Abierto a proyectos",
     "namePlaceholder": "Tu nombre",
     "subject": "Asunto",
-    "subjectPlaceholder": "Asunto del mensaje"
+    "subjectPlaceholder": "Asunto del mensaje",
+    "sentSuccess": "Mensaje enviado — ¡gracias! Te respondo pronto."
   },
   "footer": {
     "copyright": "Todos los derechos reservados.",
@@ -116,5 +117,34 @@
     "close": "Cerrar",
     "prevImage": "Imagen anterior",
     "nextImage": "Imagen siguiente"
+  },
+  "ui": {
+    "localTime": "hora local",
+    "currently": "Actualmente",
+    "findMe": "En otros sitios",
+    "allProjects": "Ver todos los proyectos",
+    "backToTop": "Volver arriba",
+    "menu": "Menú",
+    "toggleTheme": "Cambiar tema",
+    "phone": "Teléfono",
+    "aka": "alias",
+    "viewCase": "Ver proyecto",
+    "index": "Índice",
+    "languages": "Idiomas",
+    "basedIn": "Ubicado en",
+    "status": "Estado",
+    "experience": "Experiencia",
+    "sayHello": "¿Tienes un proyecto en mente? Escríbeme — leo y respondo cada mensaje.",
+    "orForm": "O usa el formulario",
+    "sending": "Enviando…",
+    "iBuild": "Construyo",
+    "builds": [
+      "plataformas web",
+      "apps móviles",
+      "sistemas ERP y CRM",
+      "productos con IA",
+      "APIs que escalan"
+    ],
+    "badge": "Disponible · Remoto"
   }
 }

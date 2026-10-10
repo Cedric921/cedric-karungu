@@ -16,8 +16,8 @@ export function OgFrame({ children, footer }: { children: React.ReactNode; foote
         fontFamily: 'Jakarta',
         color: BRAND.fg,
         background: BRAND.bg,
-        backgroundImage:
-          'radial-gradient(circle at 12% 0%, rgba(139,92,246,0.35), transparent 45%), radial-gradient(circle at 100% 100%, rgba(245,158,11,0.22), transparent 45%)',
+        // Flat like the site, with one faint accent glow.
+        backgroundImage: 'radial-gradient(circle at 0% 0%, rgba(139,92,246,0.16), transparent 40%)',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -28,7 +28,7 @@ export function OgFrame({ children, footer }: { children: React.ReactNode; foote
       </div>
       {children}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 24, fontWeight: 700, color: 'rgba(255,255,255,0.6)' }}>
-        <div style={{ display: 'flex', width: 48, height: 3, background: `linear-gradient(90deg, ${BRAND.accent}, ${BRAND.amber})` }} />
+        <div style={{ display: 'flex', width: 48, height: 3, background: BRAND.accent }} />
         {footer ?? BRAND.siteUrl.replace(/^https?:\/\//, '')}
       </div>
     </div>

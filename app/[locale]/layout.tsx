@@ -1,11 +1,20 @@
 import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "sonner";
+import { Bricolage_Grotesque, Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import en from "@/public/locales/en.json";
 import fr from "@/public/locales/fr.json";
 import es from "@/public/locales/es.json";
 
 type Messages = typeof en;
+
+const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
+const sans = Geist({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", variable: "--font-serif", display: "swap" });
+
+// Applies the saved theme before first paint (dark by default) to avoid a flash.
+const themeScript = `try{var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark')}catch(e){document.documentElement.classList.add('dark')}`;
 
 const messages: Record<string, Messages> = {
   en,
@@ -28,9 +37,14 @@ export default async function LocaleLayout({
   const messagesForLocale = messages[locale];
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${display.variable} ${sans.variable} ${mono.variable} ${serif.variable}`}
+    >
       <body>
-        <NextIntlClientProvider messages={messagesForLocale}>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <NextIntlClientProvider locale={locale} messages={messagesForLocale}>
           {children}
           <Toaster
             position="bottom-right"

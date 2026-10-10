@@ -6,7 +6,7 @@ export const BRAND = {
   name: 'Cédric Karungu',
   monogram: 'CK',
   role: 'Full-stack Engineer',
-  bg: '#0a0908', // surface-950
+  bg: '#0f0f0f', // dark canvas
   fg: '#ffffff',
   accent: '#8b5cf6', // accent-500, the dot in the header logo
   amber: '#f59e0b',
@@ -15,11 +15,11 @@ export const BRAND = {
 
 const fontDir = path.join(process.cwd(), 'src/assets/fonts');
 
-/** Plus Jakarta Sans, the header font, for next/og. */
+/** Bricolage Grotesque, the header/display font, for next/og. */
 export async function brandFonts() {
   const [bold, extra] = await Promise.all([
-    readFile(path.join(fontDir, 'PlusJakartaSans-700.woff')),
-    readFile(path.join(fontDir, 'PlusJakartaSans-800.woff')),
+    readFile(path.join(fontDir, 'BricolageGrotesque-700.woff')),
+    readFile(path.join(fontDir, 'BricolageGrotesque-800.woff')),
   ]);
   return [
     { name: 'Jakarta', data: bold, weight: 700 as const, style: 'normal' as const },
@@ -35,9 +35,9 @@ export function Logo({ size }: { size: number }) {
         display: 'flex',
         alignItems: 'baseline',
         fontFamily: 'Jakarta',
-        fontWeight: 700,
+        fontWeight: 800,
         fontSize: size,
-        letterSpacing: -size * 0.05,
+        letterSpacing: -size * 0.04,
         color: BRAND.fg,
         lineHeight: 1,
       }}

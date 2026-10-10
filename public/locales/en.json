@@ -76,7 +76,8 @@
     "availabilityStatus": "Open to projects",
     "namePlaceholder": "Your Name",
     "subject": "Subject",
-    "subjectPlaceholder": "Message Subject"
+    "subjectPlaceholder": "Message Subject",
+    "sentSuccess": "Message sent — thank you! I'll get back to you soon."
   },
   "footer": {
     "copyright": "All rights reserved.",
@@ -116,5 +117,34 @@
     "close": "Close",
     "prevImage": "Previous image",
     "nextImage": "Next image"
+  },
+  "ui": {
+    "localTime": "local time",
+    "currently": "Currently",
+    "findMe": "Elsewhere",
+    "allProjects": "See all projects",
+    "backToTop": "Back to top",
+    "menu": "Menu",
+    "toggleTheme": "Toggle theme",
+    "phone": "Phone",
+    "aka": "aka",
+    "viewCase": "View case",
+    "index": "Index",
+    "languages": "Languages",
+    "basedIn": "Based in",
+    "status": "Status",
+    "experience": "Experience",
+    "sayHello": "Have a project in mind? Write to me — I read and answer every message.",
+    "orForm": "Or use the form",
+    "sending": "Sending…",
+    "iBuild": "I build",
+    "builds": [
+      "web platforms",
+      "mobile apps",
+      "ERP & CRM systems",
+      "AI-powered products",
+      "APIs that scale"
+    ],
+    "badge": "Available for work · Remote"
   }
 }

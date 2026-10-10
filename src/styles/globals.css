@@ -1,37 +1,54 @@
-/***Global Stylesheet***/
-
-/***Custom font imports from Google Fonts***/
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-
-/***Tailwind CSS layers***/
+/*
+ * Design system — minimal, editorial.
+ * One neutral scale exposed as CSS variables (light + dark) and one accent
+ * (violet, the dot of the "CK." logo). Fonts come from next/font in the
+ * locale layout: --font-display, --font-sans, --font-mono, --font-serif.
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/***Base Layer Styles***/
 @layer base {
+  :root {
+    --canvas: 250 249 246;   /* page background */
+    --raised: 255 255 255;   /* cards, inputs */
+    --ink: 23 23 23;         /* primary text */
+    --muted: 115 115 115;    /* secondary text */
+    --faint: 163 163 163;    /* meta text */
+    --line: 0 0 0;           /* hairlines, used with /alpha */
+    color-scheme: light;
+  }
+  .dark {
+    --canvas: 15 15 15;
+    --raised: 24 24 24;
+    --ink: 245 243 240;
+    --muted: 161 161 161;
+    --faint: 115 115 115;
+    --line: 255 255 255;
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-canvas font-sans text-ink antialiased;
     text-rendering: optimizeLegibility;
-    @apply bg-surface-50 dark:bg-surface-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300;
   }
 
-  /* Accessible focus ring (keyboard only) */
+  ::selection {
+    @apply bg-accent-500/30 text-ink;
+  }
+
   :focus { outline: none; }
   :focus-visible {
-    outline: 2px solid rgb(139 92 246 / 0.75);
-    outline-offset: 2px;
-    border-radius: 6px;
+    outline: 2px solid rgb(139 92 246 / 0.8);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
-  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after {
@@ -41,240 +58,110 @@
     }
   }
 
-  /***Custom scrollbar styling for webkit browsers (Chrome, Safari, Edge)***/
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply rounded-full bg-ink/15; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-ink/30; }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-surface-100 dark:bg-surface-950;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(139,92,246,0.45), rgba(245,158,11,0.4));
-    @apply rounded-full transition-colors duration-200;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgba(139,92,246,0.75), rgba(245,158,11,0.7));
+  /* Keep autofill readable in dark mode */
+  .dark input:-webkit-autofill,
+  .dark textarea:-webkit-autofill {
+    -webkit-text-fill-color: rgb(245 243 240);
+    -webkit-box-shadow: 0 0 0 1000px rgb(24 24 24) inset;
+    caret-color: rgb(245 243 240);
   }
 }
 
-/**
- Component Layer Styles
- Reusable component classes
- **/
 @layer components {
-  ::selection {
-    @apply bg-accent-500/30 text-accent-900 dark:text-accent-100;
+  /* Page container */
+  .wrap {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  /* Glassmorphism surface — Lume edition */
-  .glass {
-    @apply bg-white/75 dark:bg-white/[0.035] backdrop-blur-xl
-           border border-zinc-200/70 dark:border-white/10
-           shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.45)];
-  }
-  .glass-hover {
-    @apply transition-all duration-300
-           hover:border-accent-500/50 dark:hover:border-accent-400/50
-           hover:shadow-[0_12px_40px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_12px_40px_rgba(139,92,246,0.25)];
+  /* Small uppercase mono label — section indexes, dates, metadata */
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-[0.16em] text-faint;
   }
 
-  /* Lume gradient text */
-  .text-lume {
-    @apply bg-clip-text text-transparent
-           bg-gradient-to-r from-accent-500 via-accent-400 to-highlight-500;
+  /* Hairline divider */
+  .hairline {
+    @apply border-line/10;
   }
 
-  /* Lume gradient surface (buttons/badges) — violet → lavender → amber */
-  .bg-lume {
-    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #fbbf24 100%);
+  /* Text link with an underline that grows on hover */
+  .link {
+    @apply relative text-ink transition-colors hover:text-accent-500;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease, color 0.2s ease;
+  }
+  .link:hover { background-size: 100% 1px; }
+
+  /* Quiet underlined link (always underlined, accent on hover) */
+  .link-quiet {
+    @apply underline decoration-line/20 underline-offset-4 transition-colors hover:text-accent-500 hover:decoration-accent-500/60;
   }
 
-  /* Soft outer glow for hero focal elements */
-  .glow-lume {
-    box-shadow:
-      0 0 0 1px rgba(139,92,246,0.25),
-      0 20px 60px -20px rgba(139,92,246,0.5),
-      0 30px 80px -10px rgba(245,158,11,0.25);
+  /* Tag chip */
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line/10 px-2.5 py-0.5 font-mono text-[11px] text-muted transition-colors;
+  }
+  a.chip:hover, button.chip:hover {
+    @apply border-accent-500/50 text-ink;
   }
 
-  /* Animated gradient border (used for primary CTAs / portrait frame) */
-  .border-aurora {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-canvas hover:bg-accent-600 hover:text-white;
+  }
+  .btn-ghost {
+    @apply btn border border-line/15 text-ink hover:border-ink/40;
+  }
+
+  /* Form fields */
+  .field {
+    @apply w-full rounded-xl border border-line/10 bg-raised px-4 py-3 text-sm text-ink placeholder:text-faint transition focus:border-accent-500/60 focus:outline-none focus:ring-4 focus:ring-accent-500/10;
+  }
+
+  /* Display heading used for section titles */
+  .h-display {
+    @apply font-display font-extrabold tracking-[-0.03em] text-ink;
+  }
+
+  /* Italic serif accent inside headings ("I build <em>products</em>") */
+  .accent-serif {
+    @apply font-serif font-normal italic tracking-normal text-accent-500;
+  }
+}
+
+@layer components {
+  /* Pointer spotlight: set --mx/--my from JS (see useSpotlight). */
+  .spotlight {
     position: relative;
-    background-clip: padding-box;
+    isolation: isolate;
   }
-  .border-aurora::before {
-    content: '';
+  .spotlight::before {
+    content: "";
     position: absolute;
     inset: -1px;
+    z-index: -1;
     border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(120deg, #7c3aed, #a78bfa, #fbbf24, #7c3aed);
-    background-size: 300% 300%;
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    animation: aurora 8s linear infinite;
-    pointer-events: none;
-  }
-
-  /* Subtle accent ring for inputs/buttons on focus */
-  .ring-accent-focus {
-    @apply focus-visible:ring-2 focus-visible:ring-accent-500/60 focus-visible:ring-offset-2
-           focus-visible:ring-offset-white dark:focus-visible:ring-offset-surface-950
-           focus-visible:outline-none;
-  }
-
-  /* Editorial eyebrow — mono index + label above section titles */
-  .eyebrow {
-    @apply inline-flex items-center gap-3 font-mono text-xs uppercase
-           tracking-[0.18em] text-zinc-500 dark:text-zinc-400 tabular-nums;
-  }
-  .eyebrow-index {
-    @apply text-accent-600 dark:text-accent-400 font-semibold;
-  }
-  .eyebrow-rule {
-    @apply h-px w-10 bg-gradient-to-r from-accent-500/70 via-highlight-400/60 to-transparent;
-  }
-
-  /* Section title — paired with eyebrow */
-  .section-title {
-    @apply text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent
-           bg-gradient-to-r from-zinc-900 via-accent-700 to-zinc-900
-           dark:from-white dark:via-accent-300 dark:to-zinc-300;
-  }
-
-  /* Editorial card — refined glass with corner accents and aurora reveal on hover */
-  .card-lume {
-    @apply relative bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl
-           border border-zinc-200/70 dark:border-white/[0.08]
-           shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)]
-           transition-all duration-500 ease-out;
-  }
-  .card-lume:hover {
-    @apply border-accent-500/40 dark:border-accent-400/40
-           shadow-[0_20px_50px_-12px_rgba(139,92,246,0.2)]
-           dark:shadow-[0_20px_60px_-15px_rgba(139,92,246,0.35)];
-  }
-
-  /* Corner accent ticks for editorial cards (top-left + bottom-right) */
-  .corner-ticks::before,
-  .corner-ticks::after {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border-color: rgb(139 92 246 / 0.6);
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgb(139 92 246 / 0.12), transparent 70%);
   }
-  .corner-ticks::before {
-    top: 8px; left: 8px;
-    border-top: 1.5px solid;
-    border-left: 1.5px solid;
-    transform: translate(-4px, -4px);
-  }
-  .corner-ticks::after {
-    bottom: 8px; right: 8px;
-    border-bottom: 1.5px solid;
-    border-right: 1.5px solid;
-    transform: translate(4px, 4px);
-  }
-  .group:hover .corner-ticks::before,
-  .group:hover .corner-ticks::after {
+  .spotlight:hover::before {
     opacity: 1;
-    transform: translate(0, 0);
-  }
-
-  /* Terminal-style chip (used for tags) */
-  .chip-mono {
-    @apply inline-flex items-center font-mono text-[10px] uppercase tracking-[0.12em]
-           text-zinc-600 dark:text-zinc-300
-           bg-zinc-100/70 dark:bg-white/[0.04]
-           border border-zinc-200/80 dark:border-white/[0.08]
-           rounded-md px-2 py-0.5;
-  }
-
-  /* Noise overlay (subtle grain for premium feel) */
-  .noise {
-    position: relative;
-  }
-  .noise::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.035;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 }
 
-@keyframes aurora {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/**
- Utility Layer Styles
- Custom utility animations
- **/
-@layer utilities {
-  .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-/**
- Form Autofill Styling
- Removes browser default autofill background and borders
- **/
-@layer components {
-  /* Light mode autofill - preserve input border */
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  textarea:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
-    box-shadow: 0 0 0 1000px #ffffff inset !important;
-    -webkit-text-fill-color: #111111 !important;
-    transition: background-color 9999s ease-out 0s;
-  }
-
-  /* Dark mode autofill - preserve input border */
-  .dark input:-webkit-autofill,
-  .dark input:-webkit-autofill:hover,
-  .dark input:-webkit-autofill:focus,
-  .dark input:-webkit-autofill:active,
-  .dark textarea:-webkit-autofill,
-  .dark textarea:-webkit-autofill:hover,
-  .dark textarea:-webkit-autofill:focus,
-  .dark textarea:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.04) inset !important;
-    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.04) inset !important;
-    -webkit-text-fill-color: #ffffff !important;
-    caret-color: #ffffff;
-    transition: background-color 9999s ease-out 0s;
-  }
+/* Slow zoom used on project covers (outside @layer so it is never purged). */
+@keyframes kenburns {
+  from { transform: scale(1) translateY(0); }
+  to { transform: scale(1.08) translateY(-2%); }
 }

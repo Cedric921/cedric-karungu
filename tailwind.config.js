@@ -11,9 +11,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-sans)', 'ui-sans-serif', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        serif: ['var(--font-serif)', 'ui-serif', 'Georgia', 'serif'],
       },
       colors: {
+        // Neutral tokens, defined as CSS variables in globals.css (light + dark)
+        canvas: 'rgb(var(--canvas) / <alpha-value>)',
+        raised: 'rgb(var(--raised) / <alpha-value>)',
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        faint: 'rgb(var(--faint) / <alpha-value>)',
+        line: 'rgb(var(--line) / <alpha-value>)',
         // "Lume" — violet primary, warm amber highlight
         accent: {
           50: '#f5f3ff',

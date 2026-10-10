@@ -1,144 +1,124 @@
-import React, { useMemo } from "react";
-import { motion } from "framer-motion";
+"use client";
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { EXPERIENCES } from "../constants";
-import { useScrollAnimation, usePublicData } from "../hooks";
-import { experienceToView, type ExperienceItem } from "../lib/public-data";
+import { usePublicData } from "../hooks";
+import { experienceToView, pick, type ExperienceItem } from "../lib/public-data";
 import type { Locale } from "../lib/models/shared";
-import SectionHeader from "./SectionHeader";
+import Section from "./ui/Section";
+import Reveal from "./ui/Reveal";
+import { SECTION_TOTAL } from "./AboutMe";
+import { shortHash } from "./fx/hash";
+
+const isCurrent = (period: string) => /present|présent|presente|now|actuel/i.test(period);
+
+/** Sort key from a free-text period ("Dec 2018 - Sep 2021", "Nov 2023 - Present"). */
+function periodKey(period: string): [number, number] {
+  const years = (period.match(/\b(19|20)\d{2}\b/g) || []).map(Number);
+  const start = years[0] ?? 0;
+  const end = isCurrent(period) ? 9999 : (years[years.length - 1] ?? start);
+  return [end, start];
+}
 
 const Experience: React.FC = () => {
   const t = useTranslations();
   const locale = useLocale() as Locale;
-  const { ref, isVisible } = useScrollAnimation(0.1);
+  const { data } = usePublicData<ExperienceItem[]>("/api/public/experiences", EXPERIENCES as unknown as ExperienceItem[]);
 
-  const { data: experiences } = usePublicData<ExperienceItem[]>(
-    "/api/public/experiences",
-    EXPERIENCES as unknown as ExperienceItem[],
-  );
-
-  const items = useMemo(
-    () => experiences.map((e) => experienceToView(e, locale)),
-    [experiences, locale],
-  );
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
+  // Most recent first, whatever order the items are stored in.
+  const items = useMemo(() => {
+    const views = data.map((e) => ({ v: experienceToView(e, locale), k: periodKey(pick(e.period, "en")) }));
+    return views.sort((a, b) => b.k[0] - a.k[0] || b.k[1] - a.k[1]).map(({ v }) => v);
+  }, [data, locale]);
 
   return (
-    <section
+    <Section
       id="experience"
-      className="py-24 bg-surface-100/60 dark:bg-surface-950 scroll-mt-28 transition-colors duration-300 relative overflow-hidden noise"
-      ref={ref}
+      index={4}
+      total={SECTION_TOTAL}
+      label={t("nav.experience")}
+      intro={t("experience.description")}
+      title={t("experience.title")}
     >
-      {/* Animated background elements */}
-      <motion.div
-        className="absolute -top-20 -right-32 w-80 h-80 rounded-full blur-3xl opacity-5"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(139,92,246,0.25) 0%, rgba(245,158,11,0.12) 50%, transparent 75%)",
-        }}
-        animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity }}
-      />
-
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <SectionHeader
-          index={5}
-          eyebrow={t("nav.experience")}
-          title={t("experience.title")}
-          description={t("experience.description")}
-          visible={isVisible}
-        />
-
-        <motion.ol
-          className="relative pl-10 md:pl-14 space-y-10"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          {/* Vertical aurora rail */}
-          <div className="absolute left-3 md:left-5 top-2 bottom-2 w-px bg-gradient-to-b from-accent-500 via-highlight-400/40 to-transparent" />
-
-          {items.map((exp, index) => (
-            <motion.li
-              key={exp.key}
-              className="relative group"
-              variants={itemVariants}
-            >
-              {/* Timeline node */}
-              <span
-                aria-hidden="true"
-                className="absolute -left-[1.85rem] md:-left-[2.25rem] top-3 flex items-center justify-center"
-              >
-                <motion.span
-                  className="relative block w-3.5 h-3.5 rounded-full bg-surface-50 dark:bg-surface-950 border-2 border-accent-500 shadow-[0_0_14px_rgba(139,92,246,0.7)]"
-                  animate={{ scale: [1, 1.25, 1] }}
-                  transition={{ duration: 2.4, repeat: Infinity }}
-                >
-                  <span className="absolute inset-0 rounded-full bg-accent-500/40 blur-md group-hover:bg-highlight-500/50 transition-colors duration-500" />
-                </motion.span>
-              </span>
-
-              {/* Period + index */}
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="font-mono text-[10px] tabular-nums uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 bg-accent-500/10 border border-accent-500/30 rounded-md px-2 py-0.5">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="font-mono text-xs tabular-nums text-zinc-500 dark:text-zinc-400">
-                  {exp.period}
-                </span>
-                {exp.location && (
-                  <>
-                    <span className="text-zinc-300 dark:text-zinc-700">·</span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
-                      {exp.location}
-                    </span>
-                  </>
-                )}
-              </div>
-
-              {/* Card */}
-              <motion.div
-                className="card-lume corner-ticks relative p-6 rounded-xl"
-                whileHover={{ x: 6 }}
-                transition={{ type: "spring", stiffness: 280, damping: 24 }}
-              >
-                <h3 className="text-lg md:text-xl font-bold text-zinc-900 dark:text-white group-hover:text-lume transition-colors">
-                  {exp.role}
-                </h3>
-                <p className="text-sm text-accent-700 dark:text-accent-300 font-medium mt-1 font-mono tracking-wide">
-                  @ {exp.company}
-                </p>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mt-3">
-                  {exp.description}
-                </p>
-              </motion.div>
-            </motion.li>
-          ))}
-        </motion.ol>
-      </div>
-    </section>
+      <Timeline items={items} />
+    </Section>
   );
 };
+
+type Item = { key: string; role: string; company: string; period: string; location: string; description: string };
+
+/** Career as a `git log --graph`: the branch draws itself with the scroll and each commit lights up as it passes. */
+function Timeline({ items }: { items: Item[] }) {
+  const ref = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.65", "end 0.65"] });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 28 });
+
+  return (
+    <ol ref={ref} data-inspect="git log --graph" className="relative border-y hairline pl-7 md:pl-10">
+      <span aria-hidden="true" className="absolute bottom-0 left-[3px] top-0 w-px bg-line/10" />
+      <motion.span
+        aria-hidden="true"
+        className="absolute bottom-0 left-[3px] top-0 w-px origin-top bg-accent-500"
+        style={{ scaleY }}
+      />
+      {items.map((e, i) => (
+        <TimelineRow key={e.key} item={e} index={i} />
+      ))}
+    </ol>
+  );
+}
+
+function TimelineRow({ item: e, index }: { item: Item; index: number }) {
+  const ref = useRef<HTMLLIElement>(null);
+  const [lit, setLit] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Lit once the row's top passes 65% of the viewport (same line as the rail fill).
+    const io = new IntersectionObserver(([en]) => setLit(en.boundingClientRect.top < window.innerHeight * 0.65), {
+      rootMargin: "0px 0px -35% 0px",
+      threshold: [0, 1],
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <Reveal
+      as="li"
+      delay={Math.min(index, 4) * 0.04}
+      className="group relative grid gap-3 border-t hairline py-8 first:border-t-0 md:grid-cols-[170px_minmax(0,1fr)] md:gap-8"
+    >
+      <span
+        ref={ref as React.Ref<HTMLSpanElement>}
+        aria-hidden="true"
+        className={`absolute -left-[32px] top-9 grid h-[15px] w-[15px] place-items-center rounded-full border-2 transition-all duration-500 md:-left-[44px] ${
+          lit ? "border-accent-500 bg-canvas shadow-[0_0_0_5px_rgb(139_92_246/0.12)]" : "border-line/25 bg-canvas"
+        }`}
+      >
+        <span className={`h-[5px] w-[5px] rounded-full transition-all duration-500 ${lit ? "bg-accent-500" : "bg-transparent"}`} />
+      </span>
+      <div className="font-mono text-xs leading-relaxed text-faint">
+        <p className="flex flex-wrap items-center gap-x-2">
+          <span className="text-highlight-500/90">{shortHash(`${e.company}${e.role}`)}</span>
+          {isCurrent(e.period) && (
+            <span className="rounded border border-accent-500/40 px-1 text-[10px] text-accent-500">HEAD → main</span>
+          )}
+        </p>
+        <p className={`mt-1 ${isCurrent(e.period) ? "text-ink" : ""}`}>{e.period}</p>
+        <p>{e.location}</p>
+      </div>
+      <div>
+        <h3 className="font-display text-xl font-bold tracking-tight text-ink transition-colors duration-300 group-hover:text-accent-500 md:text-2xl">
+          {e.role}
+        </h3>
+        <p className="mt-1 text-sm text-muted">{e.company}</p>
+        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">{e.description}</p>
+      </div>
+    </Reveal>
+  );
+}
 
 export default Experience;

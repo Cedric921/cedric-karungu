@@ -149,3 +149,44 @@ export function experienceToView(
     description: pick(e.description, locale),
   };
 }
+
+export type ArticleItem = {
+  _id?: string;
+  title: LocalizedString | string;
+  slug: string;
+  excerpt?: LocalizedString | string;
+  content?: LocalizedString | string;
+  cover?: string;
+  tags?: string[];
+  publishedAt?: string | null;
+  readingMinutes?: number;
+};
+
+export type ArticleView = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  cover: string;
+  tags: string[];
+  date: string; // ISO
+  minutes: number;
+  /** Locale actually used for the body (falls back to EN when untranslated). */
+  contentLocale: Locale;
+};
+
+export function articleToView(a: ArticleItem, locale: Locale): ArticleView {
+  const content = a.content;
+  const own = typeof content === "object" && content ? content[locale] : "";
+  return {
+    slug: a.slug,
+    title: pick(a.title, locale),
+    excerpt: pick(a.excerpt, locale),
+    content: pick(content, locale),
+    cover: a.cover || "",
+    tags: a.tags || [],
+    date: a.publishedAt ? String(a.publishedAt) : "",
+    minutes: a.readingMinutes || 1,
+    contentLocale: own ? locale : "en",
+  };
+}

@@ -50,6 +50,16 @@ const Footer: React.FC = () => {
                   {t("ui.allProjects")}
                 </a>
               </li>
+              <li>
+                <a href={`/${locale}/blog`} className="link text-muted">
+                  {t("nav.blog")}
+                </a>
+              </li>
+              <li>
+                <a href={`/${locale}/blog/rss.xml`} className="link text-muted">
+                  RSS
+                </a>
+              </li>
             </ul>
           </div>
           <div>

@@ -6,7 +6,8 @@
     "projects": "Projects",
     "experience": "Experience",
     "contact": "Contact",
-    "getInTouch": "Get In Touch"
+    "getInTouch": "Get In Touch",
+    "blog": "Blog"
   },
   "hero": {
     "available": "Available for Freelance & Contract",
@@ -146,5 +147,24 @@
       "APIs that scale"
     ],
     "badge": "Available for work · Remote"
+  },
+  "blog": {
+    "nav": "Blog",
+    "title": "Writing",
+    "description": "Notes on building products: architecture, frontend, backend and what I learn shipping software.",
+    "all": "All",
+    "minRead": "{n} min read",
+    "readArticle": "Read article",
+    "back": "All articles",
+    "empty": "No articles yet — the first ones are on their way.",
+    "latest": "Latest articles",
+    "seeAll": "All articles",
+    "onlyEnglish": "This article isn't translated yet — showing the English version.",
+    "contents": "On this page",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "next": "Next article",
+    "prev": "Previous article",
+    "published": "Published"
   }
 }

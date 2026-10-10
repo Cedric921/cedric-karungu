@@ -6,7 +6,8 @@
     "projects": "Proyectos",
     "experience": "Experiencia",
     "contact": "Contacto",
-    "getInTouch": "Contáctame"
+    "getInTouch": "Contáctame",
+    "blog": "Blog"
   },
   "hero": {
     "available": "Disponible para proyectos freelance y contrato",
@@ -146,5 +147,24 @@
       "APIs que escalan"
     ],
     "badge": "Disponible · Remoto"
+  },
+  "blog": {
+    "nav": "Blog",
+    "title": "Escritos",
+    "description": "Notas sobre construir productos: arquitectura, frontend, backend y lo que aprendo al publicar software.",
+    "all": "Todos",
+    "minRead": "{n} min de lectura",
+    "readArticle": "Leer artículo",
+    "back": "Todos los artículos",
+    "empty": "Aún no hay artículos — los primeros llegan pronto.",
+    "latest": "Últimos artículos",
+    "seeAll": "Todos los artículos",
+    "onlyEnglish": "Este artículo aún no está traducido — se muestra la versión en inglés.",
+    "contents": "En esta página",
+    "copyLink": "Copiar enlace",
+    "copied": "Enlace copiado",
+    "next": "Siguiente artículo",
+    "prev": "Artículo anterior",
+    "published": "Publicado el"
   }
 }

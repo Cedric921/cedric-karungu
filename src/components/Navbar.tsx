@@ -107,6 +107,21 @@ const Navbar: React.FC = () => {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href={`/${locale}/blog`}
+              aria-current={pathname.includes("/blog") ? "page" : undefined}
+              className={`group relative text-sm transition-colors ${pathname.includes("/blog") ? "text-ink" : "text-muted"}`}
+            >
+              <RollText>{t("nav.blog")}</RollText>
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-accent-500 transition-all duration-300 ${
+                  pathname.includes("/blog") ? "scale-100 opacity-100" : "scale-0 opacity-0"
+                }`}
+              />
+            </Link>
+          </li>
         </ul>
 
         <div className="flex items-center gap-1">
@@ -173,6 +188,17 @@ const Navbar: React.FC = () => {
                   </a>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.04 * links.length }}
+                className="border-b hairline"
+              >
+                <Link href={`/${locale}/blog`} onClick={() => setOpen(false)} className="flex items-baseline justify-between py-4">
+                  <span className="h-display text-3xl">{t("nav.blog")}</span>
+                  <span className="label">↗</span>
+                </Link>
+              </motion.li>
             </ul>
           </motion.div>
         )}

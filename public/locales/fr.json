@@ -6,7 +6,8 @@
     "projects": "Projets",
     "experience": "Expérience",
     "contact": "Contact",
-    "getInTouch": "Nous Contacter"
+    "getInTouch": "Nous Contacter",
+    "blog": "Blog"
   },
   "hero": {
     "available": "Disponible pour des projets en freelance et en contrat",
@@ -146,5 +147,24 @@
       "des API qui tiennent la charge"
     ],
     "badge": "Disponible · En remote"
+  },
+  "blog": {
+    "nav": "Blog",
+    "title": "Écrits",
+    "description": "Notes sur la construction de produits : architecture, frontend, backend et ce que j'apprends en livrant du logiciel.",
+    "all": "Tous",
+    "minRead": "{n} min de lecture",
+    "readArticle": "Lire l'article",
+    "back": "Tous les articles",
+    "empty": "Pas encore d'articles — les premiers arrivent bientôt.",
+    "latest": "Derniers articles",
+    "seeAll": "Tous les articles",
+    "onlyEnglish": "Cet article n'est pas encore traduit — voici la version anglaise.",
+    "contents": "Sur cette page",
+    "copyLink": "Copier le lien",
+    "copied": "Lien copié",
+    "next": "Article suivant",
+    "prev": "Article précédent",
+    "published": "Publié le"
   }
 }

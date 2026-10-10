@@ -1,7 +1,11 @@
 import { createHash } from 'node:crypto';
 import { fail, ok } from '@/lib/api';
 
-const FOLDER = 'portfolio/projects';
+// Allowed destination folders (?folder=articles), defaulting to project images.
+const FOLDERS: Record<string, string> = {
+  projects: 'portfolio/projects',
+  articles: 'portfolio/articles',
+};
 
 /**
  * Returns a short-lived Cloudinary signature so the admin browser can upload
@@ -9,7 +13,8 @@ const FOLDER = 'portfolio/projects';
  * function, which avoids its request-body size limit and allows parallel uploads.
  * Auth is enforced by the /api/admin proxy boundary.
  */
-export async function POST() {
+export async function POST(req: Request) {
+  const FOLDER = FOLDERS[new URL(req.url).searchParams.get('folder') || 'projects'] ?? FOLDERS.projects;
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const apiKey = process.env.CLOUDINARY_API_KEY;
   const apiSecret = process.env.CLOUDINARY_API_SECRET;

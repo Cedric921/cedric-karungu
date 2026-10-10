@@ -12,3 +12,4 @@ export {
   type Locale,
   type LocalizedString,
 } from './shared';
+export { Article } from './Article';

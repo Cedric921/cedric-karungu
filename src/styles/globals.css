@@ -165,3 +165,37 @@
   from { transform: scale(1) translateY(0); }
   to { transform: scale(1.08) translateY(-2%); }
 }
+
+/* ——— Article typography (Markdown output) ——— */
+@layer components {
+  .prose-article {
+    @apply prose prose-lg max-w-none
+      prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-ink
+      prose-h2:mt-14 prose-h2:text-3xl prose-h3:text-2xl
+      prose-p:text-muted prose-p:leading-[1.8]
+      prose-strong:text-ink prose-li:text-muted prose-li:marker:text-accent-500
+      prose-a:font-normal prose-a:text-ink prose-a:underline prose-a:decoration-accent-500/50 prose-a:underline-offset-4 hover:prose-a:decoration-accent-500
+      prose-blockquote:border-l-accent-500 prose-blockquote:font-serif prose-blockquote:text-2xl prose-blockquote:font-normal prose-blockquote:italic prose-blockquote:text-ink
+      prose-hr:border-line/10
+      prose-img:rounded-xl prose-img:border prose-img:border-line/10
+      prose-code:rounded prose-code:bg-line/[0.06] prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-[0.85em] prose-code:font-normal prose-code:text-ink prose-code:before:content-none prose-code:after:content-none
+      prose-pre:rounded-xl prose-pre:border prose-pre:border-line/10 prose-pre:bg-[#0b0b0b] prose-pre:text-[13px]
+      prose-th:text-ink prose-td:text-muted prose-thead:border-line/15 prose-tr:border-line/10;
+  }
+  .prose-article pre code {
+    @apply bg-transparent p-0 text-zinc-200;
+  }
+  .prose-article h2, .prose-article h3 {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* Code highlighting (highlight.js classes), tuned to the accent palette. */
+.prose-article .hljs-comment, .prose-article .hljs-quote { color: #71717a; font-style: italic; }
+.prose-article .hljs-keyword, .prose-article .hljs-selector-tag, .prose-article .hljs-built_in { color: #c4b5fd; }
+.prose-article .hljs-string, .prose-article .hljs-attr, .prose-article .hljs-template-variable { color: #fcd34d; }
+.prose-article .hljs-number, .prose-article .hljs-literal { color: #f9a8d4; }
+.prose-article .hljs-title, .prose-article .hljs-function .hljs-title, .prose-article .hljs-title.function_ { color: #93c5fd; }
+.prose-article .hljs-type, .prose-article .hljs-class .hljs-title { color: #86efac; }
+.prose-article .hljs-variable, .prose-article .hljs-property { color: #e4e4e7; }
+.prose-article .hljs-meta, .prose-article .hljs-tag { color: #a1a1aa; }

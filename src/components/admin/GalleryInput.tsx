@@ -4,12 +4,12 @@ import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ImagePlus, Link2, Star, Trash2 } from 'lucide-react';
 import { Button, Input, cn } from './ui';
 import { MAX_PROJECT_IMAGES } from '@/lib/slug';
+import { getSignature, uploadToCloudinary, type Signature } from '@/lib/cloudinary-upload';
 
 const ACCEPT = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
 const MAX_SIZE = 20 * 1024 * 1024;
 const CONCURRENCY = 3;
 
-type Signature = { cloudName: string; apiKey: string; timestamp: string; folder: string; signature: string };
 type Pending = { id: string; name: string; progress: number; error?: string };
 
 type Props = {
@@ -18,39 +18,6 @@ type Props = {
   onChange: (next: { gallery: string[]; image: string }) => void;
   onBusyChange?: (busy: boolean) => void;
 };
-
-async function getSignature(): Promise<Signature> {
-  const res = await fetch('/api/admin/uploads/projects/sign', { method: 'POST', credentials: 'same-origin' });
-  const json = await res.json().catch(() => ({}));
-  if (!res.ok || !json.ok) throw new Error(json.error || 'Could not authorise upload');
-  return json.data;
-}
-
-function uploadToCloudinary(file: File, sig: Signature, onProgress: (p: number) => void): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const form = new FormData();
-    form.append('file', file);
-    form.append('api_key', sig.apiKey);
-    form.append('timestamp', sig.timestamp);
-    form.append('folder', sig.folder);
-    form.append('signature', sig.signature);
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', `https://api.cloudinary.com/v1_1/${encodeURIComponent(sig.cloudName)}/image/upload`);
-    xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
-    xhr.onload = () => {
-      try {
-        const body = JSON.parse(xhr.responseText);
-        if (xhr.status >= 200 && xhr.status < 300 && typeof body.secure_url === 'string') resolve(body.secure_url);
-        else reject(new Error(body.error?.message || `Upload failed (${xhr.status})`));
-      } catch {
-        reject(new Error(`Upload failed (${xhr.status})`));
-      }
-    };
-    xhr.onerror = () => reject(new Error('Network error during upload'));
-    xhr.send(form);
-  });
-}
 
 /**
  * Project gallery editor: multi-file drag & drop straight to Cloudinary

@@ -15,6 +15,7 @@ import {
   Menu,
   X,
   ExternalLink,
+  PenLine,
 } from "lucide-react";
 import { cn } from "./ui";
 
@@ -30,6 +31,7 @@ function buildNav(locale: string): Item[] {
     { href: base, label: "Dashboard", Icon: LayoutDashboard },
     { href: `${base}/messages`, label: "Messages", Icon: Mail },
     { href: `${base}/projects`, label: "Projects", Icon: FolderKanban },
+    { href: `${base}/articles`, label: "Articles", Icon: PenLine },
     { href: `${base}/experiences`, label: "Experiences", Icon: Briefcase },
     { href: `${base}/skills`, label: "Skills", Icon: Sparkles },
     { href: `${base}/social-links`, label: "Social links", Icon: Link2 },

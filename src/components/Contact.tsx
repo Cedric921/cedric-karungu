@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
-import Section from "./ui/Section";
+import Section, { useSectionTotal } from "./ui/Section";
 import Reveal from "./ui/Reveal";
 import { SECTION_TOTAL } from "./AboutMe";
 import MagneticLetters from "./fx/MagneticLetters";
@@ -15,6 +15,8 @@ const PHONE = "+243 970 509 466";
 const Contact: React.FC = () => {
   const t = useTranslations();
   const [sending, setSending] = useState(false);
+  // Contact is always last: its index is the total section count.
+  const total = useSectionTotal(SECTION_TOTAL);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,8 +56,8 @@ const Contact: React.FC = () => {
   return (
     <Section
       id="contact"
-      index={5}
-      total={SECTION_TOTAL}
+      index={total}
+      total={total}
       label={t("nav.contact")}
       intro={t("contact.description")}
       title={t("contact.title")}

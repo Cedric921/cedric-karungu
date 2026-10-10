@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { createContext, useContext } from "react";
 import Reveal from "./Reveal";
 import { ScrambleHover } from "../fx/Scramble";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+/** Landing-page section count; grows when optional sections (Writing) are shown. */
+export const SectionTotalContext = createContext<number | null>(null);
+export const useSectionTotal = (fallback: number) => useContext(SectionTotalContext) ?? fallback;
 
 type Props = {
   id: string;
@@ -18,7 +24,8 @@ type Props = {
  * Editorial section: a small sticky index/label column on the left and the
  * content on the right, separated from the previous section by a hairline.
  */
-export default function Section({ id, index, total, label, title, intro, children }: Props) {
+export default function Section({ id, index, total: totalProp, label, title, intro, children }: Props) {
+  const total = useSectionTotal(totalProp);
   return (
     <section id={id} className="scroll-mt-16 border-t hairline py-20 md:py-28">
       <div className="wrap grid gap-8 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">

@@ -27,11 +27,12 @@ My path was not a straight line to entrepreneurship. It was a sequence of jobs, 
 - **Attendacy at KADEA Academy** (2022): student attendance for a coding school, Express and React.
 - **CRES** (2022 to 2023): a start-up and research centre in Goma building business management tools and AI solutions, Nest.js and Next.js.
 - **AdminAtete** (2023): document archiving for a Belgian tech start-up.
+- **Cobiz at Upperz** (2023): lead backend developer on a sales, stock, customer and invoicing management app for businesses, with Adonis.js.
 - **Ever Technologies** (since November 2023): Ever Gauzy, an open-source ERP, CRM and HRM platform, and Ever Teams, a work and project management platform.
 
 ![Ever Gauzy, the open-source ERP and CRM platform I work on at Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
 
-Look at that list again. Parcels, attendance, archiving, ERP, CRM. Those are not frameworks. They are **domains**, and they are exactly the domains I sell software in today.
+Look at that list again. Parcels, attendance, archiving, sales and stock, ERP, CRM. Those are not frameworks. They are **domains**, and they are exactly the domains I sell software in today.
 
 The lesson: do not quit your job to “build a start-up” with no domain knowledge. Let clients and employers pay you to learn how a business actually works. Every invoice you send as a developer is also tuition.
 
@@ -47,7 +48,9 @@ Buku and Attendacy were both about schools. That experience became **Masomo**, s
 
 ![Masomo: school software that keeps working when the network stops](/images/Projects/masomo-cd/01.jpg)
 
-AdminAtete and Ever Gauzy taught me how companies archive documents, invoice, track stock and pay staff. That became **Hela**: one place to run several businesses at once, whether a shop, a restaurant, a bar or a hotel.
+AdminAtete, Cobiz and Ever Gauzy taught me how companies archive documents, invoice, track stock, follow up customers and pay staff. Cobiz in particular, where I designed the backend for sales, stock, customers and invoices at Upperz, is the direct ancestor of **Hela**: one place to run several businesses at once, whether a shop, a restaurant, a bar or a hotel.
+
+![Cobiz: sales, stock, customers and invoices in one app](/images/Projects/cobiz.jpg)
 
 ![Hela: one dashboard to run several businesses at once](/images/Projects/hela/01.jpg)
 
@@ -121,12 +124,13 @@ Mon parcours n’a pas été une ligne droite vers l’entrepreneuriat. C’éta
 - **One Stop Center** (2021 à 2022) : le suivi des colis partagé entre les agences d’une entreprise, en Angular.
 - **Attendacy à KADEA Academy** (2022) : la gestion des présences d’une école de code, en Express et React.
 - **CRES** (2022 à 2023) : une start-up et un centre de recherche à Goma, qui construit des outils de gestion d’entreprise et des solutions d’IA, en Nest.js et Next.js.
-- **AdminAtete** (2023) : l’archivage de documents pour une start-up technologique belge.
+- **AdminAtete** (2023) : l\u2019archivage de documents pour une start-up technologique belge.
+- **Cobiz chez Upperz** (2023) : développeur backend principal d\u2019une application de gestion des ventes, du stock, des clients et des factures, en Adonis.js.
 - **Ever Technologies** (depuis novembre 2023) : Ever Gauzy, une plateforme open source d’ERP, CRM et GRH, et Ever Teams, une plateforme de gestion du travail et des projets.
 
 ![Ever Gauzy, la plateforme open source d’ERP et de CRM sur laquelle je travaille chez Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
 
-Relisez cette liste. Colis, présences, archivage, ERP, CRM. Ce ne sont pas des frameworks. Ce sont des **métiers**, et ce sont exactement les métiers dans lesquels je vends des logiciels aujourd’hui.
+Relisez cette liste. Colis, présences, archivage, ventes et stock, ERP, CRM. Ce ne sont pas des frameworks. Ce sont des **métiers**, et ce sont exactement les métiers dans lesquels je vends des logiciels aujourd’hui.
 
 La leçon : ne quittez pas votre emploi pour « monter une start-up » sans connaître un métier. Laissez vos clients et vos employeurs vous payer pour apprendre comment une entreprise fonctionne vraiment. Chaque facture que vous envoyez comme développeur est aussi un frais de scolarité.
 
@@ -142,7 +146,9 @@ Buku et Attendacy parlaient tous les deux d’écoles. Cette expérience est dev
 
 ![Masomo : le logiciel scolaire qui continue de fonctionner quand le réseau s’arrête](/images/Projects/masomo-cd/01.jpg)
 
-AdminAtete et Ever Gauzy m’ont appris comment les entreprises archivent leurs documents, facturent, suivent leur stock et paient leur personnel. C’est devenu **Hela** : un seul endroit pour gérer plusieurs commerces à la fois, qu’il s’agisse d’une boutique, d’un restaurant, d’un bar ou d’un hôtel.
+AdminAtete, Cobiz et Ever Gauzy m\u2019ont appris comment les entreprises archivent leurs documents, facturent, suivent leur stock, suivent leurs clients et paient leur personnel. Cobiz en particulier, dont j\u2019ai conçu le backend pour les ventes, le stock, les clients et les factures chez Upperz, est l\u2019ancêtre direct de **Hela** : un seul endroit pour gérer plusieurs commerces à la fois, qu’il s’agisse d’une boutique, d’un restaurant, d’un bar ou d’un hôtel.
+
+![Cobiz : ventes, stock, clients et factures dans une seule application](/images/Projects/cobiz.jpg)
 
 ![Hela : un seul tableau de bord pour gérer plusieurs commerces à la fois](/images/Projects/hela/01.jpg)
 
@@ -217,11 +223,12 @@ Mi camino no fue una línea recta hacia el emprendimiento. Fue una secuencia de 
 - **Attendacy en KADEA Academy** (2022): control de asistencia para una escuela de programación, con Express y React.
 - **CRES** (2022 a 2023): una start-up y centro de investigación en Goma que construye herramientas de gestión empresarial y soluciones de IA, con Nest.js y Next.js.
 - **AdminAtete** (2023): archivo de documentos para una start-up tecnológica belga.
+- **Cobiz en Upperz** (2023): desarrollador backend principal de una aplicación de gestión de ventas, inventario, clientes y facturación para empresas, con Adonis.js.
 - **Ever Technologies** (desde noviembre de 2023): Ever Gauzy, una plataforma open source de ERP, CRM y RR. HH., y Ever Teams, una plataforma de gestión del trabajo y de proyectos.
 
 ![Ever Gauzy, la plataforma open source de ERP y CRM en la que trabajo en Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
 
-Vuelva a mirar esa lista. Paquetes, asistencia, archivo, ERP, CRM. No son frameworks. Son **sectores**, y son exactamente los sectores en los que vendo software hoy.
+Vuelva a mirar esa lista. Paquetes, asistencia, archivo, ventas e inventario, ERP, CRM. No son frameworks. Son **sectores**, y son exactamente los sectores en los que vendo software hoy.
 
 La lección: no deje su empleo para “montar una start-up” sin conocer un sector. Deje que clientes y empleadores le paguen por aprender cómo funciona realmente una empresa. Cada factura que envía como desarrollador es también una matrícula.
 
@@ -237,7 +244,9 @@ Buku y Attendacy trataban ambos de escuelas. Esa experiencia se convirtió en **
 
 ![Masomo: software escolar que sigue funcionando cuando la red se cae](/images/Projects/masomo-cd/01.jpg)
 
-AdminAtete y Ever Gauzy me enseñaron cómo las empresas archivan documentos, facturan, controlan el inventario y pagan al personal. Eso se convirtió en **Hela**: un solo lugar para gestionar varios negocios a la vez, ya sea una tienda, un restaurante, un bar o un hotel.
+AdminAtete, Cobiz y Ever Gauzy me enseñaron cómo las empresas archivan documentos, facturan, controlan el inventario, hacen seguimiento de sus clientes y pagan al personal. Cobiz en particular, cuyo backend de ventas, inventario, clientes y facturas diseñé en Upperz, es el antecesor directo de **Hela**: un solo lugar para gestionar varios negocios a la vez, ya sea una tienda, un restaurante, un bar o un hotel.
+
+![Cobiz: ventas, inventario, clientes y facturas en una sola aplicación](/images/Projects/cobiz.jpg)
 
 ![Hela: un solo panel para gestionar varios negocios a la vez](/images/Projects/hela/01.jpg)
 

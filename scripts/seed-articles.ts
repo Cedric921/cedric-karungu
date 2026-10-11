@@ -4,7 +4,7 @@
  * Idempotent: upserts by slug and never overwrites an article you've edited
  * since (it only fills in missing ones unless --force).
  *
- *   npx tsx scripts/seed-articles.ts [--draft] [--force] [--only=<slug>]
+ *   npx tsx scripts/seed-articles.ts [--draft] [--force] [--only=<slug>[,<slug>…]]
  */
 import 'dotenv/config';
 import mongoose from 'mongoose';
@@ -17,10 +17,11 @@ import { openSourceMonorepo } from './demo-articles/open-source-monorepo';
 import { directUploads } from './demo-articles/direct-uploads';
 import { codeToBusiness } from './demo-articles/code-to-business';
 import { openSourceContributions } from './demo-articles/open-source-contributions';
+import { openSourceProjectArticles } from './demo-articles/open-source-projects';
 
 const DRAFT = process.argv.includes('--draft');
 const FORCE = process.argv.includes('--force');
-const ARTICLES = [offlineFirst, twoCurrencies, multiTenant, openSourceMonorepo, directUploads, codeToBusiness, openSourceContributions];
+const ARTICLES = [offlineFirst, twoCurrencies, multiTenant, openSourceMonorepo, directUploads, codeToBusiness, openSourceContributions, ...openSourceProjectArticles];
 const ONLY = process.argv.find((a) => a.startsWith('--only='))?.slice('--only='.length);
 const lz = (v: { en: string; fr: string; es?: string }) => ({ en: v.en, fr: v.fr, es: v.es ?? '' });
 
@@ -30,7 +31,7 @@ async function main() {
   await mongoose.connect(uri, { dbName: process.env.MONGODB_DB || 'cedric-portfolio' });
 
   for (const a of ARTICLES) {
-    if (ONLY && a.slug !== ONLY) continue;
+    if (ONLY && !ONLY.split(',').includes(a.slug)) continue;
     const exists = await Article.exists({ slug: a.slug });
     if (exists && !FORCE) {
       console.log(`  skip   ${a.slug} (already exists)`);

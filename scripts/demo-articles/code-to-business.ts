@@ -6,10 +6,12 @@ export const codeToBusiness = {
   title: {
     en: 'From Code to Business: Turning Programming Skills into Profitable Ventures',
     fr: 'Du code au business : transformer ses compétences en programmation en activités rentables',
+    es: 'Del código al negocio: convertir las habilidades de programación en proyectos rentables',
   },
   excerpt: {
     en: 'I started by writing React components for other people’s apps in Goma. Today I build and sell business software to shops, schools and transport agencies. Here is what actually moved the needle, and what I would skip.',
     fr: 'J’ai commencé en écrivant des composants React pour les applications des autres, à Goma. Aujourd’hui je conçois et vends des logiciels de gestion à des commerces, des écoles et des agences de transport. Voici ce qui a vraiment compté, et ce que j’éviterais.',
+    es: 'Empecé escribiendo componentes React para las aplicaciones de otros, en Goma. Hoy construyo y vendo software de gestión a comercios, escuelas y agencias de transporte. Esto es lo que de verdad marcó la diferencia, y lo que me saltaría.',
   },
   content: {
     en: `In December 2018 I wrote my first paid lines of code for **Buku My Class**, an app that let secondary school students read their class notes from anywhere. I was paid to ship React components. I was not thinking about customers, margins or contracts.
@@ -27,6 +29,8 @@ My path was not a straight line to entrepreneurship. It was a sequence of jobs, 
 - **AdminAtete** (2023): document archiving for a Belgian tech start-up.
 - **Ever Technologies** (since November 2023): Ever Gauzy, an open-source ERP, CRM and HRM platform, and Ever Teams, a work and project management platform.
 
+![Ever Gauzy, the open-source ERP and CRM platform I work on at Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
+
 Look at that list again. Parcels, attendance, archiving, ERP, CRM. Those are not frameworks. They are **domains**, and they are exactly the domains I sell software in today.
 
 The lesson: do not quit your job to “build a start-up” with no domain knowledge. Let clients and employers pay you to learn how a business actually works. Every invoice you send as a developer is also tuition.
@@ -37,9 +41,15 @@ Almost every product I run today started as a problem I had already solved for s
 
 At One Stop Center, agencies needed to share parcel information. Years later, that became **Safirisha**, an all-in-one platform for inter-city transport agencies: parcels, trips, fleets and drivers, and **Twende Kivu**, an online ticketing platform.
 
+![Safirisha: parcels, trips, fleets and drivers for inter-city transport agencies](/images/Projects/safirisha/01.jpg)
+
 Buku and Attendacy were both about schools. That experience became **Masomo**, school software designed to keep working when the network stops, because in many Congolese schools the connection drops several times a day.
 
+![Masomo: school software that keeps working when the network stops](/images/Projects/masomo-cd/01.jpg)
+
 AdminAtete and Ever Gauzy taught me how companies archive documents, invoice, track stock and pay staff. That became **Hela**: one place to run several businesses at once, whether a shop, a restaurant, a bar or a hotel.
+
+![Hela: one dashboard to run several businesses at once](/images/Projects/hela/01.jpg)
 
 The lesson: keep a problem log. Write down every problem you solve for an employer or a client. When the same problem shows up a third time with a different company, you are not looking at a project any more. You are looking at a product.
 
@@ -58,6 +68,8 @@ Working on Ever Gauzy and Ever Teams meant working in a large, public monorepo. 
 - **Credibility.** A prospect does not have to take my word for it. They can read my commits.
 - **Reusable architecture.** Multi-tenancy, time tracking, invoicing, role-based access: patterns I had already built once, in production, with code review.
 - **A network.** Clients on Upwork and elsewhere found me because they could see real work, not a résumé.
+
+![Ever Teams, the open-source work and project management platform](/images/Projects/ever-teams/01.jpg)
 
 The lesson: contribute where companies actually use the code. Open source is not charity. It is the cheapest marketing a developer can buy, paid in commits.
 
@@ -112,6 +124,8 @@ Mon parcours n’a pas été une ligne droite vers l’entrepreneuriat. C’éta
 - **AdminAtete** (2023) : l’archivage de documents pour une start-up technologique belge.
 - **Ever Technologies** (depuis novembre 2023) : Ever Gauzy, une plateforme open source d’ERP, CRM et GRH, et Ever Teams, une plateforme de gestion du travail et des projets.
 
+![Ever Gauzy, la plateforme open source d’ERP et de CRM sur laquelle je travaille chez Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
+
 Relisez cette liste. Colis, présences, archivage, ERP, CRM. Ce ne sont pas des frameworks. Ce sont des **métiers**, et ce sont exactement les métiers dans lesquels je vends des logiciels aujourd’hui.
 
 La leçon : ne quittez pas votre emploi pour « monter une start-up » sans connaître un métier. Laissez vos clients et vos employeurs vous payer pour apprendre comment une entreprise fonctionne vraiment. Chaque facture que vous envoyez comme développeur est aussi un frais de scolarité.
@@ -122,9 +136,15 @@ Presque tous les produits que je fais tourner aujourd’hui ont commencé comme 
 
 Chez One Stop Center, les agences devaient partager les informations sur les colis. Des années plus tard, c’est devenu **Safirisha**, une plateforme tout-en-un pour les agences de transport inter-villes : colis, voyages, flottes et chauffeurs, et **Twende Kivu**, une plateforme de billetterie en ligne.
 
+![Safirisha : colis, voyages, flottes et chauffeurs pour les agences de transport inter-villes](/images/Projects/safirisha/01.jpg)
+
 Buku et Attendacy parlaient tous les deux d’écoles. Cette expérience est devenue **Masomo**, un logiciel scolaire conçu pour continuer à fonctionner quand le réseau s’arrête, parce que dans beaucoup d’écoles congolaises la connexion tombe plusieurs fois par jour.
 
+![Masomo : le logiciel scolaire qui continue de fonctionner quand le réseau s’arrête](/images/Projects/masomo-cd/01.jpg)
+
 AdminAtete et Ever Gauzy m’ont appris comment les entreprises archivent leurs documents, facturent, suivent leur stock et paient leur personnel. C’est devenu **Hela** : un seul endroit pour gérer plusieurs commerces à la fois, qu’il s’agisse d’une boutique, d’un restaurant, d’un bar ou d’un hôtel.
+
+![Hela : un seul tableau de bord pour gérer plusieurs commerces à la fois](/images/Projects/hela/01.jpg)
 
 La leçon : tenez un journal des problèmes. Notez chaque problème que vous résolvez pour un employeur ou un client. Quand le même problème revient une troisième fois chez une entreprise différente, vous n’avez plus un projet sous les yeux. Vous avez un produit.
 
@@ -143,6 +163,8 @@ Travailler sur Ever Gauzy et Ever Teams, c’est travailler dans un grand monore
 - **De la crédibilité.** Un prospect n’a pas à me croire sur parole. Il peut lire mes commits.
 - **Une architecture réutilisable.** Multi-tenant, suivi du temps, facturation, gestion des rôles : des patterns que j’avais déjà construits une fois, en production, avec revue de code.
 - **Un réseau.** Des clients sur Upwork et ailleurs m’ont trouvé parce qu’ils pouvaient voir du vrai travail, pas un CV.
+
+![Ever Teams, la plateforme open source de gestion du travail et des projets](/images/Projects/ever-teams/01.jpg)
 
 La leçon : contribuez là où des entreprises utilisent réellement le code. L’open source n’est pas de la charité. C’est le marketing le moins cher qu’un développeur puisse s’offrir, payé en commits.
 
@@ -182,5 +204,100 @@ Beaucoup de développeurs démissionnent trop tôt, construisent seuls pendant u
 6. Faites vous-même le travail ennuyeux au début. C’est là que vit réellement le business.
 
 Si vous êtes développeur à Goma, à Bukavu, à Kigali ou ailleurs et que vous lisez ceci : l’écart entre le code et le business, ce n’est ni un diplôme ni une levée de fonds. C’est remarquer quels problèmes reviennent sans cesse, et avoir la patience de résoudre le même problème proprement, contre rémunération, plusieurs fois.`,
+    es: `En diciembre de 2018 escribí mis primeras líneas de código pagadas para **Buku My Class**, una aplicación que permitía a los estudiantes de secundaria leer sus apuntes de clase desde cualquier lugar. Me pagaban por entregar componentes React. No pensaba en clientes, ni en márgenes, ni en contratos.
+
+Siete años después, paso tanto tiempo hablando con dueños de tiendas, directores de escuela y gestores de agencias de transporte como en mi editor. Esta no es una historia de éxito de la noche a la mañana. Es la lista de decisiones que convirtieron una habilidad en un ingreso, escrita para el desarrollador que era en Goma.
+
+## 1. Cobrar por el código primero, construir productos después
+
+Mi camino no fue una línea recta hacia el emprendimiento. Fue una secuencia de empleos, cada uno en un sector distinto:
+
+- **Buku My Class** (2018 a 2021): educación, con React y Node.
+- **One Stop Center** (2021 a 2022): seguimiento de paquetes compartido entre las agencias de una empresa, en Angular.
+- **Attendacy en KADEA Academy** (2022): control de asistencia para una escuela de programación, con Express y React.
+- **CRES** (2022 a 2023): una start-up y centro de investigación en Goma que construye herramientas de gestión empresarial y soluciones de IA, con Nest.js y Next.js.
+- **AdminAtete** (2023): archivo de documentos para una start-up tecnológica belga.
+- **Ever Technologies** (desde noviembre de 2023): Ever Gauzy, una plataforma open source de ERP, CRM y RR. HH., y Ever Teams, una plataforma de gestión del trabajo y de proyectos.
+
+![Ever Gauzy, la plataforma open source de ERP y CRM en la que trabajo en Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
+
+Vuelva a mirar esa lista. Paquetes, asistencia, archivo, ERP, CRM. No son frameworks. Son **sectores**, y son exactamente los sectores en los que vendo software hoy.
+
+La lección: no deje su empleo para “montar una start-up” sin conocer un sector. Deje que clientes y empleadores le paguen por aprender cómo funciona realmente una empresa. Cada factura que envía como desarrollador es también una matrícula.
+
+## 2. Un producto es un problema que ha visto más de una vez
+
+Casi todos los productos que gestiono hoy empezaron como un problema que ya había resuelto para otra persona.
+
+En One Stop Center, las agencias necesitaban compartir la información de los paquetes. Años después, eso se convirtió en **Safirisha**, una plataforma todo en uno para agencias de transporte interurbano: paquetes, viajes, flotas y conductores, y en **Twende Kivu**, una plataforma de venta de billetes en línea.
+
+![Safirisha: paquetes, viajes, flotas y conductores para agencias de transporte interurbano](/images/Projects/safirisha/01.jpg)
+
+Buku y Attendacy trataban ambos de escuelas. Esa experiencia se convirtió en **Masomo**, un software escolar diseñado para seguir funcionando cuando la red se cae, porque en muchas escuelas congoleñas la conexión se corta varias veces al día.
+
+![Masomo: software escolar que sigue funcionando cuando la red se cae](/images/Projects/masomo-cd/01.jpg)
+
+AdminAtete y Ever Gauzy me enseñaron cómo las empresas archivan documentos, facturan, controlan el inventario y pagan al personal. Eso se convirtió en **Hela**: un solo lugar para gestionar varios negocios a la vez, ya sea una tienda, un restaurante, un bar o un hotel.
+
+![Hela: un solo panel para gestionar varios negocios a la vez](/images/Projects/hela/01.jpg)
+
+La lección: lleve un registro de problemas. Anote cada problema que resuelva para un empleador o un cliente. Cuando el mismo problema aparece por tercera vez en una empresa distinta, ya no está mirando un proyecto. Está mirando un producto.
+
+## 3. Vender el resultado, no la tecnología
+
+Nadie en Goma ni en Kigali compra “Next.js, Nest.js y PostgreSQL”. Compran: *“Sé lo que vendí hoy, en dólares y en francos, incluso cuando no había internet.”*
+
+Las dos funciones por las que los clientes preguntan primero son una **caja con dos monedas** y un **modo sin conexión**. Ninguna de las dos es técnicamente glamurosa. Las dos deciden si un comerciante confía su dinero al software.
+
+Así que ahora escribo la página de presentación antes que el código. Si no puedo explicar el resultado en una frase a una cajera, todavía no tengo un producto. Tengo un pasatiempo.
+
+## 4. El open source es un activo comercial
+
+Trabajar en Ever Gauzy y Ever Teams significó trabajar en un monorepo grande y público. Al principio lo veía como un empleo. Luego me di cuenta de lo que hacía por mí:
+
+- **Credibilidad.** Un posible cliente no tiene que fiarse de mi palabra. Puede leer mis commits.
+- **Arquitectura reutilizable.** Multi-tenant, control de tiempo, facturación, acceso por roles: patrones que ya había construido una vez, en producción, con revisión de código.
+- **Una red.** Clientes en Upwork y en otros sitios me encontraron porque podían ver trabajo real, no un currículum.
+
+![Ever Teams, la plataforma open source de gestión del trabajo y de proyectos](/images/Projects/ever-teams/01.jpg)
+
+La lección: contribuya donde las empresas usan realmente el código. El open source no es caridad. Es el marketing más barato que un desarrollador puede comprar, pagado en commits.
+
+## 5. Poner precios como una empresa, no como un freelance
+
+Mis primeros contratos eran por horas, y cobraba de menos. Cobrar por horas le castiga por volverse más rápido y ata sus ingresos a su calendario.
+
+Lo que me funciona ahora: un precio de proyecto para la construcción inicial, y después una **suscripción mensual** por el alojamiento, el soporte y las actualizaciones. Los ingresos recurrentes lo cambiaron todo. Son previsibles, y me obligan a mantener el producto vivo en lugar de pasar a otra cosa después de la entrega.
+
+La parte técnica importa aquí. Como Hela, Safirisha y Masomo son multi-tenant, atender a un nuevo cliente casi no me cuesta nada extra: una sola base de código, muchas empresas, una factura mensual para cada una. Las decisiones de arquitectura son decisiones de precio.
+
+## 6. Las cosas aburridas son el negocio
+
+Si soy sincero, el código es quizá el cuarenta por ciento del trabajo. El resto es:
+
+- contratos y facturas, en dos monedas;
+- copias de seguridad y monitorización, porque una caja que pierde un día de ventas es un cliente perdido;
+- un grupo de WhatsApp por cliente para el soporte;
+- documentos de bienvenida y sesiones de formación para cajeros y secretarias;
+- decir que no a las funciones que solo quiere un cliente.
+
+Automatizo lo que se puede automatizar: despliegues, monitorización, copias de seguridad. Nunca automatizo la primera semana con un cliente nuevo. Esa semana es donde se construye la confianza, y la confianza es lo que se renueva cada mes.
+
+## 7. Seguir siendo desarrollador
+
+Sigo entregando código todos los días en Ever Technologies. El empleo paga las facturas mientras los productos crecen, y los productos me mantienen cerca de usuarios reales, lo que me hace mejor ingeniero en el trabajo. Las dos cosas se alimentan mutuamente.
+
+Muchos desarrolladores renuncian demasiado pronto, construyen aislados durante un año y se quedan sin dinero antes de quedarse sin ideas. Deje que los productos le pidan irse. Hasta entonces, conserve su empleo y conserve sus noches.
+
+## Lo que le diría a mi yo de 2018
+
+1. Entregue para clientes primero. Los productos nacen de los problemas que le pagan por resolver.
+2. Lleve el registro de problemas. La tercera vez es el producto.
+3. Venda resultados, con las palabras del cliente, en la moneda del cliente.
+4. Cobre mensualmente. Diseñe la arquitectura para que el siguiente cliente salga casi gratis.
+5. Construya en público. Sus commits son su presentación de ventas.
+6. Haga usted mismo el trabajo aburrido al principio. Ahí es donde vive realmente el negocio.
+
+Si es desarrollador en Goma, Bukavu, Kigali o en cualquier otro lugar y está leyendo esto: la distancia entre el código y el negocio no es un diploma ni una ronda de financiación. Es darse cuenta de qué problemas vuelven una y otra vez, y tener la paciencia de resolver el mismo problema bien, a cambio de dinero, varias veces.`,
   },
 };

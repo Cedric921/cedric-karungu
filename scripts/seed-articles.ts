@@ -4,7 +4,7 @@
  * Idempotent: upserts by slug and never overwrites an article you've edited
  * since (it only fills in missing ones unless --force).
  *
- *   npx tsx scripts/seed-articles.ts [--draft] [--force]
+ *   npx tsx scripts/seed-articles.ts [--draft] [--force] [--only=<slug>]
  */
 import 'dotenv/config';
 import mongoose from 'mongoose';
@@ -20,7 +20,8 @@ import { codeToBusiness } from './demo-articles/code-to-business';
 const DRAFT = process.argv.includes('--draft');
 const FORCE = process.argv.includes('--force');
 const ARTICLES = [offlineFirst, twoCurrencies, multiTenant, openSourceMonorepo, directUploads, codeToBusiness];
-const lz = (v: { en: string; fr: string }) => ({ en: v.en, fr: v.fr, es: '' });
+const ONLY = process.argv.find((a) => a.startsWith('--only='))?.slice('--only='.length);
+const lz = (v: { en: string; fr: string; es?: string }) => ({ en: v.en, fr: v.fr, es: v.es ?? '' });
 
 async function main() {
   const uri = process.env.MONGODB_URI;
@@ -28,6 +29,7 @@ async function main() {
   await mongoose.connect(uri, { dbName: process.env.MONGODB_DB || 'cedric-portfolio' });
 
   for (const a of ARTICLES) {
+    if (ONLY && a.slug !== ONLY) continue;
     const exists = await Article.exists({ slug: a.slug });
     if (exists && !FORCE) {
       console.log(`  skip   ${a.slug} (already exists)`);

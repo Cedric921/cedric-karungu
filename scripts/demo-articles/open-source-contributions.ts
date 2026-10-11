@@ -6,10 +6,12 @@ export const openSourceContributions = {
   title: {
     en: '126 pull requests in five open-source projects: what I fixed, and how',
     fr: '126 pull requests dans cinq projets open source : ce que j’ai corrigé, et comment',
+    es: '126 pull requests en cinco proyectos open source: qué corregí y cómo',
   },
   excerpt: {
     en: 'Ever Gauzy, SurfSense, Memnox, Expo and React Native, Shinobi Open Source Academy. For each project: what it is, then the parts of the code I worked on, in detail — 94 merged, the rest still in review.',
     fr: 'Ever Gauzy, SurfSense, Memnox, Expo et React Native, Shinobi Open Source Academy. Pour chaque projet : ce qu’il fait, puis les parties du code sur lesquelles j’ai travaillé, en détail — 94 PR mergées, les autres encore en revue.',
+    es: 'Ever Gauzy, SurfSense, Memnox, Expo y React Native, Shinobi Open Source Academy. Para cada proyecto: qué es y, después, las partes del código en las que trabajé, en detalle — 94 PR fusionadas, el resto aún en revisión.',
   },
   content: {
     en: `Over the last few weeks I spent a lot of time inside other people's codebases. Not to collect green squares, but because reading and fixing production code written by strangers is the fastest way I know to get better.
@@ -272,5 +274,135 @@ Cinq personnes qui prennent le même ticket au même moment → une seule gagne.
 - **La revue fait partie du travail, ce n'est pas un obstacle.** Plusieurs des meilleurs détails ci-dessus sont venus d'une question d'un mainteneur.
 
 Si vous débutez : choisissez un projet que vous utilisez vraiment, lisez sa documentation d'architecture et ses tickets ouverts, et envoyez une petite PR bien testée. Puis une autre.`,
+    es: `Durante las últimas semanas pasé mucho tiempo dentro del código de otras personas. No para llenar de cuadritos verdes mi perfil de GitHub, sino porque leer y corregir código de producción escrito por desconocidos es la forma más rápida que conozco de mejorar.
+
+Este artículo va proyecto por proyecto. Para cada uno: qué es el proyecto y, después, qué cambié realmente — el bug, su causa, la corrección. También digo claramente qué está fusionado y qué sigue esperando revisión.
+
+| Proyecto | Qué es | Mis PR | Fusionadas |
+|---|---|---|---|
+| [Ever Gauzy](https://github.com/ever-co/ever-gauzy) | Plataforma open source de gestión empresarial (ERP/CRM/RR. HH.) | 53 | 53 |
+| [SurfSense](https://github.com/MODSetter/SurfSense) | Alternativa privada y local a NotebookLM | 28 | 25 |
+| [Memnox](https://github.com/Memnox/memnox) | Runtime que decide sobre cada acción de los agentes de IA de código | 13 | 11 |
+| [Expo](https://github.com/expo/expo) y [React Native](https://github.com/react/react-native) | El framework React Native y su SDK | 18 | 4 |
+| [SOS Academy](https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform) | Plataforma de mentoría para aprender open source | 14 | 1 |
+
+## 1. Ever Gauzy — que dos ORM digan la misma verdad
+
+**El proyecto.** Ever Gauzy es una plataforma open source de gestión empresarial: ERP, CRM, RR. HH., selección de personal, gestión de proyectos, seguimiento del tiempo y de la actividad con un temporizador de escritorio, facturación, gastos, vacaciones y más. Es un gran monorepo Nx (más de 8 000 estrellas, AGPL-3.0): una API NestJS, una app web Angular, apps de escritorio Electron y unos 80 plugins. Una particularidad lo condiciona todo: la API funciona **con TypeORM o con MikroORM**, así que la mayoría de los servicios tienen dos caminos de código — y se desvían.
+
+Tengo 53 PR fusionadas allí (+5,9k / −1,1k líneas), una en 2023 y 52 recientes. Casi todas incluyen specs de Jest que fijan la rama del ORM que corrigen.
+
+### Una auditoría sistemática de paridad entre TypeORM y MikroORM
+
+Una veintena de PR salen del mismo ejercicio: tomar una funcionalidad, leer las dos ramas y encontrar dónde la de MikroORM dice otra cosa.
+
+- **Los operadores desconocidos lo devolvían todo.** Al traducir los operadores de TypeORM a MikroORM, \`LessThan\`, \`LessThanOrEqual\`, \`Like\` e \`ILike\` acababan en \`{}\`, que MikroORM interpreta como *ninguna condición*. Un filtro de «importe máximo» en las facturas devolvía todas las facturas. Añadí las traducciones que faltaban (\`$lt\`, \`$lte\`, \`$like\`, \`$ilike\`).
+- **\`ILIKE\` no existe en MySQL ni en SQLite.** MikroORM emite \`$ilike\` tal cual. Añadí \`isMikroOrmPostgres()\` (el \`getDBType()\` existente leía la configuración de TypeORM y siempre respondía «postgres») y dos helpers, \`mikroOrmContains\` / \`mikroOrmILike\`, usados en la búsqueda de tareas, etiquetas, empleados y candidatos.
+- **Datos borrados que se filtraban por Knex.** Knex en bruto se salta el filtro de borrado lógico de MikroORM. El endpoint público \`/stats/global\` contaba facturas borradas, los informes de presupuesto contaban tiempo borrado y las hojas de horas no bajaban al eliminar un registro. Cada lectura tiene ahora su \`whereNull('deletedAt')\`, con una spec que registra las llamadas a Knex.
+- **El alcance de los equipos.** En la rama MikroORM de \`findTeamTasks\`, un empleado recibía las tareas de todos los equipos de la organización; ahora aplica la misma regla \`CHANGE_SELECTED_EMPLOYEE\` que TypeORM y, encima, los filtros avanzados.
+
+### Permisos en una aplicación multi-tenant
+
+La corrección más importante es [#10495](https://github.com/ever-co/ever-gauzy/pull/10495). El servicio base añade automáticamente \`employeeId = <quien llama>\` para los usuarios sin el permiso adecuado — pero las notificaciones usan \`receiverEmployeeId\`, así que el filtro nunca se aplicaba y **cualquier empleado podía leer todas las notificaciones del tenant**. Añadí un alcance por destinatario aplicado a \`findAll\`, \`paginate\`, \`countBy\` y \`findOne\`, incluida cada rama de una condición \`OR\`; quien llama sin ficha de empleado ya no ve nada. En la misma zona: las menciones llegan por fin a la persona mencionada (se guardaban con un destinatario \`NULL\`) y un responsable que quita a un miembro del equipo lo quita de verdad, en lugar de devolver 200 tras borrar cero filas.
+
+### Cifras que simplemente estaban mal
+
+- **Horas trabajadas multiplicadas por franjas.** Al unir con las franjas de tiempo, un registro contaba una vez por franja: una hora dividida en seis franjas de 10 minutos contaba como 6 horas.
+- **El uso de las etiquetas inflado por los joins.** Veinticinco \`LEFT JOIN\` multiplicaban cada contador por los demás: una etiqueta en 2 empleados y 3 tareas mostraba 12 usos en lugar de 5. Corregido con \`COUNT(DISTINCT …)\`, a partir de una única tabla de contadores.
+- **La trampa del reloj de 12 horas.** \`'YYYY-MM-DD hh:mm:ss'\` sin AM/PM desplazaba las horas 12 h en tres sitios: los límites mensuales de los gastos iban de mediodía a mediodía y las citas de la tarde aparecían a las 2 de la madrugada.
+- **Gastos recurrentes** que no aparecían en todos los meses en que aplicaban, un borrado en diciembre que reiniciaba el gasto en el año equivocado y PDF de facturas que ignoraban la posición de la moneda de la organización.
+
+### Ordenación y búsqueda, de forma segura
+
+Varias tablas mostraban columnas ordenables mientras los servicios ignoraban el orden pedido. Introduje \`parseSortOrder(order, sortableColumns)\`, una lista blanca que solo conserva columnas conocidas y \`ASC\`/\`DESC\`, aplicada en las dos ramas del ORM. Buscar \`"John "\` (con un espacio al final) producía \`LIKE '%%'\` y devolvía todas las filas; \`splitKeywords()\` descarta ahora los términos vacíos en ocho sitios. Y un helper del DTO convertía el texto buscado \`"2024"\` en \`true\`.
+
+### Temporizador de escritorio: capturas con varias pantallas
+
+En el temporizador Electron, la pantalla activa se buscaba comparando solo la coordenada **x** del cursor: con pantallas apiladas en vertical siempre salía la primera, y en algunas configuraciones de Linux el modo «solo pantalla activa» no capturaba nada. Ahora usa \`screen.getDisplayNearestPoint(cursor)\` y una regla estricta: confiar en el filtro solo si encontró algo; si no, capturar exactamente una pantalla — nunca ninguna, nunca todas. Después añadí un ajuste para elegir en qué pantalla aparece la notificación de captura.
+
+## 2. SurfSense — privacidad y fiabilidad en una app de IA local
+
+**El proyecto.** SurfSense (más de 16k estrellas) se presenta como «la alternativa open source y sin conexión a NotebookLM»: una app de escritorio que responde preguntas sobre tus documentos con citas, edita archivos Office y PDF y genera pódcasts, mapas mentales o cuestionarios — **todo en tu máquina**. Por dentro: Electron supervisando una API FastAPI, colas de trabajo Huey, llama.cpp, stable-diffusion.cpp y un único archivo SQLite con FTS5 y sqlite-vec. El tráfico de red saliente está desactivado por defecto. El equipo trabaja a partir de documentos de arquitectura y ADR; una PR que cierra un hueco documentado borra su línea.
+
+28 PR, 25 fusionadas (+5,3k / −0,7k líneas), en el backend Python, el frontend React y el portal de licencias.
+
+### El código escrito por el modelo sale de \`exec()\`
+
+[#2184](https://github.com/MODSetter/SurfSense/pull/2184) es la que más orgullo me da. El generador de PowerPoint y Excel de Studio ejecutaba con \`exec()\` Python **escrito por un LLM que acababa de leer los documentos no fiables del usuario**, dentro del worker, con sus privilegios — y su timeout no podía detener un hilo desbocado. Lo hice pasar por el ejecutor de scripts que Word y PDF ya usaban: su propio proceso, una carpeta vacía, una única ruta de salida, un entorno reconstruido sin secretos y, ante un timeout o una cancelación, se mata todo el árbol de procesos (job object en Windows, grupo de procesos en el resto). Los tests lanzan procesos hijos reales para demostrar que un secreto falso es invisible para el script y que un bucle infinito muere con un límite de un segundo. El veredicto del mantenedor: «lo hace estrictamente más seguro».
+
+### Consentimiento de red, incluso para hosts que no elegiste
+
+Un servicio remoto de imágenes puede responder con una URL en un CDN cualquiera, y SurfSense la descargaba — enviando la IP del usuario a un host que nunca había autorizado. En [#2072](https://github.com/MODSetter/SurfSense/pull/2072), el proveedor de imágenes recibe un callback \`allow_url_host\` **obligatorio**, al que se espera antes de cualquier descarga: ninguna llamada futura puede olvidarlo. Un host rechazado queda registrado para aparecer en *Ajustes › Red*, y el rechazo es un 403 en la interfaz pero un error no reintentable en el worker (reintentar pagaría otra vez la imagen para el mismo rechazo).
+
+### Una carrera entre el worker y el usuario
+
+Revisando mi propia funcionalidad (notas y renombrado en el panel de fuentes), descubrí que renombrar un archivo mientras se importaba deshacía en silencio el nuevo nombre: el worker guardaba una copia vieja de la fila y la reescribía entera. La corrección ([#2148](https://github.com/MODSetter/SurfSense/pull/2148)) escribe **solo las columnas que produjo el trabajo**:
+
+\`\`\`python
+update(Document)
+  .where(Document.id == doc_id, Document.status != CANCELLED)
+  .values(status=..., error_message=..., **produced)
+\`\`\`
+
+El test de integración confirma una edición desde una segunda sesión mientras el worker analiza el archivo.
+
+### Probar lo que no se podía probar
+
+El transporte ASGI en memoria no puede simular un cliente que cuelga. Añadí una fixture que sirve la app en un socket real, más un servidor de modelo falso que se queda bloqueado — y reveló un bug real: al desconectarse el cliente, Starlette cancela la tarea que estaba guardando la respuesta parcial. Lo reporté, lo fijé con un \`xfail\` estricto y confirmé la causa con un «cancel scope» protegido; se corrigió al día siguiente.
+
+Además: los parámetros de muestreo recomendados por el editor de cada modelo (Qwen3 a 0,6 en modo razonamiento), Anthropic con solo una clave de API, la revocación de los tokens de ChatGPT al cerrar sesión (RFC 7009), reembolsos de Stripe que suspendían *todas* las licencias de un cliente, un aviso para lectores de pantalla cuando termina una respuesta y el estado de Studio pasado a TanStack Query para que las vistas abiertas también se actualicen.
+
+## 3. Memnox — vigilar a los agentes de IA, una acción a la vez
+
+**El proyecto.** Memnox se coloca entre los agentes de IA de código (Claude Code, Codex, Cursor, Gemini CLI, Windsurf) y tu máquina, y decide sobre **cada llamada a una herramienta antes de que se ejecute**: permitir, preguntar o denegar — en local y de forma determinista, «ningún modelo decide». Instala hooks en los agentes, un proxy MCP, interceptores para git, docker, kubectl y compañía, un proxy de red, y mantiene un registro de auditoría y puntos de restauración. Monorepo TypeScript, más de 8 000 tests, reglas estrictas (nada de \`any\`, máximo 500 líneas por archivo).
+
+13 PR, 11 fusionadas. Cuando el trabajo de un proyecto es la seguridad, cada bug es una forma de saltárselo:
+
+- **Un salto de línea se colaba bajo las reglas de denegación.** Los comodines se compilaban como \`.*\` sin la bandera \`s\`, y en JavaScript \`.\` no coincide con \`\\n\` — un comando de shell de varias líneas escapaba a una regla de denegación. Una corrección de un carácter; la traté como una vulnerabilidad y la comuniqué primero en privado.
+- **Los lotes JSON-RPC se saltaban el cortafuegos MCP** ([#89](https://github.com/Memnox/memnox/pull/89)). Un array no tiene \`method\`, así que un \`tools/call\` dentro de un lote pasaba sin veredicto y sin entrada en el registro. Ahora los lotes se dividen y cada llamada se juzga, en orden, para que las peticiones de aprobación lleguen en el orden en que se enviaron. La revisión mostró que los lotes anidados \`[[…]]\` seguían pasando; una comprobación de tipo responde ahora \`-32600 Invalid Request\`.
+- **Peticiones del servidor tomadas por resultados.** Cliente y servidor numeran sus ids de forma independiente, y los mensajes se emparejaban solo por \`id\` — una petición iniciada por el servidor podía cerrar una llamada abierta y borrar la lista de herramientas. Ahora una respuesta es solo un mensaje sin \`method\` y con \`result\` o \`error\`.
+- **Los secretos.** Las contraseñas entre comillas solo se ocultaban hasta el primer espacio, y las transcripciones de sesión guardaban la salida del agente en claro. El flujo pasa ahora por un \`Transform\` que enmascara — línea a línea (los cortes entre chunks parten los tokens), con una máscara por flujo (compartir una sola dejaba escapar un trozo de contraseña, como se vio en la revisión).
+- **Un cierre inesperado que cualquier proceso local podía provocar** en el proxy de red (un rechazo no gestionado con \`%zz\` o una dirección IPv6), y \`shred\`, \`truncate\` o \`git stash drop\` que se ejecutaban sin punto de restauración.
+
+## 4. Expo y React Native — bugs nativos, plataforma a plataforma
+
+**Los proyectos.** React Native (126k estrellas) muestra vistas nativas a partir de React; Expo (52k estrellas) es el framework y el SDK construidos encima — módulos nativos en Swift y Kotlin, la CLI, Router, EAS. Las contribuciones pasan por los mantenedores y, en Expo, por un bot que reproduce el bug y verifica la corrección en emuladores o en máquinas Windows reales.
+
+18 PR; **4 fusionadas en Expo**, las demás en revisión. Insisto en este matiz: ninguna de mis PR de React Native está fusionada todavía.
+
+- **expo-audio (Android).** \`prepareToRecordAsync()\` podía esperar para siempre: el timeout de conexión al servicio existía pero nunca se iniciaba. Además había que asegurar que la continuación se reanudara una sola vez entre dos hilos; el mantenedor señaló una carrera de «comprobar y luego actuar» que quedaba, y la versión final toma y vacía la continuación de forma atómica.
+- **expo-camera (web).** \`onCameraReady\` se disparaba antes de que el vídeo tuviera un fotograma, así que \`takePicture\` fallaba. Ahora espera a que el flujo esté conectado y lleguen datos reales — 25/25 aciertos en Chromium, Firefox y WebKit, frente a 25/25 fallos antes.
+- **expo-widgets.** Un bucle infinito del resolver (desbordamiento de pila) en Windows, porque una ruta absoluta de Windows no se reconocía como archivo — confirmado por el bot en una máquina virtual Windows.
+- **expo-cellular.** Un cierre inesperado cuando el operador de la SIM es una cadena vacía: \`?.\` protege de \`null\`, no de \`""\`.
+- **En revisión:** una imagen de 7200×7200 que tumbaba \`expo-image\`, decodificadores SVG que cargaban vídeos enteros en memoria, carreras en el task-manager de iOS; y en React Native una corrección de iOS de una sola palabra — \`unsignedIntValue\` truncaba \`UIDataDetectorTypeAll\` a 32 bits — además de \`Symbol.toStringTag\` en \`Blob\` y \`File\` para que librerías como axios los reconozcan.
+
+## 5. SOS Academy — construir funcionalidades para una comunidad
+
+**El proyecto.** Shinobi Open Source Academy conecta a desarrolladores que empiezan con mentores y con issues reales de open source. Su plataforma: una API NestJS + MongoDB y apps Next.js (web, panel de administración, blog, portal para aprendices). Hay dos frentes en marcha: los **squads**, que emparejan mentores con aprendices, y una **plataforma de hack** donde los aprendices reclaman issues reales de GitHub.
+
+14 PR; el modelo Squad está fusionado, el resto sigue abierto — dos de ellas ya aprobadas. Aquí son funcionalidades completas más que correcciones:
+
+- **Squads.** La capacidad se comprueba *dentro* de la propia actualización: tres inscripciones simultáneas en un squad de una plaza dan exactamente un éxito; «un solo squad activo por aprendiz» lo garantiza un índice único parcial.
+- **El ciclo de vida de un issue como máquina de estados.** Una sola tabla de transiciones, y cada cambio es un compare-and-set:
+
+\`\`\`ts
+findOneAndUpdate(
+  { _id: id, status: current },
+  { $set: { status: next }, $push: { statusHistory: entry } },
+)
+\`\`\`
+
+Cinco personas reclamando el mismo issue a la vez → gana exactamente una. Después, un trabajo de sincronización sigue la pull request vinculada a cada issue en GitHub y recorre el grafo (en anchura) para que incluso los saltos grandes pasen por pasos legales y registrados.
+- **Autenticación.** \`/auth/refresh\` fallaba siempre (no había parser de cookies); una vez corregido, apareció algo sutil: bcrypt solo lee los primeros 72 bytes, y los tokens de refresco de un mismo usuario comparten sus primeros 72 bytes — se habrían aceptado tokens antiguos. Ahora se hashean con SHA-256. Las rutas de gestión de usuarios, incluida \`DELETE /users/:id\`, estaban abiertas; ahora exigen un administrador o el propio usuario.
+- **Dependencias.** \`pnpm audit\` pasó de 232 avisos (5 críticos) a 5 moderados, y la auditoría en CI ya puede bloquear de verdad un build.
+
+## Lo que me llevo
+
+- **Demostrar el bug primero.** Casi cada PR incluye un test que falla en \`main\` y pasa con la corrección. Los mantenedores fusionan más rápido cuando no tienen que creerte sin más.
+- **Decir lo que no hiciste.** Mis PR terminan con una sección de «límites»: no probado en un dispositivo, fuera de alcance, un caso que la corrección no cubre. Ahorra una ronda de revisión.
+- **Los bugs interesantes viven entre dos sistemas**: dos ORM, los ids del cliente y del servidor, un worker y un usuario, un \`number\` de JavaScript y una bandera nativa de 64 bits.
+- **La revisión es parte del trabajo, no un obstáculo.** Varios de los mejores detalles de arriba salieron de una pregunta de un mantenedor.
+
+Si estás empezando: elige un proyecto que uses de verdad, lee su documentación de arquitectura y sus issues abiertos, y envía una PR pequeña y bien probada. Luego otra.`,
   },
 };

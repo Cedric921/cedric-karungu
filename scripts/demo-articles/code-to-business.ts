@@ -1,5 +1,7 @@
 export const codeToBusiness = {
   slug: 'from-code-to-business',
+  seoTitle: {"en": "From code to business: turning dev skills into income", "fr": "Du code au business : vivre de ses compétences de dev", "es": "Del código al negocio: vivir de tus habilidades de dev"},
+  seoDescription: {"en": "Five stages from coding for passion to building products that pay, and the one rule I learned: once you have the skills, build to solve a real problem.", "fr": "Cinq étapes, du code par passion aux produits rentables, et la règle que j'ai apprise : une fois les compétences acquises, construire pour un vrai problème.", "es": "Cinco etapas, de programar por pasión a crear productos rentables, y la regla que aprendí: con las habilidades, construye para un problema real."},
   cover: '/images/Projects/safirisha/02.jpg',
   tags: ['Career', 'Business', 'SaaS', 'Freelance', 'Entrepreneurship'],
   daysAgo: 0,

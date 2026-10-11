@@ -1,5 +1,7 @@
 export const directUploads = {
   slug: 'direct-to-cloudinary-uploads-nextjs',
+  seoTitle: {"en": "Direct Cloudinary uploads from Next.js, past body limits", "fr": "Upload direct vers Cloudinary depuis Next.js, sans limite"},
+  seoDescription: {"en": "Serverless functions cap uploads at a few MB. Signed direct uploads to Cloudinary from Next.js fix it, with progress bars and no exposed secret.", "fr": "Les fonctions serverless limitent les uploads à quelques Mo. Les uploads signés directs vers Cloudinary depuis Next.js règlent ça, secret protégé."},
   cover: '/images/Projects/safirisha/01.jpg',
   tags: ['Next.js', 'Cloudinary', 'Serverless', 'Security', 'Frontend'],
   daysAgo: 55,

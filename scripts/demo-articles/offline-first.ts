@@ -1,5 +1,7 @@
 export const offlineFirst = {
   slug: 'offline-first-school-software-drc',
+  seoTitle: {"en": "Offline-first school software that works without internet", "fr": "Logiciel scolaire offline-first : marcher sans internet"},
+  seoDescription: {"en": "How I designed Masomo so attendance, grades and fees keep working when the network drops: local storage, sync queues and idempotent writes.", "fr": "Comment j'ai conçu Masomo pour que l'appel, les notes et la caisse fonctionnent sans réseau : stockage local, file de synchro et écritures idempotentes."},
   cover: '/images/Projects/masomo-cd/01.jpg',
   tags: ['Offline-first', 'Next.js', 'PWA', 'EdTech', 'Architecture'],
   daysAgo: 6,

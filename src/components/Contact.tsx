@@ -9,12 +9,12 @@ import { SECTION_TOTAL } from "./AboutMe";
 import MagneticLetters from "./fx/MagneticLetters";
 import RollText from "./fx/RollText";
 
-const EMAIL = "ckarungu921@gmail.com";
 const PHONE = "+243 970 509 466";
 
 const Contact: React.FC = () => {
   const t = useTranslations();
   const [sending, setSending] = useState(false);
+  const EMAIL = t("contact.email");
   // Contact is always last: its index is the total section count.
   const total = useSectionTotal(SECTION_TOTAL);
 

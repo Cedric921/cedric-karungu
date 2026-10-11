@@ -36,7 +36,8 @@
     "location": "Based Remotely - Working globally",
     "bio1": "I'm a Fullstack Developer with 5+ years of experience building ERP, CRM, and AI-powered applications. Expert in React, Next.js, and Nest.js, I specialize in creating scalable digital solutions that bridge the gap between frontend and backend excellence.",
     "bio2": "As a Project Manager at Ever Technologies, I lead the development of business management platforms. My background with CRES and AdminAtete has sharpened my ability to align technical implementation with strategic business objectives across various industries.",
-    "bio3": "Based in IT Management with a Fullstack specialization from Goma Digital Academy, I am a multilingual collaborator fluent in French, English, and Swahili. I am dedicated to delivering high-impact solutions that drive growth and enhance user experience."
+    "bio3": "Based in IT Management with a Fullstack specialization from Goma Digital Academy, I am a multilingual collaborator fluent in French, English, and Swahili. I am dedicated to delivering high-impact solutions that drive growth and enhance user experience.",
+    "languages": "Français · English · Kiswahili"
   },
   "skills": {
     "title": "Skills",
@@ -64,7 +65,7 @@
   "contact": {
     "title": "Get In Touch",
     "description": "Let's work together on your next project",
-    "email": "Email",
+    "email": "ckarungu921@gmail.com",
     "phone": "Phone",
     "sendMessage": "Send Message",
     "message": "Message",
@@ -146,7 +147,8 @@
       "AI-powered products",
       "APIs that scale"
     ],
-    "badge": "Available for work · Remote"
+    "badge": "Available for work · Remote",
+    "skipToContent": "Skip to content"
   },
   "blog": {
     "nav": "Blog",

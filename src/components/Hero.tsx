@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { EXPERIENCES } from "../constants";
 import { usePublicData, useSiteContent } from "../hooks";
-import { experienceToView, type ExperienceItem } from "../lib/public-data";
+import { experienceToView, type ExperienceItem, type SocialLinkItem } from "../lib/public-data";
 import StackedName from "./fx/StackedName";
 import TypeLoop from "./fx/TypeLoop";
 import FlipAvatar from "./fx/FlipAvatar";
@@ -57,11 +57,13 @@ const Hero: React.FC = () => {
     transition: { duration: 0.7, ease: EASE, delay: 0.08 * i },
   });
 
+  // Social links come from Admin → Social links; the email from Site content (contact.email).
+  const { data: socials } = usePublicData<SocialLinkItem[]>("/api/public/social-links", []);
+  const email = t("contact.email");
   const links = [
     { label: tr("hero.downloadResume"), href: resumePdf, download: "Ced-CV.pdf" },
-    { label: "GitHub", href: "https://github.com/Cedric921" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/cedric-karungu" },
-    { label: "ckarungu921@gmail.com", href: "mailto:ckarungu921@gmail.com" },
+    ...socials.filter((s) => !s.url.startsWith("mailto:")).map((s) => ({ label: s.label, href: s.url })),
+    ...(email ? [{ label: email, href: `mailto:${email}` }] : []),
   ];
 
   return (

@@ -1,6 +1,6 @@
 export const codeToBusiness = {
   slug: 'from-code-to-business',
-  cover: '/images/Projects/hela/02.jpg',
+  cover: '/images/Projects/safirisha/02.jpg',
   tags: ['Career', 'Business', 'SaaS', 'Freelance', 'Entrepreneurship'],
   daysAgo: 0,
   title: {
@@ -9,340 +9,328 @@ export const codeToBusiness = {
     es: 'Del código al negocio: convertir las habilidades de programación en proyectos rentables',
   },
   excerpt: {
-    en: 'I started coding for the love of it, with apps nobody ever used. Then I learned that the same passion could pay, that real problems beat cool ideas, and that reputation has to be earned inside companies before you can sell on your own. The whole path, step by step.',
-    fr: 'J’ai commencé à coder par passion, avec des applications que personne n’utilisait. Puis j’ai appris que cette passion pouvait payer, que les vrais problèmes valent mieux que les belles idées, et que la notoriété se gagne d’abord en entreprise avant de vendre seul. Tout le parcours, étape par étape.',
-    es: 'Empecé a programar por pasión, con aplicaciones que nadie usaba. Luego aprendí que esa misma pasión podía pagar, que los problemas reales valen más que las ideas bonitas, y que la reputación se gana dentro de las empresas antes de poder vender por cuenta propia. Todo el camino, paso a paso.',
+    en: 'I coded for passion, then to learn, then for money, then for reputation. Only at the last step did I understand the rule that makes programming pay: once you have the skills, build only to solve a real problem. Five stages, one lesson.',
+    fr: 'J’ai codé par passion, puis pour apprendre, puis pour l’argent, puis pour la notoriété. Ce n’est qu’à la dernière étape que j’ai compris la règle qui fait que la programmation paie : une fois les compétences acquises, ne développer que pour résoudre un vrai problème. Cinq étapes, une leçon.',
+    es: 'Programé por pasión, luego para aprender, luego por dinero, luego por reputación. Solo en la última etapa entendí la regla que hace que la programación pague: una vez que tienes las habilidades, construye solo para resolver un problema real. Cinco etapas, una lección.',
   },
   content: {
-    en: `I did not start programming to make money. I started because making a computer do what I had imagined felt like magic, and I wanted more of that feeling. My first programs had exactly one user: me. Most of them never left my laptop.
+    en: `Looking back at my path, I did not code for the same reason every year. I coded for passion, then to learn, then for money, then for reputation, and finally to solve other people’s problems. Each stage was necessary. But only the last one is the one where people pay, and it took me five stages to understand why.
 
-Today I build and sell management software to shops, schools, clinics and transport companies, while working as a full-stack engineer on open-source business platforms. Between those two points there is no shortcut, only a sequence of lessons. This article is that sequence, in the order I learned it.
+This is that path, stage by stage, with what each one taught me.
 
-## 1. Code for the love of it
+## 1. Coding for passion: Buku My Class
 
-The passion phase is not wasted time. It is where the fundamentals come from.
+I started programming because it was fun. Making a computer do what I had imagined felt like magic, and I wanted more of it. My first real project in that spirit was **Buku My Class**, an application that let secondary school students read their class notes from anywhere, where I worked on both the React frontend and the backend between 2018 and 2021.
 
-When nobody is paying you, you can afford to be curious. I rebuilt things that already existed just to understand them. I tried languages I would never use at work. I spent evenings on side projects with no deadline and no specification. That freedom taught me how to learn, which is the only skill that has never gone out of date.
+I was not thinking about customers or revenue. I was thinking about whether the feature worked and whether I could build the next one. That is exactly what the passion stage is for.
 
-But there is a trap in that phase, and I fell into it for a while: the apps stayed on my computer. They were exercises, not products. They solved my curiosity, not anyone’s problem.
+> Passion is what makes you spend a weekend on a bug nobody asked you to fix. That is how the fundamentals get in.
 
-## 2. The day I learned that passion could pay
+What it gave me: the basics of the web stack, the habit of finishing things, and the first proof that code I wrote could be used by people I would never meet.
 
-The turning point was not a business plan. It was my first paid work, in December 2018, for **Buku My Class**, an application that let secondary school students read their class notes from anywhere.
+What it did not give me: any idea of how software becomes a business.
 
-For the first time, code I wrote was used by people I would never meet, and someone paid for it. That changed how I saw the craft. Programming was not only something I loved. It was something other people needed and were willing to pay for.
+## 2. Coding to learn and sharpen skills: KADEA and Upperz
 
-That realisation led to a simple decision: I would stop building apps that stayed on my laptop, and start thinking about the real problems of real people.
+The second stage was deliberate. I took on projects not because they paid the most, but because they would stretch me.
 
-## 3. Real problems, not cool ideas
+At **KADEA Academy** I built **Attendacy**, a student attendance application for a coding school, with Express.js and React. A small scope, but real users every morning and immediate feedback when something was wrong.
 
-So I built apps for other people. Tools to manage small things, prototypes for ideas I believed in, early versions of products I still work on today.
-
-They were better than my passion projects, because they started from a problem rather than from a technology. But they hit a wall I had not anticipated: **nobody knew me**.
-
-A good application built by an unknown developer is still an application nobody downloads. Businesses do not hand their sales data, their student records or their invoices to someone with no track record, however clean the code is. I had the skills. I did not have the reputation, the trust, or the distribution.
-
-## 4. Working inside companies that already solved problems
-
-I made a pragmatic choice. Instead of fighting for notoriety alone, I went to work for companies that could already do what I could not: reach users, earn their trust, and solve their problems at scale. They needed expertise. I needed to learn how a real solution gets delivered and paid for. It was a fair exchange.
-
-Each company taught me a different domain and a different part of the business of software:
-
-- **Buku My Class** (2018 to 2021): education. How students actually use a product, and how far a good idea is from a finished one.
-- **One Stop Center** (2021 to 2022): parcel tracking shared across the agencies of a transport company, in Angular. My first contact with logistics and with multi-branch operations.
-- **Attendacy at KADEA Academy** (2022): student attendance for a coding school. Small scope, real users, daily feedback.
-- **CRES** (2022 to 2023): a start-up and research centre building business management tools and AI solutions, in Nest.js and Next.js. Where I learned to structure a backend that several products depend on.
-- **AdminAtete** (2023): document archiving for a Belgian tech start-up. Compliance, search, and the value of boring, reliable features.
-- **Cobiz at Upperz** (2023): lead backend developer on a sales, stock, customer and invoicing management application. The closest thing to running a business I had seen from inside the code.
-- **Ever Technologies** (since November 2023): Ever Gauzy, an open-source ERP, CRM and HRM platform, and Ever Teams, an open-source work and project management platform. Large codebases, open collaboration, and clients all over the world.
-
-![Ever Gauzy, the open-source ERP and CRM platform I work on at Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
-
-Look at that list as a curriculum rather than a résumé. Education, logistics, attendance, archiving, sales and stock, invoicing, ERP, CRM. These companies paid me for my expertise, and in return I learned how businesses really work: how they onboard a client, how they handle support, how they bill, what happens when the system is down for an hour.
-
-That is the knowledge I was missing when my apps stayed on my laptop. No tutorial teaches it. You get it by shipping for people who pay.
-
-## 5. Doing what those companies did, on my own
-
-Once I understood how those companies solved problems, I could do the same thing myself. Not by copying their products, but by applying their method to problems I kept meeting: start from a real need, build only what is needed, deliver it with support, and charge for the value.
-
-Almost every product I run today descends directly from something I learned inside a company:
-
-Cobiz, AdminAtete and Ever Gauzy taught me how companies sell, track stock, follow up customers, invoice and pay staff. That became **Hela**: one place to run several businesses at once, whether a shop, a restaurant, a bar or a hotel.
+At **Upperz** in 2023, I was the lead backend developer on **Cobiz**, an application for managing sales, stock, customers and invoices. This was the first time I owned the backend of a system that a business would run on all day: data models for stock movements, invoices that had to be right to the last unit, customer accounts, reports that an owner would actually read.
 
 ![Cobiz: sales, stock, customers and invoices in one app](/images/Projects/cobiz.jpg)
 
-![Hela: one dashboard to run several businesses at once](/images/Projects/hela/01.jpg)
+> You do not learn architecture from a course. You learn it the first time a wrong number on an invoice is your fault.
 
-One Stop Center taught me how transport agencies share information between branches. That became **Safirisha**, an all-in-one platform for inter-city transport companies: parcels, trips, fleets and drivers, and **Twende Kivu**, an online ticketing platform.
+What it gave me: backend design under real constraints, the discipline of being responsible for data that matters, and a first look at how a business thinks about its stock, its sales and its customers.
 
-![Safirisha: parcels, trips, fleets and drivers for inter-city transport companies](/images/Projects/safirisha/01.jpg)
+## 3. Coding for money: AdminAtete
 
-Buku and Attendacy taught me how schools work day to day. That became **Masomo**, school software designed to keep working when the network stops, because the schools I serve cannot depend on a stable connection.
+The third stage was about being paid for expertise. In 2023 I worked as a full-stack developer, with Express.js and Next.js, for **AdminAtete**, a Belgian tech start-up offering digital services to businesses, including a document archiving application.
 
-![Masomo: school software that keeps working when the network stops](/images/Projects/masomo-cd/01.jpg)
+![AdminAtete: digitising and organising business documents](/images/Projects/adminatete/01.jpg)
 
-The same pattern produced **Afia**, a medical record platform for patients and healthcare providers, and **HIÜRD**, a local services marketplace with secure payments.
+Archiving is not glamorous. It is search, categorisation, access rights, storage, and the guarantee that a document filed today can be found in three years. But this is where I gained two things at once.
 
-None of these started as a brilliant idea. Each one started as a problem I had already seen solved, badly or well, from inside a company.
+The first was technical experience: production systems, security, performance on real volumes of data.
 
-## 6. What changed in how I build
+The second mattered more: **learning to answer a client’s needs**. Not what I found interesting to build, but what the client actually needed, expressed in their words, delivered on their schedule. A client does not pay for a feature. They pay for a worry that goes away.
 
-Working for businesses changed my habits as a developer. The ones that matter most:
+> The client never asked for a faster search. They asked to stop losing documents. The search was my answer, not their request.
 
-**Sell the outcome, not the stack.** Nobody buys “Next.js, Nest.js and PostgreSQL”. A shop owner buys *“I know what I sold today, in dollars and in local currency, even when the internet was down.”* The two features clients ask about first are a dual-currency till and an offline mode. Neither is glamorous. Both decide whether someone trusts the software with their money. I now write the landing page before the code; if I cannot explain the result in one sentence to a cashier, I do not have a product yet.
+## 4. Open source to build a reputation: Ever Teams and Ever Gauzy
 
-**Price like a business.** My first contracts were hourly, and I undercharged. Now it is a project price for the initial build, then a monthly subscription for hosting, support and updates. Recurring revenue is predictable, and it forces me to keep the product alive instead of moving on after delivery. Because Hela, Safirisha and Masomo are multi-tenant, a new client costs almost nothing extra to serve: one codebase, many companies, one monthly invoice each. Architecture decisions are pricing decisions.
+By then I had skills and some experience, but very few people knew it. The fourth stage fixed that.
 
-**Do the boring work.** Code is maybe forty percent of the job. The rest is contracts and invoices, backups and monitoring, a support group per client, onboarding documents, training sessions for cashiers and secretaries, and saying no to features only one client wants. I automate deployments, monitoring and backups. I never automate the first week with a new client. That week is where trust is built, and trust is what gets renewed every month.
+Since November 2023 I have worked at **Ever Technologies** on two open-source platforms: **Ever Gauzy**, an open business management platform covering ERP, CRM, HRM and project management, and **Ever Teams**, an open work and project management platform. I work across the stack, with Nest.js, Next.js and React Native.
 
-## 7. Reputation, finally
+![Ever Gauzy, the open-source ERP and CRM platform I work on at Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
 
-Remember the wall from step three: nobody knew me. Working on Ever Gauzy and Ever Teams, two large public monorepos, solved that in a way I had not planned.
+Two things happened. First, I learned to **develop in a team on public projects**: pull requests reviewed by people on other continents, conventions you do not get to choose, code that stays readable for someone who joins next year. That is a different skill from building alone.
+
+Second, my work became visible. A prospect does not have to take my word for anything. They can read my commits, see how I handle a review, and check that I ship.
 
 ![Ever Teams, the open-source work and project management platform](/images/Projects/ever-teams/01.jpg)
 
-- **Credibility.** A prospect does not have to take my word for it. They can read my commits.
-- **Reusable architecture.** Multi-tenancy, time tracking, invoicing, role-based access: patterns I had already built once, in production, with code review.
-- **A network.** Clients on freelance platforms and elsewhere found me because they could see real work, not a résumé.
+> Open source is the cheapest marketing a developer can do. You pay in commits, and the receipt is public.
 
-Open source gave me the notoriety I could not buy at the start. It is the cheapest marketing a developer can do, paid in commits.
+## 5. Coding to solve clients’ problems directly
 
-## 8. The loop
+With the skills, the experience, and the reputation, I could finally do what I had wanted to do since the beginning: build solutions directly for the people who have the problem, and be paid by them.
 
-I still ship code every day at Ever Technologies. The job pays the bills while the products grow, and the products keep me close to real users, which makes me a better engineer at work. Passion gave me the skills, companies gave me the expertise and the reputation, and the products give me back the passion. The loop closes.
+**Safirisha** started as a rewrite of what I had seen at One Stop Center, where agencies of a transport company shared parcel information. The original only handled parcels. Safirisha became an all-in-one platform for inter-city transport companies: parcels tracked from sender to recipient across every branch, trips scheduled with seats sold, fleets and drivers assigned, and revenue consolidated per branch. The problem it solves is simple to state and expensive to live with: a transport company with several branches that does not know, at the end of the day, what left, what arrived, and how much money each branch took in.
 
-Many developers quit too early, build in isolation for a year, and run out of money before they run out of ideas. Let the products ask you to leave. Until they do, keep your job and keep your evenings.
+![Safirisha: parcels, trips, fleets and drivers for inter-city transport companies](/images/Projects/safirisha/01.jpg)
+
+**Masomo** is school management software: enrolment, attendance, grades, fees and the cash desk, designed to keep working when the network stops, because the schools it serves cannot depend on a stable connection.
+
+![Masomo: school management that keeps working when the network stops](/images/Projects/masomo-cd/01.jpg)
+
+**Adifile** handles the administrative management of a company: the documents, procedures and obligations that a business has to keep in order and be able to produce on demand. It is the direct descendant of what I learned at AdminAtete.
+
+**Afia** is a hospital management platform: patient records, consultations and the flow between patients and healthcare providers, so that a clinic knows who was seen, by whom, and what was prescribed.
+
+![Afia: hospital management, from patient records to consultations](/images/Projects/afia-platform-for-hospital/01.jpg)
+
+None of these came from a brainstorming session. Each one is a problem I had already met, in a company or in daily life, and solved the way those companies had taught me to solve it: start from the need, build only what is necessary, deliver it with support, and charge for the value.
+
+## 6. The lesson: once you have the skills, build only to solve a problem
+
+Here is the rule I wish someone had told me at stage one.
+
+While you are learning, build anything. A chat app, a to-do list, a clone of a social network: those are exercises, and exercises are how you get the skills.
+
+But once you have the skills, those projects stop helping you. Nobody pays for the fifth chat app. Nobody pays for a clone of Facebook. People pay when you look at a real problem in their daily life and remove it.
+
+> Skills are the entry ticket. The problem is the business.
+
+Look at the two products people were quickest to pay for:
+
+- **Cobiz** solved a problem every shop owner has: knowing what is in stock, what was sold today, who still owes money, and having an invoice ready without a notebook or a spreadsheet. Nothing in it was technically new. All of it was worth money, because it replaced a worry.
+- **Safirisha** solved the daily chaos of a transport company with several branches: parcels lost between agencies, seats sold twice, drivers assigned by phone call, and a manager who only knows the day’s revenue the next morning. Again, nothing exotic. A very real problem, and a company that was glad to pay to see it gone.
+
+The pattern is always the same. The problem is visible, it costs the client time or money every single day, and the client can see it disappear the first week they use the software. When those three things are true, monetising is not hard. You do not have to convince anyone. You show them their problem, gone.
 
 ## What I would tell the developer I was
 
-1. Code for the love of it, but notice when your apps stay on your laptop. That is the signal to change.
-2. The first time someone pays for your code, pay attention. It means the problem was real.
-3. Chase real problems, not cool ideas.
-4. If nobody knows you, go where the users already are. Let companies pay for your expertise while you learn how they deliver.
-5. Then do what they did, on your own, on the problems you keep meeting.
-6. Sell outcomes, charge monthly, do the boring work, build in public.
+1. Code for passion first. That is where the fundamentals come from.
+2. Then pick projects that stretch you, even if they pay less. Skills compound.
+3. Then get paid for expertise, and learn to answer the client’s need rather than your own curiosity.
+4. Build in public. Reputation is what turns skills into offers.
+5. Once you have all of that, stop building exercises. Find a real problem in daily life and solve it. That is the moment people pay.
 
-The gap between code and business is not a diploma or a round of funding. It is the patience to turn a passion into expertise, expertise into reputation, and reputation into solutions that people are glad to pay for, month after month.`,
-    fr: `Je n’ai pas commencé à programmer pour gagner de l’argent. J’ai commencé parce que faire exécuter à un ordinateur ce que j’avais imaginé ressemblait à de la magie, et que je voulais revivre cette sensation. Mes premiers programmes avaient exactement un utilisateur : moi. La plupart n’ont jamais quitté mon ordinateur.
+The distance between code and business is not a diploma or a round of funding. It is the moment you stop asking “what could I build?” and start asking “what problem, that someone already has, can I make disappear?”`,
+    fr: `Quand je regarde mon parcours, je n’ai pas codé pour la même raison chaque année. J’ai codé par passion, puis pour apprendre, puis pour l’argent, puis pour la notoriété, et enfin pour résoudre les problèmes des autres. Chaque étape a été nécessaire. Mais seule la dernière est celle où les gens paient, et il m’a fallu cinq étapes pour comprendre pourquoi.
 
-Aujourd’hui, je conçois et vends des logiciels de gestion à des commerces, des écoles, des cliniques et des entreprises de transport, tout en travaillant comme ingénieur full-stack sur des plateformes de gestion open source. Entre ces deux points, il n’y a pas de raccourci, seulement une suite de leçons. Cet article, c’est cette suite, dans l’ordre où je l’ai apprise.
+Voici ce parcours, étape par étape, avec ce que chacune m’a appris.
 
-## 1. Coder par passion
+## 1. Coder par passion : Buku My Class
 
-La phase passion n’est pas du temps perdu. C’est là que viennent les fondamentaux.
+J’ai commencé à programmer parce que c’était amusant. Faire exécuter à un ordinateur ce que j’avais imaginé ressemblait à de la magie, et j’en voulais plus. Mon premier vrai projet dans cet esprit a été **Buku My Class**, une application qui permettait aux élèves du secondaire de lire leurs notes de cours depuis n’importe où, où j’ai travaillé à la fois sur le frontend React et sur le backend entre 2018 et 2021.
 
-Quand personne ne vous paie, vous pouvez vous permettre d’être curieux. J’ai reconstruit des choses qui existaient déjà, juste pour les comprendre. J’ai essayé des langages que je n’utiliserais jamais au travail. J’ai passé des soirées sur des projets sans délai et sans cahier des charges. Cette liberté m’a appris à apprendre, la seule compétence qui n’a jamais pris une ride.
+Je ne pensais ni aux clients ni au chiffre d’affaires. Je me demandais si la fonctionnalité marchait et si je pouvais construire la suivante. C’est exactement à ça que sert la phase passion.
 
-Mais il y a un piège dans cette phase, et j’y suis resté un moment : les applications restaient dans mon ordinateur. C’étaient des exercices, pas des produits. Elles répondaient à ma curiosité, pas au problème de quelqu’un.
+> La passion, c’est ce qui vous fait passer un week-end sur un bug que personne ne vous a demandé de corriger. C’est comme ça que les fondamentaux rentrent.
 
-## 2. Le jour où j’ai appris que la passion pouvait payer
+Ce que ça m’a donné : les bases de la stack web, l’habitude de finir les choses, et la première preuve que du code que j’avais écrit pouvait être utilisé par des gens que je ne rencontrerais jamais.
 
-Le déclic n’a pas été un business plan. C’est mon premier travail rémunéré, en décembre 2018, pour **Buku My Class**, une application qui permettait aux élèves du secondaire de lire leurs notes de cours depuis n’importe où.
+Ce que ça ne m’a pas donné : la moindre idée de la façon dont un logiciel devient un business.
 
-Pour la première fois, du code que j’avais écrit était utilisé par des gens que je ne rencontrerais jamais, et quelqu’un payait pour ça. Ça a changé ma façon de voir le métier. Programmer n’était pas seulement quelque chose que j’aimais. C’était quelque chose dont d’autres avaient besoin et pour lequel ils étaient prêts à payer.
+## 2. Coder pour apprendre et étendre ses compétences : KADEA et Upperz
 
-Cette prise de conscience a mené à une décision simple : arrêter de construire des applications qui restaient dans mon ordinateur, et commencer à penser aux vrais problèmes des vraies personnes.
+La deuxième étape a été délibérée. J’ai pris des projets non pas parce qu’ils payaient le plus, mais parce qu’ils allaient me pousser.
 
-## 3. Les vrais problèmes, pas les belles idées
+À **KADEA Academy**, j’ai construit **Attendacy**, une application de gestion des présences pour une école de code, en Express.js et React. Un petit périmètre, mais de vrais utilisateurs chaque matin et un retour immédiat quand quelque chose n’allait pas.
 
-Alors j’ai développé des applications pour les autres. Des outils pour gérer de petites choses, des prototypes d’idées auxquelles je croyais, les premières versions de produits sur lesquels je travaille encore aujourd’hui.
-
-Elles étaient meilleures que mes projets passion, parce qu’elles partaient d’un problème et non d’une technologie. Mais elles ont heurté un mur que je n’avais pas anticipé : **personne ne me connaissait**.
-
-Une bonne application développée par un inconnu reste une application que personne ne télécharge. Les entreprises ne confient pas leurs données de vente, leurs dossiers d’élèves ou leurs factures à quelqu’un sans références, aussi propre que soit le code. J’avais les compétences. Je n’avais ni la notoriété, ni la confiance, ni la distribution.
-
-## 4. Travailler dans des entreprises qui résolvaient déjà des problèmes
-
-J’ai fait un choix pragmatique. Plutôt que de me battre seul pour la notoriété, je suis allé travailler pour des entreprises qui savaient déjà faire ce que je ne savais pas faire : atteindre des utilisateurs, gagner leur confiance et résoudre leurs problèmes à grande échelle. Elles avaient besoin d’expertise. J’avais besoin d’apprendre comment une vraie solution se livre et se fait payer. C’était un échange équitable.
-
-Chaque entreprise m’a appris un métier différent et une partie différente du business du logiciel :
-
-- **Buku My Class** (2018 à 2021) : l’éducation. Comment les élèves utilisent vraiment un produit, et la distance entre une bonne idée et un produit fini.
-- **One Stop Center** (2021 à 2022) : le suivi des colis partagé entre les agences d’une entreprise de transport, en Angular. Mon premier contact avec la logistique et les opérations multi-agences.
-- **Attendacy à KADEA Academy** (2022) : la gestion des présences d’une école de code. Petit périmètre, vrais utilisateurs, retours quotidiens.
-- **CRES** (2022 à 2023) : une start-up et un centre de recherche qui construit des outils de gestion d’entreprise et des solutions d’IA, en Nest.js et Next.js. Là où j’ai appris à structurer un backend dont plusieurs produits dépendent.
-- **AdminAtete** (2023) : l’archivage de documents pour une start-up technologique belge. La conformité, la recherche, et la valeur des fonctionnalités ennuyeuses mais fiables.
-- **Cobiz chez Upperz** (2023) : développeur backend principal d’une application de gestion des ventes, du stock, des clients et des factures. Ce qui ressemble le plus à la gestion d’une entreprise, vue depuis le code.
-- **Ever Technologies** (depuis novembre 2023) : Ever Gauzy, une plateforme open source d’ERP, CRM et GRH, et Ever Teams, une plateforme open source de gestion du travail et des projets. De grandes bases de code, une collaboration ouverte, et des clients dans le monde entier.
-
-![Ever Gauzy, la plateforme open source d’ERP et de CRM sur laquelle je travaille chez Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
-
-Regardez cette liste comme un programme de formation plutôt qu’un CV. Éducation, logistique, présences, archivage, ventes et stock, facturation, ERP, CRM. Ces entreprises m’ont payé pour mon expertise, et en retour j’ai appris comment les entreprises fonctionnent vraiment : comment elles accueillent un client, comment elles gèrent le support, comment elles facturent, ce qui se passe quand le système est en panne pendant une heure.
-
-C’est la connaissance qui me manquait quand mes applications restaient dans mon ordinateur. Aucun tutoriel ne l’enseigne. On l’acquiert en livrant pour des gens qui paient.
-
-## 5. Faire ce que ces entreprises faisaient, par moi-même
-
-Une fois que j’ai compris comment ces entreprises résolvaient des problèmes, j’ai pu faire la même chose moi-même. Pas en copiant leurs produits, mais en appliquant leur méthode aux problèmes que je rencontrais sans cesse : partir d’un vrai besoin, construire seulement ce qui est nécessaire, livrer avec du support, et facturer la valeur.
-
-Presque tous les produits que je fais tourner aujourd’hui descendent directement de quelque chose appris en entreprise :
-
-Cobiz, AdminAtete et Ever Gauzy m’ont appris comment les entreprises vendent, suivent leur stock, suivent leurs clients, facturent et paient leur personnel. C’est devenu **Hela** : un seul endroit pour gérer plusieurs commerces à la fois, qu’il s’agisse d’une boutique, d’un restaurant, d’un bar ou d’un hôtel.
+Chez **Upperz**, en 2023, j’ai été développeur backend principal de **Cobiz**, une application de gestion des ventes, du stock, des clients et des factures. C’était la première fois que je portais le backend d’un système sur lequel une entreprise allait tourner toute la journée : les modèles de données pour les mouvements de stock, des factures justes à l’unité près, les comptes clients, des rapports qu’un patron allait vraiment lire.
 
 ![Cobiz : ventes, stock, clients et factures dans une seule application](/images/Projects/cobiz.jpg)
 
-![Hela : un seul tableau de bord pour gérer plusieurs commerces à la fois](/images/Projects/hela/01.jpg)
+> On n’apprend pas l’architecture dans un cours. On l’apprend la première fois qu’un mauvais chiffre sur une facture est de votre faute.
 
-One Stop Center m’a appris comment les agences de transport partagent l’information entre leurs antennes. C’est devenu **Safirisha**, une plateforme tout-en-un pour les entreprises de transport inter-villes : colis, voyages, flottes et chauffeurs, et **Twende Kivu**, une plateforme de billetterie en ligne.
+Ce que ça m’a donné : la conception backend sous contraintes réelles, la discipline d’être responsable de données qui comptent, et un premier regard sur la façon dont une entreprise pense son stock, ses ventes et ses clients.
 
-![Safirisha : colis, voyages, flottes et chauffeurs pour les entreprises de transport inter-villes](/images/Projects/safirisha/01.jpg)
+## 3. Coder pour l’argent : AdminAtete
 
-Buku et Attendacy m’ont appris comment une école fonctionne au quotidien. C’est devenu **Masomo**, un logiciel scolaire conçu pour continuer à fonctionner quand le réseau s’arrête, parce que les écoles que je sers ne peuvent pas compter sur une connexion stable.
+La troisième étape, c’était être payé pour son expertise. En 2023, j’ai travaillé comme développeur full-stack, en Express.js et Next.js, pour **AdminAtete**, une start-up technologique belge qui propose des services numériques aux entreprises, dont une application d’archivage de documents.
 
-![Masomo : le logiciel scolaire qui continue de fonctionner quand le réseau s’arrête](/images/Projects/masomo-cd/01.jpg)
+![AdminAtete : numériser et organiser les documents d’entreprise](/images/Projects/adminatete/01.jpg)
 
-Le même schéma a produit **Afia**, une plateforme de dossiers médicaux pour les patients et les professionnels de santé, et **HIÜRD**, une place de marché de services locaux avec paiements sécurisés.
+L’archivage n’a rien de prestigieux. C’est de la recherche, de la catégorisation, des droits d’accès, du stockage, et la garantie qu’un document classé aujourd’hui sera retrouvé dans trois ans. Mais c’est là que j’ai gagné deux choses à la fois.
 
-Aucun de ces produits n’a commencé comme une idée brillante. Chacun a commencé comme un problème que j’avais déjà vu résolu, bien ou mal, de l’intérieur d’une entreprise.
+La première, c’est l’expérience technique : des systèmes en production, la sécurité, la performance sur de vrais volumes de données.
 
-## 6. Ce qui a changé dans ma façon de construire
+La seconde comptait davantage : **apprendre à répondre aux besoins d’un client**. Pas ce que je trouvais intéressant à construire, mais ce dont le client avait réellement besoin, exprimé dans ses mots, livré dans ses délais. Un client ne paie pas pour une fonctionnalité. Il paie pour un souci qui disparaît.
 
-Travailler pour des entreprises a changé mes habitudes de développeur. Celles qui comptent le plus :
+> Le client n’a jamais demandé une recherche plus rapide. Il a demandé à ne plus perdre de documents. La recherche était ma réponse, pas sa demande.
 
-**Vendre le résultat, pas la stack.** Personne n’achète « Next.js, Nest.js et PostgreSQL ». Un commerçant achète : *« Je sais ce que j’ai vendu aujourd’hui, en dollars et en monnaie locale, même quand l’internet était coupé. »* Les deux fonctionnalités que les clients demandent en premier sont une caisse à deux devises et un mode hors ligne. Aucune n’est prestigieuse. Les deux décident si quelqu’un confie son argent au logiciel. J’écris maintenant la page de présentation avant le code ; si je n’arrive pas à expliquer le résultat en une phrase à une caissière, je n’ai pas encore de produit.
+## 4. L’open source pour se créer une notoriété : Ever Teams et Ever Gauzy
 
-**Fixer ses prix comme une entreprise.** Mes premiers contrats étaient à l’heure, et je me sous-facturais. Aujourd’hui, c’est un prix de projet pour la construction initiale, puis un abonnement mensuel pour l’hébergement, le support et les mises à jour. Le revenu récurrent est prévisible, et il m’oblige à garder le produit vivant au lieu de passer à autre chose après la livraison. Parce que Hela, Safirisha et Masomo sont multi-tenant, un nouveau client ne coûte presque rien de plus à servir : une seule base de code, plusieurs entreprises, une facture mensuelle chacune. Les décisions d’architecture sont des décisions de prix.
+À ce stade, j’avais des compétences et un peu d’expérience, mais très peu de gens le savaient. La quatrième étape a réglé ça.
 
-**Faire le travail ennuyeux.** Le code représente peut-être quarante pour cent du travail. Le reste, ce sont les contrats et les factures, les sauvegardes et la supervision, un groupe de support par client, les documents d’accueil, les formations pour les caissiers et les secrétaires, et dire non aux fonctionnalités qu’un seul client réclame. J’automatise les déploiements, la supervision et les sauvegardes. Je n’automatise jamais la première semaine avec un nouveau client. C’est là que la confiance se construit, et c’est la confiance qui se renouvelle chaque mois.
+Depuis novembre 2023, je travaille chez **Ever Technologies** sur deux plateformes open source : **Ever Gauzy**, une plateforme ouverte de gestion d’entreprise qui couvre l’ERP, le CRM, la GRH et la gestion de projets, et **Ever Teams**, une plateforme ouverte de gestion du travail et des projets. J’interviens sur toute la stack, en Nest.js, Next.js et React Native.
 
-## 7. La notoriété, enfin
+![Ever Gauzy, la plateforme open source d’ERP et de CRM sur laquelle je travaille chez Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
 
-Souvenez-vous du mur de l’étape trois : personne ne me connaissait. Travailler sur Ever Gauzy et Ever Teams, deux grands monorepos publics, a réglé ce problème d’une façon que je n’avais pas planifiée.
+Deux choses se sont passées. D’abord, j’ai appris à **développer en équipe sur des projets publics** : des pull requests relues par des gens sur d’autres continents, des conventions qu’on ne choisit pas, du code qui doit rester lisible pour quelqu’un qui arrivera l’année prochaine. C’est une compétence différente de celle de construire seul.
+
+Ensuite, mon travail est devenu visible. Un prospect n’a plus à me croire sur parole. Il peut lire mes commits, voir comment je gère une revue de code, et vérifier que je livre.
 
 ![Ever Teams, la plateforme open source de gestion du travail et des projets](/images/Projects/ever-teams/01.jpg)
 
-- **De la crédibilité.** Un prospect n’a pas à me croire sur parole. Il peut lire mes commits.
-- **Une architecture réutilisable.** Multi-tenant, suivi du temps, facturation, gestion des rôles : des patterns que j’avais déjà construits une fois, en production, avec revue de code.
-- **Un réseau.** Des clients sur les plateformes freelance et ailleurs m’ont trouvé parce qu’ils pouvaient voir du vrai travail, pas un CV.
+> L’open source est le marketing le moins cher qu’un développeur puisse faire. On paie en commits, et le reçu est public.
 
-L’open source m’a donné la notoriété que je ne pouvais pas acheter au départ. C’est le marketing le moins cher qu’un développeur puisse faire, payé en commits.
+## 5. Développer directement pour résoudre les problèmes des clients
 
-## 8. La boucle
+Avec les compétences, l’expérience et la notoriété, je pouvais enfin faire ce que je voulais faire depuis le début : construire des solutions directement pour les gens qui ont le problème, et être payé par eux.
 
-Je livre encore du code tous les jours chez Ever Technologies. L’emploi paie les factures pendant que les produits grandissent, et les produits me gardent près de vrais utilisateurs, ce qui fait de moi un meilleur ingénieur au travail. La passion m’a donné les compétences, les entreprises m’ont donné l’expertise et la notoriété, et les produits me rendent la passion. La boucle se referme.
+**Safirisha** a commencé comme une refonte de ce que j’avais vu chez One Stop Center, où les agences d’une entreprise de transport partageaient les informations sur les colis. L’original ne gérait que les colis. Safirisha est devenu une plateforme tout-en-un pour les entreprises de transport inter-villes : des colis suivis de l’expéditeur au destinataire à travers toutes les agences, des voyages planifiés avec des places vendues, des flottes et des chauffeurs affectés, et des recettes consolidées par agence. Le problème qu’il résout est simple à énoncer et coûteux à vivre : une entreprise de transport à plusieurs agences qui ne sait pas, en fin de journée, ce qui est parti, ce qui est arrivé, et combien chaque agence a encaissé.
 
-Beaucoup de développeurs démissionnent trop tôt, construisent seuls pendant un an, et se retrouvent à court d’argent avant d’être à court d’idées. Laissez les produits vous demander de partir. En attendant, gardez votre emploi et gardez vos soirées.
+![Safirisha : colis, voyages, flottes et chauffeurs pour les entreprises de transport inter-villes](/images/Projects/safirisha/01.jpg)
+
+**Masomo** est un logiciel de gestion scolaire : inscriptions, présences, notes, frais et caisse, conçu pour continuer à fonctionner quand le réseau s’arrête, parce que les écoles qu’il sert ne peuvent pas compter sur une connexion stable.
+
+![Masomo : la gestion scolaire qui continue de fonctionner quand le réseau s’arrête](/images/Projects/masomo-cd/01.jpg)
+
+**Adifile** prend en charge la gestion administrative d’une entreprise : les documents, les procédures et les obligations qu’une société doit garder en ordre et pouvoir produire à la demande. C’est le descendant direct de ce que j’ai appris chez AdminAtete.
+
+**Afia** est une plateforme de gestion hospitalière : dossiers patients, consultations et circulation de l’information entre les patients et les professionnels de santé, pour qu’une clinique sache qui a été vu, par qui, et ce qui a été prescrit.
+
+![Afia : la gestion hospitalière, du dossier patient à la consultation](/images/Projects/afia-platform-for-hospital/01.jpg)
+
+Aucun de ces produits n’est sorti d’une séance de brainstorming. Chacun est un problème que j’avais déjà rencontré, en entreprise ou dans la vie quotidienne, et résolu comme ces entreprises m’avaient appris à le faire : partir du besoin, construire seulement ce qui est nécessaire, livrer avec du support, et facturer la valeur.
+
+## 6. La leçon : une fois les compétences acquises, ne développer que pour résoudre un problème
+
+Voici la règle que j’aurais aimé qu’on me donne à l’étape un.
+
+Pendant qu’on apprend, on peut tout construire. Une application de chat, une to-do list, un clone de réseau social : ce sont des exercices, et c’est par les exercices qu’on acquiert les compétences.
+
+Mais une fois les compétences acquises, ces projets cessent de vous aider. Personne ne paie pour la cinquième application de chat. Personne ne paie pour un clone de Facebook. Les gens paient quand vous regardez un vrai problème de leur quotidien et que vous le faites disparaître.
+
+> Les compétences sont le ticket d’entrée. Le problème, c’est le business.
+
+Regardez les deux produits pour lesquels les gens ont payé le plus vite :
+
+- **Cobiz** a résolu un problème que tout commerçant connaît : savoir ce qu’il y a en stock, ce qui a été vendu aujourd’hui, qui doit encore de l’argent, et avoir une facture prête sans cahier ni tableur. Rien là-dedans n’était techniquement nouveau. Tout valait de l’argent, parce que ça remplaçait un souci.
+- **Safirisha** a résolu le chaos quotidien d’une entreprise de transport à plusieurs agences : des colis perdus entre agences, des places vendues deux fois, des chauffeurs affectés par coup de téléphone, et un gérant qui ne connaît la recette du jour que le lendemain matin. Là encore, rien d’exotique. Un problème très réel, et une entreprise contente de payer pour le voir disparaître.
+
+Le schéma est toujours le même. Le problème est visible, il coûte au client du temps ou de l’argent chaque jour, et le client le voit disparaître dès la première semaine d’utilisation. Quand ces trois conditions sont réunies, monétiser n’est pas difficile. Vous n’avez personne à convaincre. Vous leur montrez leur problème, disparu.
 
 ## Ce que je dirais au développeur que j’étais
 
-1. Codez par passion, mais remarquez le moment où vos applications restent dans votre ordinateur. C’est le signal qu’il faut changer.
-2. La première fois que quelqu’un paie pour votre code, faites attention. Ça veut dire que le problème était réel.
-3. Poursuivez les vrais problèmes, pas les belles idées.
-4. Si personne ne vous connaît, allez là où les utilisateurs sont déjà. Laissez les entreprises payer pour votre expertise pendant que vous apprenez comment elles livrent.
-5. Ensuite, faites ce qu’elles faisaient, par vous-même, sur les problèmes que vous rencontrez sans cesse.
-6. Vendez des résultats, facturez au mois, faites le travail ennuyeux, construisez en public.
+1. Codez par passion d’abord. C’est de là que viennent les fondamentaux.
+2. Puis choisissez des projets qui vous poussent, même s’ils paient moins. Les compétences se cumulent.
+3. Puis faites-vous payer pour votre expertise, et apprenez à répondre au besoin du client plutôt qu’à votre propre curiosité.
+4. Construisez en public. La notoriété est ce qui transforme des compétences en propositions.
+5. Une fois tout cela acquis, arrêtez de construire des exercices. Trouvez un vrai problème du quotidien et résolvez-le. C’est à ce moment-là que les gens paient.
 
-L’écart entre le code et le business, ce n’est ni un diplôme ni une levée de fonds. C’est la patience de transformer une passion en expertise, l’expertise en notoriété, et la notoriété en solutions que les gens sont contents de payer, mois après mois.`,
-    es: `No empecé a programar para ganar dinero. Empecé porque hacer que un ordenador ejecutara lo que yo había imaginado parecía magia, y quería más de esa sensación. Mis primeros programas tenían exactamente un usuario: yo. La mayoría nunca salió de mi portátil.
+L’écart entre le code et le business, ce n’est ni un diplôme ni une levée de fonds. C’est le moment où vous arrêtez de demander « qu’est-ce que je pourrais construire ? » pour demander « quel problème, que quelqu’un a déjà, puis-je faire disparaître ? »`,
+    es: `Al mirar mi camino, no programé por la misma razón cada año. Programé por pasión, luego para aprender, luego por dinero, luego por reputación, y finalmente para resolver los problemas de otras personas. Cada etapa fue necesaria. Pero solo la última es en la que la gente paga, y me hicieron falta cinco etapas para entender por qué.
 
-Hoy construyo y vendo software de gestión a comercios, escuelas, clínicas y empresas de transporte, mientras trabajo como ingeniero full-stack en plataformas de gestión open source. Entre esos dos puntos no hay atajo, solo una secuencia de lecciones. Este artículo es esa secuencia, en el orden en que la aprendí.
+Este es ese camino, etapa por etapa, con lo que cada una me enseñó.
 
-## 1. Programar por amor al arte
+## 1. Programar por pasión: Buku My Class
 
-La fase de la pasión no es tiempo perdido. De ahí vienen los fundamentos.
+Empecé a programar porque era divertido. Hacer que un ordenador ejecutara lo que yo había imaginado parecía magia, y quería más. Mi primer proyecto real con ese espíritu fue **Buku My Class**, una aplicación que permitía a los estudiantes de secundaria leer sus apuntes de clase desde cualquier lugar, donde trabajé tanto en el frontend React como en el backend entre 2018 y 2021.
 
-Cuando nadie te paga, puedes permitirte ser curioso. Reconstruí cosas que ya existían solo para entenderlas. Probé lenguajes que nunca usaría en el trabajo. Pasé noches en proyectos paralelos sin plazo ni especificación. Esa libertad me enseñó a aprender, la única habilidad que nunca ha pasado de moda.
+No pensaba en clientes ni en ingresos. Pensaba en si la función funcionaba y en si podía construir la siguiente. Para eso sirve exactamente la etapa de la pasión.
 
-Pero hay una trampa en esa fase, y caí en ella durante un tiempo: las aplicaciones se quedaban en mi ordenador. Eran ejercicios, no productos. Resolvían mi curiosidad, no el problema de nadie.
+> La pasión es lo que te hace pasar un fin de semana con un bug que nadie te pidió arreglar. Así es como entran los fundamentos.
 
-## 2. El día que aprendí que la pasión podía pagar
+Lo que me dio: las bases de la pila web, el hábito de terminar las cosas, y la primera prueba de que el código que escribía podía ser usado por personas a las que nunca conocería.
 
-El punto de inflexión no fue un plan de negocio. Fue mi primer trabajo pagado, en diciembre de 2018, para **Buku My Class**, una aplicación que permitía a los estudiantes de secundaria leer sus apuntes de clase desde cualquier lugar.
+Lo que no me dio: la menor idea de cómo un software se convierte en un negocio.
 
-Por primera vez, código que yo había escrito lo usaban personas a las que nunca conocería, y alguien pagaba por ello. Eso cambió mi forma de ver el oficio. Programar no era solo algo que me gustaba. Era algo que otras personas necesitaban y por lo que estaban dispuestas a pagar.
+## 2. Programar para aprender y ampliar habilidades: KADEA y Upperz
 
-Esa constatación llevó a una decisión sencilla: dejaría de construir aplicaciones que se quedaban en mi portátil, y empezaría a pensar en los problemas reales de personas reales.
+La segunda etapa fue deliberada. Acepté proyectos no porque pagaran más, sino porque me iban a exigir.
 
-## 3. Problemas reales, no ideas bonitas
+En **KADEA Academy** construí **Attendacy**, una aplicación de control de asistencia para una escuela de programación, con Express.js y React. Un alcance pequeño, pero usuarios reales cada mañana y feedback inmediato cuando algo fallaba.
 
-Así que construí aplicaciones para otras personas. Herramientas para gestionar cosas pequeñas, prototipos de ideas en las que creía, primeras versiones de productos en los que todavía trabajo hoy.
-
-Eran mejores que mis proyectos por pasión, porque partían de un problema y no de una tecnología. Pero chocaron contra un muro que no había previsto: **nadie me conocía**.
-
-Una buena aplicación construida por un desarrollador desconocido sigue siendo una aplicación que nadie descarga. Las empresas no entregan sus datos de ventas, sus expedientes de alumnos o sus facturas a alguien sin trayectoria, por limpio que sea el código. Tenía las habilidades. No tenía la reputación, la confianza ni la distribución.
-
-## 4. Trabajar dentro de empresas que ya resolvían problemas
-
-Tomé una decisión pragmática. En lugar de pelear solo por la notoriedad, fui a trabajar para empresas que ya sabían hacer lo que yo no podía: llegar a los usuarios, ganarse su confianza y resolver sus problemas a escala. Ellas necesitaban experiencia técnica. Yo necesitaba aprender cómo se entrega y se cobra una solución real. Era un intercambio justo.
-
-Cada empresa me enseñó un sector distinto y una parte distinta del negocio del software:
-
-- **Buku My Class** (2018 a 2021): educación. Cómo usan realmente los estudiantes un producto, y lo lejos que está una buena idea de un producto terminado.
-- **One Stop Center** (2021 a 2022): seguimiento de paquetes compartido entre las agencias de una empresa de transporte, en Angular. Mi primer contacto con la logística y las operaciones multisede.
-- **Attendacy en KADEA Academy** (2022): control de asistencia para una escuela de programación. Alcance pequeño, usuarios reales, feedback diario.
-- **CRES** (2022 a 2023): una start-up y centro de investigación que construye herramientas de gestión empresarial y soluciones de IA, con Nest.js y Next.js. Donde aprendí a estructurar un backend del que dependen varios productos.
-- **AdminAtete** (2023): archivo de documentos para una start-up tecnológica belga. Cumplimiento normativo, búsqueda y el valor de las funciones aburridas pero fiables.
-- **Cobiz en Upperz** (2023): desarrollador backend principal de una aplicación de gestión de ventas, inventario, clientes y facturación. Lo más parecido a dirigir un negocio que había visto desde dentro del código.
-- **Ever Technologies** (desde noviembre de 2023): Ever Gauzy, una plataforma open source de ERP, CRM y RR. HH., y Ever Teams, una plataforma open source de gestión del trabajo y de proyectos. Bases de código grandes, colaboración abierta y clientes en todo el mundo.
-
-![Ever Gauzy, la plataforma open source de ERP y CRM en la que trabajo en Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
-
-Mire esa lista como un plan de estudios y no como un currículum. Educación, logística, asistencia, archivo, ventas e inventario, facturación, ERP, CRM. Esas empresas me pagaron por mi experiencia, y a cambio aprendí cómo funcionan realmente los negocios: cómo incorporan a un cliente, cómo gestionan el soporte, cómo facturan, qué pasa cuando el sistema se cae durante una hora.
-
-Ese es el conocimiento que me faltaba cuando mis aplicaciones se quedaban en mi portátil. Ningún tutorial lo enseña. Se consigue entregando para gente que paga.
-
-## 5. Hacer lo que hacían esas empresas, por mi cuenta
-
-Una vez que entendí cómo esas empresas resolvían problemas, pude hacer lo mismo por mi cuenta. No copiando sus productos, sino aplicando su método a los problemas con los que me seguía encontrando: partir de una necesidad real, construir solo lo necesario, entregarlo con soporte y cobrar por el valor.
-
-Casi todos los productos que gestiono hoy descienden directamente de algo que aprendí dentro de una empresa:
-
-Cobiz, AdminAtete y Ever Gauzy me enseñaron cómo las empresas venden, controlan el inventario, hacen seguimiento de sus clientes, facturan y pagan al personal. Eso se convirtió en **Hela**: un solo lugar para gestionar varios negocios a la vez, ya sea una tienda, un restaurante, un bar o un hotel.
+En **Upperz**, en 2023, fui el desarrollador backend principal de **Cobiz**, una aplicación para gestionar ventas, inventario, clientes y facturas. Era la primera vez que me hacía cargo del backend de un sistema sobre el que un negocio iba a funcionar todo el día: modelos de datos para los movimientos de inventario, facturas correctas hasta la última unidad, cuentas de clientes, informes que un dueño realmente leería.
 
 ![Cobiz: ventas, inventario, clientes y facturas en una sola aplicación](/images/Projects/cobiz.jpg)
 
-![Hela: un solo panel para gestionar varios negocios a la vez](/images/Projects/hela/01.jpg)
+> La arquitectura no se aprende en un curso. Se aprende la primera vez que un número equivocado en una factura es culpa tuya.
 
-One Stop Center me enseñó cómo las agencias de transporte comparten información entre sedes. Eso se convirtió en **Safirisha**, una plataforma todo en uno para empresas de transporte interurbano: paquetes, viajes, flotas y conductores, y en **Twende Kivu**, una plataforma de venta de billetes en línea.
+Lo que me dio: diseño de backend bajo restricciones reales, la disciplina de ser responsable de datos que importan, y una primera mirada a cómo un negocio piensa su inventario, sus ventas y sus clientes.
 
-![Safirisha: paquetes, viajes, flotas y conductores para empresas de transporte interurbano](/images/Projects/safirisha/01.jpg)
+## 3. Programar por dinero: AdminAtete
 
-Buku y Attendacy me enseñaron cómo funciona una escuela día a día. Eso se convirtió en **Masomo**, un software escolar diseñado para seguir funcionando cuando la red se cae, porque las escuelas a las que sirvo no pueden depender de una conexión estable.
+La tercera etapa consistió en cobrar por la experiencia. En 2023 trabajé como desarrollador full-stack, con Express.js y Next.js, para **AdminAtete**, una start-up tecnológica belga que ofrece servicios digitales a empresas, entre ellos una aplicación de archivo de documentos.
 
-![Masomo: software escolar que sigue funcionando cuando la red se cae](/images/Projects/masomo-cd/01.jpg)
+![AdminAtete: digitalizar y organizar los documentos de una empresa](/images/Projects/adminatete/01.jpg)
 
-El mismo patrón produjo **Afia**, una plataforma de historiales médicos para pacientes y profesionales sanitarios, y **HIÜRD**, un mercado de servicios locales con pagos seguros.
+El archivo no tiene nada de glamuroso. Es búsqueda, categorización, permisos de acceso, almacenamiento, y la garantía de que un documento archivado hoy se encontrará dentro de tres años. Pero ahí gané dos cosas a la vez.
 
-Ninguno de estos productos empezó como una idea brillante. Cada uno empezó como un problema que ya había visto resuelto, bien o mal, desde dentro de una empresa.
+La primera fue experiencia técnica: sistemas en producción, seguridad, rendimiento con volúmenes reales de datos.
 
-## 6. Lo que cambió en mi forma de construir
+La segunda importaba más: **aprender a responder a las necesidades de un cliente**. No lo que a mí me parecía interesante construir, sino lo que el cliente realmente necesitaba, expresado con sus palabras, entregado en sus plazos. Un cliente no paga por una función. Paga por una preocupación que desaparece.
 
-Trabajar para empresas cambió mis hábitos como desarrollador. Los que más importan:
+> El cliente nunca pidió una búsqueda más rápida. Pidió dejar de perder documentos. La búsqueda fue mi respuesta, no su petición.
 
-**Vender el resultado, no la tecnología.** Nadie compra “Next.js, Nest.js y PostgreSQL”. Un comerciante compra: *“Sé lo que vendí hoy, en dólares y en moneda local, incluso cuando no había internet.”* Las dos funciones por las que los clientes preguntan primero son una caja con dos monedas y un modo sin conexión. Ninguna es glamurosa. Las dos deciden si alguien confía su dinero al software. Ahora escribo la página de presentación antes que el código; si no puedo explicar el resultado en una frase a una cajera, todavía no tengo un producto.
+## 4. Open source para crear reputación: Ever Teams y Ever Gauzy
 
-**Poner precios como una empresa.** Mis primeros contratos eran por horas, y cobraba de menos. Ahora es un precio de proyecto para la construcción inicial, y después una suscripción mensual por el alojamiento, el soporte y las actualizaciones. Los ingresos recurrentes son previsibles, y me obligan a mantener el producto vivo en lugar de pasar a otra cosa después de la entrega. Como Hela, Safirisha y Masomo son multi-tenant, atender a un nuevo cliente casi no cuesta nada extra: una sola base de código, muchas empresas, una factura mensual para cada una. Las decisiones de arquitectura son decisiones de precio.
+Para entonces tenía habilidades y algo de experiencia, pero muy poca gente lo sabía. La cuarta etapa resolvió eso.
 
-**Hacer el trabajo aburrido.** El código es quizá el cuarenta por ciento del trabajo. El resto son contratos y facturas, copias de seguridad y monitorización, un grupo de soporte por cliente, documentos de bienvenida, formación para cajeros y secretarias, y decir que no a las funciones que solo quiere un cliente. Automatizo los despliegues, la monitorización y las copias de seguridad. Nunca automatizo la primera semana con un cliente nuevo. Esa semana es donde se construye la confianza, y la confianza es lo que se renueva cada mes.
+Desde noviembre de 2023 trabajo en **Ever Technologies** en dos plataformas open source: **Ever Gauzy**, una plataforma abierta de gestión empresarial que cubre ERP, CRM, RR. HH. y gestión de proyectos, y **Ever Teams**, una plataforma abierta de gestión del trabajo y de proyectos. Trabajo en toda la pila, con Nest.js, Next.js y React Native.
 
-## 7. La reputación, por fin
+![Ever Gauzy, la plataforma open source de ERP y CRM en la que trabajo en Ever Technologies](/images/Projects/ever-gauzy-platform/01.jpg)
 
-Recuerde el muro del paso tres: nadie me conocía. Trabajar en Ever Gauzy y Ever Teams, dos grandes monorepos públicos, resolvió eso de una forma que no había planeado.
+Pasaron dos cosas. Primero, aprendí a **desarrollar en equipo en proyectos públicos**: pull requests revisadas por personas en otros continentes, convenciones que no eliges, código que debe seguir siendo legible para alguien que llegue el año que viene. Es una habilidad distinta de construir solo.
+
+Segundo, mi trabajo se hizo visible. Un posible cliente no tiene que fiarse de mi palabra. Puede leer mis commits, ver cómo gestiono una revisión y comprobar que entrego.
 
 ![Ever Teams, la plataforma open source de gestión del trabajo y de proyectos](/images/Projects/ever-teams/01.jpg)
 
-- **Credibilidad.** Un posible cliente no tiene que fiarse de mi palabra. Puede leer mis commits.
-- **Arquitectura reutilizable.** Multi-tenant, control de tiempo, facturación, acceso por roles: patrones que ya había construido una vez, en producción, con revisión de código.
-- **Una red.** Clientes en plataformas freelance y en otros sitios me encontraron porque podían ver trabajo real, no un currículum.
+> El open source es el marketing más barato que un desarrollador puede hacer. Pagas en commits, y el recibo es público.
 
-El open source me dio la notoriedad que no podía comprar al principio. Es el marketing más barato que un desarrollador puede hacer, pagado en commits.
+## 5. Desarrollar directamente para resolver los problemas de los clientes
 
-## 8. El ciclo
+Con las habilidades, la experiencia y la reputación, por fin podía hacer lo que quería hacer desde el principio: construir soluciones directamente para las personas que tienen el problema, y cobrar de ellas.
 
-Sigo entregando código todos los días en Ever Technologies. El empleo paga las facturas mientras los productos crecen, y los productos me mantienen cerca de usuarios reales, lo que me hace mejor ingeniero en el trabajo. La pasión me dio las habilidades, las empresas me dieron la experiencia y la reputación, y los productos me devuelven la pasión. El ciclo se cierra.
+**Safirisha** empezó como una reescritura de lo que había visto en One Stop Center, donde las agencias de una empresa de transporte compartían información sobre los paquetes. El original solo gestionaba paquetes. Safirisha se convirtió en una plataforma todo en uno para empresas de transporte interurbano: paquetes seguidos desde el remitente hasta el destinatario a través de todas las sedes, viajes programados con asientos vendidos, flotas y conductores asignados, e ingresos consolidados por sede. El problema que resuelve es fácil de enunciar y caro de vivir: una empresa de transporte con varias sedes que no sabe, al final del día, qué salió, qué llegó y cuánto dinero recaudó cada sede.
 
-Muchos desarrolladores renuncian demasiado pronto, construyen aislados durante un año y se quedan sin dinero antes de quedarse sin ideas. Deje que los productos le pidan irse. Hasta entonces, conserve su empleo y conserve sus noches.
+![Safirisha: paquetes, viajes, flotas y conductores para empresas de transporte interurbano](/images/Projects/safirisha/01.jpg)
+
+**Masomo** es un software de gestión escolar: matrículas, asistencia, notas, cuotas y caja, diseñado para seguir funcionando cuando la red se cae, porque las escuelas a las que sirve no pueden depender de una conexión estable.
+
+![Masomo: gestión escolar que sigue funcionando cuando la red se cae](/images/Projects/masomo-cd/01.jpg)
+
+**Adifile** se ocupa de la gestión administrativa de una empresa: los documentos, procedimientos y obligaciones que un negocio debe mantener en orden y poder presentar cuando se le pidan. Es el descendiente directo de lo que aprendí en AdminAtete.
+
+**Afia** es una plataforma de gestión hospitalaria: historiales de pacientes, consultas y el flujo de información entre pacientes y profesionales sanitarios, para que una clínica sepa a quién se atendió, quién lo atendió y qué se recetó.
+
+![Afia: gestión hospitalaria, del historial del paciente a la consulta](/images/Projects/afia-platform-for-hospital/01.jpg)
+
+Ninguno de estos productos salió de una sesión de lluvia de ideas. Cada uno es un problema que ya había encontrado, en una empresa o en la vida diaria, y que resolví como esas empresas me habían enseñado a resolverlo: partir de la necesidad, construir solo lo necesario, entregarlo con soporte y cobrar por el valor.
+
+## 6. La lección: una vez adquiridas las habilidades, desarrollar solo para resolver un problema
+
+Esta es la regla que me habría gustado que alguien me diera en la etapa uno.
+
+Mientras aprendes, construye lo que sea. Una aplicación de chat, una lista de tareas, un clon de una red social: son ejercicios, y con los ejercicios se adquieren las habilidades.
+
+Pero una vez que tienes las habilidades, esos proyectos dejan de ayudarte. Nadie paga por la quinta aplicación de chat. Nadie paga por un clon de Facebook. La gente paga cuando miras un problema real de su vida diaria y lo eliminas.
+
+> Las habilidades son la entrada. El problema es el negocio.
+
+Mira los dos productos por los que la gente pagó más rápido:
+
+- **Cobiz** resolvió un problema que tiene todo comerciante: saber qué hay en el inventario, qué se vendió hoy, quién debe dinero todavía, y tener una factura lista sin cuaderno ni hoja de cálculo. Nada de eso era técnicamente nuevo. Todo valía dinero, porque sustituía una preocupación.
+- **Safirisha** resolvió el caos diario de una empresa de transporte con varias sedes: paquetes perdidos entre agencias, asientos vendidos dos veces, conductores asignados por llamada telefónica, y un gerente que solo conoce la recaudación del día a la mañana siguiente. De nuevo, nada exótico. Un problema muy real, y una empresa contenta de pagar por verlo desaparecer.
+
+El patrón es siempre el mismo. El problema es visible, le cuesta al cliente tiempo o dinero cada día, y el cliente lo ve desaparecer la primera semana que usa el software. Cuando esas tres cosas se cumplen, monetizar no es difícil. No tienes que convencer a nadie. Les enseñas su problema, desaparecido.
 
 ## Lo que le diría al desarrollador que era
 
-1. Programe por pasión, pero fíjese en el momento en que sus aplicaciones se quedan en su portátil. Esa es la señal para cambiar.
-2. La primera vez que alguien pague por su código, preste atención. Significa que el problema era real.
-3. Persiga problemas reales, no ideas bonitas.
-4. Si nadie le conoce, vaya adonde ya están los usuarios. Deje que las empresas paguen por su experiencia mientras aprende cómo entregan.
-5. Después, haga lo que ellas hacían, por su cuenta, con los problemas que sigue encontrando.
-6. Venda resultados, cobre mensualmente, haga el trabajo aburrido, construya en público.
+1. Programa por pasión primero. De ahí vienen los fundamentos.
+2. Luego elige proyectos que te exijan, aunque paguen menos. Las habilidades se acumulan.
+3. Luego cobra por tu experiencia, y aprende a responder a la necesidad del cliente en lugar de a tu propia curiosidad.
+4. Construye en público. La reputación es lo que convierte las habilidades en ofertas.
+5. Una vez que tienes todo eso, deja de construir ejercicios. Encuentra un problema real de la vida diaria y resuélvelo. Ese es el momento en que la gente paga.
 
-La distancia entre el código y el negocio no es un diploma ni una ronda de financiación. Es la paciencia de convertir una pasión en experiencia, la experiencia en reputación, y la reputación en soluciones que la gente paga con gusto, mes tras mes.`,
+La distancia entre el código y el negocio no es un diploma ni una ronda de financiación. Es el momento en que dejas de preguntar “¿qué podría construir?” y empiezas a preguntar “¿qué problema, que alguien ya tiene, puedo hacer desaparecer?”`,
   },
 };

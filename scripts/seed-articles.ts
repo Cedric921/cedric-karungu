@@ -16,10 +16,11 @@ import { multiTenant } from './demo-articles/multi-tenant';
 import { openSourceMonorepo } from './demo-articles/open-source-monorepo';
 import { directUploads } from './demo-articles/direct-uploads';
 import { codeToBusiness } from './demo-articles/code-to-business';
+import { openSourceContributions } from './demo-articles/open-source-contributions';
 
 const DRAFT = process.argv.includes('--draft');
 const FORCE = process.argv.includes('--force');
-const ARTICLES = [offlineFirst, twoCurrencies, multiTenant, openSourceMonorepo, directUploads, codeToBusiness];
+const ARTICLES = [offlineFirst, twoCurrencies, multiTenant, openSourceMonorepo, directUploads, codeToBusiness, openSourceContributions];
 const ONLY = process.argv.find((a) => a.startsWith('--only='))?.slice('--only='.length);
 const lz = (v: { en: string; fr: string; es?: string }) => ({ en: v.en, fr: v.fr, es: v.es ?? '' });
 

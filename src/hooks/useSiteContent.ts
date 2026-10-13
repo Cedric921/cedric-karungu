@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { pick, type LocalizedString } from "../lib/public-data";
+import type { LocalizedString } from "../lib/public-data";
 import type { Locale } from "../lib/models/shared";
 
 type SiteContentDoc = {
@@ -74,8 +74,9 @@ export function useSiteContent(): UseSiteContent {
     get: (key: string) => {
       const v = map.get(key);
       if (v === undefined) return undefined;
-      const resolved = pick(v, locale);
-      return resolved || undefined;
+      // Exact locale only: an empty translation keeps the bundled default for that language.
+      const resolved = typeof v === "string" ? v : v[locale];
+      return resolved?.trim() ? resolved : undefined;
     },
     loading,
     ready,

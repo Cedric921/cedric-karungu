@@ -1,5 +1,7 @@
 export const openSourceMonorepo = {
   slug: 'lessons-from-a-large-open-source-monorepo',
+  seoTitle: {"en": "Lessons from working on a large open-source monorepo", "fr": "Leçons d'un travail sur un grand monorepo open source"},
+  seoDescription: {"en": "Boundaries, shared types, small pull requests across time zones and build graphs: what Ever Teams and Ever Gauzy taught me about big monorepos.", "fr": "Frontières, types partagés, petites PR entre fuseaux horaires et graphe de build : ce qu'Ever Teams et Ever Gauzy m'ont appris des grands monorepos."},
   cover: '/images/Projects/ever-teams/01.jpg',
   tags: ['Open Source', 'Monorepo', 'Next.js', 'React Native', 'Career'],
   daysAgo: 41,

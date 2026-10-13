@@ -159,7 +159,10 @@ export type ArticleItem = {
   cover?: string;
   tags?: string[];
   publishedAt?: string | null;
+  updatedAt?: string;
   readingMinutes?: number;
+  seoTitle?: LocalizedString | string;
+  seoDescription?: LocalizedString | string;
 };
 
 export type ArticleView = {
@@ -173,7 +176,15 @@ export type ArticleView = {
   minutes: number;
   /** Locale actually used for the body (falls back to EN when untranslated). */
   contentLocale: Locale;
+  /** Locales that have their own translated body. */
+  locales: Locale[];
+  updated: string; // ISO
+  seoTitle: string;
+  seoDescription: string;
 };
+
+const exactLocale = (v: LocalizedString | string | undefined, locale: Locale) =>
+  (typeof v === "string" ? (locale === "en" ? v : "") : v?.[locale] ?? "").trim();
 
 export function articleToView(a: ArticleItem, locale: Locale): ArticleView {
   const content = a.content;
@@ -188,5 +199,10 @@ export function articleToView(a: ArticleItem, locale: Locale): ArticleView {
     date: a.publishedAt ? String(a.publishedAt) : "",
     minutes: a.readingMinutes || 1,
     contentLocale: own ? locale : "en",
+    locales: (["en", "fr", "es"] as Locale[]).filter((l) => typeof content === "string" ? l === "en" : !!content?.[l]?.trim()),
+    updated: a.updatedAt ? String(a.updatedAt) : a.publishedAt ? String(a.publishedAt) : "",
+    // Exact locale only: an English SEO title must not describe a French page.
+    seoTitle: exactLocale(a.seoTitle, locale),
+    seoDescription: exactLocale(a.seoDescription, locale),
   };
 }

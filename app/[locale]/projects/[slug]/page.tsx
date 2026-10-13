@@ -4,6 +4,7 @@ import ProjectDetail from "../../../../src/components/ProjectDetail";
 import { getPublicProjectItems } from "../../../../src/lib/projects-server";
 import { projectToView, relatedProjects } from "../../../../src/lib/public-data";
 import type { Locale } from "../../../../src/lib/models/shared";
+import { clip, localeAlternates, ogLocale } from "../../../../src/lib/seo";
 
 // Re-render at most once a minute so admin edits show up quickly.
 export const revalidate = 60;
@@ -23,12 +24,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await load(locale, slug);
   if (!data) return { title: "Project not found — Cédric Karungu" };
   const { project } = data;
-  const description = project.description.slice(0, 160);
+  const description = clip(project.description, 158);
   return {
     title: `${project.title} — Cédric Karungu`,
     description,
+    keywords: project.tags,
+    alternates: localeAlternates(locale as Locale, `/projects/${slug}`),
     // The branded card comes from ./opengraph-image.tsx.
-    openGraph: { title: project.title, description, type: 'article' },
+    openGraph: { title: project.title, description, type: 'article', url: `/${locale}/projects/${slug}`, ...ogLocale(locale as Locale) },
     twitter: { card: 'summary_large_image', title: project.title, description },
   };
 }

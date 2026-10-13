@@ -5,6 +5,8 @@ import { Bricolage_Grotesque, Geist, Geist_Mono, Instrument_Serif } from "next/f
 import en from "@/public/locales/en.json";
 import fr from "@/public/locales/fr.json";
 import es from "@/public/locales/es.json";
+import { applyOverrides, getContentOverrides } from "@/lib/content-overrides";
+import type { Locale } from "@/lib/models/shared";
 
 type Messages = typeof en;
 
@@ -34,7 +36,8 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messagesForLocale = messages[locale];
+  // Admin "Site content" edits are layered on top of the bundled translations.
+  const messagesForLocale = applyOverrides(messages[locale] ?? messages.en, await getContentOverrides(), locale as Locale);
 
   return (
     <html

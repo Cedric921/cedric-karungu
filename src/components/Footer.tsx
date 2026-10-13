@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePublicData } from "../hooks";
 import type { SocialLinkItem } from "../lib/public-data";
 import Logo from "./ui/Logo";
+import FooterWordmark from "./fx/FooterWordmark";
 
 const DEFAULT_SOCIAL_LINKS: SocialLinkItem[] = [
   { label: "GitHub", url: "https://github.com/Cedric921", icon: "Github" },
@@ -27,7 +28,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="border-t hairline">
+    <footer className="relative overflow-hidden border-t hairline">
       <div className="wrap grid gap-10 py-14 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
         <div>
           <Logo />
@@ -86,12 +87,13 @@ const Footer: React.FC = () => {
       </div>
       <div className="wrap flex flex-col gap-3 border-t hairline py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
         <p>
-          © {year} Cédric Karungu. {t("footer.copyright")}
+          © {year} {t("about.name")}. {t("footer.copyright")}
         </p>
         <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="link-quiet">
           {t("ui.backToTop")} ↑
         </a>
       </div>
+      <FooterWordmark text={t("about.name")} />
     </footer>
   );
 };

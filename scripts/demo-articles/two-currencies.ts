@@ -1,5 +1,7 @@
 export const twoCurrencies = {
   slug: 'two-currencies-without-losing-a-franc',
+  seoTitle: {"en": "Handling USD and CDF in one till without losing a cent", "fr": "Gérer USD et CDF dans une même caisse sans perdre un centime"},
+  seoDescription: {"en": "A practical model for two currencies at the till: integer money, a rate stored with every payment, one rounding rule and mixed payments.", "fr": "Un modèle concret pour deux devises en caisse : montants en entiers, taux enregistré à chaque paiement, une seule règle d'arrondi, paiements mixtes."},
   cover: '/images/Projects/hela/01.jpg',
   tags: ['Fintech', 'Multi-currency', 'PostgreSQL', 'TypeScript', 'Architecture'],
   daysAgo: 16,

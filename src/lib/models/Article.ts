@@ -13,6 +13,9 @@ const ArticleSchema = new Schema(
     published: { type: Boolean, default: false, index: true },
     publishedAt: { type: Date, default: null },
     readingMinutes: { type: Number, default: 1 },
+    // Search engines: optional overrides for <title> and meta description.
+    seoTitle: { type: LocalizedStringSchema, default: () => ({}) },
+    seoDescription: { type: LocalizedStringSchema, default: () => ({}) },
   },
   { timestamps: true },
 );

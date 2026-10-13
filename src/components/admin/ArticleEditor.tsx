@@ -26,6 +26,7 @@ import { slugify } from '@/lib/slug';
 import Markdown from '@/components/Markdown';
 import { Button, Input, Label, Spinner, Textarea, cn } from './ui';
 import { TagInput } from './TagInput';
+import { SeoPanel } from './SeoPanel';
 
 type Lz = { en: string; fr: string; es: string };
 type Lang = keyof Lz;
@@ -43,6 +44,8 @@ export type ArticleInput = {
   published: boolean;
   publishedAt: string | null;
   readingMinutes?: number;
+  seoTitle: Lz;
+  seoDescription: Lz;
 };
 
 const blank: ArticleInput = {
@@ -54,6 +57,8 @@ const blank: ArticleInput = {
   tags: [],
   published: false,
   publishedAt: null,
+  seoTitle: { ...empty },
+  seoDescription: { ...empty },
 };
 
 async function uploadImage(file: File, onProgress?: (p: number) => void) {
@@ -87,6 +92,8 @@ export function ArticleEditor({ id, locale }: { id: string; locale: string }) {
           ...r.data,
           title: { ...empty, ...r.data.title },
           excerpt: { ...empty, ...r.data.excerpt },
+          seoTitle: { ...empty, ...r.data.seoTitle },
+          seoDescription: { ...empty, ...r.data.seoDescription },
           content: { ...empty, ...r.data.content },
           publishedAt: r.data.publishedAt ? String(r.data.publishedAt).slice(0, 10) : null,
         };
@@ -412,6 +419,21 @@ export function ArticleEditor({ id, locale }: { id: string; locale: string }) {
             />
             <p className="mt-1 text-xs text-gray-500">Set automatically the first time you publish.</p>
           </div>
+          <SeoPanel
+            lang={lang.toUpperCase()}
+            title={state.title[lang]}
+            excerpt={state.excerpt[lang]}
+            slug={state.slug}
+            seoTitle={state.seoTitle[lang]}
+            seoDescription={state.seoDescription[lang]}
+            onChange={(next) =>
+              setState((s) => ({
+                ...s,
+                ...(next.seoTitle !== undefined && { seoTitle: { ...s.seoTitle, [lang]: next.seoTitle } }),
+                ...(next.seoDescription !== undefined && { seoDescription: { ...s.seoDescription, [lang]: next.seoDescription } }),
+              }))
+            }
+          />
         </aside>
       </div>
     </div>

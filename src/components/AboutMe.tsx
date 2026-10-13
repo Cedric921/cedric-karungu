@@ -18,7 +18,7 @@ const AboutMe: React.FC = () => {
     { k: t("ui.experience"), v: tr("about.experience") },
     { k: t("ui.status"), v: tr("about.freelance") },
     { k: t("ui.basedIn"), v: tr("about.location") },
-    { k: t("ui.languages"), v: "Français · English · Kiswahili" },
+    { k: t("ui.languages"), v: tr("about.languages") },
   ];
 
   return (

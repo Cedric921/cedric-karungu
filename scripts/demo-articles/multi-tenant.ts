@@ -1,5 +1,7 @@
 export const multiTenant = {
   slug: 'multi-tenant-saas-nestjs-postgresql',
+  seoTitle: {"en": "Multi-tenant SaaS with NestJS and PostgreSQL, done safely", "fr": "SaaS multi-tenant avec NestJS et PostgreSQL, en sécurité"},
+  seoDescription: {"en": "Shared tables with a company_id, a NestJS tenant guard, scoped repositories and PostgreSQL row-level security so one company never reads another.", "fr": "Tables partagées avec company_id, guard NestJS, repositories filtrés et row-level security PostgreSQL pour qu'une entreprise ne lise jamais une autre."},
   cover: '/images/Projects/nunua/01.jpg',
   tags: ['Nest.js', 'PostgreSQL', 'Multi-tenant SaaS', 'Security', 'Backend'],
   daysAgo: 27,

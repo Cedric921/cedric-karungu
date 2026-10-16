@@ -7,7 +7,8 @@
     "experience": "Experiencia",
     "contact": "Contacto",
     "getInTouch": "Contáctame",
-    "blog": "Blog"
+    "blog": "Blog",
+    "openSource": "Open source"
   },
   "hero": {
     "available": "Disponible para proyectos freelance y contrato",
@@ -168,5 +169,20 @@
     "next": "Siguiente artículo",
     "prev": "Artículo anterior",
     "published": "Publicado el"
+  },
+  "oss": {
+    "nav": "Open source",
+    "title": "Contribuciones open source",
+    "description": "Los proyectos en los que contribuyo, y cada pull request — fusionada o aún en revisión.",
+    "merged": "fusionadas",
+    "inReview": "en revisión",
+    "projects": "proyectos",
+    "stars": "estrellas en estos proyectos",
+    "live": "En directo desde GitHub · actualizado el {date}",
+    "story": "Leer la historia",
+    "allPrs": "Todas mis PR",
+    "myPrs": "mis pull requests",
+    "showAll": "Ver todas ({n})",
+    "showLess": "Ver menos"
   }
 }

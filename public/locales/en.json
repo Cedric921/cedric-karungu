@@ -7,7 +7,8 @@
     "experience": "Experience",
     "contact": "Contact",
     "getInTouch": "Get In Touch",
-    "blog": "Blog"
+    "blog": "Blog",
+    "openSource": "Open source"
   },
   "hero": {
     "available": "Available for Freelance & Contract",
@@ -168,5 +169,20 @@
     "next": "Next article",
     "prev": "Previous article",
     "published": "Published"
+  },
+  "oss": {
+    "nav": "Open source",
+    "title": "Open-source contributions",
+    "description": "Projects I contribute to, and every pull request — merged or still in review.",
+    "merged": "merged",
+    "inReview": "in review",
+    "projects": "projects",
+    "stars": "stars on these projects",
+    "live": "Live from GitHub · updated {date}",
+    "story": "Read the story",
+    "allPrs": "All my PRs",
+    "myPrs": "my pull requests",
+    "showAll": "Show all {n}",
+    "showLess": "Show less"
   }
 }

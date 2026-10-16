@@ -133,7 +133,7 @@ function RepoCard({ project, repo, locale }: { project: Project; repo: OssRepo; 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <h3 className="font-display text-2xl font-bold tracking-tight text-ink">{project.name}</h3>
-            <span className="inline-flex items-center gap-1 rounded-full border border-highlight-500/30 bg-highlight-500/10 px-2 py-0.5 font-mono text-[11px] text-highlight-600 dark:text-highlight-300">
+            <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-highlight-500/30 bg-highlight-500/10 px-2 py-0.5 font-mono text-[11px] text-highlight-600 dark:text-highlight-300">
               ★ {compact(repo.stars, locale)}
             </span>
           </div>
@@ -141,9 +141,9 @@ function RepoCard({ project, repo, locale }: { project: Project; repo: OssRepo; 
             {repo.repo}
           </a>
         </div>
-        <div className="flex gap-2">
+        <div className="flex w-full flex-wrap gap-2 sm:w-auto">
           {project.blogSlug && (
-            <a href={`/${locale}/blog/${project.blogSlug}`} className="chip">
+            <a href={`/${locale}/blog/${project.blogSlug}`} className="chip whitespace-nowrap">
               {t("story")} →
             </a>
           )}
@@ -151,7 +151,7 @@ function RepoCard({ project, repo, locale }: { project: Project; repo: OssRepo; 
             href={`https://github.com/${repo.repo}/pulls?q=is%3Apr+author%3ACedric921`}
             target="_blank"
             rel="noopener noreferrer"
-            className="chip"
+            className="chip whitespace-nowrap"
           >
             {t("allPrs")} ↗
           </a>

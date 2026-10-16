@@ -199,3 +199,34 @@
 .prose-article .hljs-type, .prose-article .hljs-class .hljs-title { color: #86efac; }
 .prose-article .hljs-variable, .prose-article .hljs-property { color: #e4e4e7; }
 .prose-article .hljs-meta, .prose-article .hljs-tag { color: #a1a1aa; }
+
+/* ——— Git-style tree (open-source PR tree) ——— */
+@layer components {
+  .tree-node {
+    position: relative;
+    padding-left: 1.35rem;
+  }
+  /* vertical rail */
+  .tree-node::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid rgb(var(--line) / 0.16);
+  }
+  /* elbow into the row */
+  .tree-node::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 0.95rem;
+    border-top: 1px solid rgb(var(--line) / 0.16);
+  }
+  /* last child: the rail stops at its elbow (└─) */
+  .tree-last::before {
+    bottom: auto;
+    height: 1rem;
+  }
+}

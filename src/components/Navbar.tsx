@@ -29,6 +29,7 @@ const Navbar: React.FC = () => {
     { id: "skills", label: t("nav.skills") },
     { id: "portfolio", label: t("nav.projects") },
     { id: "experience", label: t("nav.experience") },
+    { id: "open-source", label: t("nav.openSource") },
     { id: "contact", label: t("nav.contact") },
   ];
 

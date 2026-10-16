@@ -1,0 +1,1350 @@
+{
+  "updatedAt": "2026-10-16T15:54:27.442Z",
+  "repos": [
+    {
+      "repo": "ever-co/ever-gauzy",
+      "stars": 8382,
+      "avatar": "https://avatars.githubusercontent.com/u/41295674?v=4",
+      "prs": [
+        {
+          "number": 10633,
+          "title": "fix(availability-slots): detect overlapping slots on SQLite",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10633",
+          "state": "merged",
+          "createdAt": "2026-10-14T18:57:14Z",
+          "mergedAt": "2026-10-14T23:51:39Z"
+        },
+        {
+          "number": 10631,
+          "title": "fix(screening-task): sync the task when the screening status changes",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10631",
+          "state": "merged",
+          "createdAt": "2026-10-14T18:56:46Z",
+          "mergedAt": "2026-10-14T23:51:34Z"
+        },
+        {
+          "number": 10630,
+          "title": "fix(candidate): join the tags the pagination tags filter reads",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10630",
+          "state": "merged",
+          "createdAt": "2026-10-14T18:56:42Z",
+          "mergedAt": "2026-10-14T23:51:29Z"
+        },
+        {
+          "number": 10629,
+          "title": "fix(employee-statistics): count a recurring expense only from its own start date",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10629",
+          "state": "merged",
+          "createdAt": "2026-10-14T18:56:34Z",
+          "mergedAt": "2026-10-14T23:51:25Z"
+        },
+        {
+          "number": 10537,
+          "title": "fix(timesheet): clear the approver when a timesheet leaves the approved status",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10537",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:26Z",
+          "mergedAt": "2026-10-14T02:37:18Z"
+        },
+        {
+          "number": 10536,
+          "title": "fix(statistic): stop multiplying the overall tracked time by the number of time slots",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10536",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:22Z",
+          "mergedAt": "2026-10-14T02:37:09Z"
+        },
+        {
+          "number": 10535,
+          "title": "fix(time-log): detect every overlapping time log on SQLite and MySQL",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10535",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:18Z",
+          "mergedAt": "2026-10-14T02:36:51Z"
+        },
+        {
+          "number": 10534,
+          "title": "fix(task-estimation): average everybody's estimations, and clear the estimate when none is left",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10534",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:14Z",
+          "mergedAt": "2026-10-14T02:36:29Z"
+        },
+        {
+          "number": 10533,
+          "title": "fix(employee-statistics): split organization expenses among the employees working that month",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10533",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:09Z",
+          "mergedAt": "2026-10-14T02:35:56Z"
+        },
+        {
+          "number": 10532,
+          "title": "fix(organization-project, organization-sprint): unsubscribe a removed member by the row's employeeId",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10532",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:05Z",
+          "mergedAt": "2026-10-14T02:35:29Z"
+        },
+        {
+          "number": 10531,
+          "title": "fix(mention): give the mentions added by an edit the organization of the entity",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10531",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:51:01Z",
+          "mergedAt": "2026-10-14T02:34:51Z"
+        },
+        {
+          "number": 10530,
+          "title": "fix(integration-hubstaff): wait for the time slot mappings instead of filtering on promises",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10530",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:50:57Z",
+          "mergedAt": "2026-10-14T04:24:44Z"
+        },
+        {
+          "number": 10529,
+          "title": "fix(integration-make-com): cache the integration settings for 5 minutes, not 300 ms",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10529",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:50:52Z",
+          "mergedAt": "2026-10-14T02:34:03Z"
+        },
+        {
+          "number": 10528,
+          "title": "fix(integration-wakatime): show the minutes left over after the hours in the daily summary",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10528",
+          "state": "merged",
+          "createdAt": "2026-10-13T14:50:46Z",
+          "mergedAt": "2026-10-14T02:33:36Z"
+        },
+        {
+          "number": 10499,
+          "title": "fix(integration-github): make synced tasks public exactly when their repository is",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10499",
+          "state": "merged",
+          "createdAt": "2026-10-10T16:46:36Z",
+          "mergedAt": "2026-10-12T06:36:23Z"
+        },
+        {
+          "number": 10498,
+          "title": "fix(time-off-request): list time off without dates, and bound it on the 24-hour clock",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10498",
+          "state": "merged",
+          "createdAt": "2026-10-10T16:46:33Z",
+          "mergedAt": "2026-10-12T06:37:26Z"
+        },
+        {
+          "number": 10497,
+          "title": "fix(request-approval): join equipment sharings on their own id on MySQL",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10497",
+          "state": "merged",
+          "createdAt": "2026-10-10T16:46:29Z",
+          "mergedAt": "2026-10-12T06:38:36Z"
+        },
+        {
+          "number": 10496,
+          "title": "fix(organization-sprint): save an update that changes no member",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10496",
+          "state": "merged",
+          "createdAt": "2026-10-10T16:46:26Z",
+          "mergedAt": "2026-10-12T06:39:08Z"
+        },
+        {
+          "number": 10495,
+          "title": "fix(employee-notification): limit reads to the caller's own notifications and read the receiver's settings",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10495",
+          "state": "merged",
+          "createdAt": "2026-10-10T16:46:21Z",
+          "mergedAt": "2026-10-12T06:39:49Z"
+        },
+        {
+          "number": 10494,
+          "title": "feat(desktop): let the user choose the display that shows the screenshot notification",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10494",
+          "state": "merged",
+          "createdAt": "2026-10-10T16:12:14Z",
+          "mergedAt": "2026-10-12T06:40:39Z"
+        },
+        {
+          "number": 10477,
+          "title": "fix(tasks): apply the advanced filters in the MikroORM branch of findTeamTasks",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10477",
+          "state": "merged",
+          "createdAt": "2026-10-09T17:53:20Z",
+          "mergedAt": "2026-10-10T15:15:26Z"
+        },
+        {
+          "number": 10476,
+          "title": "fix(desktop): show the screenshot notification on the primary display every time",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10476",
+          "state": "merged",
+          "createdAt": "2026-10-09T17:53:17Z",
+          "mergedAt": "2026-10-10T15:20:18Z"
+        },
+        {
+          "number": 10475,
+          "title": "fix(accounting): sort incomes and expenses newest first in the cards layout too",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10475",
+          "state": "merged",
+          "createdAt": "2026-10-09T17:53:13Z",
+          "mergedAt": "2026-10-10T15:18:02Z"
+        },
+        {
+          "number": 10474,
+          "title": "fix(invoice): print each payment's date, not the invoice due date, in the payment PDF rows",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10474",
+          "state": "merged",
+          "createdAt": "2026-10-09T17:53:10Z",
+          "mergedAt": "2026-10-10T15:17:25Z"
+        },
+        {
+          "number": 10473,
+          "title": "fix(agent): capture one monitor, never nothing, when the active display id cannot be matched",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10473",
+          "state": "merged",
+          "createdAt": "2026-10-09T17:53:07Z",
+          "mergedAt": "2026-10-12T12:09:30Z"
+        },
+        {
+          "number": 10456,
+          "title": "fix(desktop): show the last screenshots from the server when a fresh install has no local capture",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10456",
+          "state": "merged",
+          "createdAt": "2026-10-08T21:58:03Z",
+          "mergedAt": "2026-10-09T00:17:07Z"
+        },
+        {
+          "number": 10455,
+          "title": "fix(accounting): list incomes and expenses newest first by default",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10455",
+          "state": "merged",
+          "createdAt": "2026-10-08T21:58:00Z",
+          "mergedAt": "2026-10-09T00:10:35Z"
+        },
+        {
+          "number": 10454,
+          "title": "fix(desktop): capture the monitor under the cursor, and never nothing, in active-only mode",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10454",
+          "state": "merged",
+          "createdAt": "2026-10-08T21:57:57Z",
+          "mergedAt": "2026-10-09T00:17:22Z"
+        },
+        {
+          "number": 10453,
+          "title": "fix(invoice): honour the organization currency position in the generated PDFs",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10453",
+          "state": "merged",
+          "createdAt": "2026-10-08T21:57:54Z",
+          "mergedAt": "2026-10-09T00:16:39Z"
+        },
+        {
+          "number": 10452,
+          "title": "fix(equipment): disable the Save button while a create/update request is in flight",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10452",
+          "state": "merged",
+          "createdAt": "2026-10-08T21:57:51Z",
+          "mergedAt": "2026-10-09T00:10:47Z"
+        },
+        {
+          "number": 10434,
+          "title": "fix(tasks): limit employees to their own teams in the MikroORM branch of findTeamTasks",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10434",
+          "state": "merged",
+          "createdAt": "2026-10-07T18:49:28Z",
+          "mergedAt": "2026-10-09T00:13:01Z"
+        },
+        {
+          "number": 10433,
+          "title": "fix(candidate): actually remove a deselected interviewer when editing an interview",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10433",
+          "state": "merged",
+          "createdAt": "2026-10-07T18:49:24Z",
+          "mergedAt": "2026-10-09T00:09:56Z"
+        },
+        {
+          "number": 10432,
+          "title": "fix(appointments): hide only the past days of the current week on the calendar",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10432",
+          "state": "merged",
+          "createdAt": "2026-10-07T18:49:20Z",
+          "mergedAt": "2026-10-09T00:10:09Z"
+        },
+        {
+          "number": 10431,
+          "title": "fix(recurring-expense): restart the expense in January of the next year when a December is deleted",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10431",
+          "state": "merged",
+          "createdAt": "2026-10-07T18:49:16Z",
+          "mergedAt": "2026-10-09T00:10:22Z"
+        },
+        {
+          "number": 10430,
+          "title": "fix(recurring-expense): wait for the final update when an earlier start date resolves a conflict",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10430",
+          "state": "merged",
+          "createdAt": "2026-10-07T18:49:10Z",
+          "mergedAt": "2026-10-07T19:55:24Z"
+        },
+        {
+          "number": 10429,
+          "title": "fix(recurring-expense): list open-ended and mid-month expenses in every month they apply to",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10429",
+          "state": "merged",
+          "createdAt": "2026-10-07T18:49:05Z",
+          "mergedAt": "2026-10-07T19:54:37Z"
+        },
+        {
+          "number": 10426,
+          "title": "fix(onboarding): create the organization in the user's existing tenant instead of failing with 'Tenant already exists'",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10426",
+          "state": "merged",
+          "createdAt": "2026-10-06T14:41:17Z",
+          "mergedAt": "2026-10-09T00:15:00Z"
+        },
+        {
+          "number": 10425,
+          "title": "fix(organization-team): actually remove a member when a team manager deletes or deselects them",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10425",
+          "state": "merged",
+          "createdAt": "2026-10-06T14:40:59Z",
+          "mergedAt": "2026-10-09T00:15:16Z"
+        },
+        {
+          "number": 10419,
+          "title": "fix(appointments): place afternoon slots and appointments at the right hour on the calendar",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10419",
+          "state": "merged",
+          "createdAt": "2026-10-05T14:59:54Z",
+          "mergedAt": "2026-10-07T19:51:22Z"
+        },
+        {
+          "number": 10418,
+          "title": "fix(tasks): exclude soft-deleted statuses, priorities, sizes and versions from the Knex listing",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10418",
+          "state": "merged",
+          "createdAt": "2026-10-05T14:59:51Z",
+          "mergedAt": "2026-10-07T19:50:12Z"
+        },
+        {
+          "number": 10417,
+          "title": "fix(mention): notify and subscribe the mentioned employee",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10417",
+          "state": "merged",
+          "createdAt": "2026-10-05T14:59:47Z",
+          "mergedAt": "2026-10-09T00:15:45Z"
+        },
+        {
+          "number": 10416,
+          "title": "fix(timesheet, timer): exclude soft-deleted time slots and logs from the MikroORM knex queries",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10416",
+          "state": "merged",
+          "createdAt": "2026-10-05T14:59:41Z",
+          "mergedAt": "2026-10-07T19:48:49Z"
+        },
+        {
+          "number": 10415,
+          "title": "fix(time-log): stop multiplying an employee's total worked hours by the number of time slots",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10415",
+          "state": "merged",
+          "createdAt": "2026-10-05T14:59:38Z",
+          "mergedAt": "2026-10-09T00:16:20Z"
+        },
+        {
+          "number": 10406,
+          "title": "fix(income,expense): refresh the employee averages when an income or expense is updated",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10406",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:52:42Z",
+          "mergedAt": "2026-10-05T04:31:04Z"
+        },
+        {
+          "number": 10405,
+          "title": "fix(statistics): rank the dashboard's top projects by their total duration",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10405",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:52:38Z",
+          "mergedAt": "2026-10-05T04:33:13Z"
+        },
+        {
+          "number": 10404,
+          "title": "fix(mikro-orm): driver-compatible employee, candidate and tag search filters",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10404",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:52:35Z",
+          "mergedAt": "2026-10-05T04:34:17Z"
+        },
+        {
+          "number": 10403,
+          "title": "fix(mikro-orm): translate LessThan(OrEqual), Like and ILike find operators",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10403",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:15:51Z",
+          "mergedAt": "2026-10-05T04:35:36Z"
+        },
+        {
+          "number": 10402,
+          "title": "fix(time-log): exclude soft-deleted rows from project / client budget reports on MikroORM",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10402",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:15:48Z",
+          "mergedAt": "2026-10-05T04:44:56Z"
+        },
+        {
+          "number": 10401,
+          "title": "fix(dashboard): filter project management tasks by the selected employee",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10401",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:15:45Z",
+          "mergedAt": "2026-10-05T04:41:35Z"
+        },
+        {
+          "number": 10400,
+          "title": "fix(expense): use the whole month in findAllExpenses' filterDate range",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10400",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:15:32Z",
+          "mergedAt": "2026-10-05T04:43:09Z"
+        },
+        {
+          "number": 10399,
+          "title": "fix(products): paginate GET /products/local/:langCode",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10399",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:15:29Z",
+          "mergedAt": "2026-10-05T04:43:58Z"
+        },
+        {
+          "number": 10398,
+          "title": "fix(help-center): exclude soft-deleted articles from project articles on MikroORM",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10398",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:15:25Z",
+          "mergedAt": "2026-10-05T04:44:35Z"
+        },
+        {
+          "number": 10379,
+          "title": "fix(mikro-orm): use driver-compatible case-insensitive LIKE in task, module, integration and expense category queries",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10379",
+          "state": "merged",
+          "createdAt": "2026-10-02T19:50:11Z",
+          "mergedAt": "2026-10-05T04:46:29Z"
+        },
+        {
+          "number": 10358,
+          "title": "fix(tags): count tag usages with COUNT(DISTINCT) and fill tagTypeName on MikroORM",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10358",
+          "state": "merged",
+          "createdAt": "2026-10-01T10:07:54Z",
+          "mergedAt": "2026-10-01T10:49:41Z"
+        },
+        {
+          "number": 10355,
+          "title": "fix(stats): exclude soft-deleted invoices and payments from global stats on MikroORM",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10355",
+          "state": "merged",
+          "createdAt": "2026-10-01T08:46:51Z",
+          "mergedAt": "2026-10-01T19:48:02Z"
+        },
+        {
+          "number": 10354,
+          "title": "fix(invoices): search by invoice / due date filters on the selected day",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10354",
+          "state": "merged",
+          "createdAt": "2026-10-01T08:39:55Z",
+          "mergedAt": "2026-10-01T19:48:50Z"
+        },
+        {
+          "number": 10352,
+          "title": "fix(core): stop the query DTO turning numeric search text into booleans",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10352",
+          "state": "merged",
+          "createdAt": "2026-10-01T08:37:50Z",
+          "mergedAt": "2026-10-01T19:50:21Z"
+        },
+        {
+          "number": 10351,
+          "title": "fix(search): ignore empty keywords in employee, candidate and time off name search",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10351",
+          "state": "merged",
+          "createdAt": "2026-10-01T08:35:10Z",
+          "mergedAt": "2026-10-01T19:51:01Z"
+        },
+        {
+          "number": 10347,
+          "title": "fix(employee): honor \"Include deleted\" in the MikroORM pagination branch",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10347",
+          "state": "merged",
+          "createdAt": "2026-09-30T20:35:26Z",
+          "mergedAt": "2026-10-01T19:59:34Z"
+        },
+        {
+          "number": 10346,
+          "title": "fix(time-off): make \"Include Archived\" show archived requests alongside active ones",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10346",
+          "state": "merged",
+          "createdAt": "2026-09-30T20:20:55Z",
+          "mergedAt": "2026-10-01T19:58:59Z"
+        },
+        {
+          "number": 10344,
+          "title": "fix(time-off): apply the employee, description and policy filters with MikroORM",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10344",
+          "state": "merged",
+          "createdAt": "2026-09-30T13:59:12Z",
+          "mergedAt": "2026-09-30T15:55:47Z"
+        },
+        {
+          "number": 10341,
+          "title": "fix(candidate,equipment-sharing): apply the requested sort order in pagination",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10341",
+          "state": "merged",
+          "createdAt": "2026-09-30T12:43:08Z",
+          "mergedAt": "2026-09-30T15:56:58Z"
+        },
+        {
+          "number": 10339,
+          "title": "fix(docker): let .env.compose settings reach the api and webapp containers",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10339",
+          "state": "merged",
+          "createdAt": "2026-09-29T21:50:52Z",
+          "mergedAt": "2026-10-09T00:17:52Z"
+        },
+        {
+          "number": 10338,
+          "title": "fix(employee): apply the requested sort order in employee pagination",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10338",
+          "state": "merged",
+          "createdAt": "2026-09-29T21:50:48Z",
+          "mergedAt": "2026-09-30T12:10:00Z"
+        },
+        {
+          "number": 10335,
+          "title": "fix(time-off): apply the requested sort order in time off pagination",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10335",
+          "state": "merged",
+          "createdAt": "2026-09-29T14:35:14Z",
+          "mergedAt": "2026-09-29T18:07:21Z"
+        },
+        {
+          "number": 10326,
+          "title": "fix(desktop): use a single ErrorHandler that forwards to Sentry and ErrorHandlerService",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/10326",
+          "state": "merged",
+          "createdAt": "2026-09-28T14:10:26Z",
+          "mergedAt": "2026-09-28T17:54:07Z"
+        },
+        {
+          "number": 7361,
+          "title": "[Feat] Organization Team Employee Order",
+          "url": "https://github.com/ever-co/ever-gauzy/pull/7361",
+          "state": "merged",
+          "createdAt": "2023-12-24T14:45:34Z",
+          "mergedAt": "2023-12-26T07:07:27Z"
+        }
+      ]
+    },
+    {
+      "repo": "rtk-ai/rtk",
+      "stars": 83604,
+      "avatar": "https://avatars.githubusercontent.com/u/258253854?v=4",
+      "prs": [
+        {
+          "number": 4469,
+          "title": "fix(rewrite): keep pytest raw before a positional tail/head",
+          "url": "https://github.com/rtk-ai/rtk/pull/4469",
+          "state": "open",
+          "createdAt": "2026-10-06T15:54:13Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4468,
+          "title": "fix(tee): give every tee file a unique name",
+          "url": "https://github.com/rtk-ai/rtk/pull/4468",
+          "state": "open",
+          "createdAt": "2026-10-06T15:52:33Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4467,
+          "title": "fix(cargo): keep nextest failed/skipped counts when a test is slow",
+          "url": "https://github.com/rtk-ai/rtk/pull/4467",
+          "state": "open",
+          "createdAt": "2026-10-06T15:51:20Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4466,
+          "title": "fix(pytest): report setup errors in the summary",
+          "url": "https://github.com/rtk-ai/rtk/pull/4466",
+          "state": "open",
+          "createdAt": "2026-10-06T15:50:33Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4450,
+          "title": "fix(lexer): treat unquoted # as a comment to end of line in the permission gate",
+          "url": "https://github.com/rtk-ai/rtk/pull/4450",
+          "state": "open",
+          "createdAt": "2026-10-04T15:53:20Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4449,
+          "title": "fix(git): don't report \"ok stashed\" when nothing was stashed",
+          "url": "https://github.com/rtk-ai/rtk/pull/4449",
+          "state": "open",
+          "createdAt": "2026-10-04T15:49:38Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4447,
+          "title": "fix(recall): reopen the store when the file at its path is replaced",
+          "url": "https://github.com/rtk-ai/rtk/pull/4447",
+          "state": "open",
+          "createdAt": "2026-10-04T15:44:51Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4377,
+          "title": "fix(core): don't abort when stdout is a non-blocking pipe",
+          "url": "https://github.com/rtk-ai/rtk/pull/4377",
+          "state": "open",
+          "createdAt": "2026-10-01T14:29:08Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4376,
+          "title": "fix(gain): count RTK_DISABLED bypasses with discover's gate",
+          "url": "https://github.com/rtk-ai/rtk/pull/4376",
+          "state": "open",
+          "createdAt": "2026-10-01T14:19:41Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4375,
+          "title": "fix(tracking): honor [tracking] enabled = false",
+          "url": "https://github.com/rtk-ai/rtk/pull/4375",
+          "state": "open",
+          "createdAt": "2026-10-01T14:17:26Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4374,
+          "title": "fix(pytest): take the last summary line as the session summary",
+          "url": "https://github.com/rtk-ai/rtk/pull/4374",
+          "state": "open",
+          "createdAt": "2026-10-01T14:11:36Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4373,
+          "title": "fix(openclaw): declare extensions entry and startup activation",
+          "url": "https://github.com/rtk-ai/rtk/pull/4373",
+          "state": "open",
+          "createdAt": "2026-10-01T13:56:07Z",
+          "mergedAt": null
+        },
+        {
+          "number": 4372,
+          "title": "fix(openclaw): read plugin settings from api.pluginConfig",
+          "url": "https://github.com/rtk-ai/rtk/pull/4372",
+          "state": "open",
+          "createdAt": "2026-10-01T13:42:05Z",
+          "mergedAt": null
+        }
+      ]
+    },
+    {
+      "repo": "MODSetter/SurfSense",
+      "stars": 16451,
+      "avatar": "https://avatars.githubusercontent.com/u/122026167?v=4",
+      "prs": [
+        {
+          "number": 2266,
+          "title": "docs(adr): record the chat-modes decision",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2266",
+          "state": "open",
+          "createdAt": "2026-10-14T18:45:23Z",
+          "mergedAt": null
+        },
+        {
+          "number": 2265,
+          "title": "ci(local): keep the macOS certificate off Windows and check Apple's credentials before every build",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2265",
+          "state": "open",
+          "createdAt": "2026-10-14T18:44:12Z",
+          "mergedAt": null
+        },
+        {
+          "number": 2185,
+          "title": "feat(local): generate third-party notices at build time",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2185",
+          "state": "merged",
+          "createdAt": "2026-10-06T16:11:58Z",
+          "mergedAt": "2026-10-15T00:46:01Z"
+        },
+        {
+          "number": 2184,
+          "title": "fix(local): run Studio's PowerPoint and Excel scripts in the script runner",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2184",
+          "state": "merged",
+          "createdAt": "2026-10-06T16:02:48Z",
+          "mergedAt": "2026-10-11T23:33:17Z"
+        },
+        {
+          "number": 2183,
+          "title": "feat(local): encode a podcast episode as MP3",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2183",
+          "state": "merged",
+          "createdAt": "2026-10-06T15:57:53Z",
+          "mergedAt": "2026-10-15T20:21:38Z"
+        },
+        {
+          "number": 2182,
+          "title": "feat(local): send a curated chat model's publisher top_p, top_k and min_p",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2182",
+          "state": "merged",
+          "createdAt": "2026-10-06T15:14:22Z",
+          "mergedAt": "2026-10-06T21:18:53Z"
+        },
+        {
+          "number": 2176,
+          "title": "refactor(local): hold the Studio list in TanStack Query so open artifacts refresh too",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2176",
+          "state": "merged",
+          "createdAt": "2026-10-05T18:57:20Z",
+          "mergedAt": "2026-10-06T21:43:52Z"
+        },
+        {
+          "number": 2175,
+          "title": "fix(local): offer a new chat when an agent thread's model cannot run it",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2175",
+          "state": "merged",
+          "createdAt": "2026-10-05T18:47:24Z",
+          "mergedAt": "2026-10-06T21:18:48Z"
+        },
+        {
+          "number": 2174,
+          "title": "fix(local): revoke the grant a ChatGPT sign-in replaces",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2174",
+          "state": "merged",
+          "createdAt": "2026-10-05T18:40:36Z",
+          "mergedAt": "2026-10-08T21:38:45Z"
+        },
+        {
+          "number": 2173,
+          "title": "fix(local): offer no thinking switch in an agent thread",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2173",
+          "state": "merged",
+          "createdAt": "2026-10-05T18:37:37Z",
+          "mergedAt": "2026-10-08T21:38:39Z"
+        },
+        {
+          "number": 2157,
+          "title": "test(local): cover how host memory is read from the OS",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2157",
+          "state": "merged",
+          "createdAt": "2026-10-02T21:35:19Z",
+          "mergedAt": "2026-10-05T00:34:21Z"
+        },
+        {
+          "number": 2156,
+          "title": "fix(local): revoke the ChatGPT refresh token on sign-out and delete",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2156",
+          "state": "merged",
+          "createdAt": "2026-10-02T21:34:00Z",
+          "mergedAt": "2026-10-05T00:31:39Z"
+        },
+        {
+          "number": 2154,
+          "title": "fix(local): refuse a chat turn whose images outgrow the model's window",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2154",
+          "state": "merged",
+          "createdAt": "2026-10-02T19:42:13Z",
+          "mergedAt": "2026-10-05T00:17:14Z"
+        },
+        {
+          "number": 2148,
+          "title": "fix(local): keep a rename or note edit made while a document ingests",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2148",
+          "state": "merged",
+          "createdAt": "2026-10-02T08:43:03Z",
+          "mergedAt": "2026-10-02T21:21:41Z"
+        },
+        {
+          "number": 2132,
+          "title": "feat(local): write notes and rename sources from the sources panel",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2132",
+          "state": "merged",
+          "createdAt": "2026-10-01T15:25:04Z",
+          "mergedAt": "2026-10-02T21:21:45Z"
+        },
+        {
+          "number": 2131,
+          "title": "fix(local): announce a finished reply and name the conversation",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2131",
+          "state": "merged",
+          "createdAt": "2026-10-01T15:16:11Z",
+          "mergedAt": "2026-10-04T23:56:13Z"
+        },
+        {
+          "number": 2127,
+          "title": "fix(local): say whether the chosen image model's server is running",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2127",
+          "state": "merged",
+          "createdAt": "2026-10-01T10:06:20Z",
+          "mergedAt": "2026-10-01T21:44:03Z"
+        },
+        {
+          "number": 2123,
+          "title": "test(license): cover the portal routes, their rate limits and Keygen",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2123",
+          "state": "merged",
+          "createdAt": "2026-10-01T08:22:39Z",
+          "mergedAt": "2026-10-04T23:56:06Z"
+        },
+        {
+          "number": 2090,
+          "title": "fix(desktop): recommend the Vulkan loader in the Linux deb",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2090",
+          "state": "merged",
+          "createdAt": "2026-09-30T22:04:53Z",
+          "mergedAt": "2026-09-30T23:09:55Z"
+        },
+        {
+          "number": 2087,
+          "title": "fix(license): suspend only the license a fully refunded charge paid for",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2087",
+          "state": "merged",
+          "createdAt": "2026-09-30T21:18:29Z",
+          "mergedAt": "2026-09-30T23:10:06Z"
+        },
+        {
+          "number": 2086,
+          "title": "fix(license): let support correct a trial's address",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2086",
+          "state": "merged",
+          "createdAt": "2026-09-30T21:09:59Z",
+          "mergedAt": "2026-09-30T23:10:02Z"
+        },
+        {
+          "number": 2085,
+          "title": "fix(local): send a curated chat model's publisher temperature",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2085",
+          "state": "merged",
+          "createdAt": "2026-09-30T20:33:31Z",
+          "mergedAt": "2026-09-30T23:09:58Z"
+        },
+        {
+          "number": 2072,
+          "title": "fix(local): ask before fetching an image URL from a host the endpoint names",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2072",
+          "state": "merged",
+          "createdAt": "2026-09-30T10:51:02Z",
+          "mergedAt": "2026-09-30T19:05:54Z"
+        },
+        {
+          "number": 2071,
+          "title": "refactor(local): name the curated fit refusal in llama.cpp's check",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2071",
+          "state": "merged",
+          "createdAt": "2026-09-30T10:42:23Z",
+          "mergedAt": "2026-09-30T19:05:53Z"
+        },
+        {
+          "number": 2051,
+          "title": "fix(local): give a loopback connection's unknown model the compact prompt",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2051",
+          "state": "merged",
+          "createdAt": "2026-09-29T21:24:48Z",
+          "mergedAt": "2026-09-29T22:49:16Z"
+        },
+        {
+          "number": 2041,
+          "title": "test(local): cover a chat reply the client hangs up on",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2041",
+          "state": "merged",
+          "createdAt": "2026-09-29T15:47:26Z",
+          "mergedAt": "2026-09-29T22:49:36Z"
+        },
+        {
+          "number": 2037,
+          "title": "fix(local): discard a chat turn that ends with no answer text",
+          "url": "https://github.com/MODSetter/SurfSense/pull/2037",
+          "state": "merged",
+          "createdAt": "2026-09-29T15:32:28Z",
+          "mergedAt": "2026-09-29T20:25:57Z"
+        },
+        {
+          "number": 1934,
+          "title": "fix(local): delete an artifact's files when it is deleted as a document",
+          "url": "https://github.com/MODSetter/SurfSense/pull/1934",
+          "state": "merged",
+          "createdAt": "2026-09-28T14:02:49Z",
+          "mergedAt": "2026-09-28T22:54:04Z"
+        },
+        {
+          "number": 1933,
+          "title": "feat(local): connect to Anthropic directly with just an API key",
+          "url": "https://github.com/MODSetter/SurfSense/pull/1933",
+          "state": "merged",
+          "createdAt": "2026-09-28T11:34:37Z",
+          "mergedAt": "2026-09-28T22:56:26Z"
+        }
+      ]
+    },
+    {
+      "repo": "Memnox/memnox",
+      "stars": 11,
+      "avatar": "https://avatars.githubusercontent.com/u/284690307?v=4",
+      "prs": [
+        {
+          "number": 160,
+          "title": "fix(cli): wrap a commented config, and rewrite only the entries wrapped",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/160",
+          "state": "open",
+          "createdAt": "2026-10-16T03:38:30Z",
+          "mergedAt": null
+        },
+        {
+          "number": 152,
+          "title": "fix(core): walk shell prefixes once, for the normalizer and the resolver alike",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/152",
+          "state": "open",
+          "createdAt": "2026-10-16T01:38:37Z",
+          "mergedAt": null
+        },
+        {
+          "number": 151,
+          "title": "fix(core): purge transcripts with the ledger they share a retention with",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/151",
+          "state": "open",
+          "createdAt": "2026-10-16T01:15:20Z",
+          "mergedAt": null
+        },
+        {
+          "number": 150,
+          "title": "fix(proxy): read a paged tools/list as one listing",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/150",
+          "state": "open",
+          "createdAt": "2026-10-16T01:10:28Z",
+          "mergedAt": null
+        },
+        {
+          "number": 149,
+          "title": "fix(proxy): honour a cancelled call, held or already sent",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/149",
+          "state": "open",
+          "createdAt": "2026-10-16T01:05:47Z",
+          "mergedAt": null
+        },
+        {
+          "number": 148,
+          "title": "fix(core): read URL, Linux and per-project MCP servers from JSON configs",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/148",
+          "state": "open",
+          "createdAt": "2026-10-16T00:56:43Z",
+          "mergedAt": null
+        },
+        {
+          "number": 147,
+          "title": "fix(core): report every CLI that is logged in, not only aws",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/147",
+          "state": "open",
+          "createdAt": "2026-10-16T00:47:28Z",
+          "mergedAt": null
+        },
+        {
+          "number": 146,
+          "title": "fix(core): tag the aws commands that hand back a credential",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/146",
+          "state": "open",
+          "createdAt": "2026-10-16T00:42:43Z",
+          "mergedAt": null
+        },
+        {
+          "number": 145,
+          "title": "fix(interceptors): forward the body that was sent, and refuse one too large to read",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/145",
+          "state": "open",
+          "createdAt": "2026-10-16T00:38:05Z",
+          "mergedAt": null
+        },
+        {
+          "number": 144,
+          "title": "fix(proxy): keep a character whole when a pipe splits it",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/144",
+          "state": "open",
+          "createdAt": "2026-10-16T00:29:27Z",
+          "mergedAt": null
+        },
+        {
+          "number": 133,
+          "title": "fix(interceptors): answer a malformed egress request instead of dying on it",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/133",
+          "state": "merged",
+          "createdAt": "2026-10-06T15:04:21Z",
+          "mergedAt": "2026-10-12T02:08:09Z"
+        },
+        {
+          "number": 132,
+          "title": "fix(core): protect every file Memnox installs a hook into",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/132",
+          "state": "open",
+          "createdAt": "2026-10-06T14:59:14Z",
+          "mergedAt": null
+        },
+        {
+          "number": 131,
+          "title": "fix(proxy): read every place a tool result carries text",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/131",
+          "state": "merged",
+          "createdAt": "2026-10-06T14:54:28Z",
+          "mergedAt": "2026-10-12T02:07:49Z"
+        },
+        {
+          "number": 130,
+          "title": "fix(proxy): tell a request the server started from a result",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/130",
+          "state": "merged",
+          "createdAt": "2026-10-06T14:52:20Z",
+          "mergedAt": "2026-10-12T02:07:34Z"
+        },
+        {
+          "number": 128,
+          "title": "fix(core): rule on a publish whichever client ran it",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/128",
+          "state": "open",
+          "createdAt": "2026-10-04T13:47:42Z",
+          "mergedAt": null
+        },
+        {
+          "number": 127,
+          "title": "fix(core): see mariadb, mycli, pgcli and redis-cli as the database clients they are",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/127",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:34:06Z",
+          "mergedAt": "2026-10-12T02:07:07Z"
+        },
+        {
+          "number": 126,
+          "title": "fix(core): keep a milestone before every command that destroys work",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/126",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:28:24Z",
+          "mergedAt": "2026-10-12T02:06:10Z"
+        },
+        {
+          "number": 90,
+          "title": "test: put a floor under the tests no mark covers",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/90",
+          "state": "merged",
+          "createdAt": "2026-09-29T19:00:59Z",
+          "mergedAt": "2026-09-30T00:18:32Z"
+        },
+        {
+          "number": 89,
+          "title": "fix(proxy): rule on every call in a JSON-RPC batch",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/89",
+          "state": "merged",
+          "createdAt": "2026-09-29T18:38:15Z",
+          "mergedAt": "2026-10-01T16:06:18Z"
+        },
+        {
+          "number": 88,
+          "title": "fix(cli): mask credentials in the transcript a session keeps",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/88",
+          "state": "merged",
+          "createdAt": "2026-09-29T15:21:29Z",
+          "mergedAt": "2026-10-01T16:04:26Z"
+        },
+        {
+          "number": 87,
+          "title": "fix(core): mask a quoted credential whole, not to its first space",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/87",
+          "state": "merged",
+          "createdAt": "2026-09-29T15:09:29Z",
+          "mergedAt": "2026-09-29T23:40:01Z"
+        },
+        {
+          "number": 4,
+          "title": "test: give the three slowest tests their own timeout",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/4",
+          "state": "merged",
+          "createdAt": "2026-09-24T18:07:29Z",
+          "mergedAt": "2026-09-28T20:10:30Z"
+        },
+        {
+          "number": 2,
+          "title": "fix(policy): match a wildcard across a line break in an argument",
+          "url": "https://github.com/Memnox/memnox-runtime/pull/2",
+          "state": "merged",
+          "createdAt": "2026-09-24T17:47:54Z",
+          "mergedAt": "2026-09-28T20:13:56Z"
+        }
+      ]
+    },
+    {
+      "repo": "expo/expo",
+      "stars": 52765,
+      "avatar": "https://avatars.githubusercontent.com/u/12504344?v=4",
+      "prs": [
+        {
+          "number": 51192,
+          "title": "[android] Deliver new intents once the app is loaded instead of dropping them",
+          "url": "https://github.com/expo/expo/pull/51192",
+          "state": "open",
+          "createdAt": "2026-10-06T15:41:38Z",
+          "mergedAt": null
+        },
+        {
+          "number": 51191,
+          "title": "[image][android] Only let the SVG decoders handle data that looks like SVG",
+          "url": "https://github.com/expo/expo/pull/51191",
+          "state": "open",
+          "createdAt": "2026-10-06T15:41:33Z",
+          "mergedAt": null
+        },
+        {
+          "number": 51190,
+          "title": "[fingerprint][sdk-57] Use POSIX separators for config loader paths on Windows",
+          "url": "https://github.com/expo/expo/pull/51190",
+          "state": "open",
+          "createdAt": "2026-10-06T15:41:29Z",
+          "mergedAt": null
+        },
+        {
+          "number": 51189,
+          "title": "[ios][task-manager] Fix races between the launch thread and a finishing task",
+          "url": "https://github.com/expo/expo/pull/51189",
+          "state": "open",
+          "createdAt": "2026-10-06T15:41:22Z",
+          "mergedAt": null
+        },
+        {
+          "number": 51030,
+          "title": "[ui][android] Don't nest a ListItem row in another ListItem in FieldGroup.Section",
+          "url": "https://github.com/expo/expo/pull/51030",
+          "state": "open",
+          "createdAt": "2026-10-04T13:57:15Z",
+          "mergedAt": null
+        },
+        {
+          "number": 51028,
+          "title": "[expo-widgets][android] Resolve Windows absolute paths in the layout registry Metro config",
+          "url": "https://github.com/expo/expo/pull/51028",
+          "state": "merged",
+          "createdAt": "2026-10-04T13:57:08Z",
+          "mergedAt": "2026-10-12T12:23:46Z"
+        },
+        {
+          "number": 50993,
+          "title": "[expo-web-browser][android] Handle SecurityException when launching the browser",
+          "url": "https://github.com/expo/expo/pull/50993",
+          "state": "open",
+          "createdAt": "2026-10-02T19:48:50Z",
+          "mergedAt": null
+        },
+        {
+          "number": 50992,
+          "title": "[expo-image][android] Cap the bitmap size when downscaling is disabled",
+          "url": "https://github.com/expo/expo/pull/50992",
+          "state": "open",
+          "createdAt": "2026-10-02T19:48:45Z",
+          "mergedAt": null
+        },
+        {
+          "number": 50991,
+          "title": "[expo-cellular][android] Return null for an empty or incomplete SIM operator",
+          "url": "https://github.com/expo/expo/pull/50991",
+          "state": "merged",
+          "createdAt": "2026-10-02T19:48:41Z",
+          "mergedAt": "2026-10-12T13:05:25Z"
+        },
+        {
+          "number": 50948,
+          "title": "[expo-localization][android] Notify calendar changes on time settings broadcasts",
+          "url": "https://github.com/expo/expo/pull/50948",
+          "state": "open",
+          "createdAt": "2026-10-02T08:45:12Z",
+          "mergedAt": null
+        },
+        {
+          "number": 50947,
+          "title": "[expo-video][web] Compare video elements by identity in VideoView ref",
+          "url": "https://github.com/expo/expo/pull/50947",
+          "state": "open",
+          "createdAt": "2026-10-02T08:45:09Z",
+          "mergedAt": null
+        },
+        {
+          "number": 50884,
+          "title": "[expo-camera][web] Fire onCameraReady once the video can be captured",
+          "url": "https://github.com/expo/expo/pull/50884",
+          "state": "merged",
+          "createdAt": "2026-10-01T10:40:04Z",
+          "mergedAt": "2026-10-02T13:59:15Z"
+        },
+        {
+          "number": 50883,
+          "title": "[expo-audio][android] Start the recording service binding timeout",
+          "url": "https://github.com/expo/expo/pull/50883",
+          "state": "merged",
+          "createdAt": "2026-10-01T10:39:59Z",
+          "mergedAt": "2026-10-02T15:30:12Z"
+        }
+      ]
+    },
+    {
+      "repo": "react/react-native",
+      "stars": 126693,
+      "avatar": "https://avatars.githubusercontent.com/u/102812?v=4",
+      "prs": [
+        {
+          "number": 58892,
+          "title": "Clarify non-fatal React Native DevTools preparation errors",
+          "url": "https://github.com/react/react-native/pull/58892",
+          "state": "open",
+          "createdAt": "2026-10-06T16:35:01Z",
+          "mergedAt": null
+        },
+        {
+          "number": 58831,
+          "title": "Add TypeScript declarations for the performance global",
+          "url": "https://github.com/react/react-native/pull/58831",
+          "state": "open",
+          "createdAt": "2026-10-04T14:37:28Z",
+          "mergedAt": null
+        },
+        {
+          "number": 58830,
+          "title": "Add Symbol.toStringTag to Blob, File, URL and URLSearchParams",
+          "url": "https://github.com/react/react-native/pull/58830",
+          "state": "open",
+          "createdAt": "2026-10-04T14:37:25Z",
+          "mergedAt": null
+        }
+      ]
+    },
+    {
+      "repo": "Shinobi-Open-Source-Academy/sos-academy-platform",
+      "stars": 17,
+      "avatar": "https://avatars.githubusercontent.com/u/209169277?v=4",
+      "prs": [
+        {
+          "number": 237,
+          "title": "fix(blog): upload dropped images to Cloudinary and render them in the preview",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/237",
+          "state": "open",
+          "createdAt": "2026-10-05T13:38:10Z",
+          "mergedAt": null
+        },
+        {
+          "number": 236,
+          "title": "feat(hack): sync assigned issues with their GitHub pull requests",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/236",
+          "state": "open",
+          "createdAt": "2026-10-05T13:19:46Z",
+          "mergedAt": null
+        },
+        {
+          "number": 235,
+          "title": "feat(hack): let hackers claim and release issues",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/235",
+          "state": "open",
+          "createdAt": "2026-10-05T13:19:42Z",
+          "mergedAt": null
+        },
+        {
+          "number": 234,
+          "title": "feat(squad): show mentors the roster of their squad",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/234",
+          "state": "open",
+          "createdAt": "2026-10-05T13:19:38Z",
+          "mergedAt": null
+        },
+        {
+          "number": 233,
+          "title": "feat(squad): let admins and kages assign mentees to squads",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/233",
+          "state": "open",
+          "createdAt": "2026-10-05T13:19:34Z",
+          "mergedAt": null
+        },
+        {
+          "number": 232,
+          "title": "fix(admin): keep the event time when retriggering a broadcast",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/232",
+          "state": "open",
+          "createdAt": "2026-10-04T14:07:02Z",
+          "mergedAt": null
+        },
+        {
+          "number": 231,
+          "title": "fix(blog): treat the search text literally",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/231",
+          "state": "open",
+          "createdAt": "2026-10-04T14:06:59Z",
+          "mergedAt": null
+        },
+        {
+          "number": 230,
+          "title": "fix(calendar): accept events without a meeting link",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/230",
+          "state": "open",
+          "createdAt": "2026-10-04T14:06:56Z",
+          "mergedAt": null
+        },
+        {
+          "number": 226,
+          "title": "fix(auth): make session refresh work and harden GitHub login",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/226",
+          "state": "open",
+          "createdAt": "2026-10-01T10:49:50Z",
+          "mergedAt": null
+        },
+        {
+          "number": 225,
+          "title": "chore(deps): fix vulnerable dependencies and make security audit mandatory",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/225",
+          "state": "open",
+          "createdAt": "2026-09-30T23:05:14Z",
+          "mergedAt": null
+        },
+        {
+          "number": 224,
+          "title": "feat: let mentors edit their public profile and lock down user routes",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/224",
+          "state": "open",
+          "createdAt": "2026-09-30T22:27:41Z",
+          "mergedAt": null
+        },
+        {
+          "number": 223,
+          "title": "feat: add RolesGuard and role-gated mentor route group",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/223",
+          "state": "open",
+          "createdAt": "2026-09-28T13:23:55Z",
+          "mergedAt": null
+        },
+        {
+          "number": 222,
+          "title": "feat: register GitHub issues on the hack platform from their URL",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/222",
+          "state": "open",
+          "createdAt": "2026-09-25T13:31:15Z",
+          "mergedAt": null
+        },
+        {
+          "number": 221,
+          "title": "feat(server): add Squad data model and SquadModule",
+          "url": "https://github.com/Shinobi-Open-Source-Academy/sos-academy-platform/pull/221",
+          "state": "merged",
+          "createdAt": "2026-09-25T08:12:16Z",
+          "mergedAt": "2026-09-27T20:12:14Z"
+        }
+      ]
+    }
+  ]
+}

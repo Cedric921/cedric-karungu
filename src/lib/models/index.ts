@@ -13,3 +13,4 @@ export {
   type LocalizedString,
 } from './shared';
 export { Article } from './Article';
+export { AnalyticsEvent } from './AnalyticsEvent';

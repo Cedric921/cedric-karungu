@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Card, Badge, Spinner } from '@/components/admin/ui';
 import { adminFetch } from '@/lib/admin-fetch';
+import AnalyticsPanel from '@/components/admin/AnalyticsPanel';
 import {
   Mail,
   FolderKanban,
@@ -95,6 +96,8 @@ export default function DashboardPage() {
           </Badge>
         </div>
       </header>
+
+      <AnalyticsPanel />
 
       {/* Counts grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">

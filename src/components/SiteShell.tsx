@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import InspectorCursor from "./fx/InspectorCursor";
 import ScrollProgress from "./fx/ScrollProgress";
+import Analytics from "./Analytics";
 
 /** Public page chrome: progress bar, inspector cursor, top bar, content, footer. */
 export default function SiteShell({ children }: { children: React.ReactNode; preloader?: boolean }) {
@@ -24,6 +25,7 @@ export default function SiteShell({ children }: { children: React.ReactNode; pre
         <Footer />
       </div>
       <InspectorCursor />
+      <Analytics />
     </div>
   );
 }
